@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Integración Continua con Python - Intermezzo</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Integraci\u00f3n Continua con Python";
+    var mkdocs_page_input_path = "integracion_continua_con_python.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Intermezzo</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../entornos_virtuales/">Entornos Virtuales</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Intermezzo</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Integración Continua con Python</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="integracion-continua-con-python">Integración Continua con Python</h1>
+<p>Al escribir código por su cuenta, la única prioridad es hacerlo funcionar.  Sin embargo, trabajar en un equipo de desarrolladores de software profesionales conlleva una gran cantidad de desafíos.  Uno de esos desafíos es coordinar a muchas personas que trabajan en el mismo código.</p>
+<p>¿Cómo hacen los equipos profesionales docenas de cambios por día  mientras se aseguran de que todos estén coordinados y que nada se rompa?  ¡Bienvenidos a la integración continua!</p>
+<h2 id="que-es-la-integracion-continua">¿Qué es la integración continua?</h2>
+<p>La integración continua (CI - <em>Continuous Integration</em>) es la práctica de generar y probar con  frecuencia cada cambio realizado en el código automáticamente y lo antes posible.  El desarrollador y autor prolífico Martin Fowler define CI de la siguiente manera:</p>
+<blockquote>
+<p>“La integración continua es una práctica de desarrollo de software  donde los miembros de un equipo integran su trabajo con frecuencia,  generalmente cada persona se integra al menos diariamente, lo que lleva a múltiples integraciones por día.  Cada integración se verifica mediante una compilación automatizada  (incluida la prueba) para detectar errores de integración lo más rápido  posible". ( <a href="https://martinfowler.com/articles/continuousIntegration.html">Fuente</a> ) </p>
+</blockquote>
+<p><strong>La programación es iterativa</strong>.  El código fuente vive en un repositorio compartido por todos los miembros del equipo.  Si se desea trabajar en ese producto, se debe tener una copia.  Se harán cambios, se probarán e integrarán nuevamente en el repositorio principal.  "Enjuagar y repetir". </p>
+<p>No hace mucho tiempo, estas integraciones eran grandes y estaban separadas por semanas (o meses), causando dolores de cabeza, perdiendo el tiempo y perdiendo dinero.  Armados con experiencia, los desarrolladores comenzaron a hacer cambios menores para integrarlos con más frecuencia.  Esto reduce las posibilidades de introducir conflictos que se deban resolver más adelante. </p>
+<h2 id="por-que-deberia-importarme">¿Por qué debería importarme?</h2>
+<p>La integración continua trata realmente de en qué pasan el tiempo los programadores.</p>
+<p>Con CI, se pasará menos tiempo: </p>
+<ul>
+<li>Preocupados por introducir un error cada vez que se realizan cambios</li>
+<li>Arreglando el desastre que alguien más hizo para que poder integrar nuevo código</li>
+<li>Asegurando que el código funciona en cada máquina, sistema operativo y navegador </li>
+</ul>
+<p>Por el contrario, se pasará más tiempo: 
+- Resolviendo problemas interesantes 
+- Escribiendo un código increíble en equipo
+- Co-creando productos increíbles que brinden valor a los usuarios </p>
+<p>¿Como suena eso? </p>
+<p>A nivel de equipo, permite una mejor cultura de ingeniería, donde se entrega <strong>valor temprano</strong> y <strong>con frecuencia</strong>.  Se fomenta la <strong>colaboración</strong> y los <strong>errores se detectan mucho antes</strong>.
+La integración continua:
+- Hace al equipo desarrollar más rápido
+- Le damos la confianza de que están creando software estable con menos errores
+- Se asegura que el producto funciona en otras máquinas, no solo en su computadora portátil
+- Se eliminan muchos gastos generales tediosos y permite que se concentrarse en lo que importa
+- Se reduce el tiempo dedicado a resolver conflictos (cuando diferentes personas modifican el mismo código)</p>
+<h2 id="conceptos-basicos">Conceptos básicos</h2>
+<p>Hay varias ideas y prácticas clave que se debe comprender para trabajar eficazmente con una integración continua.  Además, puede haber algunas palabras y frases con las que no se esté familiarizado, pero que se usan con frecuencia cuando habla de CI.  Este capítulo le presentará estos conceptos y la jerga que viene con ellos.</p>
+<h3 id="repositorio-de-fuente-unica">Repositorio de fuente única</h3>
+<p>Si se está colaborando con otros en una sola base de código, es típico tener un repositorio compartido de código fuente.  Cada desarrollador que trabaja en el proyecto crea una copia local y realiza cambios.  Una vez que se está satisfecho con los cambios, se fusionan nuevamente en el repositorio central.</p>
+<p>Se ha convertido en un estándar usar sistemas de control de versiones  (VCS) como Git para manejar este flujo de trabajo.  Los equipos suelen utilizar un servicio externo para alojar su código fuente y manejar todas las partes móviles.  Los más populares son GitHub, BitBucket y GitLab.</p>
+<p>Git permite crear múltiples <strong>ramas</strong> de un repositorio.  Cada rama es una copia independiente del código fuente y se puede modificar sin afectar a otras ramas.  Esta es una característica esencial, y la mayoría de los equipos tienen una rama principal (a menudo llamada rama maestra) que representa el  estado actual del proyecto.</p>
+<p>Si se desea agregar o modificar código, debe crear una copia de la rama principal y trabajar en su nueva rama de desarrollo.  Una vez que haya terminado, combine esos cambios nuevamente en la rama maestra. </p>
+<p align="center"> 
+<img src="./01.png">
+</p>
+
+<p>El control de versiones contiene más que solo código.  La documentación y los scripts de prueba generalmente se almacenan junto con el código fuente.  Algunos programas buscan archivos externos utilizados para configurar sus parámetros y configuraciones iniciales.  Otras aplicaciones necesitan un esquema de base de datos.  Todos estos archivos deben ir al repositorio.</p>
+<p>Si nunca ha usado Git o necesita un repaso, consultar <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=es&amp;u=https://realpython.com/python-git-github-intro/&amp;xid=17259,15700002,15700021,15700186,15700190,15700256,15700259,15700262,15700265,15700271,15700283&amp;usg=ALkJrhj0g2J5AueOfD6pyGQSHCJ7jjN7sg">Introducción a Git y GitHub para desarrolladores de Python</a> . </p>
+<h3 id="automatizando-la-construccion-build">Automatizando la construcción (Build)</h3>
+<p>Construir código (<em>build</em>) significa tomar el código fuente sin procesar, y todo lo necesario para su ejecución, y traducirlo a un formato que las computadoras puedan ejecutar directamente.  Python es un <a href="https://es.wikipedia.org/wiki/Int%C3%A9rprete_(inform%C3%A1tica)">lenguaje interpretado</a>, por lo que su "compilación" gira principalmente en torno a la ejecución de pruebas en lugar de la compilación.</p>
+<p>Ejecutar esos pasos manualmente después de cada pequeño cambio es tedioso y requiere tiempo y atención valiosos de la resolución de problemas reales que se está tratando de resolver.  Una gran parte de la integración continua es automatizar ese proceso y quitarlo de la vista (y de la mente).</p>
+<p>¿Qué significa eso para Python?  Piensar en el código más complicado posible.  Si se usó una biblioteca, paquete o marco que no viene con la biblioteca estándar (pensar en todo lo que se necesita para instalar con <code>pip</code>, <code>conda</code> ó <code>pipenv</code>), Python necesita saberlo, para que el programa sepa dónde buscar cuando encuentre comandos que no reconoce. </p>
+<p>Se almacena una lista de esos paquetes en <code>require.txt</code> o en un <code>Pipfile</code>.  Estas son las dependencias del código y son necesarias para una compilación exitosa.</p>
+<p>A menudo se escucha la frase "se rompió la compilación". Cuando se rompe la compilación, significa que se introdujo un cambio que dejó inutilizable el producto final.  Pasa en las mejores familias, incluso a los desarrolladores senior endurecidos por la batalla.  Se desea evitar esto principalmente porque esto impedirá que el resto trabaje. </p>
+<p>El objetivo de CI es que todos trabajen en una base estable conocida.  Si clonan un repositorio que se rompre durante la compilación, trabajarán  con una versión dañada del código y no podrán introducir o probar sus cambios.  Cuando la compilación está rota, la principal prioridad es arreglarla para que todos puedan reanudar el trabajo.</p>
+<p align="center"> 
+<img src="./02.png">
+</p>
+
+<p>Cuando la compilación es automática, se recomienda que se acometa con frecuencia, generalmente varias veces al día.  Esto descubrir rápidamente los cambios y notar si hay un conflicto entre dos desarrolladores.  Si hay numerosos cambios pequeños en lugar de algunas actualizaciones  masivas, es mucho más fácil localizar dónde se originó el error.  También se alenta a dividir el trabajo en trozos más pequeños, por lo que es más fácil de rastrear y probar. </p>
+<h3 id="pruebas-automatizadas">Pruebas automatizadas</h3>
+<p>Dado que todos están realizando cambios varias veces al día, es importante saber que un cambio no rompió nada más en el código ni se introdujeron errores.  En muchas empresas, las pruebas son ahora responsabilidad de cada desarrollador.  Si se escribe código, se debe escribir pruebas.  Como mínimo, se debe cubrir cada nueva función con una prueba unitaria.</p>
+<p>Ejecutar pruebas automáticamente, con cada cambio comprometido, es una excelente manera de detectar errores.  Una prueba fallida hace que la compilación falle automáticamente.  Llamará la atención sobre los problemas revelados por las pruebas, y la compilación fallida hará corregir el error que se introdujo.  Las pruebas no garantizan que el código esté libre de errores, pero protege contra muchos cambios descuidados.</p>
+<p>Automatizar la ejecución de la prueba da tranquilidad porque así, el servidor probará el código cada vez que se comprometa, incluso si se olvidó hacerlo localmente. </p>
+<h3 id="uso-de-un-servicio-externo-de-integracion-continua">Uso de un servicio externo de integración continua</h3>
+<p>Si algo funciona en un ordenador, ¿funcionará en todos?  Probablemente no.  Es una excusa cliché y una especie de broma interna entre los  desarrolladores decir: "¡Bueno, funcionó en mi máquina!". Hacer que el código funcione localmente no es el fin de la responsabilidad. </p>
+<p>Para abordar este problema, la mayoría de las empresas utilizan un  servicio externo para manejar la integración; al igual que GitHub aloja el repositorio de código fuente.  Los servicios externos tienen servidores donde crean código y ejecutan pruebas.  Actúan como monitores para su repositorio y evitan que cualquier cosa se fusione con la rama maestra si los cambios rompen la compilación. </p>
+<p align="center"> 
+<img src="./03.png">
+</p>
+
+<p>Existen muchos servicios de este tipo, con varias características y precios.  La mayoría tiene un nivel gratuito (CircleCI) para que se pueda experimentar con uno de sus repositorios.</p>
+<h3 id="pruebas-en-un-entorno-de-ensayo">Pruebas en un entorno de ensayo</h3>
+<p>Un entorno de producción es donde finalmente se ejecutará el software.  Incluso después de compilar y probar con éxito la aplicación, no se puede estar seguro de que el código funcionará en la computadora de destino.  Es por eso que los equipos implementan el producto final en un entorno que imita el entorno de producción.  Una vez que se esté seguro de que todo funciona, la aplicación se implementa en el entorno de producción.</p>
+<blockquote>
+<p><strong>Nota:</strong> Este paso es más relevante para el código de la aplicación que el código de la biblioteca.  Las bibliotecas de Python que se escriban aún deben probarse en un servidor de compilación, para garantizar que funcionen en entornos diferentes de su computadora local. </p>
+</blockquote>
+<p>Escuchará a las personas hablar sobre este <strong>clon</strong> del entorno de producción utilizando términos como entorno de desarrollo, entorno de ensayo o entorno de prueba.  Es común usar abreviaturas como DEV para el entorno de desarrollo y PROD para el entorno de producción. </p>
+<p>El entorno de desarrollo debe replicar las condiciones de producción lo más cerca posible.  Esta configuración a menudo se llama <strong>paridad DEV/PROD</strong>.  <strong>Hay que mantener el entorno en la computadora local lo más similar posible a los entornos DEV y PROD para minimizar las anomalías al implementar  aplicaciones</strong>. </p>
+<p align="center"> 
+<img src="./04.png">
+</p>
+
+<p>Se menciona esto para presentar el vocabulario, pero la  implementación continua de software en DEV y PROD es un tema completamente diferente.  El proceso se llama, como era de esperar, despliegue continuo (CD - <em>Continuous Deploy</em>).  Puede encontrar más recursos al respecto en la sección</p>
+<h2 id="manos-a-la-obra">¡Manos a la obra!</h2>
+<p>La mejor manera de aprender es haciendo.  Ahora que se comprenden todas las prácticas esenciales de la integración continua, es hora de ensuciarse las manos y crear toda la cadena de pasos necesarios para usar CI.  Esta cadena a menudo se llama una <strong>tubería de</strong> CI.</p>
+<p>Se supone que se conocen los conceptos básicos de Python y Git.  Utilizaremos <a href="https://github.com">Github</a> como servicio de alojamiento y <a href="https://circleci.com">CircleCI</a> como servicio externo de integración continua.  Si no se tiene cuenta con estos servicios, habrá que registrarse.</p>
+<h3 id="definicion-del-problema">Definición del problema</h3>
+<p>El enfoque aquí es <strong>agregar una nueva herramienta</strong> a nuestro cinturón de servicios públicos, la <strong>integración continua</strong>.  Para este ejemplo, el código Python en sí será sencillo.  Se desea pasar la mayor parte del tiempo interiorizando los pasos de la construcción de una tubería, en lugar de escribir código complicado.</p>
+<p>Imaginemos que el equipo está trabajando en una aplicación de calculadora simple.  La tarea es escribir una biblioteca de funciones matemáticas básicas: suma, resta, multiplicación y división.  No importa la aplicación real, porque eso es lo que los programadores desarrollarán, utilizando las funciones de la biblioteca. </p>
+<h3 id="crear-un-repositorio">Crear un repositorio</h3>
+<p>Iniciar sesión en la cuenta de GitHub, crear un nuevo repositorio <em>CalculatorLibrary</em> .  Agregar un archivo <code>README.md</code> y <code>.gitignore</code>, luego clonar el repositorio en la máquina local.  Si se necesita más ayuda con este proceso, echar un vistazo al <a href="https://help.github.com/articles/creating-a-new-repository">tutorial</a> de GitHub sobre <a href="https://help.github.com/articles/creating-a-new-repository">cómo</a> crear un nuevo repositorio.</p>
+<h3 id="establecer-un-ambiente-de-trabajo">Establecer un ambiente de trabajo</h3>
+<p>Para que otros (y el servidor de CI) puedan replicar las condiciones de trabajo, se debe configurar un entorno.  Crear un entorno virtual en algún lugar fuera del repositorio y activarlo: </p>
+<pre><code class="bash"># Crear entorno virtual
+$ mkdir CalculatorLibrary
+$ cd CalculatorLibrary
+$ pipenv shell
+</code></pre>
+
+<p>Esto creará un directorio que contiene una instalación de Python e indicará al intérprete que lo use.  Ahora podemos instalar paquetes sabiendo que no influirá en la instalación predeterminada de Python del sistema.</p>
+<h3 id="escribir-un-ejemplo-simple-de-python">Escribir un ejemplo simple de Python</h3>
+<p>Crear un nuevo archivo llamado <code>calculator.py</code> en el directorio de nivel superior del repositorio y copiar el siguiente código:</p>
+<pre><code class="python">&quot;&quot;&quot;
+Calculator library containing basic math operations.
+&quot;&quot;&quot;
+
+def add(first_term, second_term):
+    return first_term + second_term
+
+def subtract(first_term, second_term):
+    return first_term - second_term
+</code></pre>
+
+<p>Este es un ejemplo básico que contiene dos de las cuatro funciones que escribiremos.  Una vez que tengamos en funcionamiento nuestra canalización de CI, se agregarán las dos funciones restantes. </p>
+<p>Continuar y confirmar esos cambios: </p>
+<pre><code class="bash"> # Asegarse de estar en el directorio correcto
+ $ git add calculator.py
+ $ git commit -m &quot;Agrega funciones para sumar y restar&quot;
+</code></pre>
+
+<p>La carpeta <code>CalculatorLibrary</code> debería tener los siguientes archivos en este momento: </p>
+<pre><code class="text">CalculatorLibrary /
+|
+├── .git
+├── .gitignore
+├── README.md
+├── calculator.py
+└── Pipfile
+</code></pre>
+
+<p>Genial, se ha completado una parte de la funcionalidad requerida.  El siguiente paso es agregar pruebas para asegurarse de que el código funcione de la manera en que se supone que debe hacerlo.</p>
+<h3 id="escribir-pruebas-unitarias">Escribir pruebas unitarias</h3>
+<p>Se probará el código en dos pasos.</p>
+<p>El primer paso consiste en <strong>linting</strong>: ejecutar un programa, llamado <strong>linter</strong>, para analizar el código en busca de posibles errores.  <a href="http://flake8.pycqa.org/en/latest"><code>flake8</code></a> se usa comúnmente para verificar si su código se ajusta al estilo de codificación Python estándar.  Linting asegura que el código sea fácil de leer para el resto de la comunidad de Python.</p>
+<p>El segundo paso es la <strong>prueba unitaria</strong>.  Una prueba unitaria está diseñada para verificar una sola función, o unidad, de código.  Python viene con una biblioteca de prueba de unidad estándar, pero existen otras bibliotecas y son muy populares.  En nuestro caso se usará <a href="https://docs.pytest.org/en/latest/"><code>pytest</code></a>. </p>
+<p align="center"> 
+<img src="./05.png">
+</p>
+
+<p>Una práctica estándar que va de la mano con las pruebas es calcular <strong>la cobertura del código</strong>.</p>
+<blockquote>
+<p><strong>Cobertura del código</strong>.- es el porcentaje del código fuente que está "cubierto" por sus pruebas*.</p>
+</blockquote>
+<p><code>pytest</code> tiene una extensión, <code>pytest-cov</code> , que ayuda a comprender la cobertura de un código.</p>
+<p>Estas son dependencias externas y deben ser instaladas: </p>
+<pre><code class="bash">$ pipenv install flake8 pytest pytest-cov
+</code></pre>
+
+<p>El fichero <code>Pipfile</code> almacenará todas las dependencias para poder replicar el entorno.</p>
+<p>Para lanzar el <em>linter</em> ejecutar:</p>
+<pre><code>$ flake8 --statistics
+./calculator.py:5:1: E302 expected 2 blank lines, found 1
+./calculator.py:8:1: E302 expected 2 blank lines, found 1
+./calculator.py:9:36: W292 no newline at end of file
+2     E302 expected 2 blank lines, found 1
+1     W292 no newline at end of file
+</code></pre>
+
+<p>La opción <code>--statistics</code> brinda una visión general de cuántas veces ocurrió un error en particular.  Aquí se ven dos violaciones de PEP 8, porque <code>flake8</code> espera dos líneas en blanco antes de una definición de función en lugar de una.  Por tanto, hay que agregar una línea vacía antes de cada definición de funciones.  Ejecutar <code>flake8</code> nuevamente para verificar que los mensajes de error ya no aparezcan. </p>
+<p>Ahora es el momento de escribir las pruebas.  Crear un archivo llamado <code>test_calculator.py</code> en el directorio de nivel superior del  repositorio y copiar el siguiente código:</p>
+<pre><code class="python">&quot;&quot;&quot;
+Unit tests for the calculator library
+&quot;&quot;&quot;
+
+import calculator
+
+
+class TestCalculator:
+
+    def test_addition(self):
+        assert 4 == calculator.add(2, 2)
+
+    def test_subtraction(self):
+        assert 2 == calculator.subtract(4, 2)
+</code></pre>
+
+<p>Estas pruebas aseguran que nuestro código funcione como se esperaba.  Está lejos de ser extenso porque no prueba el posible mal uso del código, pero manténgase simple por ahora.</p>
+<p>El siguiente comando ejecuta la prueba:</p>
+<pre><code class="bash">$ pytest -v --cov
+=================== test session starts =======================
+platform linux -- Python 3.8.0, pytest-5.3.1, py-1.8.0, pluggy-0.13.1 -- /home/XXXXX/.local/share/virtualenvs/CalculatorLibrary-T3Wmr6pK/bin/python
+cachedir: .pytest_cache
+rootdir: /home/XXXXX/CalculatorLibrary
+plugins: cov-2.8.1
+collected 2 items
+
+test_calculator.py::TestCalculator::test_addition PASSED [ 50%]
+test_calculator.py::TestCalculator::test_subtraction PASSED [100%]
+
+</code></pre>
+
+<p><code>pytest</code> es excelente en el descubrimiento de pruebas.  Dado que se tiene un archivo con el prefijo <code>test</code>, <code>pytest</code> sabe que contendrá pruebas unitarias que se ejecutar.  Los mismos principios se aplican a los nombres de clases y métodos dentro del archivo.</p>
+<p>El indicador <code>-v</code> da una salida más agradable e indica qué pruebas pasaron y cuáles fallaron.  En este caso, se pasaron ambas pruebas.  El indicador <code>--cov</code> asegura de que <code>pytest-cov</code> se ejecuta y proporciona un <strong>informe de cobertura de código</strong> para <code>calculator.py</code> . </p>
+<p>Se han completado los preparativos.  Confirmar el archivo de prueba y enviar todos esos cambios a la rama maestra: </p>
+<pre><code class="bash">$ git add test_calculator.py
+$ git commit -m &quot;Agrega pruebas unitarias para calculator.py&quot;
+$ git push
+</code></pre>
+
+<p>Al final de esta sección, la carpeta <em>CalculatorLibrary</em> debe tener los siguientes archivos: </p>
+<pre><code>  CalculatorLibrary/
+|
+├── .git
+├── .gitignore
+├── README.md
+├── calculadora.py
+├── Pipfile
+├── Pipfile.lock
+└── test_calculator.py
+</code></pre>
+
+<p>Excelente, ambas funciones se prueban y funcionan correctamente. </p>
+<h3 id="conectar-a-circleci">Conectar a CircleCI</h3>
+<p>¡Por fin, se está listo para configurar el canal de integración continua! </p>
+<p>CircleCI necesita saber cómo ejecutar su compilación y espera que esa información se suministre en un formato particular.  Requiere una carpeta <code>.circleci</code> dentro del repositorio y un <em>archivo de configuración</em> dentro de él.  El archivo de configuración contiene instrucciones para todos los pasos que el servidor de compilación necesita ejecutar.  CircleCI espera que este archivo se llame <code>config.yml</code> . </p>
+<p>Un archivo <code>.yml</code> usa un lenguaje de serialización de datos, YAML, y tiene su propia <a href="http://yaml.org/spec">especificación</a>.  El objetivo de YAML es ser legible por humanos y funcionar bien con lenguajes de programación modernos para tareas comunes y cotidianas. </p>
+<p>En un archivo YAML, hay tres formas básicas de representar datos: </p>
+<ul>
+<li>Mapeos (pares clave-valor) </li>
+<li>Secuencias (listas) </li>
+<li>Escalares (cadenas o números) </li>
+</ul>
+<p>Es muy simple de leer: </p>
+<ul>
+<li>La sangría puede usarse para estructurar. </li>
+<li>Los dos puntos separan pares clave-valor. </li>
+<li>Los guiones se usan para crear listas. </li>
+</ul>
+<p>Crear la carpeta <code>.circleci</code> en el repositorio y un archivo <code>config.yml</code> con el siguiente contenido: </p>
+<pre><code># Python CircleCI 2.0 configuration file
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7
+
+    working_directory: ~/repo
+
+    steps:
+      # Step 1: obtain repo from GitHub
+      - checkout
+      # Step 2: create virtual env and install dependencies
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      # Step 3: run linter and tests
+      - run:
+          name: run tests
+          command: |
+            . venv/bin/activate
+            flake8 --exclude=venv* --statistics
+            pytest -v --cov=calculator
+</code></pre>
+
+<p>Algunas de estas palabras y conceptos pueden no ser familiares.  Por ejemplo, ¿qué es Docker y qué son las imágenes?  Retrocedamos un poco en el tiempo. </p>
+<p>Retomemos el problema que enfrentan los programadores cuando algo  funciona en su computadora portátil pero en ningún otro lugar. Los desarrolladores solían crear un programa que aislaba una parte de los recursos físicos de la computadora (memoria, disco duro, etc.) y los convertía en una <strong>máquina virtual</strong> .</p>
+<p>Una máquina virtual pretende ser una computadora completa por sí sola.  Incluso tendría su propio sistema operativo.  En ese sistema operativo, despliega su aplicación o instala su biblioteca y la prueba. </p>
+<p>Las máquinas virtuales ocupan muchos recursos, lo que provocó la invención de los contenedores.  La idea es análoga a los contenedores de envío.  Antes de que se inventaran los contenedores de envío, los fabricantes  tenían que enviar productos en una amplia variedad de tamaños, embalajes y modos (camiones, trenes, barcos).</p>
+<p>Al estandarizar el contenedor de envío, estos productos podrían  transferirse entre diferentes métodos de envío sin ninguna modificación.  La misma idea se aplica a los contenedores de software. </p>
+<p>Los contenedores son una unidad de código liviana y sus dependencias de tiempo de ejecución, empaquetados de manera estandarizada, por lo que  pueden conectarse y ejecutarse rápidamente en el sistema operativo  Linux.  No se necesita crear un sistema operativo virtual completo, como se haría con una máquina virtual.</p>
+<p>Los contenedores solo replican las partes del sistema operativo que se necesita para funcionar.  Esto reduce su tamaño y les da un gran impulso al rendimiento.</p>
+<p><strong>Docker</strong> es actualmente la plataforma de contenedores líder, e incluso puede ejecutar contenedores de Linux en Windows y macOS.  Para crear un contenedor Docker, se necesita una imagen Docker.  Las imágenes proporcionan planos para contenedores al igual que las clases proporcionan planos para objetos.  Puede leer más sobre Docker en su <a href="https://docs.docker.com/get-started/">guía de inicio</a>. </p>
+<p>CircleCI mantiene <a href="https://circleci.com/docs/2.0/circleci-images/">imágenes Docker preconstruidas</a> para varios lenguajes de programación.  En el archivo de configuración anterior, se ha especificado una imagen de Linux que ya tiene Python instalado.  Esa imagen creará un contenedor en el que sucederá todo lo demás.</p>
+<p>Veamos cada línea del archivo de configuración una a una: </p>
+<ol>
+<li><strong><code>version</code> :</strong> cada <code>config.yml</code> comienza con el número de versión CircleCI, utilizado para emitir advertencias sobre cambios importantes. </li>
+<li><strong><code>jobs</code> : </strong> Representan una sola ejecución de la compilación y se definen mediante una colección de pasos.  Si solo hay un trabajo, debe llamarse <code>build</code> . </li>
+<li><strong><code>build</code> :</strong> <code>build</code> es el nombre del trabajo.  Pueden haber varios trabajos, en cuyo caso deben tener nombres únicos.</li>
+<li><strong><code>docker</code> :</strong> los pasos de un trabajo se producen en un entorno llamado <strong>ejecutor</strong> (<em>executor</em>).  El ejecutor común en CircleCI es un <a href="https://www.docker.com/resources/what-container">contenedor Docker</a>.  Es un entorno de ejecución <a href="https://circleci.com/product/">alojado en la nube</a>, pero existen otras opciones, como un entorno macOS. </li>
+<li><strong><code>image</code> :</strong> una imagen Docker es un archivo utilizado para crear un contenedor Docker en ejecución.  Estamos utilizando una imagen que tiene preinstalado Python 3.7. </li>
+<li><strong><code>working_directory</code> :</strong> El repositorio debe ser extraído en algún lugar del servidor de compilación.  El directorio de trabajo representa la ruta del archivo donde se almacenará el repositorio. </li>
+<li><strong><code>steps</code> :</strong> Esta clave marca el inicio de una lista de pasos que debe realizar el servidor de compilación. </li>
+<li><strong><code>checkout</code> :</strong> El primer paso que debe hacer el servidor es verificar el código fuente en el directorio de trabajo.  Esto se realiza mediante un paso especial llamado <code>checkout</code> . </li>
+<li><strong><code>run</code> :</strong> La ejecución de programas o comandos de línea de comandos se realiza dentro de la clave <code>command</code> .  Los comandos <em>shell</em> reales estarán anidados dentro. </li>
+<li><strong><code>name</code> :</strong> La interfaz de usuario CircleCI le muestra cada paso de compilación en forma de una sección expandible.  El título de la sección se toma del valor asociado con la clave  <code>name</code>. </li>
+<li><strong><code>command</code> :</strong> Esta clave representa el comando que se ejecuta a través del shell.  El <code>|</code>  El símbolo especifica que lo que sigue es un conjunto literal de  comandos, uno por línea, exactamente como se vería en un script de  shell/bash. </li>
+</ol>
+<p>Puede leer el documento de <a href="https://circleci.com/docs/2.0/configuration-reference/">referencia de configuración CircleCI</a> para obtener más información. </p>
+<p>La tubería es muy simple y consta de 3 pasos: </p>
+<ol>
+<li>Revisión del repositorio </li>
+<li>Instalar las dependencias en un entorno virtual </li>
+<li>Ejecución del linter y las pruebas mientras se está dentro del entorno virtual </li>
+</ol>
+<p>Ahora tenemos todo lo que necesitamos para comenzar nuestra tubería.  Iniciar sesión en la cuenta CircleCI y hacer clic en <em>Add Projects</em> (<em>Agregar proyectos</em>) .  Encuentrar el repositorio de <em>CalculatorLibrary</em> y hacer clic en <em>Set Up Project</em> (<em>Configurar proyecto</em>).  Seleccionar Python como lenguaje.  Como ya se cuenta con un <code>config.yml</code> , podemos omitir los siguientes pasos y hacer clic en <em>Start building</em> (<em>Iniciar construcción</em>).</p>
+<p>CircleCI lo llevará al panel de ejecución para el trabajo.  Si se siguieron todos los pasos correctamente, debería ver que el trabajo es exitoso.</p>
+<p>La versión final de la carpeta <em>CalculatorLibrary</em> debería verse así: </p>
+<pre><code>CalculatorRepository /
+ |
+ ├── .circleci
+ ├── .git
+ ├── .gitignore
+ ├── README.md
+ ├── calculadora.py
+ ├── requisitos.txt
+ └── test_calculator.py
+</code></pre>
+
+<p>¡Felicidades!  Se ha creado el primer canal de integración continua.  Ahora, cada vez que se haga un <em>push</em> a la rama maestra, se activará un trabajo.  Puede ver una lista de sus trabajos actuales y pasados haciendo clic en <em>Jobs</em> en la barra lateral de CircleCI. </p>
+<h3 id="hacer-cambios">Hacer cambios</h3>
+<p>Es hora de agregar la multiplicación a la biblioteca de calculadora.</p>
+<p>Esta vez, primero se agregara una prueba unitaria sin escribir la función.  Sin el código, la prueba fallará, lo que también fallará el trabajo CircleCI.  Agregue el siguiente código al final de su <code>test_calculator.py</code> : </p>
+<pre><code class="python">def test_multiplication (self):
+    assert 100 == calculator.multiply(10, 10)
+</code></pre>
+
+<p>Subir el código (<em>push</em>) a la rama maestra y se verá que el trabajo falla en CircleCI.  Esto muestra que la integración continua funciona y nos cuida la espalda si se comete algún error.</p>
+<p>Ahora agregar el código a <code>calculator.py</code> que hará pasar la prueba: </p>
+<pre><code class="python">def multiply(first_term, second_term):
+    return first_term * second_term
+</code></pre>
+
+<p>Asegurarse de que haya dos espacios vacíos entre la función de multiplicación y la anterior, de lo contrario, el código fallará en la verificación de la interfaz.</p>
+<p>El trabajo debería ser exitoso en esta ocasión.  Este flujo de trabajo de escribir primero una prueba fallida y luego agregar el código para pasar la prueba se llama <em>desarrollo guiado por pruebas</em> o <a href="https://en.wikipedia.org/wiki/Test-driven_development">Test Driven Development</a> (TDD).  Es una excelente manera de trabajar porque obliga a pensar de antemano en la estructura del código.</p>
+<blockquote>
+<p><strong>Ahora pruébalo por tu cuenta</strong>.-  Agregar una prueba para la función de división, ver cómo falla y escribir la función para que pueda pasarla.</p>
+</blockquote>
+<h3 id="notificaciones">Notificaciones</h3>
+<p>Cuando se trabaja en aplicaciones grandes que tienen muchas partes  móviles, puede llevar un tiempo ejecutar el trabajo de integración  continua.  La mayoría de los equipos establecen un procedimiento de notificación para informarles si uno de sus trabajos falla.  Pueden continuar trabajando mientras esperan que se ejecute el trabajo.</p>
+<p>Las opciones más populares son: </p>
+<ul>
+<li>
+<p>Enviar un correo electrónico por cada compilación fallida </p>
+</li>
+<li>
+<p>Envío de notificaciones de fallas a un canal de Slack </p>
+</li>
+<li>
+<p>Mostrar fallas en un tablero visible para todos</p>
+</li>
+</ul>
+<p>Por defecto, CircleCI debería enviarle un correo electrónico cuando falla un trabajo. </p>
+<h2 id="proximos-pasos">Próximos pasos</h2>
+<p>Se han explicado los conceptos básicos de la integración continua y  se ha practicado con la configuración de una tubería para un programa Python simple.  Este es un gran paso adelante en el viaje de un desarrollador.  Tal vez la pregunta es: "¿Y ahora qué?"</p>
+<p>Para simplificar las cosas, se han tocado superficialmente algunos grandes temas.  Se puede aumentar enormemente el conjunto de habilidades si se pasa un poco de tiempo profundizando en cada tema.  Aquí hay algunos temas que se pueden investigar más a fondo. </p>
+<h3 id="flujos-de-trabajo-de-git">Flujos de trabajo de Git</h3>
+<p>Git tiene mucho más de lo que se ha usado aquí.  Cada equipo de desarrolladores tiene un flujo de trabajo adaptado a sus necesidades específicas.  La mayoría de ellos incluyen estrategias de ramificación y algo llamado <strong>revisión por pares</strong>.  Se realizan cambios en ramas separadas de la rama <code>master</code> .  Cuando se desea fusionar esos cambios con <code>master</code> , otros desarrolladores primero deben mirar los cambios y aprobarlos antes de que se fusionen.</p>
+<blockquote>
+<p><strong>Nota:</strong> Si se desea obtener más información sobre los diferentes flujos de trabajo que utilizan los equipos, echar un vistazo a los tutoriales en <a href="https://help.github.com/categories/collaborating-with-issues-and-pull-requests/">GitHub</a> y <a href="https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud">BitBucket</a>. </p>
+</blockquote>
+<p>Si se desea mejorar las habilidades de Git, existe un artículo llamado <a href="https://realpython.com/advanced-git-for-pythonistas/">Consejos avanzados de Git para desarrolladores de Python</a>. </p>
+<h3 id="gestion-de-dependencias-y-entornos-virtuales">Gestión de dependencias y entornos virtuales</h3>
+<p>Además de <code>virtualenv</code> , hay otros gestores de paquetes y entornos populares.  Algunos de ellos tratan solo con entornos virtuales, mientras que otros manejan tanto la instalación de paquetes como la administración del entorno.  Uno de ellos es Conda: </p>
+<blockquote>
+<p>“Conda es un sistema de gestión de paquetes de código abierto y un  sistema de gestión del entorno que se ejecuta en Windows, macOS y Linux.  Conda instala, ejecuta y actualiza rápidamente los paquetes y sus dependencias.  Conda crea, guarda, carga y cambia fácilmente entre entornos en su computadora local.  Fue diseñado para programas Python, pero puede empaquetar y distribuir software para cualquier idioma ". ( <a href="https://conda.io/docs/">Fuente</a> ) </p>
+</blockquote>
+<p>Otra opción es <a href="https://pipenv.readthedocs.io/en/latest/">Pipenv</a>, un contendiente más joven que está aumentando en popularidad entre los desarrolladores de aplicaciones.  Pipenv reúne <code>pip</code> y <code>virtualenv</code> en una sola herramienta y utiliza un <code>Pipfile</code> en lugar de <code>requirements.txt</code> .  Los Pipfiles ofrecen entornos deterministas y más seguridad.  Esta introducción no le hace justicia, así que echa un vistazo a <a href="https://realpython.com/pipenv-guide/">Pipenv: una guía para la nueva herramienta de empaquetado de Python</a> . </p>
+<h3 id="pruebas">Pruebas</h3>
+<p>Las pruebas unitarias simples con <code>pytest</code> son solo la punta del iceberg.  ¡Hay todo un mundo por explorar!  El software se puede probar en muchos niveles, incluidas las pruebas de integración, las pruebas de aceptación, las pruebas de regresión, etc.  Para llevar el conocimiento de probar el código de Python al siguiente nivel, diríjase a <a href="https://realpython.com/python-testing/">Comenzando con las pruebas en Python</a> . </p>
+<h3 id="empaquetado">Empaquetado</h3>
+<p>En este tutorial, se comenzó a crear una biblioteca de funciones para que otros desarrolladores la utilicen en sus proyectos. Se debe empaquetar esa biblioteca en un formato que sea fácil de distribuir e instalar usando, por ejemplo, <code>pip</code>. </p>
+<p>Crear un paquete instalable requiere un diseño diferente y algunos archivos adicionales como <code>__init__.py</code> y <code>setup.py</code> .  Lea <a href="https://realpython.com/python-application-layouts">Diseños de aplicaciones Python: una referencia</a> para obtener más información sobre la estructuración de su código.</p>
+<p>Para aprender a convertir su repositorio en un paquete Python instalable, lea <a href="https://packaging.python.org/tutorials/packaging-projects/">Empaquetado de proyectos Python</a> . </p>
+<h3 id="integracion-continua">Integración continua</h3>
+<p>Cubriste todos los conceptos básicos de CI en este tutorial, usando un ejemplo simple de código Python.  Es común que el paso final de una canalización de CI cree un <strong>artefacto desplegable</strong>  Un artefacto representa una unidad de trabajo terminada y empaquetada  que está lista para implementarse en los usuarios o incluirse en  productos complejos. </p>
+<p>Por ejemplo, para convertir su biblioteca de calculadoras en un artefacto desplegable, la organizaría en un paquete instalable.  Finalmente, agregaría un paso en CircleCI para empaquetar la biblioteca y almacenar ese artefacto donde otros procesos pueden recogerlo. </p>
+<p>Para aplicaciones más complejas, puede crear un flujo de trabajo para  programar y conectar múltiples trabajos de CI en una sola ejecución.  Siéntase libre de explorar la <a href="https://circleci.com/docs/2.0/">documentación de CircleCI</a> . </p>
+<h3 id="despliegue-continuo">Despliegue continuo</h3>
+<p>Puede pensar en la implementación continua como una extensión de CI.  Una vez que su código se prueba y se integra en un artefacto  desplegable, se implementa en producción, lo que significa que la  aplicación en vivo se actualiza con sus cambios.  Uno de los objetivos es minimizar el tiempo de entrega, el tiempo  transcurrido entre escribir una nueva línea de código y ponerla al  frente de los usuarios. </p>
+<blockquote>
+<p><strong>Nota:</strong> Para agregar un poco de confusión a la mezcla, el acrónimo CD no es único.  También puede significar entrega continua, que es casi lo mismo que la  implementación continua, pero tiene un paso de verificación manual entre la integración y la implementación.  Puede integrar su código en cualquier momento, pero tiene que presionar un botón para liberarlo en la aplicación en vivo. </p>
+</blockquote>
+<p>La mayoría de las empresas usan CI/CD en conjunto, por lo que vale la pena aprender más sobre la <a href="https://continuousdelivery.com/">entrega/implementación continua</a>. </p>
+<h2 id="descripcion-general-de-los-servicios-de-integracion-continua">Descripción general de los servicios de integración continua</h2>
+<p>Ha utilizado CircleCI, uno de los servicios de integración continua más populares. Sin embargo, este es un gran mercado con muchos contendientes fuertes. Los productos de CI se dividen en dos categorías básicas: servicios remotos y autohospedados.</p>
+<p><a href="https://jenkins.io">Jenkins</a> es la solución autohospedada más popular. Es de código abierto y flexible, y la comunidad ha desarrollado muchas extensiones.</p>
+<p>En términos de servicios remotos, hay muchas opciones populares como <a href="https://travis-ci.org">TravisCI</a> , <a href="https://codeship.com/">CodeShip</a> y <a href="https://semaphoreci.com/">Semaphore</a> . Las grandes empresas a menudo tienen sus soluciones personalizadas y las venden como un servicio, como <a href="https://aws.amazon.com/codepipeline">AWS CodePipeline</a> , <a href="https://visualstudio.microsoft.com/tfs/">Microsoft Team Foundation Server</a> y <a href="http://hudson-ci.org/">Hudson</a> de Oracle .</p>
+<p>La opción que elija dependerá de la plataforma y las características que usted y su equipo necesiten. Para un desglose más detallado, eche un vistazo a <a href="https://www.g2crowd.com/categories/continuous-integration">Best CI Software</a> por G2Crowd.</p>
+<h2 id="conclusion">Conclusión</h2>
+<p>Con el conocimiento de este tutorial en su haber, ahora puede responder las siguientes preguntas: </p>
+<ul>
+<li>¿Qué es la integración continua? </li>
+<li>¿Por qué es importante la integración continua? </li>
+<li>¿Cuáles son las prácticas centrales de la integración continua? </li>
+<li>¿Cómo se puede configurar la integración continua para un proyecto de Python?</li>
+</ul>
+<p>¡Has adquirido una superpoder de programación! Comprender la filosofía y la práctica de la integración continua te convertirá en un miembro valioso de cualquier equipo. ¡Impresionante trabajo! </p>
+<p>https://realpython.com/python-continuous-integration/</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

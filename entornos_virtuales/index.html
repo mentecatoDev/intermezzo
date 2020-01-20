@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Entornos Virtuales - Intermezzo</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Entornos Virtuales";
+    var mkdocs_page_input_path = "entornos_virtuales.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Intermezzo</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Entornos Virtuales</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#1-introduccion">1. Introducción</a></li>
+    
+
+    <li class="toctree-l2"><a href="#2-instalar-pipenv">2. Instalar pipenv</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#21-instalacion-en-arch-y-derivadas-arcolinux-manjaro-anarchy-etc">2.1. Instalación en Arch y derivadas (ArcoLinux, Manjaro, Anarchy, etc.)</a></li>
+        
+            <li><a class="toctree-l3" href="#22-instalacion-en-debian-y-derivadas">2.2. Instalación en Debian y derivadas</a></li>
+        
+            <li><a class="toctree-l3" href="#23-para-usuarios-de-zsh">2.3. Para usuarios de zsh</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#3-instalando-paquetes-del-proyecto">3. Instalando paquetes del proyecto</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#31-usar-los-paquetes-instalados">3.1. Usar los paquetes instalados</a></li>
+        
+            <li><a class="toctree-l3" href="#32-desinstalar-un-projecto">3.2. Desinstalar un projecto</a></li>
+        
+            <li><a class="toctree-l3" href="#33-advertencia-mapeo-de-virtualenv">3.3. Advertencia: mapeo de Virtualenv</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#4-otros-entornos-de-virtualizacion-de-python">4. Otros entornos de virtualización de python</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#41-virtualenv">4.1. virtualenv</a></li>
+        
+            <li><a class="toctree-l3" href="#42-virtualenvwrapper">4.2. VirtualEnvWrapper</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#5-entornos-virtuales-en-visual-studio-codiumcode">5 Entornos virtuales en Visual Studio Codium/Code</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#51-seleccionar-y-activar-un-entorno">5.1. Seleccionar y activar un entorno</a></li>
+        
+            <li><a class="toctree-l3" href="#bootstrap">Bootstrap</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Intermezzo</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Entornos Virtuales</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="1-introduccion">1. Introducción</h1>
+<p>Un entorno virtual de Python es un <strong>ambiente</strong> creado con el objetivo de <strong>aislar recursos</strong>, como las librerías y el entorno de ejecución, del sistema principal o de otros entornos virtuales. Lo anterior significa que en el mismo sistema, máquina o computadora, es posible <strong>tener instaladas múltiples versiones</strong> de una misma librería sin crear ningún tipo de conflicto.</p>
+<p>Cuando se está desarrollando software con Python, es <strong>común utilizar diferentes versiones de un mismo paquete</strong>. Por ejemplo, imaginemos que se está desarrollando un videojuego con la versión 1.2 de <code>pygame</code> y mientras eso pasa, se comienza el desarrollo de otro videojuego que necesita las nuevas características presentes en la versión 1.3.</p>
+<p>En este escenario, no es posible para los desarrolladores eliminar la version 1.2 e instalar la 1.3 en sus computadoras. Así que el problema a solucionar radica en cómo instalar las dos versiones de la misma librería con el fin de poder desarrollar ambos proyectos de forma simultánea.</p>
+<p>La solución consiste en crear <strong>entornos virtuales</strong>. De esta manera, es posible instalar la versión 1.2 de <code>pygame</code> en un entorno virtual y la versión 1.3 en otro diferente o en el sistema principal sin problema alguno.</p>
+<p>Para poder utilizar este simple pero poderoso concepto es necesario <strong>instalar</strong> una utilidad que permita gestionar la creación y utilización de dichos entornos virtuales.</p>
+<blockquote>
+<p>Hay muchas áreas de desarrollo de software sobre las que se debaten acaloradamente, pero el uso de entornos virtuales para el desarrollo de Python no es uno de ellos.</p>
+</blockquote>
+<p>Históricamente, los desarrolladores de Python han usado <code>virtualenv</code> o <code>pyenv</code> para configurar entornos virtuales. Pero en 2017 el destacado desarrollador de Python Kenneth Reitz lanzó <code>pipenv</code>, que ahora es la herramienta de empaquetado Python recomendada oficialmente por <strong>PyPa</strong> (<em>Python Packaging Authority</em>). <code>pipenv</code> es similar a <code>npm</code> y <code>yarn</code> del ecosistema Node:</p>
+<ul>
+<li>Crea un <code>Pipfile</code> con las dependencias de software</li>
+<li>Crea un <code>Pipfile.lock</code> para asegurar construcciones <em>deterministas</em>.</li>
+</ul>
+<p>Éstos son archivos que buscan reemplazar el antiguo <code>requirements.txt</code> de <code>virtualenv</code> y <code>pyenv</code> con la sintaxis <a href="https://github.com/toml-lang/toml">TOML</a> (<em>Tom&rsquo;s Obvious, Minimal Language</em>) para declarar todo tipo de dependencias. Un solo archivo <code>Pipfile</code> para reemplazar la variedad de <code>requirements.txt</code>. Ejemplo <code>dev-requirements</code>, <code>test-requirements</code>, etc.</p>
+<p>El <em>determinismo</em> se refiere a que cada vez que se descargue el software en un nuevo entorno virtual, tendrá exactamente la <strong>misma configuración</strong>. <em>Sebastian McKenzie</em>, el creador de <code>yarn</code> que introdujo por primera vez este concepto al empaquetado de JavaScript, tiene una <a href="https://yarnpkg.com/blog/2017/05/31/determinism/">publicación en su blog</a> concisa que explica qué es el <em>determinismo</em> y por qué es importante. </p>
+<p>Los problemas que <code>pipenv</code> busca resolver son multifacéticos:</p>
+<ul>
+<li>No se necesitará usar más <code>pip</code> y <code>virtualenv</code> separados. Trabajan juntos.</li>
+<li>Manejar un archivo <a href="https://www.kennethreitz.org/essays/a-better-pip-workflow"><code>requirements.txt</code></a> puede ser problemático, por eso Pipenv usa en su lugar <code>Pipfile</code> y <code>Pipfile.lock</code>, que son superiores para usos básicos</li>
+<li>Los Hashes se usan en todas partes, siempre. Seguridad. Automáticamente expone vulnerabilidades de seguridad.</li>
+<li>Se recomienda encarecidamente el uso de las últimas versiones de dependencias para minimizar los riesgos de seguridad derivados de componentes obsoletos.</li>
+<li>Da una vista del árbol de dependecias (por ejemplo <code>$ pipenv graph</code>).</li>
+<li>Agiliza el flujo de desarrollo cargando archivos <code>.env</code>.</li>
+</ul>
+<p>La conclusión es que <strong>se debe crear un nuevo entorno virtual para cada nuevo proyecto en python</strong>.</p>
+<h1 id="2-instalar-pipenv">2. Instalar <code>pipenv</code></h1>
+<p>Si bien <a href="https://pip.pypa.io/en/stable/installing/"><code>pip</code></a> puede instalar paquetes de Python, se recomienda <code>pipenv</code> ya que es una herramienta de nivel superior que simplifica la administración de dependencias para casos de uso comunes.</p>
+<h2 id="21-instalacion-en-arch-y-derivadas-arcolinux-manjaro-anarchy-etc">2.1. Instalación en Arch y derivadas (ArcoLinux, Manjaro, Anarchy, etc.)</h2>
+<p>Afortunadamente, dentro de los repositorios oficiales de Arch, se encuentra el paquete <a href="https://www.archlinux.org/packages/community/any/python-pipenv/">python-pipenv</a> con lo que la instalación se convierte en algo tan sencillo como introducir el comando:</p>
+<pre><code class="bash">    $ pacman -S python-pipenv
+</code></pre>
+
+<h2 id="22-instalacion-en-debian-y-derivadas">2.2. Instalación en Debian y derivadas</h2>
+<p>Se usará <code>pip3</code> para instalar <code>pipenv</code> por tanto, debe estar instalado previamente. Para ello se usará:</p>
+<pre><code class="bash">    $ sudo apt install python3-pip
+</code></pre>
+
+<p>Gracias a <code>pip3</code> podemos instalar ahora <code>pipenv</code>.</p>
+<pre><code class="bash">    $ pip3 install --user pipenv
+</code></pre>
+
+<p>Esto hace una instalación de usuario para evitar romper cualquier paquete de todo el sistema. Si pipenv no está disponible en su shell <strong>después de la instalación</strong>, deberá agregar el directorio binario de la base de usuarios a su PATH.</p>
+<p>Se puede encontrar el directorio binario de la base de usuarios ejecutando <code>python -m site --user-base</code> y agregando <code>bin</code> al final. Por ejemplo, esto normalmente imprimirá <code>~/.local</code> (con <code>~</code> expandido a la ruta absoluta a su directorio de inicio) por lo que deberá agregar <code>~/.local/bin</code> al PATH. Se puede establecer el PATH permanentemente modificando <code>~/.profile</code>.</p>
+<p>Debería bastar con recargar <code>~/.profile</code> usando:</p>
+<pre><code>source ~/.profile
+</code></pre>
+<h2 id="23-para-usuarios-de-zsh">2.3. Para usuarios de zsh</h2>
+<p>El comportamiento de <code>zsh</code> es algo distinto ya que se basa en usar un fichero de configurarión diferente a los habituales de Bash, por tanto, la instalación del nuevo <code>$PATH</code> dependerá ahora de configurar convenientemente el fichero <code>.zshrc</code> añadiéndole lo siguiente como primeras líneas de código:</p>
+<pre><code class="bash">    # If you come from bash you might have to change your $PATH.
+    export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+    # set PATH so it includes user's private bin if it exists
+    if [ -d &quot;$HOME/.local/bin&quot; ] ; then
+        PATH=&quot;$HOME/.local/bin:$PATH&quot;
+    fi
+</code></pre>
+
+<h1 id="3-instalando-paquetes-del-proyecto">3. Instalando paquetes del proyecto</h1>
+<p><code>pipenv</code> gestiona las dependencias por proyecto. Para instalar paquetes, cambiar al directorio del proyecto (o simplemente usar un directorio vacío) y ejecutar:</p>
+<pre><code class="bash">    $ cd myproject
+    $ pipenv install request
+</code></pre>
+
+<p>Pipenv instalará la excelente biblioteca <a href="http://docs.python-requests.org/en/master/"><code>request</code></a> y creará un archivo <code>pipfile</code> en el directorio del proyecto. <code>pipfile</code> se usa para rastrear qué dependencias necesita el proyecto en caso de que se necesite volver a instalarlas, como cuando se comparte el proyecto con otros.</p>
+<h2 id="31-usar-los-paquetes-instalados">3.1. Usar los paquetes instalados</h2>
+<p>Ahora que las solicitudes están instaladas, se puede crear un archivo <code>main.py</code> simple para usarlo:</p>
+<pre><code class="python">import requests
+
+response = requests.get('https://httpbin.org/ip')
+print('Su IP en Internet es {0}'.format(response.json()['origin'].split(',')[0]))
+</code></pre>
+
+<p>Luego se puede ejecutar este script usando <code>pipenv run</code>:</p>
+<pre><code class="bash">$ pipenv run python main.py
+</code></pre>
+
+<p>..y  obtener una salida similar a esta:</p>
+<pre><code>    Su IP es 8.8.8.8
+</code></pre>
+
+<p>El uso de <code>$ pipenv run</code> asegura que los paquetes instalados estén disponibles para el script. También es posible generar un nuevo <em>shell</em> que garantice que todos los comandos tengan acceso a sus paquetes instalados con <code>$ pipenv shell</code>.</p>
+<h3 id="otro-ejemplo-pipenv-y-django">Otro ejemplo: <code>pipenv</code> y Django</h3>
+<p>Crear un nuevo directorio y entrar en él.</p>
+<pre><code class="bash">    $ cd
+    $ mkdir django
+    $ cd django
+</code></pre>
+
+<p>Ahora se usa <code>pipenv</code> para instalar <code>django</code></p>
+<pre><code>    $ pipenv install django
+</code></pre>
+
+<ul>
+<li>Si se mira en el directorio, ahora hay dos nuevos archivos: <code>Pipfile</code> y <code>Pipfile.lock</code>. Se tiene la información que se necesita para el nuevo entorno virtual pero aún no ha sido activado. Se hace con:</li>
+</ul>
+<pre><code>    $ pipenv shell
+</code></pre>
+
+<p>Debería verse ahora el nombre del entorno envuelto entre paréntesis precediendo al <em>prompt</em>.
+Si ahora se puede ejecutar <code>django-admin startproject</code> a continuación es que Django se ha instalado correctamente.</p>
+<p>Lanzar entonces lo siguiente:</p>
+<pre><code>    (django) $ django-admin startproject test_project .
+</code></pre>
+
+<p>El <code>.</code> al final del comando no creará un directorio adicional para <code>test_project</code> pero sí todos los subdirectorios que se necesitan para la aplicación, en resumidas cuentas, se hará una instalación en el directorio en curso.</p>
+<p>Se puede comprobar que todo funciona arrancando el servidor web local con:</p>
+<pre><code>    (django) $ python manage.py runserver
+</code></pre>
+
+<p>Si se visita <code>http://127.0.0.1:8000/</code> se debería ver la página inicial de Django.
+El servidor se parará con <code>C-c</code> y se saldrá del entorno virtual con el comando <code>exit</code>.</p>
+<h2 id="32-desinstalar-un-projecto">3.2. Desinstalar un projecto</h2>
+<pre><code>    pipenv --rm
+</code></pre>
+
+<h2 id="33-advertencia-mapeo-de-virtualenv">3.3. Advertencia: mapeo de Virtualenv</h2>
+<p><em>Pipenv</em> asigna automáticamente proyectos a sus <strong><em>virtualenvs</em></strong> específicos.
+El <em>virtualenv</em> se almacena globalmente con el nombre del directorio raíz del proyecto más el hash de la ruta completa a la raíz del proyecto (por ejemplo, <code>my_project-a3de50</code>).
+Si cambia la ruta de su proyecto, interrumpe dicha asignación predeterminada y pipenv ya no podrá encontrar y usar el <em>virtualenv</em> del proyecto.
+Es posible que desee establecer la exportación <code>PIPENV_VENV_IN_PROJECT = 1</code> en su <code>.bashrc/.zshrc</code> (o cualquier archivo de configuración de shell) para crear el <em>virtualenv</em> dentro del directorio de su proyecto, evitando problemas con los cambios de ruta posteriores.</p>
+<h1 id="4-otros-entornos-de-virtualizacion-de-python">4. Otros entornos de virtualización de python</h1>
+<h2 id="41-virtualenv">4.1. <a href="https://rukbottoland.com/blog/tutorial-de-python-virtualenv/"><code>virtualenv</code></a></h2>
+<h3 id="411-como-instalar-virtualenv">4.1.1. Cómo instalar <code>virtualenv</code></h3>
+<p>Se puede instalar la utilidad <code>virtualenv</code> utilizando el gestor de paquetes de las diferentes distribuciones Linux:</p>
+<p>Los siguientes comandos instalarán la utilidad <code>virtualenv</code> para las versiones 2 y 3 de Python.</p>
+<pre><code>$ sudo apt-get install python-virtualenv virtualenv
+</code></pre>
+
+<p>También es posible instalar <code>virtualenv</code> utilizando el instalador de paquetes de Python pip:</p>
+<pre><code>$ sudo pip install virtualenv
+</code></pre>
+
+<h3 id="412-como-crear-un-entorno-virtual-de-python-con-virtualenv">4.1.2. Cómo crear un entorno virtual de Python con <code>virtualenv</code></h3>
+<ol>
+<li><code>virtualenv</code> con Python 3</li>
+</ol>
+<p>Para crear un entorno virtual con Python 3, simplemente ejecutamos el comando <code>virtualenv</code> de la siguiente manera:</p>
+<pre><code>$ virtualenv &lt;entorno&gt; --python=python3
+</code></pre>
+
+<p>Python 3 debe estar instalado de antemano para poder crear el entorno virtual.</p>
+<ol>
+<li><code>virtualenv</code> con Python 2</li>
+</ol>
+<p>Para crear un entorno virtual con Python 2, simplemente ejecutamos el comando <code>virtualenv</code> de la siguiente manera:</p>
+<pre><code>        $ virtualenv &lt;entorno&gt;
+</code></pre>
+
+<p>Lamentablemente, no es posible crear un entorno virtual que contenga las dos versiones de Python al mismo tiempo.</p>
+<h3 id="413-estructura-de-un-entorno-virtual-de-python">4.1.3. Estructura de un entorno virtual de Python</h3>
+<p>La ejecución de comandos anteriormente explicados crean el directorio <code>&lt;entorno&gt;/</code> con la siguiente estructura:</p>
+<pre><code>    env/
+      bin/
+      include/
+      lib/
+        site-packages/
+</code></pre>
+
+<p>En el directorio <code>bin/</code> se encuentran los ejecutables necesarios para interactuar con el entorno virtual. En el directorio <code>include/</code> se encuentran algunos archivos de cabecera de C (cuya extensión es *.h) necesarios para compilar algunas librerías de Python.</p>
+<p>Finalmente, en el directorio <code>lib/</code> se encuentra una copia de la instalación de Python así como un directorio llamado <code>site-packages/</code> en donde se almacenan los paquetes Python instalados en el entorno virtual.</p>
+<h3 id="414-como-activar-un-entorno-virtual-de-python-con-virtualenv">4.1.4. Cómo activar un entorno virtual de Python con virtualenv</h3>
+<p>Para activar un entorno virtual de Python, se ejecuta el script <code>activate</code> de <code>virtualenv</code> instalado en el directorio <code>bin/</code>:</p>
+<pre><code class="bash">$ cd env
+$ source bin/activate ó $ . bin/activate
+(env)$
+</code></pre>
+
+<p>El prompt de la terminal indica que el entorno virtual <code>mi_proyecto</code> está activado. Ya es posible utilizar los paquetes Python instalados en el entorno virtual así como instalar paquetes adicionales.</p>
+<h3 id="415-como-desactivar-un-entorno-virtual-de-python-con-virtualenv">4.1.5. Cómo desactivar un entorno virtual de Python con <code>virtualenv</code></h3>
+<p>Para desactivar un entorno virtual, porque se necesita trabajar en otro diferente, se ejecuta el comando <code>deactivate</code> de <code>virtualenv</code>. No es necesario ir al directorio del entorno virtual para realizar esta operación:</p>
+<pre><code>    (env)$ deactivate
+</code></pre>
+
+<p>El prompt de la terminal indica que el entorno virtual ha sido desactivado con éxito.</p>
+<h3 id="416-como-instalar-paquetes-en-un-entorno-virtual-de-python">4.1.6. Cómo instalar paquetes en un entorno virtual de Python</h3>
+<p>Después de activarlo, lo único que resta es instalar los paquetes que sean necesarios usando el instalador de paquetes <code>pip</code>.
+Al momento de crear un entorno virtual, la utilidad <code>virtualenv</code> instala de manera automática el ejecutable <code>pip</code>.
+Por ejemplo, para instalar <code>Django</code> se ejecuta el siguiente comando:</p>
+<pre><code>    (env)$ pip install Django
+</code></pre>
+
+<p>Nótese que el prompt de la terminal indica que el entorno virtual <code>env</code> está activado de antemano.</p>
+<h3 id="417-en-que-directorio-ubico-el-codigo-fuente-de-mi-proyecto">4.1.7. ¿En qué directorio ubico el código fuente de mi proyecto?</h3>
+<p>La ubicación del código fuente del proyecto en el que se está trabajando no es importante. Puede ser colocado inclusive dentro del directorio del entorno virtual. Una vez que el entorno virtual está activado, todas las librerías de Python que se instalen solo podrán ser usadas al activar ese entorno virtual específico.</p>
+<h3 id="418-instrucciones-de-instalacion-de-virtualenv-de-edx">4.1.8. Instrucciones de instalación de <code>virtualenv</code> de EDX</h3>
+<p>Para comprobar si tenemos VirtualEnv instalado: virtualenv
+Para instalar VirtualEnv: sudo apt install virtualenv
+Para crear un directorio donde almacenar los entornos virtuales: mkdir ~/.virtualenvs
+Para crear el entorno virtual: virtualenv ~/.virtualenvs/web
+Impedir la instalación de módulos fuera de un entorno virtual: export PIP<sub>REQUIRE</sub><sub>VIRTUALENV</sub>=true
+Permitir eliminar el valor de dicha variable de entorno: unset PIP<sub>REQUIRE</sub><sub>VIRTUALENV</sub>
+Instalar módulo pprint: pip3 install pprint
+Para abrir fichero bashrc y especificar en él que debe haber un entorno activo para la instalación de módulos: emacs .bashrc &amp;
+Activar entorno virtual: source .virtualens/web/bin/activate
+Desactivar el entorno virtual: deactivate
+Para conocer qué Python se está ejecutando: which python3
+Instalar módulo Flask (necesario tener el entorno virtual web activado): pip3 install flask</p>
+<h2 id="42-virtualenvwrapper">4.2. VirtualEnvWrapper</h2>
+<p>VirtualEnvWrapper es una utilidad de Python con la que podemos trabajar con entornos virtuales (creando, activando y desactivando) de forma equivalente a lo que has visto en el vídeo. Si quieres utilizarla (no es necesario), tendrás que instalarla a través de pip:</p>
+<pre><code class="bash">$ sudo pip3 install virtualenvwrapper
+</code></pre>
+
+<p>Antes de empezar a trabajar con la utilidad, es necesario configurarla, lo cual significa fijar dos variables de entorno e invocar un script.</p>
+<p>Podemos fijar las variables desde la terminal, pero es más cómodo hacerlo en el bashrc para que cada vez que arranques una sesión de bash, estas variables se fijen. Para ello, abrimos el fichero con un editor de texto como emacs:</p>
+<pre><code class="bash">$ emacs .bashrc &amp;
+</code></pre>
+
+<p>La primera variable de entorno que necesito es el WORKON<sub>HOME</sub>, que es equivalente al directorio ~/.virtualenvs. Básicamente lo que le está diciendo al wrapper es dónde está el directorio con los entornos virtuales. Escribimos al final del fichero:</p>
+<pre><code class="config">export WORKON&lt;sub&gt;HOME&lt;/sub&gt;=~/.virtualenvs”
+</code></pre>
+
+<p>Con VIRTUALENVWRAPPER<sub>PYTHON</sub> le estamos diciendo qué versión de Python queremos que utilice el wrapper:</p>
+<pre><code class="config">export VIRTUALENVWRAPPER&lt;sub&gt;PYTHON&lt;/sub&gt;=/usr/bin/python3
+</code></pre>
+
+<p>Y por último hay que invocar a este script, que fija las variables de entorno para que el wrapper funcione:</p>
+<pre><code>./usr/local/bin/virtualenvwrapper.sh. 
+</code></pre>
+
+<p>También podemos fijar en este archivo la variable VIRTUALENV para que no nos permita instalar ni desinstalar nada si no es un entorno virtual activo:</p>
+<pre><code>export PIP&lt;sub&gt;REQUIRE&lt;/sub&gt;&lt;sub&gt;VIRTUALENV&lt;/sub&gt;=true
+</code></pre>
+
+<p>Importante: guarda los cambios hechos en el fichero bash.</p>
+<p>A partir de ahora, con el comando workon puedo saber los entornos virtuales que tengo en mi máquina, en el directorio que hemos especificado, y me permite además activar en un entorno virtual concreto:</p>
+<pre><code class="bash">$ workon web
+</code></pre>
+
+<p>Para desactivarlo, utilizamos el comando:</p>
+<pre><code class="bash">$ deactivate
+</code></pre>
+
+<p>Para crear un nuevo entorno virtual:</p>
+<pre><code class="bash">$ mkvirtualenv web2
+</code></pre>
+
+<p>Para borrar un entorno virtual, utilizo:</p>
+<pre><code class="bash">$ rmvirtualenv web2
+</code></pre>
+
+<h1 id="5-entornos-virtuales-en-visual-studio-codiumcode">5 Entornos virtuales en Visual Studio Codium/Code</h1>
+<p>Un entorno consta de un intérprete y cualquier número de paquetes instalados. La extensión de Python para VS Codium/Code proporciona funciones de integración útiles para trabajar con diferentes entornos.</p>
+<h2 id="51-seleccionar-y-activar-un-entorno">5.1. Seleccionar y activar un entorno</h2>
+<p>De forma predeterminada, la extensión de Python busca y usa el primer intérprete de Python que encuentra en la ruta del sistema. Si no encuentra un intérprete, emite una advertencia (en cualquier caso, se puede deshabilitar estas advertencias configurando <code>python.disableInstallationCheck</code> en <code>true</code> en la configuración de usuario).</p>
+<p>Para seleccionar un entorno específico, usar <code>Python: Select Interpreter</code> en la Paleta de comandos(<code>Ctrl+Shift+P</code>).</p>
+<p>Se puede cambiar de entorno en cualquier momento; los entornos de conmutación ayudan a probar diferentes partes de un proyecto con diferentes intérpretes o versiones de biblioteca según sea necesario.</p>
+<p>El comando <code>Python: Select Interpreter</code> muestra una lista de los <strong>entornos globales</strong> disponibles, los entornos <strong>conda</strong> y los <strong>entornos virtuales</strong>.  La siguiente imagen, por ejemplo, muestra varias instalaciones de Anaconda y CPython junto con un entorno conda y un entorno virtual (env) que se encuentra dentro de la carpeta del espacio de trabajo.</p>
+<p align="center">
+<img src="https://code.visualstudio.com/assets/docs/python/environments/interpreters-list.png">
+</p>
+
+<p>Al seleccionar un intérprete de la lista, se agrega una entrada para <code>python.pythonPath</code> con la ruta al intérprete dentro de la Configuración del área de trabajo. Debido a que la ruta forma parte de la configuración del espacio de trabajo, el mismo entorno ya debería estar seleccionado cada vez que se abra ese espacio de trabajo.</p>
+<p>La extensión de Python utiliza el entorno seleccionado para ejecutar el código de Python (usando el comando <code>Python: Run Python file</code>, proporcionando servicios del lenguaje (autocompletar, verificación de sintaxis, linting, formateo, etc.) cuando se tiene un archivo <code>.py</code> abierto en el editor, y abre un terminal con el comando <code>Terminal: Create a New Integrated Terminal</code>. En este último caso, VS Codium/Code activó automáticamente el entorno seleccionado.</p>
+<blockquote>
+<p>Para evitar la activación automática de un entorno seleccionado, agregar <code>"python.terminal.activateEnvironment": false</code> al archivo <code>settings.json</code> (se puede colocar en cualquier lugar como hermano de la configuración existente). </p>
+<p>De manera predeterminada, VS Codium/Code usa el intérprete identificado por la configuración de <code>python:pythonPath</code> al depurar el código. Puede anular este comportamiento especificando una ruta diferente en la propiedad <code>pythonPath</code> de una configuración de depuración.</p>
+</blockquote>
+<p>La barra de estado siempre muestra el intérprete actual. </p>
+<p align="center">
+<img src="https://code.visualstudio.com/assets/docs/python/environments/selected-interpreter-status-bar.png">
+</p>
+
+<p>La barra de estado también refleja cuando no se selecciona ningún intérprete.</p>
+<p align="center">
+<img src="https://code.visualstudio.com/assets/docs/python/environments/no-interpreter-selected-statusbar.png">
+</p>
+
+<p>En cualquier caso, hacer clic en esta área de la barra de estado es un atajo conveniente para el comando <code>Python: Select Interpreter</code>.</p>
+<ol>
+<li>
+<p>Entornos y ventanas de terminal</p>
+<p>Después de usar <code>Python: Select Interpreter</code>, ese intérprete se aplica al hacer clic con el botón derecho en un archivo y seleccionar <code>Python: Run Python File</code> en la Terminal. El entorno también se activa automáticamente cuando usa el comando <code>Terminal: Create New Integrated Terminal</code>, a menos que se cambie la configuración de <code>python.terminal.activateEnvironment</code> a <code>false</code>.</p>
+<p>Sin embargo, el lanzamiento de VS Codium/Code desde un shell en el que se activa un determinado entorno de Python no activa automáticamente ese entorno en el terminal integrado predeterminado. Usar el comando <code>Terminal: Create new Integrated Terminal</code> después de que se esté ejecutando el código VS.</p>
+<p><strong>Cualquier cambio que realice en un entorno activado dentro del terminal es persistente</strong>. Por ejemplo, al utilizar <code>conda install &lt;package&gt;</code> desde el terminal con un entorno <code>conda</code> activado, se instala el paquete en ese entorno de forma permanente. De manera similar, el uso de <code>pip install</code> en un terminal con un entorno virtual activado agrega el paquete a ese entorno.</p>
+<p>El cambio de intérpretes con el comando  <code>Python: Select Interpreter</code> no afecta a los paneles de terminales que ya están abiertos. De este modo, <strong>se puede activar entornos separados</strong> en un terminal dividido: seleccione el primer intérprete, cree un terminal para él, seleccione un intérprete diferente y luego use el botón dividir (<Ctrl>+\) en la barra de título del terminal.</p>
+</li>
+<li>
+<p>Elegir un entorno de depuración</p>
+<p>De forma predeterminada, la configuración <code>python.pythonPath</code> especifica el intérprete de Python que se usará para la depuración. Sin embargo, si se tiene una propiedad <code>pythonPath</code> en la configuración de depuración de <code>launch.json</code>, se usa ese intérprete en su lugar. Para ser más específicos, VS Codium/Code aplica el siguiente orden de precedencia al determinar qué intérprete usar para la depuración:</p>
+<ol>
+<li>Propiedad <code>pythonPath</code> de la configuración de depuración seleccionada en <code>launch.json</code></li>
+<li>Configuración de <code>python.pythonPath</code> en el espacio de trabajo de <code>settings.json</code></li>
+<li>Configuración de <code>python.pythonPath</code> en setting del usuario <code>settings.json</code></li>
+</ol>
+<p>Para obtener más detalles sobre la configuración de depuración, consultar <a href="https://code.visualstudio.com/docs/python/debugging">Depuración de configuraciones</a>.</p>
+</li>
+<li>
+<p>¿Dónde busca la extensión de Python los entornos virtuales?</p>
+<p>La extensión busca automáticamente intérpretes en las siguientes ubicaciones:</p>
+<ul>
+<li>Rutas de instalación estándar como <code>/usr/local/bin</code>, <code>/usr/sbin</code>, <code>/sbin</code>, <code>c:\python27</code>, <code>c:\python36</code> , etc.</li>
+<li>Entornos virtuales ubicados directamente debajo de la carpeta del área de trabajo (proyecto).</li>
+<li>Los entornos virtuales ubicados en la carpeta identificada por la configuración <code>python.venvPath</code>, que puede contener múltiples entornos virtuales. La extensión busca entornos virtuales en las subcarpetas de primer nivel de <code>venvPath</code>.</li>
+<li>Intérpretes instalados por pyenv.</li>
+<li>Un entorno <code>pipenv</code> para la carpeta de trabajo. Si se encuentra uno, no se busca ni se enumera ningún otro intérprete, ya que pipenv espera gestionar todos los aspectos del entorno.</li>
+<li>Los entornos Conda que contienen un intérprete de Python. VS Codium/Code no muestra los entornos de Conda que no contienen un intérprete.</li>
+<li>Intérpretes instalados en una carpeta <code>.direnv</code> por <code>direnv</code> bajo la carpeta (proyecto) de trabajo.</li>
+</ul>
+<p>También se puede <a href="https://code.visualstudio.com/docs/python/environments#_manually-specify-an-interpreter">especificar manualmente un intérprete</a> si VS Codium/Code no lo localiza automáticamente.</p>
+<p>La extensión también carga un <a href="https://code.visualstudio.com/docs/python/environments#_environment-variable-definitions-file">archivo de definiciones de variables de entorno</a> identificado por el fichero de configuración <code>python.envFile</code>. El valor predeterminado de esta configuración es <code>${workspaceFolder}/.env</code>.</p>
+</li>
+<li>
+<p>Entornos globales, virtuales y conda.</p>
+<p>De forma predeterminada, cualquier intérprete de Python que se haya instalado se ejecuta en su propio entorno global, que no es específico de ningún proyecto. Por ejemplo, si solo se ejecuta python o python3 en un nuevo símbolo del sistema, se está ejecutando en el entorno global de ese intérprete. En consecuencia, cualquier paquete que se instale o desinstale afectará el entorno global y todos los programas que se ejecuten dentro de ese contexto.</p>
+<p>Aunque trabajar en el entorno global es una forma fácil de comenzar, con el tiempo, ese entorno se llenará de muchos paquetes diferentes que habrán instalado para diferentes proyectos. Tal desorden hace que sea difícil probar una aplicación a fondo contra un conjunto específico de paquetes con versiones conocidas, que es exactamente el tipo de entorno que se configuraría en un servidor de compilación o servidor web.</p>
+<p>Por esta razón, los desarrolladores a menudo crean un entorno virtual para un proyecto. Un entorno virtual es una subcarpeta en un proyecto que contiene una copia de un intérprete específico. Cuando se activa el entorno virtual, los paquetes que se instalen lo harán solo en la subcarpeta de ese entorno. Cuando luego se ejecuta un programa Python dentro de ese entorno, sabe que se está ejecutando solo contra esos paquetes específicos.</p>
+<p>Un entorno de Conda es un entorno de Python que se administra mediante el gestor de paquetes  <code>conda</code> (consultar <a href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html">Comenzar con conda</a>). Conda funciona bien para crear entornos con dependencias interrelacionadas, así como paquetes binarios. A diferencia de los entornos virtuales, que están incluidos en un proyecto, los entornos de Conda están disponibles globalmente en cualquier computadora. Esta disponibilidad hace que sea fácil configurar varios entornos de conda distintos y luego elegir el adecuado para cualquier proyecto dado.</p>
+<p>Como se señaló anteriormente, la extensión de Python detecta automáticamente los entornos de conda existentes siempre que el entorno contenga un intérprete de Python. Por ejemplo, el siguiente comando crea un entorno conda con el intérprete de Python 3.4 y varias bibliotecas, que el Código VS luego muestra en la lista de intérpretes disponibles:</p>
+<p><code>conda create -n env-01 python=3.4 scipy=0.15.0 astroid babel</code></p>
+<p>Por el contrario, si no se especifica un intérprete, como con <code>conda create --name env-00</code>, el entorno no aparecerá en la lista.</p>
+<p>Para obtener más información sobre la línea de comandos de conda, consulte <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Entornos de Conda</a>.</p>
+</li>
+<li>
+<p>Especificar manualmente un intérprete</p>
+<p>Si VS Codium/Code no localiza automáticamente el intérprete que desea usar, puede configurar la ruta de acceso manualmente en su archivo del área de trabajo <code>settings.json</code>. Con cualquiera de las entradas que siguen, se puede agregar la línea como un añadido más a otras configuraciones existentes.)</p>
+<p>Primero, seleccione el comando de menú <code>File &gt; Preferences &gt; Settings</code> (<Ctrl>+,) para abrir la Configuración, seleccionar <code>Workspace</code>.</p>
+<p>A continuación, realizar cualquiera de los siguientes pasos:</p>
+<ul>
+<li>
+<p>Crear o modificar una entrada para <code>python.pythonPath</code> con la ruta completa al ejecutable de Python (si se edita <code>settings.json</code> directamente, agregar la siguiente línea como configuración):</p>
+<ul>
+<li>Por ejemplo:<ul>
+<li>
+<p>Windows:</p>
+<p><code>"python.pythonPath" : "c:/python36/python.exe"</code></p>
+<ul>
+<li>
+<p>macOS / Linux:</p>
+<p><code>"python.pythonPath" : "/home/python36/python"</code></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>También se puede usar <code>python.pythonPath</code> para apuntar a un entorno virtual, por ejemplo:</p>
+<p>Windows:</p>
+<ul>
+<li>&ldquo;python.pythonPath&rdquo; : &ldquo;c:/dev/ala/venv/Scripts/python.exe&rdquo;</li>
+</ul>
+<p>macOS / Linux:</p>
+<ul>
+<li>&ldquo;python.pythonPath&rdquo; : &ldquo;/home/abc/dev/ala/venv/bin/python&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>Se puede usar una variable de entorno en la configuración de ruta usando la sintaxis <code>${env:VARIABLE}</code>. Por ejemplo, si se ha creado una variable llamada <code>PYTHON_INSTALL_LOC</code> con una ruta a un intérprete, se puede usar el siguiente valor de configuración:</p>
+<ul>
+<li>&ldquo;python.pythonPath&rdquo; : &ldquo;${env:PYTHON<sub>INSTALL</sub><sub>LOC</sub>}&rdquo;</li>
+</ul>
+<p>Al usar una variable de entorno, se puede transferir fácilmente un proyecto entre sistemas operativos donde las rutas son diferentes, solo hay que asegurarse de establecer primero la variable de entorno en el sistema operativo.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="archivo-de-definiciones-de-variables-de-entorno">Archivo de definiciones de variables de entorno</h3>
+<p>Un archivo de definiciones de variables de entorno es un archivo de texto simple que contiene pares clave-valor en forma de <code>variable_de_entorno=valor</code>, con # utilizado para comentarios. Los valores de multilínea no son compatibles, pero los valores pueden referirse a cualquier otra variable de entorno que ya esté definida en el sistema o anterior en el archivo.</p>
+<p>De forma predeterminada, la extensión de Python busca y carga un archivo llamado <code>.env</code> en la carpeta del área de trabajo actual, luego aplica esas definiciones. El archivo se identifica mediante la entrada predeterminada <code>"python.envFile": "${workspaceFolder}/.env"</code> en la configuración del usuario. Se puede cambiar la configuración de <code>python.envFile</code> en cualquier momento para usar un archivo de definiciones diferente.</p>
+<p>Una configuración de depuración también contiene una propiedad <code>envFile</code> que también se establece de manera predeterminada en el archivo <code>.env</code> en el área de trabajo actual. Esta propiedad permite establecer fácilmente variables para fines de depuración que reemplazan las variables especificadas en el archivo <code>.env</code> predeterminado.</p>
+<p>Por ejemplo, al desarrollar una aplicación web, es posible que se desee cambiar fácilmente entre los servidores de desarrollo y de producción. En lugar de codificar las diferentes URL y otras configuraciones en la aplicación directamente, se pueden usar archivos de definiciones separados para cada una. Por ejemplo:</p>
+<p>Archivo <code>dev.env</code></p>
+<pre><code>    # dev.env - development configuration
+
+    # API endpoint
+    MYPROJECT_APIENDPOINT=https://my.domain.com/api/dev/
+
+    # Variables for the database
+    MYPROJECT_DBURL=https://my.domain.com/db/dev
+    MYPROJECT_DBUSER=devadmin
+    MYPROJECT_DBPASSWORD=!dfka**213= 
+</code></pre>
+
+<p>Archivo <code>prod.env</code></p>
+<pre><code>    # prod.env - production configuration
+    # API endpoint 
+    MYPROJECT_APIENDPOINT=https://my.domain.com/api/ 
+
+    # Variables for the database
+    MYPROJECT_DBURL=https://my.domain.com/db/
+    MYPROJECT_DBUSER=coreuser
+    MYPROJECT_DBPASSWORD=kKKfa98*11@ 
+</code></pre>
+
+<p>A continuación, se puede establecer la configuración <code>python.envFile</code> a <code>${workspaceFolder}/prod.env</code>, luego establecer la propiedad <code>envFile</code> en la configuración de depuración en <code>${workspaceFolder}/dev.env</code>.</p>
+<ol>
+<li>
+<p>Sustitución de variables</p>
+<p>Al definir una variable de entorno en un archivo de definiciones, se puede utilizar el valor de cualquier variable de entorno existente con la siguiente sintaxis general:</p>
+</li>
+</ol>
+<pre><code>        &lt;VARIABLE&gt;=... ${EXISTING_VARIABLE} ... 
+</code></pre>
+
+<p>donde <code>...</code> significa cualquier otro texto usado en el valor. Las llaves son necesarias.</p>
+<p>Dentro de esta sintaxis, se aplican las siguientes reglas:</p>
+<ul>
+<li>Las variables se procesan en el orden en que aparecen en el archivo <code>.env</code>, por lo que se puede usar cualquier variable que se haya definido anteriormente en el archivo.</li>
+<li>Las comillas simples o dobles no afectan el valor sustituido y se incluyen en el valor definido. Por ejemplo, si el valor de <code>VAR1</code> es <code>abcedfg</code>, entonces <code>VAR2='${OTHERVAR}'</code> asigna el valor <code>'abcedfg'</code> a <code>VAR2</code>.</li>
+<li>El carácter <code>$</code> se puede escapar con una barra invertida, como en <code>\$</code>.</li>
+<li>Se puede usar la sustitución recursiva, como <code>PYTHONPATH=${PROJ_DIR}:${PYTHONPATH}</code> (donde <code>PROJ_DIR</code> es cualquier otra variable de entorno).</li>
+<li>Se puede usar solo la sustitución simple; anidar como <code>${_${OTHERVAR}_EX}</code> no es compatible.</li>
+<li>Las entradas con sintaxis no admitida se dejan como están.</li>
+</ul>
+<h3 id="uso-de-la-variable-pythonpath">Uso de la variable PYTHONPATH</h3>
+<p>La variable de entorno <code>PYTHONPATH</code> especifica ubicaciones adicionales donde el intérprete de Python debe buscar módulos. El valor de <code>PYTHONPATH</code> puede contener múltiples valores de ruta separados por <code>os.pathsep</code> (puntos y coma en Windows, dos puntos en Linux/macOS). Las rutas no válidas se ignoran.</p>
+<p>Nota: se debe configurar la variable <code>PYTHONPATH</code> a través del sistema operativo, ya que VS Codium/Code no proporciona un medio para establecer las variables de entorno directamente.</p>
+<p>En el Código VS, <code>PYTHONPATH</code> afecta la depuración, el linting, el IntelliSense, las pruebas de unidades y cualquier otra operación que dependa de los módulos de resolución de Python. Por ejemplo, suponga que se tiene el código fuente en una carpeta <code>src</code> y las pruebas en una carpeta de tests. Sin embargo, al ejecutar pruebas, normalmente no pueden acceder a los módulos en <code>src</code> menos que se codifiquen las rutas relativas. Para resolver este problema, se agrega la ruta a <code>src</code> a <code>PYTHONPATH</code>.</p>
+<p>Se recomienda que establezca la variable <code>PYTHONPATH</code> en un archivo de definiciones de variable de entorno, descrito anteriormente.</p>
+<p>Nota: <code>PYTHONPATH</code> no, repetimos <strong>no</strong>, especifica una ruta al intérprete de Python y, por lo tanto, nunca se usa con la configuración <code>python.pythonPath</code>. Claramente, la variable de entorno está mal llamada, pero&#x2026; <em>c&rsquo;est la vie</em>. Así que asegurarse de leer la documentación de <code>PYTHONPATH</code> varias veces y téngase en cuenta que <code>PYTHONPATH</code> <strong>no es un camino a un intérprete</strong>.</p>
+<h2 id="bootstrap">Bootstrap</h2>
+<ul>
+<li>Instalar con:</li>
+</ul>
+<pre><code class="bash">$ pipenv install bootstrap4
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
