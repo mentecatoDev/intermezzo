@@ -1,1 +1,9 @@
-site_name: My Docs
+site_name: Intermezzo
+nav:
+  - Entornos Virtuales : entornos_virtuales.md
+theme: readthedocs
+
+plugins:
+    - search:
+        separator: '[\s\-\.]+'
+        lang: es
