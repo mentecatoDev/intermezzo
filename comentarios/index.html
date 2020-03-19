@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Comentarios - Intermezzo</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Comentarios";
+    var mkdocs_page_input_path = "comentarios.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Intermezzo</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../entornos_virtuales/">Entornos Virtuales</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Intermezzo</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Comentarios</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>En Python la única forma de crear comentarios es usando el símbolo <code>#</code> (numeral). <strong>No hay otra</strong>. <u><em>La proposición según la cual las triples comillas operan también como comentarios es falsa</em></u>.</p>
+<pre><code class="python"># Esto es un comentario.
+a = 1
+
+&quot;&quot;&quot;¡¡¡Error!!! Esto no es un comentario.&quot;&quot;&quot;
+b = 2
+</code></pre>
+
+<p>La confusión radica en que las triples comillas suelen emplearse para crear la documentación de una función. Por ejemplo:</p>
+<pre><code class="python">def add(a, b):
+    &quot;&quot;&quot;
+    Retorna el resultado de a + b.
+    &quot;&quot;&quot;
+    return a + b
+</code></pre>
+
+<p>Luego, esa documentación, conocida también como <em>docstring</em>, se almacena en el atributo <code>add.__doc__</code> y es accedida por la función <code>help()</code>.</p>
+<pre><code class="python">print(add.__doc__)
+help(add)
+</code></pre>
+
+<p>No obstante, la realidad es que, en una función, la primera cadena literal que se encuentra es interpretada por Python como <em>la documentación</em>, sin importar si se usan triples comillas o un par de comillas dobles o simples.</p>
+<pre><code class="python"># Ambas documentaciones son válidas.
+def add(a, b):
+    &quot;Retorna el resultado de a + b.&quot;
+    return a + b
+
+def div(a, b):
+    'Retorna el resultado de a / b.'
+    return a / b
+</code></pre>
+
+<p>Esto funciona porque en Python es válido crear expresiones cuyo resultado no es utlilizado para nada (por ejemplo, para asignarlo a una variable o pasarlo como argumento a una función). El siguiente código no arroja ningún error:</p>
+<pre><code class="python">7 + 5
+&quot;Hola mundo&quot;
+&quot;&quot;&quot;Esto es una cadena.&quot;&quot;&quot;
+15 / 3
+</code></pre>
+
+<p>Ahora bien, eso es exactamente lo que se está haciendo cuando se crea un «comentario» usando triples comillas: generar una cadena que luego es desechada por Python por no emplearse.</p>
+<p>Pero el problema se origina cuando esas cadenas, creyendo ser  comentarios, son ubicadas en lugares donde se espera una expresión. Por  ejemplo:</p>
+<pre><code class="python">languages = [
+    &quot;&quot;&quot;Lenguaje y año en que fue creado&quot;&quot;&quot;
+    (&quot;Python&quot;, 1991),
+    (&quot;Java&quot;, 1996),
+    (&quot;C++&quot;, 1983),
+    (&quot;Elixir&quot;, 2011)
+]
+</code></pre>
+
+<p>Esto arroja el siguiente error:</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;test.py&quot;, line 3, in &lt;module&gt;
+     (&quot;Python&quot;, 1991),
+TypeError: 'str' object is not callable
+</code></pre>
+
+<p>El error indica que estamos intentando llamar a una cadena como si fuese una función. En efecto, no hay ninguna diferencia con esto:</p>
+<pre><code class="python">&quot;Lenguaje y año en que fue creado&quot;(&quot;Python&quot;, 1991)
+</code></pre>
+
+<p>Quienes se están iniciando en el lenguaje quedan atónitos por un error tan extraño. Y todo eso es por pensar que las cadenas funcionan como comentarios. La forma correcta, por tanto, es esta:</p>
+<pre><code class="python">languages = [
+# Lenguaje y año en que fue creado
+    (&quot;Python&quot;, 1991),
+    (&quot;Java&quot;, 1996),
+    (&quot;C++&quot;, 1983),
+    (&quot;Elixir&quot;, 2011)
+]
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
