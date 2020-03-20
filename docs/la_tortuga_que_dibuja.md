@@ -1,6 +1,8 @@
 # La tortuga que dibuja
 
-En 1967 *Wally Feurzeig* y *Seymour Papert* crearon **Logo**, un lenguaje de programación con fines educativos. Ese lenguaje incluía las llamadas "gráficos de tortuga". La "tortuga" de Logo es un cursor al que se le pueden dar órdenes de movimiento (avance, retroceso o giro) y que puede ir dejando un rastro sobre la pantalla. Moviendo adecuadamente la tortuga se pueden conseguir dibujar todo tipo de figuras. Python incluye un módulo llamado `turtle` que permite crear gráficos de tortuga.
+En 1967 *Wally Feurzeig* y *Seymour Papert* crearon **Logo**, un lenguaje de programación con fines educativos. Ese lenguaje incluía los "gráficos de tortuga". La "tortuga" de Logo es un cursor al que se le pueden dar órdenes de movimiento (avance, retroceso o giro) y que puede ir dejando un rastro sobre la pantalla. Moviendo adecuadamente la tortuga se pueden conseguir dibujar todo tipo de figuras.
+
+Python incluye un módulo llamado `turtle` que permite crear éste tipo de **gráficos tortuga**.
 
 ## El primer programa con tortugas
 
@@ -9,13 +11,13 @@ Se van a trazar un par de líneas en la terminal de Python para crear una nueva 
 ```python
 import turtle
 
-# establece el tamaño de la ventana a 800x600 píxeles
+# Set the window size to 800x600 pixels
 turtle.setup(800, 600)
 
-# establece wn como objeto Screen
+# Set the Screen object as wn
 wn = turtle.Screen()
 
-# se crea la tortuga
+# Creates the turtle
 leonardo = turtle.Turtle()
 leonardo.forward(300)
 leonardo.left(90)
@@ -31,11 +33,11 @@ Tras la de la segunda instrucción, se abrirá una nueva ventana. El tercer coma
 Aquí hay un par de cosas que se necesita entender acerca de este programa.
 
 - La primera línea le dice a Python que cargue un módulo llamado `turtle`. Dicho módulo nos trae dos nuevos tipos que podemos utilizar: el tipo de `Turtle`, y el tipo de `Screen`. La notación de puntos `turtle.Turtle` significa *“El tipo de tortuga que se define en el módulo de Tortuga”* (Python distingue entre mayúsculas y minúsculas, así que el nombre del módulo, con una `t` minúscula, es diferente al que la tiene mayúscula).
-- A continuación, se crea y abre lo que llamamos una screen, que se asigna a la variable `sc`. Cada `screen` contiene un **lienzo (canvas)**, que es el área dentro de ella en el que podemos dibujar. En la siguiente línea se crea una tortuga. La variable `alex` se usa para referirse a ella. Estas tres primeras líneas es la preparación para ahora hacer algunas cosas útiles.
-- A continuación instruimos al **objeto** `alex` para que se mueva, y que gire. Hacemos esto mediante la **invocación** a los **métodos** de `alex` —estos son instrucciones a las que todas las tortugas saben cómo responder.
-- La última línea también desempeña un papel: la variable `sc` se refiere a la ventana activa. Cuando se invoca el método `exitonclick`, detiene la ejecución del programa, y espera a que el usuario haga clic con el ratón en algún lugar de la ventana. Cuando este evento click se produce, la respuesta es cerrar la ventana de la tortuga y la salida (la ejecución de la parada) del programa de Python.
+- A continuación, se crea y abre lo que llamamos una screen, que se asigna a la variable `sc`. Cada `screen` contiene un **lienzo (canvas)**, que es el área dentro de ella en el que podemos dibujar. En la siguiente línea se crea una tortuga. La variable `leonardo` se usa para referirse a ella. Estas tres primeras líneas es la preparación para ahora hacer algunas cosas útiles.
+- A continuación instruimos al **objeto** `leonardo` para que se mueva, y que gire. Hacemos esto mediante la **invocación** a los **métodos** de `leonardo` —estos son instrucciones a las que todas las tortugas saben cómo responder.
+- La última línea también desempeña un papel: la variable `wn` se refiere a la ventana activa. Cuando se invoca el método `exitonclick`, detiene la ejecución del programa, y espera a que el usuario haga clic con el ratón en algún lugar de la ventana. Cuando este evento click se produce, la respuesta es cerrar la ventana de la tortuga y la salida (la ejecución de la parada) del programa de Python.
 
-Un objeto puede tener varios métodos —las cosas que puede hacer— y también pueden tener **atributos** (también llamados *propiedades*). Por ejemplo, cada tortuga (`turtle`) tiene un atributo `color`. El modo de invocarlo es `alex.color("red")` que hará alex rojo, y el dibujo será de color rojo también. El color de la tortuga (`turtle`), la anchura de la pluma, la posición de la tortuga dentro de la ventana, la apariencia, etc. son partes de su **estado** actual. Del mismo modo, el objeto `screen` tiene un color de fondo y un texto en la barra de título, y un tamaño y posición en la pantalla. Todos ellos forman parte del estado del objeto `screen`. Hay un buen número de métodos que nos permiten modificar tortugas y screens. Vamos a mostrar un par:
+Un objeto puede tener varios métodos —las cosas que puede hacer— y también pueden tener **atributos** (también llamados *propiedades*). Por ejemplo, cada tortuga (`turtle`) tiene un atributo `color`. El modo de invocarlo es `leonardo.color("red")` que hará alex rojo, y el dibujo será de color rojo también. El color de la tortuga (`turtle`), la anchura de la pluma, la posición de la tortuga dentro de la ventana, la apariencia, etc. son partes de su **estado** actual. Del mismo modo, el objeto `screen` tiene un color de fondo y un texto en la barra de título, y un tamaño y posición en la pantalla. Todos ellos forman parte del estado del objeto `screen`. Hay un buen número de métodos que nos permiten modificar tortugas y screens. Vamos a mostrar un par:
 
 ```python
 import turtle
@@ -112,7 +114,7 @@ que genera esto cuando se ejecuta:
 
 ## Algunos trucos y métodos de tortugas
 
-Los métodos de la tortuga pueden utilizar ángulos y distancias negativas. Así `tess.foward (-100)` moverá a tess hacia atrás y `tess.left (-30)` la gira a la derecha.
+Los métodos de la tortuga pueden utilizar ángulos y distancias negativas. Así `tess.forward(-100)` moverá a tess hacia atrás y `tess.left(-30)` la gira a la derecha.
 
 Además, dado que hay 360 grados en un círculo, al girar 30 a la izquierda se estará en la misma situación que si se gira 330 a la derecha! (La animación en la pantalla será diferente).También hay un método `backward` (si se es muy nerd, uno puede disfrutar de mover a `alex` hacia adelante mediante `alex.backward(-100)`).
 
@@ -389,3 +391,4 @@ square_spiral(squirtle, 200, 2)
 turtle.done()
 
 ```
+
