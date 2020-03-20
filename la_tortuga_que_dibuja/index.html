@@ -114,10 +114,10 @@
             <div class="section">
               
                 <h1 id="la-tortuga-que-dibuja">La tortuga que dibuja</h1>
-<p>En 1967 <em>Wally Feurzeig</em> y <em>Seymour Papert</em> crearon <strong>Logo</strong>, un lenguaje de programación con fines educativos. Ese lenguaje incluía los "gráficos de tortuga". La "tortuga" de Logo es un cursor al que se le pueden dar órdenes de movimiento (avance, retroceso o giro) y que puede ir dejando un rastro sobre la pantalla. Moviendo adecuadamente la tortuga se pueden conseguir dibujar todo tipo de figuras.</p>
+<p>En 1967 <em>Wally Feurzeig</em> y <a href="https://www.youtube.com/watch?v=2js2cFrtg8I"><em>Seymour Papert</em></a> crearon <strong>Logo</strong>, un lenguaje de programación con fines educativos. Ese lenguaje incluía los "gráficos de tortuga". La "tortuga" de Logo es un cursor al que se le pueden dar órdenes de movimiento (avance, retroceso o giro) y que puede ir dejando un rastro sobre la pantalla. Moviendo adecuadamente la tortuga se puede conseguir dibujar todo tipo de figuras.</p>
 <p>Python incluye un módulo llamado <code>turtle</code> que permite crear éste tipo de <strong>gráficos tortuga</strong>.</p>
 <h2 id="el-primer-programa-con-tortugas">El primer programa con tortugas</h2>
-<p>Se van a trazar un par de líneas en la terminal de Python para crear una nueva tortuga y empezar a dibujar un rectángulo. (La variable que refiere a la primera tortuga se llamará <code>alex</code>).</p>
+<p>Se van a trazar un par de líneas en la terminal de Python para crear una nueva tortuga y empezar a dibujar un rectángulo. (La variable que refiere a la primera tortuga se llamará <code>raphael</code>).</p>
 <pre><code class="python">import turtle
 
 # Set the window size to 800x600 pixels
@@ -135,117 +135,121 @@ leonardo.forward(200)
 wn.exitonclick()
 </code></pre>
 
-<p>Tras la de la segunda instrucción, se abrirá una nueva ventana. El tercer comando coloca un cursor – llamando cariñosamente a una <code>tortuga</code> del módulo – a la que se le ha puesto el nombre de <code>alex</code>. Las siguientes tres líneas mueven a <code>alex</code> hacia adelante, gira hacia la izquierda, y lo mueve hacia adelante una vez más, completando dos lados de un rectángulo. Después de introducir estos comandos, aparecerá una ventana que se parece a esto:</p>
-<p><img alt="_images/alex.png" src="../img_la_tortuga_que_dibuja/alex.png" /></p>
+<p>Tras la segunda instrucción, se abrirá una nueva ventana. El tercer comando coloca un cursor – llamando cariñosamente a una <code>tortuga</code> del módulo – a la que se le ha puesto el nombre de <code>raphael</code>. Las siguientes tres líneas mueven a <code>raphael</code> hacia adelante, gira hacia la izquierda, y lo mueve hacia adelante una vez más, completando dos lados de un rectángulo. Después de introducir estos comandos, aparecerá una ventana que se parece a esto:</p>
+<p><img alt="_images/raphael.png" src="../img_la_tortuga_que_dibuja/alex.png" /></p>
 <p>Aquí hay un par de cosas que se necesita entender acerca de este programa.</p>
 <ul>
-<li>La primera línea le dice a Python que cargue un módulo llamado <code>turtle</code>. Dicho módulo nos trae dos nuevos tipos que podemos utilizar: el tipo de <code>Turtle</code>, y el tipo de <code>Screen</code>. La notación de puntos <code>turtle.Turtle</code> significa <em>“El tipo de tortuga que se define en el módulo de Tortuga”</em> (Python distingue entre mayúsculas y minúsculas, así que el nombre del módulo, con una <code>t</code> minúscula, es diferente al que la tiene mayúscula).</li>
-<li>A continuación, se crea y abre lo que llamamos una screen, que se asigna a la variable <code>sc</code>. Cada <code>screen</code> contiene un <strong>lienzo (canvas)</strong>, que es el área dentro de ella en el que podemos dibujar. En la siguiente línea se crea una tortuga. La variable <code>leonardo</code> se usa para referirse a ella. Estas tres primeras líneas es la preparación para ahora hacer algunas cosas útiles.</li>
-<li>A continuación instruimos al <strong>objeto</strong> <code>leonardo</code> para que se mueva, y que gire. Hacemos esto mediante la <strong>invocación</strong> a los <strong>métodos</strong> de <code>leonardo</code> —estos son instrucciones a las que todas las tortugas saben cómo responder.</li>
-<li>La última línea también desempeña un papel: la variable <code>wn</code> se refiere a la ventana activa. Cuando se invoca el método <code>exitonclick</code>, detiene la ejecución del programa, y espera a que el usuario haga clic con el ratón en algún lugar de la ventana. Cuando este evento click se produce, la respuesta es cerrar la ventana de la tortuga y la salida (la ejecución de la parada) del programa de Python.</li>
+<li>La primera línea le dice a Python que cargue un módulo llamado <code>turtle</code>. Dicho módulo trae dos nuevos tipos que se pueden utilizar: el tipo de <code>Turtle</code>, y el tipo de <code>Screen</code>. La notación de puntos <code>turtle.Turtle</code> significa <em>“El tipo</em> <code>Turtle</code> <em>definido en el módulo</em> <code>turtle</code><em>”</em> (Python distingue entre mayúsculas y minúsculas, así que el nombre del módulo, con una <code>t</code> minúscula, es diferente al que la tiene mayúscula).</li>
+<li>A continuación, se crea y abre lo que llamamos una <code>screen</code>, que se asigna a la variable <code>wn</code>. Cada <code>screen</code> contiene un <strong>lienzo (canvas)</strong>, que es el área dentro de ella en la que se puede dibujar. En la siguiente línea se crea una tortuga. La variable <code>leonardo</code> se usa para referirse a ella. Estas tres primeras líneas son la preparación para ahora hacer algunas cosas útiles.</li>
+<li>A continuación se instruye al <strong>objeto</strong> <code>leonardo</code> para que se mueva, y que gire. Se hace mediante la <strong>invocación</strong> a los <strong>métodos</strong> de <code>leonardo</code> — instrucciones a las que todas las tortugas saben cómo responder.</li>
+<li>La última línea también desempeña un papel: la variable <code>wn</code> se refiere a la ventana activa. Cuando se invoca el método <code>exitonclick</code>,  se detiene la ejecución del programa y se espera a que el usuario haga clic con el ratón en algún lugar de la ventana. Cuando este evento click se produce, la respuesta es cerrar la ventana de la tortuga y la salida (la ejecución de la parada) del programa de Python.</li>
 </ul>
-<p>Un objeto puede tener varios métodos —las cosas que puede hacer— y también pueden tener <strong>atributos</strong> (también llamados <em>propiedades</em>). Por ejemplo, cada tortuga (<code>turtle</code>) tiene un atributo <code>color</code>. El modo de invocarlo es <code>leonardo.color("red")</code> que hará alex rojo, y el dibujo será de color rojo también. El color de la tortuga (<code>turtle</code>), la anchura de la pluma, la posición de la tortuga dentro de la ventana, la apariencia, etc. son partes de su <strong>estado</strong> actual. Del mismo modo, el objeto <code>screen</code> tiene un color de fondo y un texto en la barra de título, y un tamaño y posición en la pantalla. Todos ellos forman parte del estado del objeto <code>screen</code>. Hay un buen número de métodos que nos permiten modificar tortugas y screens. Vamos a mostrar un par:</p>
+<p>Un objeto puede tener varios métodos —las cosas que puede hacer— y también puede tener <strong>atributos</strong> (también llamados <em>propiedades</em>). Por ejemplo, cada tortuga (<code>Turtle</code>) tiene un atributo <code>color</code>. El modo de invocarlo es <code>leonardo.color("red")</code> que hará a <code>leonardo</code> rojo, y el dibujo será de color rojo también. El color de la tortuga, la anchura de la pluma, la posición de la tortuga dentro de la ventana, la apariencia, etc. son partes de su <strong>estado</strong> actual. Del mismo modo, el objeto <code>Screen</code> tiene un color de fondo y un texto en la barra de título, y un tamaño y posición en la pantalla. Todos ellos forman parte del estado del objeto <code>screen</code>. Hay un buen número de métodos que nos permiten modificar tortugas y screens. Vamos a mostrar un par:</p>
 <pre><code class="python">import turtle
 
-# establecer el tamaño de la ventana de 800 por 600 píxeles
+# set the window size to 800 by 600 pixels
 turtle.setup(800, 600)
 
-wn = turtle.Screen()        # establecer wn al objeto de la ventana
-wn.bgcolor(&quot;lightgreen&quot;)    # establecer el color de fondo de la ventana
-wn.title(&quot;Hola, Tess!&quot;)     # establecer el título de la ventana
-tess = turtle.Turtle()
-tess.color(&quot;blue&quot;)          # hacer tess azul
-tess.pensize(3)              # establecer el ancho de la pluma  
-tess.forward(300)
-tess.left(120)
-tess.forward(300)
+# set wn as a window object
+wn = turtle.Screen()    
+
+# set the background color of the window
+wn.bgcolor(&quot;lightgreen&quot;)
+
+# set the title of the window
+wn.title(&quot;¡Hola, Raphael!&quot;)     
+raphael = turtle.Turtle()
+raphael.color(&quot;blue&quot;)      # make raphael blue
+raphael.pensize(3)         # set the width of the pen  
+raphael.forward(300)
+raphael.left(120)
+raphael.forward(300)
 wn.exitonclick()
 </code></pre>
 
-<p>La ejecución de este programa creará una ventana gráfica que se verá así:
-<img alt="_images/tess.png" src="../img_la_tortuga_que_dibuja/tess.png" />
-Cuando ejecutamos este programa aparece esta nueva ventana y permanecerá en la pantalla hasta que se haga clic en ella.
-Extender este programa </p>
+<p>La ejecución de este programa creará una ventana gráfica que se verá así:</p>
+<p><img alt="_images/raphael.png" src="../img_la_tortuga_que_dibuja/tess.png" /></p>
+<p>Cuando se ejecuta este programa aparece esta nueva ventana y permanecerá en pantalla hasta que se haga clic en ella.</p>
 <blockquote>
 <p>Nota:</p>
 <p>Se puede encontrar una lista de nombres de colores permitidos en http://www.tcl.tk/man/tcl8.4/TkCmd/colors.htm. Incluye algunos bastante inusuales, como <code>peach puff</code> (bocanada de melocotón) y <code>HotPink</code> (rosa caliente)</p>
 </blockquote>
 <h2 id="una-manada-de-tortugas">Una manada de tortugas</h2>
-<p>Al igual que podemos tener muchos enteros diferentes en un programa, podemos tener muchas tortugas. Cada una de ellas es una <strong>instancia</strong>. Cada instancia tiene sus propios atributos y métodos -por lo que Alex puede dibujar con un lápiz negro delgado y estar en alguna posición, mientras que Tess podría ir en su propia dirección con un bolígrafo de color rosa grueso (<code>fat pink</code>). Aquí está lo que sucede cuando <code>alex</code> termina su rectángulo, y <code>tess</code> completa su triángulo:</p>
+<p>Al igual que podemos tener muchos enteros diferentes en un programa, podemos tener muchas tortugas. Cada una de ellas es una <strong>instancia</strong>. Cada instancia tiene sus propios atributos y métodos -por lo que <code>raphael</code> puede dibujar con un lápiz negro delgado y estar en alguna posición, mientras que <code>donatello</code> podría ir en su propia dirección con un bolígrafo de color rosa grueso (<code>fat pink</code>). Aquí está lo que sucede cuando <code>raphael</code> termina su rectángulo, y <code>donatello</code> completa su triángulo:</p>
 <pre><code class="python">import turtle
 # setup the window and its attributes
 turtle.setup(800, 600)
 wn = turtle.Screen()
 wn.bgcolor(&quot;lightgreen&quot;)
-wn.title(&quot;Tess &amp; Alex&quot;)
+wn.title(&quot;donatello &amp; raphael&quot;)
 
-# instantiate (create) tess and set her attributes
-tess = turtle.Turtle()
-tess.color(&quot;hotpink&quot;)
-tess.pensize(5)
+# instantiate (create) donatello and set his attributes
+donatello = turtle.Turtle()
+donatello.color(&quot;hotpink&quot;)
+donatello.pensize(5)
 
-# instantiate alex
-alex = turtle.Turtle()
+# instantiate raphael
+raphael = turtle.Turtle()
 
-# draw an equilateral triangle with tess
-tess.forward(320)
-tess.left(120)
-tess.forward(320)
-tess.left(120)
-tess.forward(320)
-tess.left(120)
+# draw an equilateral triangle with donatello
+donatello.forward(320)
+donatello.left(120)
+donatello.forward(320)
+donatello.left(120)
+donatello.forward(320)
+donatello.left(120)
 
-# turn tess around and move her away from the origin
-tess.right(180)
-tess.forward(320)
+# turn donatello around and move her away from the origin
+donatello.right(180)
+donatello.forward(320)
 
-# make alex draw a square
-alex.forward(200)
-alex.left(90)
-alex.forward(200)
-alex.left(90)
-alex.forward(200)
-alex.left(90)
-alex.forward(200)
+# make raphael draw a square
+raphael.forward(200)
+raphael.left(90)
+raphael.forward(200)
+raphael.left(90)
+raphael.forward(200)
+raphael.left(90)
+raphael.forward(200)
 wn.exitonclick()
 </code></pre>
 
 <p>que genera esto cuando se ejecuta:</p>
-<p><img alt="_images/tess_y_alex.png" src="../img_la_tortuga_que_dibuja/tess_y_alex.png" /></p>
+<p><img alt="_images/donatello_y_raphael.png" src="../img_la_tortuga_que_dibuja/tess_y_alex.png" /></p>
 <h2 id="algunos-trucos-y-metodos-de-tortugas">Algunos trucos y métodos de tortugas</h2>
-<p>Los métodos de la tortuga pueden utilizar ángulos y distancias negativas. Así <code>tess.forward(-100)</code> moverá a tess hacia atrás y <code>tess.left(-30)</code> la gira a la derecha.</p>
-<p>Además, dado que hay 360 grados en un círculo, al girar 30 a la izquierda se estará en la misma situación que si se gira 330 a la derecha! (La animación en la pantalla será diferente).También hay un método <code>backward</code> (si se es muy nerd, uno puede disfrutar de mover a <code>alex</code> hacia adelante mediante <code>alex.backward(-100)</code>).</p>
+<p>Los métodos de la tortuga pueden utilizar ángulos y distancias negativas. Así <code>donatello.forward(-100)</code> moverá a donatello hacia atrás y <code>donatello.left(-30)</code> la gira a la derecha.</p>
+<p>Además, dado que hay 360 grados en un círculo, al girar 30 a la izquierda se estará en la misma situación que si se gira 330 a la derecha! (La animación en la pantalla será diferente).También hay un método <code>backward</code> (si se es muy nerd, uno puede disfrutar de mover a <code>raphael</code> hacia adelante mediante <code>raphael.backward(-100)</code>).</p>
 <p>El lápiz de la tortuga se puede levantar (<code>penup</code>) o apoyar (<code>pendown</code>).  Esto nos permite mover una tortuga a un lugar diferente sin dibujar una línea. Los métodos son </p>
-<pre><code class="python">alex.penup()
-alex.forward(100)   # esto hace que se mueva alex sin dibujar una línea alex.pendown ()
+<pre><code class="python">raphael.penup()
+raphael.forward(100)   # esto hace que se mueva raphael sin dibujar una línea raphael.pendown ()
 </code></pre>
 
-<p>Cada tortuga puede tener su propia forma. Los que están disponibles  son la <code>arrow</code> (flecha), <code>blank</code> (espacio en blanco), <code>circle</code> (círculo), <code>classic</code> (clásico), <code>square</code> (cuadrado), <code>triangle</code> (triángulo), <code>turtle</code> (tortuga).</p>
-<pre><code class="python">alex.shape(&quot;turtle&quot;)
+<p>Cada tortuga puede tener su propia forma. Las que están disponibles  son <code>arrow</code> (flecha), <code>blank</code> (espacio en blanco), <code>circle</code> (círculo), <code>classic</code> (clásico), <code>square</code> (cuadrado), <code>triangle</code> (triángulo), <code>turtle</code> (tortuga).</p>
+<pre><code class="python">raphael.shape(&quot;turtle&quot;)
 </code></pre>
 
-<p>Se puede acelerar o ralentizar la velocidad de la animación de la tortuga. El ajuste de velocidad varía entre 1 (lento) a 10 (más rápido). Sin embargo, si se establece la velocidad a 0 se desactivará la animación y se irá lo más rápido posible.</p>
-<pre><code class="python">alex.speed(10)
+<p>Se puede acelerar o ralentizar la <strong>velocidad</strong> de la animación de la tortuga. El ajuste de velocidad varía entre 1 (lento) a 10 (más rápido). Sin embargo, si se establece la velocidad a 0 se <strong>desactivará la animación</strong> y se irá lo más rápido posible.</p>
+<pre><code class="python">raphael.speed(10)
 </code></pre>
 
-<p>Una tortuga puede crear un “sello” (<code>stamp</code>) de su huella en el lienzo que seguirá así después de que la tortuga se haya movido a otra parte. Se sella, aun cuando la pluma está arriba.</p>
+<p>Una tortuga puede crear un “sello” (<code>stamp</code>) de su huella en el lienzo que seguirá así después de que la tortuga se haya movido a otra parte. Se sella, aun cuando la pluma esté arriba.</p>
 <p>El siguiente ejemplo muestra algunas de estas nuevas características:</p>
 <pre><code class="python">import turtle
 turtle.setup(800, 600)
 wn = turtle.Screen()
 wn.bgcolor(&quot;lightgreen&quot;)
-wn.title(&quot;Tess's Spiral&quot;)
-tess = turtle.Turtle()
-tess.shape(&quot;turtle&quot;)
-tess.color(&quot;blue&quot;)
+wn.title(&quot;Donatello's Spiral&quot;)
+donatello = turtle.Turtle()
+donatello.shape(&quot;turtle&quot;)
+donatello.color(&quot;blue&quot;)
 
-tess.penup()                    # this is new
+donatello.penup()           # this is new
 size = 20
 for i in range(30):
-    tess.stamp()                # leave an impression on the canvas
-    size = size + 3             # increase the size on every iteration
-    tess.forward(size)          # move tess along
-    tess.right(24)              # and turn her
+    donatello.stamp()       # leave an impression on the canvas
+    size = size + 3         # increase the size on every iteration
+    donatello.forward(size) # move donatello along
+    donatello.right(24)     # and turn her
 
 wn.exitonclick()
 </code></pre>
@@ -256,113 +260,115 @@ wn.exitonclick()
 <h3 id="turtle">Turtle</h3>
 <h4 id="movimiento-de-turtle">Movimiento de Turtle</h4>
 <h5 id="mover-y-dibujar">Mover y dibujar</h5>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.forward"><code>forward()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.fd"><code>fd()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.backward"><code>backward()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.bk"><code>bk()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.back"><code>back()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.right"><code>right()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.rt"><code>rt()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.left"><code>left()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.lt"><code>lt()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.goto"><code>goto()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.setpos"><code>setpos()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.setposition"><code>setposition()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.setx"><code>setx()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.sety"><code>sety()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.setheading"><code>setheading()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.seth"><code>seth()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.home"><code>home()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.circle"><code>circle()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.dot"><code>dot()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.stamp"><code>stamp()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.clearstamp"><code>clearstamp()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.clearstamps"><code>clearstamps()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.undo"><code>undo()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.speed"><code>speed()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.forward"><code>forward()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.fd"><code>fd()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.backward"><code>backward()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.bk"><code>bk()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.back"><code>back()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.right"><code>right()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.rt"><code>rt()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.left"><code>left()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.lt"><code>lt()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.goto"><code>goto()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.setpos"><code>setpos()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.setposition"><code>setposition()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.setx"><code>setx()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.sety"><code>sety()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.setheading"><code>setheading()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.seth"><code>seth()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.home"><code>home()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.circle"><code>circle()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.dot"><code>dot()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.stamp"><code>stamp()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.clearstamp"><code>clearstamp()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.clearstamps"><code>clearstamps()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.undo"><code>undo()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.speed"><code>speed()</code></a></p>
 <h5 id="mostrar-el-estado-de-turtle">Mostrar el estado de Turtle</h5>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.position"><code>position()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.pos"><code>pos()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.towards"><code>towards()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.xcor"><code>xcor()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.ycor"><code>ycor()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.heading"><code>heading()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.distance"><code>distance()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.position"><code>position()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.pos"><code>pos()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.towards"><code>towards()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.xcor"><code>xcor()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.ycor"><code>ycor()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.heading"><code>heading()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.distance"><code>distance()</code></a></p>
 <h5 id="medidas">Medidas</h5>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.degrees"><code>degrees()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.radians"><code>radians()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.degrees"><code>degrees()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.radians"><code>radians()</code></a></p>
 <h4 id="control-del-lapiz">Control del lápiz</h4>
 <h5 id="estado-del-lapiz">Estado del lápiz</h5>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.pendown"><code>pendown()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.pd"><code>pd()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.down"><code>down()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.penup"><code>penup()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.pu"><code>pu()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.up"><code>up()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.pensize"><code>pensize()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.width"><code>width()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.pen"><code>pen()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.isdown"><code>isdown()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.pendown"><code>pendown()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.pd"><code>pd()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.down"><code>down()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.penup"><code>penup()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.pu"><code>pu()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.up"><code>up()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.pensize"><code>pensize()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.width"><code>width()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.pen"><code>pen()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.isdown"><code>isdown()</code></a></p>
 <h5 id="control-del-color">Control del color</h5>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.color"><code>color()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.pencolor"><code>pencolor()</code></a><a href="https://docs.python.org/3/library/turtle.html#turtle.fillcolor"><code>fillcolor()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.color"><code>color()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.pencolor"><code>pencolor()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.fillcolor"><code>fillcolor()</code></a></p>
 <h5 id="relleno">Relleno</h5>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.filling"><code>filling()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.begin_fill"><code>begin_fill()</code></a><a href="https://docs.python.org/3/library/turtle.html#turtle.end_fill"><code>end_fill()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.filling"><code>filling()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.begin_fill"><code>begin_fill()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.end_fill"><code>end_fill()</code></a></p>
 <h5 id="mas-controles-de-dibujo">Más controles de dibujo</h5>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.reset"><code>reset()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.clear"><code>clear()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.write"><code>write()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.reset"><code>reset()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.clear"><code>clear()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.write"><code>write()</code></a></p>
 <h4 id="estado-de-turtle">Estado de Turtle</h4>
 <h5 id="visibilidad">Visibilidad</h5>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.showturtle"><code>showturtle()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.st"><code>st()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.hideturtle"><code>hideturtle()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.ht"><code>ht()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.isvisible"><code>isvisible()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.showturtle"><code>showturtle()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.st"><code>st()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.hideturtle"><code>hideturtle()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.ht"><code>ht()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.isvisible"><code>isvisible()</code></a></p>
 <h5 id="apariencia">Apariencia</h5>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.shape"><code>shape()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.resizemode"><code>resizemode()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.shapesize"><code>shapesize()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.turtlesize"><code>turtlesize()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.shearfactor"><code>shearfactor()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.settiltangle"><code>settiltangle()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.tiltangle"><code>tiltangle()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.tilt"><code>tilt()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.shapetransform"><code>shapetransform()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.get_shapepoly"><code>get_shapepoly()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.shape"><code>shape()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.resizemode"><code>resizemode()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.shapesize"><code>shapesize()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.turtlesize"><code>turtlesize()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.shearfactor"><code>shearfactor()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.settiltangle"><code>settiltangle()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.tiltangle"><code>tiltangle()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.tilt"><code>tilt()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.shapetransform"><code>shapetransform()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.get_shapepoly"><code>get_shapepoly()</code></a></p>
 <h4 id="uso-de-eventos">Uso de eventos</h4>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.onclick"><code>onclick()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.onrelease"><code>onrelease()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.ondrag"><code>ondrag()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.onclick"><code>onclick()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.onrelease"><code>onrelease()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.ondrag"><code>ondrag()</code></a></p>
 <h4 id="metodos-especiales-de-turtle">Métodos especiales de Turtle</h4>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.begin_poly"><code>begin_poly()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.end_poly"><code>end_poly()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.get_poly"><code>get_poly()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.clone"><code>clone()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.getturtle"><code>getturtle()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.getpen"><code>getpen()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.getscreen"><code>getscreen()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.setundobuffer"><code>setundobuffer()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.undobufferentries"><code>undobufferentries()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.begin_poly"><code>begin_poly()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.end_poly"><code>end_poly()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.get_poly"><code>get_poly()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.clone"><code>clone()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.getturtle"><code>getturtle()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.getpen"><code>getpen()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.getscreen"><code>getscreen()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.setundobuffer"><code>setundobuffer()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.undobufferentries"><code>undobufferentries()</code></a></p>
 <h2 id="metodos-de-turtlescreenscreen">Métodos de TurtleScreen/Screen</h2>
 <h3 id="control-de-la-ventana">Control de la ventana</h3>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.bgcolor"><code>bgcolor()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.bgpic"><code>bgpic()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.clear"><code>clear()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.clearscreen"><code>clearscreen()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.reset"><code>reset()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.resetscreen"><code>resetscreen()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.screensize"><code>screensize()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.setworldcoordinates"><code>setworldcoordinates()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.bgcolor"><code>bgcolor()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.bgpic"><code>bgpic()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.clear"><code>clear()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.clearscreen"><code>clearscreen()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.reset"><code>reset()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.resetscreen"><code>resetscreen()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.screensize"><code>screensize()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.setworldcoordinates"><code>setworldcoordinates()</code></a></p>
 <h3 id="control-de-la-animacion">Control de la animación</h3>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.delay"><code>delay()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.tracer"><code>tracer()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.update"><code>update()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.delay"><code>delay()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.tracer"><code>tracer()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.update"><code>update()</code></a></p>
 <h3 id="uso-de-eventos-de-pantalla">Uso de eventos de pantalla</h3>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.listen"><code>listen()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.onkey"><code>onkey()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.onkeyrelease"><code>onkeyrelease()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.onkeypress"><code>onkeypress()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.onclick"><code>onclick()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.onscreenclick"><code>onscreenclick()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.ontimer"><code>ontimer()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.mainloop"><code>mainloop()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.done"><code>done()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.listen"><code>listen()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.onkey"><code>onkey()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.onkeyrelease"><code>onkeyrelease()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.onkeypress"><code>onkeypress()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.onclick"><code>onclick()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.onscreenclick"><code>onscreenclick()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.ontimer"><code>ontimer()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.mainloop"><code>mainloop()</code></a> | <a href="https://docs.python.org/3/library/turtle.html#turtle.done"><code>done()</code></a></p>
 <h3 id="configuraciones-y-metodos-especiales">Configuraciones y métodos especiales</h3>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.mode"><code>mode()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.colormode"><code>colormode()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.getcanvas"><code>getcanvas()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.getshapes"><code>getshapes()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.register_shape"><code>register_shape()</code></a> | 
-<a href="https://docs.python.org/3/library/turtle.html#turtle.addshape"><code>addshape()</code></a><a href="https://docs.python.org/3/library/turtle.html#turtle.turtles"><code>turtles()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.window_height"><code>window_height()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.window_width"><code>window_width()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.mode"><code>mode()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.colormode"><code>colormode()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.getcanvas"><code>getcanvas()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.getshapes"><code>getshapes()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.register_shape"><code>register_shape()</code></a> | </p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.addshape"><code>addshape()</code></a><a href="https://docs.python.org/3/library/turtle.html#turtle.turtles"><code>turtles()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.window_height"><code>window_height()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.window_width"><code>window_width()</code></a></p>
 <h3 id="metodos-de-entrada">Métodos de entrada</h3>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.textinput"><code>textinput()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.numinput"><code>numinput()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.textinput"><code>textinput()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.numinput"><code>numinput()</code></a></p>
 <h3 id="metodos-especificos-de-screen">Métodos específicos de Screen</h3>
-<p><a href="https://docs.python.org/3/library/turtle.html#turtle.bye"><code>bye()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.exitonclick"><code>exitonclick()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.setup"><code>setup()</code></a>
-<a href="https://docs.python.org/3/library/turtle.html#turtle.title"><code>title()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.bye"><code>bye()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.exitonclick"><code>exitonclick()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.setup"><code>setup()</code></a></p>
+<p><a href="https://docs.python.org/3/library/turtle.html#turtle.title"><code>title()</code></a></p>
 <h1 id="ejercicios">Ejercicios</h1>
 <p>1.- Crea mediante funciones las siguientes formas geométricas:</p>
 <ul>

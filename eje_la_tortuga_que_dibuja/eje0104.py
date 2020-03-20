@@ -17,9 +17,9 @@ wn.title("Turtle")
 # Create the turtle
 squirtle = turtle.Turtle()
 squirtle.color("blue")
-squirtle.speed(0)
+squirtle.speed(5)
 
 # Draw the spiral
-square_spiral(squirtle, 400, 2)
+square_spiral(squirtle, 400, 5)
 
 turtle.done()
