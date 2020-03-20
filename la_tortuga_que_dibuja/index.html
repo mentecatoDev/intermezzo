@@ -114,18 +114,19 @@
             <div class="section">
               
                 <h1 id="la-tortuga-que-dibuja">La tortuga que dibuja</h1>
-<p>En 1967 <em>Wally Feurzeig</em> y <em>Seymour Papert</em> crearon <strong>Logo</strong>, un lenguaje de programación con fines educativos. Ese lenguaje incluía las llamadas "gráficos de tortuga". La "tortuga" de Logo es un cursor al que se le pueden dar órdenes de movimiento (avance, retroceso o giro) y que puede ir dejando un rastro sobre la pantalla. Moviendo adecuadamente la tortuga se pueden conseguir dibujar todo tipo de figuras. Python incluye un módulo llamado <code>turtle</code> que permite crear gráficos de tortuga.</p>
+<p>En 1967 <em>Wally Feurzeig</em> y <em>Seymour Papert</em> crearon <strong>Logo</strong>, un lenguaje de programación con fines educativos. Ese lenguaje incluía los "gráficos de tortuga". La "tortuga" de Logo es un cursor al que se le pueden dar órdenes de movimiento (avance, retroceso o giro) y que puede ir dejando un rastro sobre la pantalla. Moviendo adecuadamente la tortuga se pueden conseguir dibujar todo tipo de figuras.</p>
+<p>Python incluye un módulo llamado <code>turtle</code> que permite crear éste tipo de <strong>gráficos tortuga</strong>.</p>
 <h2 id="el-primer-programa-con-tortugas">El primer programa con tortugas</h2>
 <p>Se van a trazar un par de líneas en la terminal de Python para crear una nueva tortuga y empezar a dibujar un rectángulo. (La variable que refiere a la primera tortuga se llamará <code>alex</code>).</p>
 <pre><code class="python">import turtle
 
-# establece el tamaño de la ventana a 800x600 píxeles
+# Set the window size to 800x600 pixels
 turtle.setup(800, 600)
 
-# establece wn como objeto Screen
+# Set the Screen object as wn
 wn = turtle.Screen()
 
-# se crea la tortuga
+# Creates the turtle
 leonardo = turtle.Turtle()
 leonardo.forward(300)
 leonardo.left(90)
@@ -139,11 +140,11 @@ wn.exitonclick()
 <p>Aquí hay un par de cosas que se necesita entender acerca de este programa.</p>
 <ul>
 <li>La primera línea le dice a Python que cargue un módulo llamado <code>turtle</code>. Dicho módulo nos trae dos nuevos tipos que podemos utilizar: el tipo de <code>Turtle</code>, y el tipo de <code>Screen</code>. La notación de puntos <code>turtle.Turtle</code> significa <em>“El tipo de tortuga que se define en el módulo de Tortuga”</em> (Python distingue entre mayúsculas y minúsculas, así que el nombre del módulo, con una <code>t</code> minúscula, es diferente al que la tiene mayúscula).</li>
-<li>A continuación, se crea y abre lo que llamamos una screen, que se asigna a la variable <code>sc</code>. Cada <code>screen</code> contiene un <strong>lienzo (canvas)</strong>, que es el área dentro de ella en el que podemos dibujar. En la siguiente línea se crea una tortuga. La variable <code>alex</code> se usa para referirse a ella. Estas tres primeras líneas es la preparación para ahora hacer algunas cosas útiles.</li>
-<li>A continuación instruimos al <strong>objeto</strong> <code>alex</code> para que se mueva, y que gire. Hacemos esto mediante la <strong>invocación</strong> a los <strong>métodos</strong> de <code>alex</code> —estos son instrucciones a las que todas las tortugas saben cómo responder.</li>
-<li>La última línea también desempeña un papel: la variable <code>sc</code> se refiere a la ventana activa. Cuando se invoca el método <code>exitonclick</code>, detiene la ejecución del programa, y espera a que el usuario haga clic con el ratón en algún lugar de la ventana. Cuando este evento click se produce, la respuesta es cerrar la ventana de la tortuga y la salida (la ejecución de la parada) del programa de Python.</li>
+<li>A continuación, se crea y abre lo que llamamos una screen, que se asigna a la variable <code>sc</code>. Cada <code>screen</code> contiene un <strong>lienzo (canvas)</strong>, que es el área dentro de ella en el que podemos dibujar. En la siguiente línea se crea una tortuga. La variable <code>leonardo</code> se usa para referirse a ella. Estas tres primeras líneas es la preparación para ahora hacer algunas cosas útiles.</li>
+<li>A continuación instruimos al <strong>objeto</strong> <code>leonardo</code> para que se mueva, y que gire. Hacemos esto mediante la <strong>invocación</strong> a los <strong>métodos</strong> de <code>leonardo</code> —estos son instrucciones a las que todas las tortugas saben cómo responder.</li>
+<li>La última línea también desempeña un papel: la variable <code>wn</code> se refiere a la ventana activa. Cuando se invoca el método <code>exitonclick</code>, detiene la ejecución del programa, y espera a que el usuario haga clic con el ratón en algún lugar de la ventana. Cuando este evento click se produce, la respuesta es cerrar la ventana de la tortuga y la salida (la ejecución de la parada) del programa de Python.</li>
 </ul>
-<p>Un objeto puede tener varios métodos —las cosas que puede hacer— y también pueden tener <strong>atributos</strong> (también llamados <em>propiedades</em>). Por ejemplo, cada tortuga (<code>turtle</code>) tiene un atributo <code>color</code>. El modo de invocarlo es <code>alex.color("red")</code> que hará alex rojo, y el dibujo será de color rojo también. El color de la tortuga (<code>turtle</code>), la anchura de la pluma, la posición de la tortuga dentro de la ventana, la apariencia, etc. son partes de su <strong>estado</strong> actual. Del mismo modo, el objeto <code>screen</code> tiene un color de fondo y un texto en la barra de título, y un tamaño y posición en la pantalla. Todos ellos forman parte del estado del objeto <code>screen</code>. Hay un buen número de métodos que nos permiten modificar tortugas y screens. Vamos a mostrar un par:</p>
+<p>Un objeto puede tener varios métodos —las cosas que puede hacer— y también pueden tener <strong>atributos</strong> (también llamados <em>propiedades</em>). Por ejemplo, cada tortuga (<code>turtle</code>) tiene un atributo <code>color</code>. El modo de invocarlo es <code>leonardo.color("red")</code> que hará alex rojo, y el dibujo será de color rojo también. El color de la tortuga (<code>turtle</code>), la anchura de la pluma, la posición de la tortuga dentro de la ventana, la apariencia, etc. son partes de su <strong>estado</strong> actual. Del mismo modo, el objeto <code>screen</code> tiene un color de fondo y un texto en la barra de título, y un tamaño y posición en la pantalla. Todos ellos forman parte del estado del objeto <code>screen</code>. Hay un buen número de métodos que nos permiten modificar tortugas y screens. Vamos a mostrar un par:</p>
 <pre><code class="python">import turtle
 
 # establecer el tamaño de la ventana de 800 por 600 píxeles
@@ -212,7 +213,7 @@ wn.exitonclick()
 <p>que genera esto cuando se ejecuta:</p>
 <p><img alt="_images/tess_y_alex.png" src="../img_la_tortuga_que_dibuja/tess_y_alex.png" /></p>
 <h2 id="algunos-trucos-y-metodos-de-tortugas">Algunos trucos y métodos de tortugas</h2>
-<p>Los métodos de la tortuga pueden utilizar ángulos y distancias negativas. Así <code>tess.foward (-100)</code> moverá a tess hacia atrás y <code>tess.left (-30)</code> la gira a la derecha.</p>
+<p>Los métodos de la tortuga pueden utilizar ángulos y distancias negativas. Así <code>tess.forward(-100)</code> moverá a tess hacia atrás y <code>tess.left(-30)</code> la gira a la derecha.</p>
 <p>Además, dado que hay 360 grados en un círculo, al girar 30 a la izquierda se estará en la misma situación que si se gira 330 a la derecha! (La animación en la pantalla será diferente).También hay un método <code>backward</code> (si se es muy nerd, uno puede disfrutar de mover a <code>alex</code> hacia adelante mediante <code>alex.backward(-100)</code>).</p>
 <p>El lápiz de la tortuga se puede levantar (<code>penup</code>) o apoyar (<code>pendown</code>).  Esto nos permite mover una tortuga a un lugar diferente sin dibujar una línea. Los métodos son </p>
 <pre><code class="python">alex.penup()
