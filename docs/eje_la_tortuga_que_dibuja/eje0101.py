@@ -1,12 +1,16 @@
 import turtle
 
 
-def star(squirtle, side):
-    for i in range(5):
+def square(squirtle, side):
+    for i in range(4):
         squirtle.forward(side)
-        squirtle.right(144)
+        squirtle.right(90)
 
+
+turtle.setup(800, 600, 0, 0)
+wn = turtle.Screen()
 
 leonardo = turtle.Turtle()
-star(leonardo, 100)
+square(leonardo, 100)
+
 turtle.done()

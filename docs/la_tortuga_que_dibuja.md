@@ -8,11 +8,13 @@ Python incluye un módulo llamado `turtle` que permite crear éste tipo de **gr�
 
 Se van a trazar un par de líneas en la terminal de Python para crear una nueva tortuga y empezar a dibujar un rectángulo. (La variable que refiere a la primera tortuga se llamará `raphael`).
 
+FICHERO: `tortuga01.py`
+
 ```python
 import turtle
 
-# Set the window size to 800x600 pixels
-turtle.setup(800, 600)
+# Set the window size to 800x600 pixels at (0, 0)
+turtle.setup(800, 600, 0, 0)
 
 # Set the Screen object as wn
 wn = turtle.Screen()
@@ -23,7 +25,8 @@ leonardo.forward(300)
 leonardo.left(90)
 leonardo.forward(200)
 
-wn.exitonclick()
+turtle.done()
+
 ```
 
 Tras la segunda instrucción, se abrirá una nueva ventana. El tercer comando coloca un cursor – llamando cariñosamente a una `tortuga` del módulo – a la que se le ha puesto el nombre de `raphael`. Las siguientes tres líneas mueven a `raphael` hacia adelante, gira hacia la izquierda, y lo mueve hacia adelante una vez más, completando dos lados de un rectángulo. Después de introducir estos comandos, aparecerá una ventana que se parece a esto:
@@ -39,27 +42,31 @@ Aquí hay un par de cosas que se necesita entender acerca de este programa.
 
 Un objeto puede tener varios métodos —las cosas que puede hacer— y también puede tener **atributos** (también llamados *propiedades*). Por ejemplo, cada tortuga (`Turtle`) tiene un atributo `color`. El modo de invocarlo es `leonardo.color("red")` que hará a `leonardo` rojo, y el dibujo será de color rojo también. El color de la tortuga, la anchura de la pluma, la posición de la tortuga dentro de la ventana, la apariencia, etc. son partes de su **estado** actual. Del mismo modo, el objeto `Screen` tiene un color de fondo y un texto en la barra de título, y un tamaño y posición en la pantalla. Todos ellos forman parte del estado del objeto `screen`. Hay un buen número de métodos que nos permiten modificar tortugas y screens. Vamos a mostrar un par:
 
+FICHERO: `tortuga02.py`
+
 ```python
 import turtle
 
-# set the window size to 800 by 600 pixels
-turtle.setup(800, 600)
+# set the window size to 800 by 600 pixels at (0, 0)
+turtle.setup(800, 600, 0, 0)
 
 # set wn as a window object
-wn = turtle.Screen()    
+wn = turtle.Screen()  
 
 # set the background color of the window
 wn.bgcolor("lightgreen")
 
 # set the title of the window
-wn.title("¡Hola, Raphael!")     
+wn.title("¡Hola, Raphael!")
 raphael = turtle.Turtle()
 raphael.color("blue")      # make raphael blue
-raphael.pensize(3)         # set the width of the pen  
+raphael.pensize(3)         # set the width of the pen
 raphael.forward(300)
 raphael.left(120)
 raphael.forward(300)
-wn.exitonclick()
+
+turtle.done()
+
 ```
 
 La ejecución de este programa creará una ventana gráfica que se verá así:
@@ -77,10 +84,13 @@ Cuando se ejecuta este programa aparece esta nueva ventana y permanecerá en pan
 
 Al igual que podemos tener muchos enteros diferentes en un programa, podemos tener muchas tortugas. Cada una de ellas es una **instancia**. Cada instancia tiene sus propios atributos y métodos -por lo que `raphael` puede dibujar con un lápiz negro delgado y estar en alguna posición, mientras que `donatello` podría ir en su propia dirección con un bolígrafo de color rosa grueso (`fat pink`). Aquí está lo que sucede cuando `raphael` termina su rectángulo, y `donatello` completa su triángulo:
 
+FICHERO: `tortuga03.py`
+
 ```python
 import turtle
+
 # setup the window and its attributes
-turtle.setup(800, 600)
+turtle.setup(800, 600, 0, 0)
 wn = turtle.Screen()
 wn.bgcolor("lightgreen")
 wn.title("donatello & raphael")
@@ -113,7 +123,9 @@ raphael.left(90)
 raphael.forward(200)
 raphael.left(90)
 raphael.forward(200)
-wn.exitonclick()
+
+turtle.done()
+
 ```
 
 que genera esto cuando se ejecuta:
@@ -149,9 +161,12 @@ Una tortuga puede crear un “sello” (`stamp`) de su huella en el lienzo que s
 
 El siguiente ejemplo muestra algunas de estas nuevas características:
 
+FICHERO: `tortuga04.py`
+
 ```python
 import turtle
-turtle.setup(800, 600)
+
+turtle.setup(800, 600, 0, 0)
 wn = turtle.Screen()
 wn.bgcolor("lightgreen")
 wn.title("Donatello's Spiral")
@@ -159,15 +174,16 @@ donatello = turtle.Turtle()
 donatello.shape("turtle")
 donatello.color("blue")
 
-donatello.penup()           # this is new
+donatello.penup()            # this is new
 size = 20
 for i in range(30):
-    donatello.stamp()       # leave an impression on the canvas
-    size = size + 3         # increase the size on every iteration
-    donatello.forward(size) # move donatello along
-    donatello.right(24)     # and turn her
+    donatello.stamp()        # leave an impression on the canvas
+    size = size + 3          # increase the size on every iteration
+    donatello.forward(size)  # move donatello along
+    donatello.right(24)      # and turn her
 
-wn.exitonclick()
+turtle.done()
+
 ```
 que genera esto cuando se ejecuta:
 
@@ -373,9 +389,9 @@ que genera esto cuando se ejecuta:
 
 [`getshapes()`](https://docs.python.org/3/library/turtle.html#turtle.getshapes)
 
-[`register_shape()`](https://docs.python.org/3/library/turtle.html#turtle.register_shape) | 
+[`register_shape()`](https://docs.python.org/3/library/turtle.html#turtle.register_shape) | [`addshape()`](https://docs.python.org/3/library/turtle.html#turtle.addshape)
 
-[`addshape()`](https://docs.python.org/3/library/turtle.html#turtle.addshape)[`turtles()`](https://docs.python.org/3/library/turtle.html#turtle.turtles)
+[`turtles()`](https://docs.python.org/3/library/turtle.html#turtle.turtles)
 
 [`window_height()`](https://docs.python.org/3/library/turtle.html#turtle.window_height)
 
@@ -403,6 +419,10 @@ que genera esto cuando se ejecuta:
 
 - un cuadrado de tamaño `side`
 
+![](./img_la_tortuga_que_dibuja/eje0101.png)
+
+FICHERO: `eje0101.py`
+
 ```python
 import turtle
 
@@ -413,13 +433,21 @@ def square(squirtle, side):
         squirtle.right(90)
 
 
+turtle.setup(800, 600, 0, 0)
+wn = turtle.Screen()
+
 leonardo = turtle.Turtle()
 square(leonardo, 100)
+
 turtle.done()
 
 ```
 
 - una estrella de cinco puntas de lado `side`
+
+![](./img_la_tortuga_que_dibuja/eje0102.png)
+
+FICHERO: `eje0102.py`
 
 ```python
 import turtle
@@ -431,12 +459,21 @@ def star(squirtle, side):
         squirtle.right(144)
 
 
+turtle.setup(800, 600, 0, 0)
+wn = turtle.Screen()
+
 leonardo = turtle.Turtle()
-star(leonardo, 100)
+star(leonardo, 200)
+
 turtle.done()
+
 ```
 
 - un polígono de `sides` lados de longitud `side_lenght`
+
+![](./img_la_tortuga_que_dibuja/eje0103.png)
+
+FICHERO: `eje0103.py`
 
 ```python
 import turtle
@@ -457,6 +494,10 @@ turtle.done()
 
 - una espiral cuadrada de lado `size` y decremento `dec`
 
+![](./img_la_tortuga_que_dibuja/eje0104.png)
+
+FICHERO: `eje0104.py`
+
 ```python
 import turtle
 
@@ -469,17 +510,15 @@ def square_spiral(squirtle, size, dec):
             size -= dec
 
 
-# Prepare the screen
+turtle.setup(800, 600, 0, 0)
 wn = turtle.Screen()
 wn.bgcolor("light green")
 wn.title("Turtle")
 
-# Create the turtle
 squirtle = turtle.Turtle()
 squirtle.color("blue")
 
-# Draw the spiral
-square_spiral(squirtle, 200, 2)
+square_spiral(squirtle, 200, 5)
 
 turtle.done()
 

@@ -1,37 +1,38 @@
 import turtle
+
 # setup the window and its attributes
-turtle.setup(800, 600)
+turtle.setup(800, 600, 0, 0)
 wn = turtle.Screen()
 wn.bgcolor("lightgreen")
-wn.title("Tess & Alex")
+wn.title("donatello & raphael")
 
-# instantiate (create) tess and set her attributes
-tess = turtle.Turtle()
-tess.color("hotpink")
-tess.pensize(5)
+# instantiate (create) donatello and set his attributes
+donatello = turtle.Turtle()
+donatello.color("hotpink")
+donatello.pensize(5)
 
-# instantiate alex
-alex = turtle.Turtle()
+# instantiate raphael
+raphael = turtle.Turtle()
 
-# draw an equilateral triangle with tess
-tess.forward(320)
-tess.left(120)
-tess.forward(320)
-tess.left(120)
-tess.forward(320)
-tess.left(120)
+# draw an equilateral triangle with donatello
+donatello.forward(320)
+donatello.left(120)
+donatello.forward(320)
+donatello.left(120)
+donatello.forward(320)
+donatello.left(120)
 
-# turn tess around and move her away from the origin
-tess.right(180)
-tess.forward(320)
+# turn donatello around and move her away from the origin
+donatello.right(180)
+donatello.forward(320)
 
-# make alex draw a square
-alex.forward(200)
-alex.left(90)
-alex.forward(200)
-alex.left(90)
-alex.forward(200)
-alex.left(90)
-alex.forward(200)
+# make raphael draw a square
+raphael.forward(200)
+raphael.left(90)
+raphael.forward(200)
+raphael.left(90)
+raphael.forward(200)
+raphael.left(90)
+raphael.forward(200)
 
-wn.exitonclick()
+turtle.done()

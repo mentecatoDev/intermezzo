@@ -8,6 +8,10 @@ def poligon(squirtle, sides, side_length):
         squirtle.left(angle)
 
 
+turtle.setup(800, 600, 0, 0)
+wn = turtle.Screen()
+
 leonardo = turtle.Turtle()
-poligon(leonardo, 5, 200)
+poligon(leonardo, 6, 100)
+
 turtle.done()
