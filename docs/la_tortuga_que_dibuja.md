@@ -421,105 +421,27 @@ que genera esto cuando se ejecuta:
 
 ![](./img_la_tortuga_que_dibuja/eje0101.png)
 
-FICHERO: `eje0101.py`
+SOLUCIÓN: [eje0101.py](https://github.com/mentecatoDev/intermezzo/blob/master/docs/eje_la_tortuga_que_dibuja/eje0101.py)
 
-```python
-import turtle
-
-
-def square(squirtle, side):
-    for i in range(4):
-        squirtle.forward(side)
-        squirtle.right(90)
-
-
-turtle.setup(800, 600, 0, 0)
-wn = turtle.Screen()
-
-leonardo = turtle.Turtle()
-square(leonardo, 100)
-
-turtle.done()
-
-```
 
 - una estrella de cinco puntas de lado `side`
 
 ![](./img_la_tortuga_que_dibuja/eje0102.png)
 
-FICHERO: `eje0102.py`
+SOLUCIÓN: [eje0102.py](https://github.com/mentecatoDev/intermezzo/blob/master/docs/eje_la_tortuga_que_dibuja/eje0102.py)
 
-```python
-import turtle
-
-
-def star(squirtle, side):
-    for i in range(5):
-        squirtle.forward(side)
-        squirtle.right(144)
-
-
-turtle.setup(800, 600, 0, 0)
-wn = turtle.Screen()
-
-leonardo = turtle.Turtle()
-star(leonardo, 200)
-
-turtle.done()
-
-```
 
 - un polígono de `sides` lados de longitud `side_lenght`
 
 ![](./img_la_tortuga_que_dibuja/eje0103.png)
 
-FICHERO: `eje0103.py`
-
-```python
-import turtle
+SOLUCIÓN: [eje0103.py](https://github.com/mentecatoDev/intermezzo/blob/master/docs/eje_la_tortuga_que_dibuja/eje0103.py)
 
 
-def poligon(squirtle, sides, side_length):
-    angle = 360 / sides
-    for i in range(sides):
-        squirtle.forward(side_length)
-        squirtle.right(angle)
-
-
-leonardo = turtle.Turtle()
-poligon(leonardo, 6, 100)
-turtle.done()
-
-```
-
-- una espiral cuadrada de lado `size` y decremento `dec`
+- una espiral cuadrada azul en fondo verde de lado `size` y decremento `dec`
 
 ![](./img_la_tortuga_que_dibuja/eje0104.png)
 
-FICHERO: `eje0104.py`
-
-```python
-import turtle
+SOLUCIÓN: [eje0104.py](https://github.com/mentecatoDev/intermezzo/blob/master/docs/eje_la_tortuga_que_dibuja/eje0104.py)
 
 
-def square_spiral(squirtle, size, dec):
-    for i in range(size//(dec * 4)):
-        for i in range(4):
-            squirtle.fd(size)
-            squirtle.left(90)
-            size -= dec
-
-
-turtle.setup(800, 600, 0, 0)
-wn = turtle.Screen()
-wn.bgcolor("light green")
-wn.title("Turtle")
-
-squirtle = turtle.Turtle()
-squirtle.color("blue")
-
-square_spiral(squirtle, 200, 5)
-
-turtle.done()
-
-```
