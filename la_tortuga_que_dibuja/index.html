@@ -387,100 +387,22 @@ turtle.done()
 <li>un cuadrado de tamaño <code>side</code></li>
 </ul>
 <p><img alt="" src="../img_la_tortuga_que_dibuja/eje0101.png" /></p>
-<p>FICHERO: <code>eje0101.py</code></p>
-<pre><code class="python">import turtle
-
-
-def square(squirtle, side):
-    for i in range(4):
-        squirtle.forward(side)
-        squirtle.right(90)
-
-
-turtle.setup(800, 600, 0, 0)
-wn = turtle.Screen()
-
-leonardo = turtle.Turtle()
-square(leonardo, 100)
-
-turtle.done()
-
-</code></pre>
-
+<p>SOLUCIÓN: <a href="https://github.com/mentecatoDev/intermezzo/blob/master/docs/eje_la_tortuga_que_dibuja/eje0101.py">eje0101.py</a></p>
 <ul>
 <li>una estrella de cinco puntas de lado <code>side</code></li>
 </ul>
 <p><img alt="" src="../img_la_tortuga_que_dibuja/eje0102.png" /></p>
-<p>FICHERO: <code>eje0102.py</code></p>
-<pre><code class="python">import turtle
-
-
-def star(squirtle, side):
-    for i in range(5):
-        squirtle.forward(side)
-        squirtle.right(144)
-
-
-turtle.setup(800, 600, 0, 0)
-wn = turtle.Screen()
-
-leonardo = turtle.Turtle()
-star(leonardo, 200)
-
-turtle.done()
-
-</code></pre>
-
+<p>SOLUCIÓN: <a href="https://github.com/mentecatoDev/intermezzo/blob/master/docs/eje_la_tortuga_que_dibuja/eje0102.py">eje0102.py</a></p>
 <ul>
 <li>un polígono de <code>sides</code> lados de longitud <code>side_lenght</code></li>
 </ul>
 <p><img alt="" src="../img_la_tortuga_que_dibuja/eje0103.png" /></p>
-<p>FICHERO: <code>eje0103.py</code></p>
-<pre><code class="python">import turtle
-
-
-def poligon(squirtle, sides, side_length):
-    angle = 360 / sides
-    for i in range(sides):
-        squirtle.forward(side_length)
-        squirtle.right(angle)
-
-
-leonardo = turtle.Turtle()
-poligon(leonardo, 6, 100)
-turtle.done()
-
-</code></pre>
-
+<p>SOLUCIÓN: <a href="https://github.com/mentecatoDev/intermezzo/blob/master/docs/eje_la_tortuga_que_dibuja/eje0103.py">eje0103.py</a></p>
 <ul>
-<li>una espiral cuadrada de lado <code>size</code> y decremento <code>dec</code></li>
+<li>una espiral cuadrada azul en fondo verde de lado <code>size</code> y decremento <code>dec</code></li>
 </ul>
 <p><img alt="" src="../img_la_tortuga_que_dibuja/eje0104.png" /></p>
-<p>FICHERO: <code>eje0104.py</code></p>
-<pre><code class="python">import turtle
-
-
-def square_spiral(squirtle, size, dec):
-    for i in range(size//(dec * 4)):
-        for i in range(4):
-            squirtle.fd(size)
-            squirtle.left(90)
-            size -= dec
-
-
-turtle.setup(800, 600, 0, 0)
-wn = turtle.Screen()
-wn.bgcolor(&quot;light green&quot;)
-wn.title(&quot;Turtle&quot;)
-
-squirtle = turtle.Turtle()
-squirtle.color(&quot;blue&quot;)
-
-square_spiral(squirtle, 200, 5)
-
-turtle.done()
-
-</code></pre>
+<p>SOLUCIÓN: <a href="https://github.com/mentecatoDev/intermezzo/blob/master/docs/eje_la_tortuga_que_dibuja/eje0104.py">eje0104.py</a></p>
               
             </div>
           </div>
