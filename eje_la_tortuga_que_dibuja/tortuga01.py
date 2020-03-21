@@ -1,15 +1,15 @@
 import turtle
 
-# establece el tamaño de la ventana a 800x600 píxeles
-turtle.setup(800, 600)
+# Set the window size to 800x600 pixels at (0, 0)
+turtle.setup(800, 600, 0, 0)
 
-# establece wn como objeto Screen
+# Set the Screen object as wn
 wn = turtle.Screen()
 
-# se crea la tortuga
+# Creates the turtle
 leonardo = turtle.Turtle()
 leonardo.forward(300)
 leonardo.left(90)
 leonardo.forward(200)
 
-wn.exitonclick()
+turtle.done()
