@@ -421,27 +421,48 @@ que genera esto cuando se ejecuta:
 
 ![](./img_la_tortuga_que_dibuja/eje0101.png)
 
-SOLUCIÓN: [eje0101.py](https://github.com/mentecatoDev/intermezzo/blob/master/docs/eje_la_tortuga_que_dibuja/eje0101.py)
+SOLUCIÓN: [eje0101.py](https://raw.githubusercontent.com/mentecatoDev/intermezzo/master/docs/eje_la_tortuga_que_dibuja/eje0101.py)
 
 
 - una estrella de cinco puntas de lado `side`
 
 ![](./img_la_tortuga_que_dibuja/eje0102.png)
 
-SOLUCIÓN: [eje0102.py](https://github.com/mentecatoDev/intermezzo/blob/master/docs/eje_la_tortuga_que_dibuja/eje0102.py)
+SOLUCIÓN: [eje0102.py](https://raw.githubusercontent.com/mentecatoDev/intermezzo/master/docs/eje_la_tortuga_que_dibuja/eje0102.py)
 
 
 - un polígono de `sides` lados de longitud `side_lenght`
 
 ![](./img_la_tortuga_que_dibuja/eje0103.png)
 
-SOLUCIÓN: [eje0103.py](https://github.com/mentecatoDev/intermezzo/blob/master/docs/eje_la_tortuga_que_dibuja/eje0103.py)
+SOLUCIÓN: [eje0103.py](https://raw.githubusercontent.com/mentecatoDev/intermezzo/master/docs/eje_la_tortuga_que_dibuja/eje0103.py)
 
 
 - una espiral cuadrada azul en fondo verde de lado `size` y decremento `dec`
 
 ![](./img_la_tortuga_que_dibuja/eje0104.png)
 
-SOLUCIÓN: [eje0104.py](https://github.com/mentecatoDev/intermezzo/blob/master/docs/eje_la_tortuga_que_dibuja/eje0104.py)
+SOLUCIÓN: [eje0104.py](https://raw.githubusercontent.com/mentecatoDev/intermezzo/master/docs/eje_la_tortuga_que_dibuja/eje0104.py)
 
+2.- Crear un programa que dibuje líneas de ancho creciente alrededor de un punto central:
+
+- creando un patrón atractivo.
+
+![](./img_la_tortuga_que_dibuja/eje0201.png)
+
+SOLUCIÓN: [eje0201.py](https://raw.githubusercontent.com/mentecatoDev/intermezzo/master/docs/eje_la_tortuga_que_dibuja/eje0201.py)
+
+- partiendo del ejercicio anterior pero creando un patrón hexagonal
+
+  
+
+![](./img_la_tortuga_que_dibuja/eje0202.png)
+
+SOLUCIÓN: [eje0202.py](https://raw.githubusercontent.com/mentecatoDev/intermezzo/master/docs/eje_la_tortuga_que_dibuja/eje0202.py)
+
+- terminar dando color para construir el "Arcoiris de Benceno"
+
+![](./img_la_tortuga_que_dibuja/eje0203.png)
+
+SOLUCIÓN: [eje0203.py](https://raw.githubusercontent.com/mentecatoDev/intermezzo/master/docs/eje_la_tortuga_que_dibuja/eje0203.py)
 
