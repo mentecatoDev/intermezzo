@@ -35,4 +35,4 @@ raphael.forward(200)
 raphael.left(90)
 raphael.forward(200)
 
-turtle.done()
+wn.exitonclick()

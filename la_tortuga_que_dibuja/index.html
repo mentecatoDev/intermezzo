@@ -62,11 +62,17 @@
     
         <ul>
         
+            <li><a class="toctree-l3" href="#la-ventana-de-dibujo-setup-y-title">La ventana de dibujo: setup() y title()</a></li>
+        
             <li><a class="toctree-l3" href="#el-primer-programa-con-tortugas">El primer programa con tortugas</a></li>
         
             <li><a class="toctree-l3" href="#una-manada-de-tortugas">Una manada de tortugas</a></li>
         
             <li><a class="toctree-l3" href="#algunos-trucos-y-metodos-de-tortugas">Algunos trucos y métodos de tortugas</a></li>
+        
+            <li><a class="toctree-l3" href="#relleno-de-figuras">Relleno de figuras</a></li>
+        
+            <li><a class="toctree-l3" href="#dibujar-circulos-circle">Dibujar círculos: circle()</a></li>
         
             <li><a class="toctree-l3" href="#vista-general-de-los-metodos-para-turtle-y-screen">Vista general de los métodos para Turtle y Screen</a></li>
         
@@ -116,6 +122,29 @@
                 <h1 id="la-tortuga-que-dibuja">La tortuga que dibuja</h1>
 <p>En 1967 <em>Wally Feurzeig</em> y <a href="https://www.youtube.com/watch?v=2js2cFrtg8I"><em>Seymour Papert</em></a> crearon <strong>Logo</strong>, un lenguaje de programación con fines educativos. Ese lenguaje incluía los "gráficos de tortuga". La "tortuga" de Logo es un cursor al que se le pueden dar órdenes de movimiento (avance, retroceso o giro) y que puede ir dejando un rastro sobre la pantalla. Moviendo adecuadamente la tortuga se puede conseguir dibujar todo tipo de figuras.</p>
 <p>Python incluye un módulo llamado <code>turtle</code> que permite crear éste tipo de <strong>gráficos tortuga</strong>.</p>
+<p>Para utilizar el módulo turtle sólo hace falta importarlo:</p>
+<ul>
+<li>Si se va a escribir código no orientado a objetos:</li>
+</ul>
+<pre><code class="python">from turtle import *
+</code></pre>
+
+<ul>
+<li>Si se va a escribir código orientado a objetos (que es la que se usará a partir de ahora):</li>
+</ul>
+<pre><code class="python">import turtle
+</code></pre>
+
+<h2 id="la-ventana-de-dibujo-setup-y-title">La ventana de dibujo: setup() y title()</h2>
+<p>El módulo <code>turtle</code> dibuja en una ventana propia.</p>
+<p>El método/función <code>setup(ancho, alto, posicionX, posicionY)</code> permite definir el tamaño y la posición inicial de la ventana. Los cuatro argumentos de la función son (en píxeles):</p>
+<ul>
+<li><strong>ancho</strong>: ancho de la ventana.</li>
+<li><strong>alto</strong>: alto de la ventana.</li>
+<li><strong>posicionX</strong>: posición horizontal de la ventana. Los valores positivos se miden desde el borde izquierdo de la pantalla, los negativos desde el borde derecho de la pantalla.</li>
+<li><strong>posicionY</strong>: posición vertical de la ventana. Los valores positivos se miden desde el borde superior de la pantalla, los negativos desde el borde inferior de la pantalla.</li>
+</ul>
+<p><img alt="Módulo turtle. Ejes de coordenadas" src="../img_la_tortuga_que_dibuja/turtle-ejes.png" /></p>
 <h2 id="el-primer-programa-con-tortugas">El primer programa con tortugas</h2>
 <p>Se van a trazar un par de líneas en la terminal de Python para crear una nueva tortuga y empezar a dibujar un rectángulo. (La variable que refiere a la primera tortuga se llamará <code>raphael</code>).</p>
 <p>FICHERO: <code>tortuga01.py</code></p>
@@ -133,18 +162,19 @@ leonardo.forward(300)
 leonardo.left(90)
 leonardo.forward(200)
 
-turtle.done()
+wn.exitonclick()
 
 </code></pre>
 
-<p>Tras la segunda instrucción, se abrirá una nueva ventana. El tercer comando coloca un cursor – llamando cariñosamente a una <code>tortuga</code> del módulo – a la que se le ha puesto el nombre de <code>raphael</code>. Las siguientes tres líneas mueven a <code>raphael</code> hacia adelante, gira hacia la izquierda, y lo mueve hacia adelante una vez más, completando dos lados de un rectángulo. Después de introducir estos comandos, aparecerá una ventana que se parece a esto:</p>
+<p>Tras la segunda instrucción, se abrirá una nueva ventana. El tercer comando coloca un cursor –llamando cariñosamente a una <code>turtle</code> del módulo– a la que se le ha puesto el nombre de <code>raphael</code>. Las siguientes tres líneas mueven a <code>raphael</code> hacia adelante, gira hacia la izquierda, y lo mueve hacia adelante una vez más, completando dos lados de un rectángulo.</p>
+<p>Después de introducir estos comandos, se verá una ventana que se parecerá a esto:</p>
 <p><img alt="_images/raphael.png" src="../img_la_tortuga_que_dibuja/alex.png" /></p>
 <p>Aquí hay un par de cosas que se necesita entender acerca de este programa.</p>
 <ul>
-<li>La primera línea le dice a Python que cargue un módulo llamado <code>turtle</code>. Dicho módulo trae dos nuevos tipos que se pueden utilizar: el tipo de <code>Turtle</code>, y el tipo de <code>Screen</code>. La notación de puntos <code>turtle.Turtle</code> significa <em>“El tipo</em> <code>Turtle</code> <em>definido en el módulo</em> <code>turtle</code><em>”</em> (Python distingue entre mayúsculas y minúsculas, así que el nombre del módulo, con una <code>t</code> minúscula, es diferente al que la tiene mayúscula).</li>
-<li>A continuación, se crea y abre lo que llamamos una <code>screen</code>, que se asigna a la variable <code>wn</code>. Cada <code>screen</code> contiene un <strong>lienzo (canvas)</strong>, que es el área dentro de ella en la que se puede dibujar. En la siguiente línea se crea una tortuga. La variable <code>leonardo</code> se usa para referirse a ella. Estas tres primeras líneas son la preparación para ahora hacer algunas cosas útiles.</li>
-<li>A continuación se instruye al <strong>objeto</strong> <code>leonardo</code> para que se mueva, y que gire. Se hace mediante la <strong>invocación</strong> a los <strong>métodos</strong> de <code>leonardo</code> — instrucciones a las que todas las tortugas saben cómo responder.</li>
-<li>La última línea también desempeña un papel: la variable <code>wn</code> se refiere a la ventana activa. Cuando se invoca el método <code>exitonclick</code>,  se detiene la ejecución del programa y se espera a que el usuario haga clic con el ratón en algún lugar de la ventana. Cuando este evento click se produce, la respuesta es cerrar la ventana de la tortuga y la salida (la ejecución de la parada) del programa de Python.</li>
+<li>La primera línea le dice a Python que cargue un módulo llamado <code>turtle</code>. Dicho módulo trae dos nuevos tipos que se pueden utilizar: la clase <code>Turtle</code>, y la clase <code>Screen</code>. La notación de puntos <code>turtle.Turtle</code> significa <em>“La clase</em> <code>Turtle</code> <em>definida en el módulo</em> <code>turtle</code><em>”</em> (Python distingue entre mayúsculas y minúsculas, así que el nombre del módulo, con una <code>t</code> minúscula, es diferente al que la tiene mayúscula).</li>
+<li>A continuación, se crea y abre lo que se llama una <code>Screen</code>, que se asigna a la variable <code>wn</code>. Cada <code>Screen</code> contiene un lienzo (<strong>canvas</strong>), que es el área dentro de ella en la que se puede dibujar. En la siguiente línea se crea una tortuga. La variable <code>leonardo</code> se usa para referirse a ella. Estas tres primeras líneas son la preparación para ahora hacer algunas cosas útiles.</li>
+<li>A continuación se instruye al <strong>objeto</strong> <code>leonardo</code> para que se mueva, y que gire. Se hace mediante la <strong>invocación</strong> a los <strong>métodos</strong> de <code>leonardo</code> —instrucciones a las que todas las tortugas saben cómo responder.</li>
+<li>La última línea también desempeña un papel: la variable <code>wn</code> se refiere a la ventana activa. Cuando se invoca el método <code>exitonclick</code>,  se detiene la ejecución del programa y se espera a que el usuario haga <em>click</em> con el ratón en algún lugar de la ventana. Cuando este evento <em>click</em> se produce, la respuesta es cerrar la ventana de la tortuga y la salida (la ejecución de la parada) del programa de Python.</li>
 </ul>
 <p>Un objeto puede tener varios métodos —las cosas que puede hacer— y también puede tener <strong>atributos</strong> (también llamados <em>propiedades</em>). Por ejemplo, cada tortuga (<code>Turtle</code>) tiene un atributo <code>color</code>. El modo de invocarlo es <code>leonardo.color("red")</code> que hará a <code>leonardo</code> rojo, y el dibujo será de color rojo también. El color de la tortuga, la anchura de la pluma, la posición de la tortuga dentro de la ventana, la apariencia, etc. son partes de su <strong>estado</strong> actual. Del mismo modo, el objeto <code>Screen</code> tiene un color de fondo y un texto en la barra de título, y un tamaño y posición en la pantalla. Todos ellos forman parte del estado del objeto <code>screen</code>. Hay un buen número de métodos que nos permiten modificar tortugas y screens. Vamos a mostrar un par:</p>
 <p>FICHERO: <code>tortuga02.py</code></p>
@@ -168,7 +198,7 @@ raphael.forward(300)
 raphael.left(120)
 raphael.forward(300)
 
-turtle.done()
+wn.exitonclick()
 
 </code></pre>
 
@@ -219,28 +249,40 @@ raphael.forward(200)
 raphael.left(90)
 raphael.forward(200)
 
-turtle.done()
+wn.exitonclick()
 
 </code></pre>
 
 <p>que genera esto cuando se ejecuta:</p>
 <p><img alt="_images/donatello_y_raphael.png" src="../img_la_tortuga_que_dibuja/tess_y_alex.png" /></p>
 <h2 id="algunos-trucos-y-metodos-de-tortugas">Algunos trucos y métodos de tortugas</h2>
-<p>Los métodos de la tortuga pueden utilizar ángulos y distancias negativas. Así <code>donatello.forward(-100)</code> moverá a donatello hacia atrás y <code>donatello.left(-30)</code> la gira a la derecha.</p>
+<h3 id="showturtle-hideturtle"><code>showturtle()</code>, <code>hideturtle()</code></h3>
+<p>El método <code>showturtle()</code> muestra el cursor (la tortuga) mientras que <code>hideturtle()</code> la oculta.</p>
+<h3 id="penup-y-pendown"><code>penup()</code> y <code>pendown()</code></h3>
+<p>Los métodos <code>pendown()</code> y <code>penup()</code> son equivalentes a bajar y levantar el lápiz del papel. Una vez levantado el lápiz del papel, al desplazar la tortuga ya no se dibujan segmentos. Al volver a bajar el lápiz y desplazar la tortuga, vuelven a dibujarse los segmentos.</p>
+<h3 id="goto-setx-y-sety"><code>goto()</code>, <code>setx()</code> y <code>sety()</code></h3>
+<p>Los píxeles del área de dibujo se pueden localizar mediante un sistema de coordenadas XY centrado en el centro del área de dibujo. Al crear la ventana, el cursor se sitúa en el centro de la ventana, de coordenadas (0, 0).</p>
+<p>La función <code>goto(x, y)</code> permite desplazar el cursor a una posición determinada del área de dibujo y, si la tortuga tiene su lápiz abajo (<code>pendown</code>) traza el recorrido desde la posición actual a las coordenadas indicadas por <code>x</code> e <code>y</code> del método <code>goto</code>.</p>
+<p><code>setx(x)</code> y <code>sety(y)</code> realizan la misma función que <code>goto</code> pero tocando solo una de las dos coordenadas de destino.</p>
+<h3 id="pensize-pencolor-y-colormode"><code>pensize()</code>, <code>pencolor()</code> y <code>colormode()</code></h3>
+<p>El método <code>pensize(grosor)</code> permite modificar el grosor del trazo.
+El método <code>pencolor(rojo, azul, verde)</code> permite modificar el color del trazo. El color se da como combinación de rojo, azul y verde. Los valores de color se pueden dar como valores enteros entre 0 y 255 o como valores decimales entre 0 y 1. Para elegir entre un modo u otro se utiliza la función <code>colormode(1)</code> o <code>colormode(255)</code>. También se pueden utilizar nombres de colores, que incluyen entre otros los <a href="https://www.mclibre.org/consultar/htmlcss/css/css-color.html#svg">nombres de colores SVG</a>, en cuyo caso no hace falta utilizar el método <code>colormode()</code>.</p>
+<h3 id="dot"><code>dot()</code></h3>
+<p>La función <strong>dot(grosor, color)</strong> permite dibujar un punto del grosor y color indicado en el punto en el que se encuentre la tortuga. El grosor se indica en píxeles y el color se expresa como en la función <strong>pencolor()</strong> vista en el apartado anterior (entre paréntesis, como tupla, o sin paréntesis). Los puntos se dibujan indistintamente de la posición del lápiz (<code>penup</code>, <code>pendown</code>).</p>
+<h3 id="angulos-y-distancias-negativas">Ángulos y distancias <strong>negativas</strong></h3>
+<p>Los métodos de la tortuga pueden utilizar ángulos y distancias negativas. Así <code>donatello.forward(-100)</code> moverá a <code>donatello</code> hacia atrás y <code>donatello.left(-30)</code> lo gira a la derecha.</p>
 <p>Además, dado que hay 360 grados en un círculo, al girar 30 a la izquierda se estará en la misma situación que si se gira 330 a la derecha! (La animación en la pantalla será diferente).También hay un método <code>backward</code> (si se es muy nerd, uno puede disfrutar de mover a <code>raphael</code> hacia adelante mediante <code>raphael.backward(-100)</code>).</p>
-<p>El lápiz de la tortuga se puede levantar (<code>penup</code>) o apoyar (<code>pendown</code>).  Esto nos permite mover una tortuga a un lugar diferente sin dibujar una línea. Los métodos son </p>
-<pre><code class="python">raphael.penup()
-raphael.forward(100)   # esto hace que se mueva raphael sin dibujar una línea raphael.pendown ()
-</code></pre>
-
+<h3 id="formas-de-tortuga-shape">Formas de tortuga: <code>shape()</code></h3>
 <p>Cada tortuga puede tener su propia forma. Las que están disponibles  son <code>arrow</code> (flecha), <code>blank</code> (espacio en blanco), <code>circle</code> (círculo), <code>classic</code> (clásico), <code>square</code> (cuadrado), <code>triangle</code> (triángulo), <code>turtle</code> (tortuga).</p>
 <pre><code class="python">raphael.shape(&quot;turtle&quot;)
 </code></pre>
 
+<h3 id="velocidad-speed">Velocidad: <code>speed()</code></h3>
 <p>Se puede acelerar o ralentizar la <strong>velocidad</strong> de la animación de la tortuga. El ajuste de velocidad varía entre 1 (lento) a 10 (más rápido). Sin embargo, si se establece la velocidad a 0 se <strong>desactivará la animación</strong> y se irá lo más rápido posible.</p>
 <pre><code class="python">raphael.speed(10)
 </code></pre>
 
+<h3 id="sello-stamp">Sello: <code>stamp()</code></h3>
 <p>Una tortuga puede crear un “sello” (<code>stamp</code>) de su huella en el lienzo que seguirá así después de que la tortuga se haya movido a otra parte. Se sella, aun cuando la pluma esté arriba.</p>
 <p>El siguiente ejemplo muestra algunas de estas nuevas características:</p>
 <p>FICHERO: <code>tortuga04.py</code></p>
@@ -268,6 +310,64 @@ turtle.done()
 
 <p>que genera esto cuando se ejecuta:</p>
 <p><img alt="_images/espiral.png" src="../img_la_tortuga_que_dibuja/espiral.png" /></p>
+<h2 id="relleno-de-figuras">Relleno de figuras</h2>
+<p>El método <code>begin_fill()</code> indica a Python que las figuras que se dibujen a partir de ese momento se deben rellenar. El método <code>end_fill()</code> indica a Python que las figuras deben dejar de rellenarse.</p>
+<p>El método <code>fillcollor(color)</code> permite establecer el color de relleno, de la misma manera que la función <code>pencolor()</code>.</p>
+<p>Si no se establece un color de relleno distinto, el color de relleno predeterminado es el negro.</p>
+<p>Para rellenar una figura, se debe llamar a la función <code>begin_fill()</code>, dibujar la figura y llamar a la función <code>end_fill()</code>.</p>
+<p>FICHERO: <code>tortuga05.py</code></p>
+<pre><code class="python">import turtle
+
+wn = turtle.Screen()
+wn.setup(800, 600, 0, 0)
+wn.title(&quot;Relleno de figuras&quot;)
+
+leonardo = turtle.Turtle()
+leonardo.hideturtle()
+
+leonardo.pensize(5)
+leonardo.fillcolor(&quot;red&quot;)
+
+leonardo.begin_fill()
+leonardo.goto(100, 0)
+leonardo.goto(100, 50)
+leonardo.goto(0, 50)
+leonardo.goto(0, 0)
+leonardo.end_fill()
+
+wn.exitonclick()
+
+</code></pre>
+
+<p><img alt="Módulo turtle. Funciones begin_fill" src="../img_la_tortuga_que_dibuja/turtle-fill-1.png" /></p>
+<p>Si no se establece un color de relleno distinto, el color de relleno predeterminado es el negro.</p>
+<p>Aunque realmente no es necesario dibujar la figura completa ya que Python rellena la figura aunque no se cierre  (es como si Python uniera el último punto de la figura con el primero).</p>
+<p>Si las líneas de la figura se cruzan, Python rellena cada una de las partes cerradas.</p>
+<p>FICHERO: <code>turtle06.py</code></p>
+<pre><code class="python">import turtle
+
+wn = turtle.Screen()
+wn.setup(800, 600, 0, 0)
+wn.title(&quot;Relleno de figuras&quot;)
+
+leonardo = turtle.Turtle()
+leonardo.speed(1)
+
+leonardo.pensize(5)
+leonardo.fillcolor(&quot;red&quot;)
+leonardo.begin_fill()
+leonardo.goto(100, 100)
+leonardo.goto(200, -100)
+leonardo.goto(300, 0)
+leonardo.goto(0, 0)
+leonardo.end_fill()
+leonardo.hideturtle()
+
+wn.exitonclick()
+</code></pre>
+
+<p><img alt="Módulo turtle. Funciones begin_fill(), end_fill() y fillcolor()" src="https://www.mclibre.org/consultar/python/img/turtle/turtle-fill-4.png" /></p>
+<h2 id="dibujar-circulos-circle">Dibujar círculos: circle()</h2>
 <h2 id="vista-general-de-los-metodos-para-turtle-y-screen">Vista general de los métodos para Turtle y Screen</h2>
 <h3 id="turtle">Turtle</h3>
 <h4 id="movimiento-de-turtle">Movimiento de Turtle</h4>

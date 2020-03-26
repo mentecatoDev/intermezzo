@@ -18,5 +18,4 @@ squirtle = turtle.Turtle()
 squirtle.color("blue")
 
 square_spiral(squirtle, 200, 5)
-
 turtle.done()
