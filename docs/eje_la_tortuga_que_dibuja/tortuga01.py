@@ -12,4 +12,4 @@ leonardo.forward(300)
 leonardo.left(90)
 leonardo.forward(200)
 
-turtle.done()
+wn.exitonclick()
