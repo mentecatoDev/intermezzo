@@ -46,7 +46,7 @@ wn_height = 768
 
 turtle.setup(wn_width, wn_height, 0, 0)
 wn = turtle.Screen()
-
+print(total_days, max_confirmed)
 wn.setworldcoordinates(0, 0, total_days, max_confirmed)
 
 leonardo = turtle.Turtle()
