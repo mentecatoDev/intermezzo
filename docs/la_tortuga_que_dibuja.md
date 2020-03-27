@@ -274,7 +274,6 @@ leonardo.goto(0, 0)
 leonardo.end_fill()
 
 wn.exitonclick()
-
 ```
 
 ![Módulo turtle. Funciones begin_fill](./img_la_tortuga_que_dibuja/turtle-fill-1.png)
@@ -312,7 +311,172 @@ wn.exitonclick()
 
   ![Módulo turtle. Funciones begin_fill(), end_fill() y fillcolor()](https://www.mclibre.org/consultar/python/img/turtle/turtle-fill-4.png)
 
-## Dibujar círculos: circle()
+### Cambio de coordenadas: `setworldcoordinates()`
+
+La función `setworldcoordinates(x1, y1, x2, y2)` permite modificar las coordenadas de la ventana, definiendo las coordenadas de la esquina inferior izquierda (x1, y1) y de la esquina superior derecha (x2, y2).
+
+El interés de esta función es poder **desplazar el origen del centro de coordenadas** y **cambiar la escala**:
+
+- De forma predeterminada, el origen está en el centro de la ventana y cada píxel es una unidad:
+
+```python
+import turtle
+
+wn = turtle.Screen()
+wn.setup(450, 200, 0, 0)
+wn.title("Romero Vargas")
+
+leonardo = turtle.Turtle()
+leonardo.hideturtle()
+leonardo.goto(150, 150)
+
+wn.exitonclick()
+```
+![Módulo turtle. Función setworldcoordinates](./img_la_tortuga_que_dibuja/turtle-setworldcoordinates-1.png)
+
+- Con `setworldcoordinates()` se puede cambiar las coordenadas de manera que el origen esté en cualquier sitio, por ejemplo en la esquina inferior izquierda.
+
+```python
+import turtle
+
+wn = turtle.Screen()
+wn.setup(450, 200, 0, 0)
+wn.title("www.mclibre.org")
+wn.setworldcoordinates(0, 0, 449, 199)
+
+leonardo = turtle.Turtle()
+leonardo.hideturtle()
+leonardo.goto(150, 150)
+
+wn.exitonclick()
+```
+
+  ![Módulo turtle. Función setworldcoordinates()](https://www.mclibre.org/consultar/python/img/turtle/turtle-setworldcoordinates-2.png)
+
+
+## Escribir texto: `write()`
+
+La función `write(texto, desplazarTortuga, alineación, fuente)` permite escribir texto en el espacio de dibujo. Los cuatro argumentos de la función son:
+
+- **texto**: cadena de texto a escribir. La esquina inferior izquierda del texto se sitúa donde esté el cursor, salvo que se indique otra cosa con el tercer argumento (alineación).
+
+```python
+import turtle
+
+wn = turtle.Screen()
+wn.setup(800, 600, 0, 0)
+
+leonardo = turtle.Turtle()
+leonardo.goto(50, 10)
+leonardo.write("Esto es una prueba")
+
+wn.exitonclick()
+```
+
+![Módulo turtle. Función write](./img_la_tortuga_que_dibuja/turtle-write-1.png)
+
+- **desplazarTortuga**: valor booleano que indica si el cursor se desplaza automáticamente a la esquina inferior derecha del texto. El valor predeterminado es `False`
+
+```python
+import turtle
+
+wn = turtle.Screen()
+wn.setup(800, 600, 0, 0)
+
+leonardo = turtle.Turtle()
+leonardo.goto(50, 10)
+leonardo.write("Esto es una prueba", True)
+
+wn.exitonclick()
+```
+
+![Módulo turtle. Función write](./img_la_tortuga_que_dibuja/turtle-write-3.png)]
+
+- **alineación**: cadena (`left`, `center`, `right`) que indica si el texto se escribe a la izquierda, al centro o a la derecha a partir de la posición del cursor. El valor predeterminado es `left`.
+
+```python
+from turtle import *
+
+setup(450, 150, 0, 0)
+screensize(300, 150)
+title("www.mclibre.org")
+
+goto(50,10)
+write("Esto es una prueba", False, "left")
+```
+
+![Módulo turtle. Función write](./img_la_tortuga_que_dibuja/turtle-write-4.png)
+
+![Módulo turtle. Función write](./eje_la_tortuga_que_dibuja/turtle-write-5.png)
+
+![Módulo turtle. Función write](./eje_la_tortuga_que_dibuja/turtle-write-6.png)
+
+- **fuente**: tupla de hasta tres elementos que indican el tipo de letra (cualquiera de los instalados en el ordenador: "arial", "courier", etc.), su tamaño y variante ("bold", "italic", "underline", "overstrike" -se pueden utilizar varios a la vez-).
+
+```python
+import turtle
+
+wn = turtle.Screen()
+wn.setup(800, 600, 0, 0)
+
+leonardo = turtle.Turtle()
+leonardo.goto(50, 10)
+leonardo.write("Esto es una prueba", False, "right", ("arial", 20, "bold italic"))
+
+wn.exitonclick()
+```
+
+![Módulo turtle. Función write](./img_la_tortuga_que_dibuja/turtle-write-7.png)]
+
+> Se pueden omitir los últimos argumentos, pero no los anteriores. Por ejemplo, podemos omitir el tipo de letra (el cuarto argumento), pero si queremos especificar el tipo de letra, debemos indicar los tres argumentos anteriores.
+
+## Solicitar valores al usuario: textinput() y numinput()
+
+Para pedir datos al usuario en un programa que dibuja gráficos de tortuga se pueden utilizar la función `input()`. El inconveniente es que esta función solicita los datos en la ventana de la consola, por lo que hay que estar cambiando el foco de una ventana a otra.
+
+En vez de la función `input()`, se pueden utilizar las funciones `textinput()` y `numinput()` de la biblioteca `turtle`.
+
+La función `textinput(<título>, <mensaje>)` solicita una cadena al usuario en una ventana emergente. Los dos argumentos de la función son:
+
+- **título**: el título de la ventana emergente.
+- **mensaje**: el texto que se muestra en la ventana.
+
+```python
+import turtle
+
+wn = turtle.Screen()
+wn.setup(800, 600, 0, 0)
+
+name = wn.textinput("Nombre", "¿Cuál es su nombre?")
+leonardo = turtle.Turtle()
+leonardo.write(name)
+
+wn.exitonclick()
+```
+
+![Módulo turtle. Función textinput](./img_la_tortuga_que_dibuja/turtle-textinput-1.png)
+
+El método `numinput(<título>, <mensaje>, <valorPredeterminado>, <valorMínimo>, <valorMáximo>)` solicita un número al usuario en una ventana emergente. Los dos argumentos de la función son:
+
+- **título**: el título de la ventana emergente.
+- **mensaje**: el texto que se muestra en la ventana.
+- **valorPredeterminado**: el valor que se muestra en la ventana de forma predeterminada.
+- **valorMínimo**: el valor mínimo que puede escribir el usuario.
+- **valorMáximo**: el valor máximo que puede escribir el usuario.
+
+```python
+from turtle import *
+
+setup(450, 150, 0, 0)
+screensize(300, 150)
+title("www.mclibre.org")
+
+edad = numinput("Edad", "¿Cuál es su edad?", 20, 0, 120)
+```
+
+![Módulo turtle. Función numinput(/home/pater/Dropbox/Apuntes/python/intermezzo/docs/img_la_tortuga_que_dibuja/index.md)](https://www.mclibre.org/consultar/python/img/turtle/turtle-numinput-1.png)
+
+Si se escribe un valor numérico menor que valorMínimo o mayor que valorMáximo, se mostrará un aviso.
 
 ## Vista general de los métodos para Turtle y Screen 
 
@@ -591,3 +755,7 @@ SOLUCIÓN: [eje0202.py](https://raw.githubusercontent.com/mentecatoDev/intermezz
 
 SOLUCIÓN: [eje0203.py](https://raw.githubusercontent.com/mentecatoDev/intermezzo/master/docs/eje_la_tortuga_que_dibuja/eje0203.py)
 
+
+```
+
+```
