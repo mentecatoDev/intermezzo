@@ -2,7 +2,7 @@ import turtle
 
 
 def square_spiral(squirtle, size, dec):
-    for i in range(size//(dec * 4)):
+    for i in range(size//(dec * 3)):
         for i in range(4):
             squirtle.fd(size)
             squirtle.left(90)
@@ -17,5 +17,5 @@ wn.title("Turtle")
 squirtle = turtle.Turtle()
 squirtle.color("blue")
 
-square_spiral(squirtle, 200, 5)
-turtle.done()
+square_spiral(squirtle, 300, 5)
+turtle.exitonclick()

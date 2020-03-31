@@ -13,4 +13,4 @@ for x in range(200):
     leonardo.forward(x)
     leonardo.left(88)
 
-turtle.done()
+turtle.exitonclick()
