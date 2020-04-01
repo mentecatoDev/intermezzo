@@ -12,6 +12,6 @@ turtle.setup(800, 600, 0, 0)
 wn = turtle.Screen()
 
 leonardo = turtle.Turtle()
-poligon(leonardo, 6, 100)
+poligon(leonardo, 7, 120)
 
-turtle.done()
+turtle.exitonclick()

@@ -13,4 +13,4 @@ wn = turtle.Screen()
 leonardo = turtle.Turtle()
 square(leonardo, 100)
 
-turtle.done()
+turtle.exitonclick()
