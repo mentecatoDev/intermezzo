@@ -1,16 +1,12 @@
 # Bots de Telegram en python
 
-Hace un tiempo, en un grupo de Telegram surgió la necesidad de desarrollar un bot con una función muy concreta: Clasificar los enlaces que publicaban los usuarios para que no se perdieran.
+Este documento pretende ser una pequeña guía sobre cómo desarrollar un bot básico.
 
-Hacía mucho tiempo que quería hincarle el diente a esto de los bots de Telegram y ésta fue la excusa perfecta.
+## ¿Qué es eso de un bot?
 
-Este artículo pretende ser una pequeña guía sobre cómo desarrollar un bot que cumpla con esta función. Como me conozco, la idea será irlo desarrollando de manera paulatina. Así que, si todo va bien, puede que éste sea el primero de una serie de artículos sobre el tema.
+Es un programa capaz de **engancharse** a una conversación de un sistema de mensajería, atender a los mensajes de los usuarios e interactuar con estos de distintos modos.
 
-# ¿Qué es eso de un bot?
-
-Es un programa capaz de “engancharse” a una conversación de un sistema de mensajería, atender a los mensajes de los usuarios e interactuar con estos de distintos modos.
-
-Uno de estos modos consiste en tener una serie de comandos que desencadenen acciones preprogramadas, cuando el usuario lanza uno de estos comandos, el bot hace algo concreto. Los comandos, en el caso de los bots de Telegram, siempre empiezan por un carácter “/”
+Uno de estos modos consiste en tener una serie de comandos que desencadenen **acciones preprogramadas**, cuando el usuario lanza uno de estos comandos, el bot hace algo concreto. Los comandos, en el caso de los bots de Telegram, siempre empiezan por un carácter “/”
 
 ![img](./img_bots_de_telegram_en_python/1*dyJOl5__7nQSrqkeLk8IVg.png)
 
@@ -18,7 +14,9 @@ Uno de estos modos consiste en tener una serie de comandos que desencadenen acci
 
 Por ejemplo, si un nuevo bot entiende un comando `/list_languages`, cuando un usuario de una conversación en la que está presente escribe `/list_languages`, el bot devuelve una lista con nombres de lenguajes de programación. Lo que ocurrirá es que se tendrá un nuevo mensaje en la conversación, enviado por el bot, en respuesta al comando.
 
-Otro modo de actuar totalmente distinto es el de los *bots inline*. Los bots inline esperan que el resto de miembros de la conversación empiecen un nuevo mensaje haciendo mención a su nombre precedido del carácter `@`. Se han desarrollado múltiples bots inline muy interesantes, por ejemplo, `@gif` que espera que se le pase un texto y devuelve gifs relacionados con el mismo.
+### Bots inline
+
+Otro modo de actuar totalmente distinto es el de los ***bots inline***. Los bots inline esperan que el resto de miembros de la conversación empiecen un nuevo mensaje haciendo mención a su nombre precedido del carácter `@`. Se han desarrollado múltiples bots inline muy interesantes, por ejemplo, `@gif` que espera que se le pase un texto y devuelve gifs relacionados con el mismo.
 
 ![img](/home/pater/Dropbox/Apuntes/python/intermezzo/docs/img_bots_de_telegram_en_python/1*0znCu6PMuSe0jOXNYBLRmg.png)
 
@@ -28,7 +26,7 @@ También están los que viven agazapados en la ventana de chat y actúan espont�
 
 # Generando un bot
 
-Los desarrolladores de Telegram han elegido un método muy llamativo para **solicitar las credenciales** necesarias para comenzar a trabajar con su API de bots. Básicamente *hay que abrir una conversación* con “@BotFather” desde el propio Telegram. “@BotFather” es un bot y reconoce una serie de comandos.
+Los desarrolladores de Telegram han elegido un método muy llamativo para **solicitar las credenciales** necesarias para comenzar a trabajar con su API de bots. Básicamente *hay que abrir una conversación* con `@BotFather` desde el propio Telegram. `@BotFather` es un bot y reconoce una serie de comandos.
 
 El que nos ocupa es `/newbot`, que pedirá que se introduzca un nombre para el  nuevo esbirro digital así como un nombre de usuario.
 
@@ -45,17 +43,17 @@ Use this token to access the HTTP API:
 110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw
 ```
 
-Esta ristra de números y letras es el identificador del bot, al que todo el mundo refiere como token y se debería cuidar. Cualquiera que utilice ese token será, a efectos de la API de Telegram, tu bot. Esto tendrá sentido en un momento. Por cierto, ese token no es válido.
+Esta ristra de números y letras es el identificador del bot, al que todo el mundo refiere como token y **se debería cuidar**. Cualquiera que utilice ese token será, a efectos de la API de Telegram, tu bot. Esto tendrá sentido en un momento -por cierto, ese token no es válido, ;-).
 
 Lo siguiente que se debe hacer es lanzar en la conversación con `@BotFather` el comando `/setdescription`; con él se podrá introducir un texto breve que sirva para presentar en sociedad al bot. Cada vez que alguien abra una conversación con él, verá esta descripción.
 
 
 
-![img](./img_bots_de_telegram_en_python/1*po5va9FDQq54s3ByRXsw1A.png)
+![img](./img_bots_de_telegram_en_python/4.jpg)
 
 Por último, habrá que ponerle cara, así que buscar una imagen adecuada y, una vez más, dentro de la ventana de la conversación con “@BotFather” lanzar el comando `/setuserpic “@BotFather”`. Pedirá que se suba una imagen de la galería que pasará a ser la imagen del perfil del bot.
 
-![img](./img_bots_de_telegram_en_python/1*_TAnMBSKqecxxe8BEF3HoA.png)
+![img](./img_bots_de_telegram_en_python/5.jpg)
 
 Todas las piezas están en su sitio, el bot existe, tiene un nombre e imagen de perfil, ahora toca darle un poco de vida.
 
@@ -93,8 +91,9 @@ Vamos a empezar con un código mínimo que nos permita interactuar con el bot. D
 
 ```python
 from telegram.ext import Updater
-from config.auth import tokenif __name__ == '__main__':
-    updater = Updater(token=token)
+from config.auth import token
+if __name__ == '__main__':
+    updater = Updater(token=token, use_context=True)
     dispatcher = updater.dispatcher
 ```
 
@@ -104,7 +103,7 @@ El objeto `Updater` es el responsable de enviar las *“reacciones”* del bot d
 
 Para inicializar el bot, habrá que pasarle el token que nos identifica unívocamente en los *servidores de Telegram*.
 
-El propio objeto `Updater` nos devuelve la referencia a otro objeto importantísimo, el `dispatcher`. Si el bot fuera un ser vivo, el `dispatcher` sería su oreja. La función del *dispatcher* es mantenerse a la escucha en todas las ventanas de chat en las que esté presente el ente digital.
+El propio objeto `Updater` nos devuelve la referencia a otro objeto importantísimo, el `dispatcher`. *Si el bot fuera un ser vivo, el `dispatcher` sería su oreja.* La función del *dispatcher* es mantenerse a la escucha en todas las ventanas de chat en las que esté presente el ente digital.
 
 # Un poco de feedback
 
@@ -117,10 +116,11 @@ La manera de utilizar `logging` puede parecer un poco extraña, pero se verá qu
 ```python
 import logging
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)logger = logging.getLogger('AchicaynaBot')
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+logger = logging.getLogger('AchicaynaBot')
 ```
 
-La primera línea importa la librería. La segunda línea, sin embargo sí empieza a ser interesante. Lo que hacemos es configurar qué información se va a almacenar cada vez que se registre un evento.
+La primera línea importa la librería. La segunda línea, sin embargo sí empieza a ser interesante. Lo que hacemos es **configurar qué información se va a almacenar** cada vez que se registre un evento.
 
 El primer argumento es `format` y, en este caso, se ha decidido configurar las salidas de esta manera:
 
@@ -134,7 +134,7 @@ A continuación, separado por un guión, aparecerá el nombre del bot, separado 
 
 El segundo argumento es `level` que establece la gravedad mínima que tiene que tener un evento para que el bot decida molestar.
 
-Los mensajes de registro suelen tener una jerarquía dónde los mensajes menos prioritarios son aquellos que los programadores utilizan para buscar errores en el código y los más importantes son aquellos que, de producirse, podrían hacer que la aplicación no pudiera continuar funcionando. Por orden de menor a mayor prioridad, se diría que los niveles de registro son: *Debug*, *info*, *warning*, *error* y *critical*. Si no se indica otra cosa, la librería `logging` está configurada para mostrar mensajes con categoría mínima de *warning*. Esta categoría de eventos representa un aviso de que ha ocurrido algo inesperado.
+Los mensajes de registro suelen tener una jerarquía donde los mensajes menos prioritarios son aquellos que los programadores utilizan para buscar errores en el código y los más importantes son aquellos que, de producirse, podrían hacer que la aplicación no pudiera continuar funcionando. Por orden de menor a mayor prioridad, se diría que los niveles de registro son: *Debug*, *info*, *warning*, *error* y *critical*. Si no se indica otra cosa, la librería `logging` está configurada para mostrar mensajes con categoría mínima de *warning*. Esta categoría de eventos representa un aviso de que ha ocurrido algo inesperado.
 
 Si se deja esta configuración tal cual, la información que se espera recibir no se mostraría, porque no es algo inesperado, así que se establece el nivel mínimo de prioridad en info. Esto se hace pasando el siguiente valor como segundo argumento:
 
@@ -150,24 +150,25 @@ De manera que, si se quisiere enviar un mensaje al usuario para informarle de qu
 logger.debug(‘Este mensaje es sólo para frikis programadores como nosotros’)
 logger.info(‘Este mensaje representa algo normal’)
 logger.warning(‘Esto ya no es tan normal’)
-logger.error(‘Deberías empezar a preocuparte’)logger.critical(‘El bot está así X(’)
+logger.error(‘Deberías empezar a preocuparte’)
+logger.critical(‘El bot está así X(’)
 ```
 
-En primer lugar, vamos a hacer que pueda responder a su primer comando. Este comando será `/start` y como respuesta enviará un mensaje al chat en el que diga: “Soy un Achicayna, que, entre los primeros pobladores de Canarias, era el equivalente a un plebeyo”.
+En primer lugar, vamos a hacer que pueda responder a su primer comando. Este comando será `/start` y como respuesta enviará un mensaje al chat en el que diga: *“Soy un Achicayna, que, entre los primeros pobladores de Canarias, era el equivalente a un plebeyo”*.
 
 Habrá que hablar de nuevo con `@BotFather` e indicarle que se quiere configurar el bot. Para ello se le envía el comando `/mybots`, que listará todos los bots que se han creado hasta la fecha.
 
-![img](./img_bots_de_telegram_en_python/1*2jvUmVfyCk0XyXFKLGVfMQ.png)
+![img](./img_bots_de_telegram_en_python/6.jpg)
 
-Con el comando `/mybots` siempre se puee consultar la lista de bots creado.
+Con el comando `/mybots` siempre se puede consultar la lista de los bots creados.
 
 Una vez seleccionado el bot, dará una serie de opciones que permiten configurar distintos aspectos del mismo.
 
-![img](./img_bots_de_telegram_en_python/1*NJg5Rzu-nAtPf956e8tOnA.png)
+![img](./img_bots_de_telegram_en_python/7.jpg)
 
 Seleccionar la opción “Edit Bot” y una vez allí “@BotFather” ofrecerá un nuevo menú.
 
-![img](./img_bots_de_telegram_en_python/1*DDLZ0bG0cQ0qNGfIGoS74Q.png)
+![img](./img_bots_de_telegram_en_python/8.jpg)
 
 En este menú se puede definir la lista de comandos del bot.
 
@@ -178,7 +179,7 @@ comando1 - Texto explicativo sobre el comando1.
 comando2 - Texto explicativo sobre el comando2.
 ```
 
-![img](./img_bots_de_telegram_en_python/1*3ZGneh4Ow-gU1tq9Fn7yZQ.png)
+![img](./img_bots_de_telegram_en_python/9.jpg)
 
 
 Se añade el comando start.
@@ -230,34 +231,34 @@ updater.idle()
 El código final del bot quedaría de este modo:
 
 ```python
-from telegram.ext import Updater, CommandHandler
+from telegram.ext import Updater, CommandHandler, CallbackContext
 from config.auth import token
 
 import logging
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s -   
-                    %(message)s', level=logging.INFO)
-logger = logging.getLogger('AchicaynaBot')
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s \
+    - %(message)s', level=logging.INFO)
+logger = logging.getLogger('romerovargasbot')
 
 
-def start(bot, update):
+def start(update: Updater, context: CallbackContext):
     logger.info('He recibido un comando start')
-    bot.send_message(
+    context.bot.send_message(
         chat_id=update.message.chat_id,
-        text="Soy un Achicayna, que entre los primeros pobladores de 
-              Canarias era el equivalente a un plebeyo."
-    )
+        text="Soy un Achicayna, que entre los primeros pobladores de Canarias\
+             era el equivalente a un plebeyo.")
 
 
 if __name__ == '__main__':
 
-    updater = Updater(token=token)
+    updater = Updater(token=token, use_context=True)
     dispatcher = updater.dispatcher
 
     dispatcher.add_handler(CommandHandler('start', start))
 
     updater.start_polling()
     updater.idle()
+
 ```
 
 Si ejecutásemos el bot haciendo uso del comando `python src/bot.py` se podrá comenzar a conversar con Achicayna, aunque, por ahora, es un bot un poco soso.
