@@ -755,7 +755,24 @@ SOLUCIÓN: [eje0202.py](https://raw.githubusercontent.com/mentecatoDev/intermezz
 
 SOLUCIÓN: [eje0203.py](https://raw.githubusercontent.com/mentecatoDev/intermezzo/master/docs/eje_la_tortuga_que_dibuja/eje0203.py)
 
+3.- Contamos con un fichero [covid-19.txt](https://raw.githubusercontent.com/mentecatoDev/intermezzo/master/docs/eje_la_tortuga_que_dibuja/covid-19.txt) que mantiene un histórico de contagios del virus que nos está confinando con el siguiente formato por línea:
 
 ```
-
+<fecha "aaaammdd">, <casos>, <fallecidos>, <recuperados>
 ```
+Se trata de construir un gráfico por cada uno de los parámetros ofrecidos por este fichero además de un parámetro calculado, `<casos/día>`, que nos permitirá describir el proceso de evolución de la curva de contagios. Los gráficos han de ser semejantes a los siguientes:
+
+![](./img_la_tortuga_que_dibuja/confirmados.png)
+
+![](./img_la_tortuga_que_dibuja/mortales.png)
+
+![](./img_la_tortuga_que_dibuja/recuperados.png)
+
+![](./img_la_tortuga_que_dibuja/diarios.png)
+
+Se recomienda:
+
+- Hacer uso de funciones para la reutilización del código
+- Utilizar parámetros para generalizar las posibilidades de reutilización del código
+
+SOLUCIÓN: [eje0300.py](https://raw.githubusercontent.com/mentecatoDev/intermezzo/master/docs/eje_la_tortuga_que_dibuja/eje0300.py)

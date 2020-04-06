@@ -119,6 +119,22 @@ draw_graph("Confirmados totales", confirmed, wn, wn_width, wn_height, days,
 input("Pulsa «Enter» para continuar...")
 turtle.resetscreen()
 
+# Draw graph "Víctimas Mortales"
+draw_graph("Víctimas Mortales", deads, wn, wn_width, wn_height,
+           days, 1000, "green")
+
+# Wait until press enter and reset the screen
+input("Pulsa «Enter» para continuar...")
+turtle.resetscreen()
+
+# Draw graph "Recuperados"
+draw_graph("Recuperados", deads, wn, wn_width, wn_height,
+           days, 1000, "green")
+
+# Wait until press enter and reset the screen
+input("Pulsa «Enter» para continuar...")
+turtle.resetscreen()
+
 # Draw graph "Confirmados diarios"
 draw_graph("Confirmados diarios", confirmed_per_day, wn, wn_width, wn_height,
            days, 1000, "green")
