@@ -121,25 +121,25 @@
 <h2 id="que-es-eso-de-un-bot">¿Qué es eso de un bot?</h2>
 <p>Es un programa capaz de <strong>engancharse</strong> a una conversación de un sistema de mensajería, atender a los mensajes de los usuarios e interactuar con estos de distintos modos.</p>
 <p>Uno de estos modos consiste en tener una serie de comandos que desencadenen <strong>acciones preprogramadas</strong>, cuando el usuario lanza uno de estos comandos, el bot hace algo concreto. Los comandos, en el caso de los bots de Telegram, siempre empiezan por un carácter “/”</p>
-<p><img alt="img" src="../img_bots_de_telegram_en_python/1*dyJOl5__7nQSrqkeLk8IVg.png" /></p>
-<p><strong>BotFather</strong> es un ejemplo claro del uso de comandos que comienzan con “/”</p>
+<p><img alt="img" src="../img_bots_de_telegram_en_python/1.jpg" /></p>
+<p><img alt="img" src="../img_bots_de_telegram_en_python/2.jpg" /></p>
 <p>Por ejemplo, si un nuevo bot entiende un comando <code>/list_languages</code>, cuando un usuario de una conversación en la que está presente escribe <code>/list_languages</code>, el bot devuelve una lista con nombres de lenguajes de programación. Lo que ocurrirá es que se tendrá un nuevo mensaje en la conversación, enviado por el bot, en respuesta al comando.</p>
 <h3 id="bots-inline">Bots inline</h3>
 <p>Otro modo de actuar totalmente distinto es el de los <strong><em>bots inline</em></strong>. Los bots inline esperan que el resto de miembros de la conversación empiecen un nuevo mensaje haciendo mención a su nombre precedido del carácter <code>@</code>. Se han desarrollado múltiples bots inline muy interesantes, por ejemplo, <code>@gif</code> que espera que se le pase un texto y devuelve gifs relacionados con el mismo.</p>
-<p><img alt="img" src="/home/pater/Dropbox/Apuntes/python/intermezzo/docs/img_bots_de_telegram_en_python/1*0znCu6PMuSe0jOXNYBLRmg.png" /></p>
+<p><img alt="img" src="../img_bots_de_telegram_en_python/interstellar.jpg" /></p>
 <p>Si se escribe <code>@gif</code> en cualquier conversación de Telegram se puede buscar gif’s animados de una manera muy simple. Es un ejemplo de bot inline.</p>
 <p>También están los que viven agazapados en la ventana de chat y actúan espontáneamente reaccionando a los propios mensajes. Así que éste es el tipo de bot sobre con el que se va a trabajar.</p>
 <h1 id="generando-un-bot">Generando un bot</h1>
 <p>Los desarrolladores de Telegram han elegido un método muy llamativo para <strong>solicitar las credenciales</strong> necesarias para comenzar a trabajar con su API de bots. Básicamente <em>hay que abrir una conversación</em> con <code>@BotFather</code> desde el propio Telegram. <code>@BotFather</code> es un bot y reconoce una serie de comandos.</p>
 <p>El que nos ocupa es <code>/newbot</code>, que pedirá que se introduzca un nombre para el  nuevo esbirro digital así como un nombre de usuario.</p>
-<p><img alt="img" src="../img_bots_de_telegram_en_python/1*ROGRQXKBgYTSao3xrK3g3A.png" /></p>
-<p>Los dos datos pueden parecer lo mismo pero no lo son. El nombre aparecerá en la información de contacto del bot sin embargo, el nombre de usuario (<em>username</em>) debe terminar siempre en <code>bot</code> y será el identificador que se utilizará cuando se haga mención al bot en una ventana de chat, en nuestro caso sería <code>@AchicaynaBot</code>. De hecho, una manera de abrir una conversación con este bot es, simplemente, dirigirte a la url <code>http://t.me/&lt;UsernameDelBot&gt;</code>, en nuestro caso <code>http://t.me/AchicaynaBot</code></p>
+<p><img alt="" src="../img_bots_de_telegram_en_python/3.jpg" /></p>
+<p>Los dos datos pueden parecer lo mismo pero no lo son. El nombre aparecerá en la información de contacto del bot sin embargo, el nombre de usuario (<em>username</em>) debe terminar siempre en <code>bot</code> y será el identificador que se utilizará cuando se haga mención al bot en una ventana de chat, en nuestro caso sería <code>@iesromerovargas</code>. De hecho, una manera de abrir una conversación con este bot es, simplemente, dirigirte a la url <code>http://t.me/&lt;UsernameDelBot&gt;</code>, en nuestro caso <code>http://t.me/iesromerovargas_bot</code></p>
 <p>Una vez ejecutado, la respuesta remota a la solicitud tendrá forma de mensaje y dentro de éste se encontrará un texto algo así como:</p>
 <pre><code>Use this token to access the HTTP API:
 110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw
 </code></pre>
 
-<p>Esta ristra de números y letras es el identificador del bot, al que todo el mundo refiere como token y <strong>se debería cuidar</strong>. Cualquiera que utilice ese token será, a efectos de la API de Telegram, tu bot. Esto tendrá sentido en un momento -por cierto, ese token no es válido, ;-).</p>
+<p>Esta ristra de números y letras es el identificador del bot, al que todo el mundo refiere como token y <strong>se debería cuidar</strong>. Cualquiera que utilice ese token será, a efectos de la API de Telegram, nuestro bot. Esto tendrá sentido en un momento -por cierto, ese token no es válido, ;-).</p>
 <p>Lo siguiente que se debe hacer es lanzar en la conversación con <code>@BotFather</code> el comando <code>/setdescription</code>; con él se podrá introducir un texto breve que sirva para presentar en sociedad al bot. Cada vez que alguien abra una conversación con él, verá esta descripción.</p>
 <p><img alt="img" src="../img_bots_de_telegram_en_python/4.jpg" /></p>
 <p>Por último, habrá que ponerle cara, así que buscar una imagen adecuada y, una vez más, dentro de la ventana de la conversación con “@BotFather” lanzar el comando <code>/setuserpic “@BotFather”</code>. Pedirá que se suba una imagen de la galería que pasará a ser la imagen del perfil del bot.</p>
@@ -151,15 +151,15 @@
 <pre><code class="bash">pipenv install python-telegram-bot
 </code></pre>
 
-<p>Del mismo modo, también he creado un repositorio en gitlab para este proyecto. Si te sientes perdido o no entiendes algo, ahí tendrás disponible todo el proceso de desarrollo. La dirección del repositorio es: https://gitlab.com/goyoregalado/achicaynabot</p>
+<p>Del mismo modo, también tenemos creado un repositorio en github para este proyecto. Si te sientes perdido o no entiendes algo, ahí está disponible todo el proceso de desarrollo. La dirección del repositorio es: https://gitlab.com/goyoregalado/achicaynabot</p>
 <p>Cada paso formará parte de una nueva rama del repositorio así se puede hacer un seguimiento secuencial del mismo y volver atrás cuando sea necesario.</p>
 <p>La estructura del proyecto es muy simple:</p>
-<p><img alt="img" src="../img_bots_de_telegram_en_python/1*OBkc37TZzB3U7VuA_veg3A.png" /></p>
-<p>En este primer momento, todo el código que hará que nuestro bot cobre vida estará en el archivo <code>bot.py</code>. La mayoría de ejemplos siguen esta misma estructura, sin embargo, vamos a añadir un paquete de Python mínimo dentro del directorio <em>config</em> que permita aislar el token de autenticación del repositorio. De esta manera, solamente se tendrá que añadir un archivo denominado <code>auth.py</code> tal y como se muestra en la imagen e incluir dentro de él el token del bot como se puede ver a continuación.</p>
-<p><img alt="img" src="../img_bots_de_telegram_en_python/1*sXuh5dhcaabrtxr_s_ucUA.png" /></p>
+<p><img alt="img" src="../img_bots_de_telegram_en_python/03.png" /></p>
+<p>En este primer momento, todo el código que hará que el bot cobre vida estará en el archivo <code>bot.py</code>. La mayoría de ejemplos siguen esta misma estructura, sin embargo, vamos a añadir un paquete de Python mínimo dentro del directorio <em>config</em> que permita aislar el token de autenticación del repositorio. De esta manera, solamente se tendrá que añadir un archivo denominado <code>auth.py</code> tal y como se muestra en la imagen e incluir dentro de él el token del bot como se puede ver a continuación.</p>
+<p><img alt="img" src="../img_bots_de_telegram_en_python/01.png" /></p>
 <p>Este valor debe ser el token que ofreció “@BotFather” cuando se solicitó la creación del bot. Supóngase que el Token que se devolvió fue este: <code>110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw</code></p>
 <p>Como última precaución, se ditará el fichero <code>.gitignore</code> para que no se pueda almacenar por error los datos de autenticación en el repositorio.</p>
-<p><img alt="img" src="../img_bots_de_telegram_en_python/1*No8BCy8D2SuJpY4tccx8LQ.png" /></p>
+<p><img alt="img" src="../img_bots_de_telegram_en_python/02.png" /></p>
 <p>Vamos a empezar con un código mínimo que nos permita interactuar con el bot. Dentro del fichero <code>bot.py</code> se encontrará lo siguiente:</p>
 <pre><code class="python">from telegram.ext import Updater
 from config.auth import token
@@ -197,14 +197,14 @@ logger = logging.getLogger('AchicaynaBot')
 
 <p>Por último, se almacena en la variable <code>logger</code> una instancia del objeto <code>logger</code> que permita enviar un mensaje.</p>
 <p>De manera que, si se quisiere enviar un mensaje al usuario para informarle de que está ocurriendo algo se haría uso de alguno de los siguientes métodos.</p>
-<pre><code class="python">logger.debug(‘Este mensaje es sólo para frikis programadores como nosotros’)
-logger.info(‘Este mensaje representa algo normal’)
-logger.warning(‘Esto ya no es tan normal’)
-logger.error(‘Deberías empezar a preocuparte’)
-logger.critical(‘El bot está así X(’)
+<pre><code class="python">logger.debug('Este mensaje es sólo para frikis programadores como nosotros')
+logger.info('Este mensaje representa algo normal')
+logger.warning('Esto ya no es tan normal')
+logger.error('Deberías empezar a preocuparte')
+logger.critical('El bot está así X(')
 </code></pre>
 
-<p>En primer lugar, vamos a hacer que pueda responder a su primer comando. Este comando será <code>/start</code> y como respuesta enviará un mensaje al chat en el que diga: <em>“Soy un Achicayna, que, entre los primeros pobladores de Canarias, era el equivalente a un plebeyo”</em>.</p>
+<p>En primer lugar, vamos a hacer que pueda responder a su primer comando. Este comando será <code>/start</code> y como respuesta enviará un mensaje al chat en el que diga: <em>“Soy de Jerez de la Frontera, cuna del fino, de los caballos cartujanos y Capital Mundial del Motociclismo”</em>.</p>
 <p>Habrá que hablar de nuevo con <code>@BotFather</code> e indicarle que se quiere configurar el bot. Para ello se le envía el comando <code>/mybots</code>, que listará todos los bots que se han creado hasta la fecha.</p>
 <p><img alt="img" src="../img_bots_de_telegram_en_python/6.jpg" /></p>
 <p>Con el comando <code>/mybots</code> siempre se puede consultar la lista de los bots creados.</p>
