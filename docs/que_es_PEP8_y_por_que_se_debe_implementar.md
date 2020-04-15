@@ -1,4 +1,4 @@
-# [¿Qué es el PEP 8 y por qué debería implementarlo?](https://dev.to/viktorvillalobos/que-es-el-pep-8-y-porque-deberia-implementarlo-54bh)
+# [¿Qué es PEP8 y por qué se debe implementar?](https://dev.to/viktorvillalobos/que-es-el-pep-8-y-porque-deberia-implementarlo-54bh)
 
 En el mundo del desarrollo es muy común hacer las cosas de distintas formas. Se puede organizar el código como se quiera, incluso escribirlo de forma abstracta. En muchos casos, se logra que nuestra profesión se considere muchas veces como un arte y no como una ingeniería. La ausencia de una base sólida de cómo y por qué se hacen las cosas de una manera especifica conduce a un software mal redactado y mal organizado que nadie quiere leer. 
 
@@ -6,9 +6,9 @@ La diferencia mas palpable de python con respecto a otros lenguajes es que la co
 
 Muchos sabemos que a los desarrolladores de software no les suele gustar la imposición obligatoria de cierta forma de hacer su trabajo. Con el devenir del tiempo hemos apreciamos que toda la comunidad use una guía de estilo única que finalmente nos facilita el trabajo y mejora mucho nuestra productividad.
 
-##   Puntos mas importantes de PEP8
+## Puntos mas importantes de PEP8
 
-###  Básicos
+### Básicos
 
 - Siempre preferir espacios en lugar de tabuladores.
 - Usar 4 espacios en la indentación.
@@ -27,7 +27,7 @@ Muchos sabemos que a los desarrolladores de software no les suele gustar la impo
 - Los métodos de instancia de una clase deben usar el parámetro `self` como primer parámetro.
 - Los métodos de clase deben usar cls como primer parámetro, para referirse a la misma clase.
 
-###  Expresiones
+### Expresiones
 
 - Usar negación en línea (`if a is not b`) en lugar de negar una expresion positiva `(if not a is b)`.
 - No validar valores vacíos usando len `if (len(lista) == 0)`, usar `if not lista`.
@@ -35,7 +35,6 @@ Muchos sabemos que a los desarrolladores de software no les suele gustar la impo
 - Siempre importar funciones y clases usando `from my_module import MyClass` en lugar de importar el módulo completo `import my_module` 
 - Si aun se debe usar imports relativos, usar la sintaxis `from . import my_module` 
 - Las importaciones siempre deben estar en el orden:
-
 1. Módulos de la librería standar.
 2. Módulos externos.
 3. Módulos del proyecto.
