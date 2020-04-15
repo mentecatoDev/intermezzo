@@ -3,7 +3,7 @@ import datetime
 
 
 def load_lists(file_name, dates, confirmed, deads, recovered,
-               confirmed_per_day):
+               confirmed_per_day, deads_per_day):
     '''
     Load «dates», «confirmed», «dead» and «recovered» «confirmed_per_day»
     lists from «file_name»
@@ -11,6 +11,7 @@ def load_lists(file_name, dates, confirmed, deads, recovered,
 
     file = open(file_name)
     confirmed_yesterday = 0
+    deads_yesterday = 0
     for line in file:
         lst = line.split(',')
 
@@ -28,6 +29,11 @@ def load_lists(file_name, dates, confirmed, deads, recovered,
         # Calculate and store «confirmed_per_day»
         confirmed_per_day.append(int(lst[1]) - confirmed_yesterday)
         confirmed_yesterday = int(lst[1])
+
+        # Calculate and store «deads_per_day»
+        deads_per_day.append(int(lst[2]) - deads_yesterday)
+        deads_yesterday = int(lst[2])
+
     file.close()
 
 
@@ -96,9 +102,10 @@ confirmed = list()
 deads = list()
 recovered = list()
 confirmed_per_day = list()
+deads_per_day = list()
 
 load_lists("covid-19.txt", dates, confirmed, deads, recovered,
-           confirmed_per_day)
+           confirmed_per_day, deads_per_day)
 
 # Calculate the number of «days» that have passed since the beginning
 start_date = datetime.datetime(2020, 3, 1)
@@ -138,5 +145,13 @@ turtle.resetscreen()
 # Draw graph "Confirmados diarios"
 draw_graph("Confirmados diarios", confirmed_per_day, wn, wn_width, wn_height,
            days, 1000, "green")
+
+# Wait until press enter and reset the screen
+input("Pulsa «Enter» para continuar...")
+turtle.resetscreen()
+
+# Draw graph "Víctimas mortales diarias"
+draw_graph("Víctimas mortales diarias", deads_per_day, wn, wn_width, wn_height,
+           days, 100, "green")
 
 wn.exitonclick()
