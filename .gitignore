@@ -1,2 +1,4 @@
+.gitignore
 site/
 docs/eje_la_tortuga_que_dibuja/borrame.py
+docs/eje_la_tortuga_que_dibuja/.vscode/
