@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Comentarios - Intermezzo</title>
+  <title>* args, ** kwargs - Intermezzo</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Comentarios";
-    var mkdocs_page_input_path = "comentarios.md";
+    var mkdocs_page_name = "* args, ** kwargs";
+    var mkdocs_page_input_path = "args_kwargs.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -100,7 +100,7 @@
     
       
     
-    <li>Comentarios</li>
+    <li>* args, ** kwargs</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -110,76 +110,56 @@
           <div role="main">
             <div class="section">
               
-                <p>En Python la única forma de crear comentarios es usando el símbolo <code>#</code> (numeral). <strong>No hay otra</strong>. <u><em>La proposición según la cual las triples comillas operan también como comentarios es falsa</em></u>.</p>
-<pre><code class="python"># Esto es un comentario.
-a = 1
-
-&quot;&quot;&quot;¡¡¡Error!!! Esto no es un comentario.&quot;&quot;&quot;
-b = 2
+                <h1 id="args-kwargs">* args, ** kwargs</h1>
+<p>En ocasiones, se puede observar que una definición de función contiene estos dos argumentos:</p>
+<pre><code class="python">def func(x, y, *args, **kwargs)
 </code></pre>
 
-<p>La confusión radica en que las triples comillas suelen emplearse para crear la documentación de una función. Por ejemplo:</p>
-<pre><code class="python">def add(a, b):
-    &quot;&quot;&quot;
-    Retorna el resultado de a + b.
-    &quot;&quot;&quot;
-    return a + b
+<p>Ambos son en realidad características increíblemente simples. Nos permiten pasar múltiples valores a una función, que luego se empaquetarán en un generador.</p>
+<p>Tiene un resultado similar a si pasamos una lista/generador a un argumento estándar, así:</p>
+<pre><code class="python">def func(values):
+    for x in values:
+        print(x, end=&quot; &quot;)
+
+func([1, 2, 3])
 </code></pre>
 
-<p>Luego, esa documentación, conocida también como <em>docstring</em>, se almacena en el atributo <code>add.__doc__</code> y es accedida por la función <code>help()</code>.</p>
-<pre><code class="python">print(add.__doc__)
-help(add)
+<p>SALIDA:</p>
+<pre><code>1 2 3
 </code></pre>
 
-<p>No obstante, la realidad es que, en una función, la primera cadena literal que se encuentra es interpretada por Python como <em>la documentación</em>, sin importar si se usan triples comillas o un par de comillas dobles o simples.</p>
-<pre><code class="python"># Ambas documentaciones son válidas.
-def add(a, b):
-    &quot;Retorna el resultado de a + b.&quot;
-    return a + b
+<p>Ahora, usemos <code>*args</code>: esto nos permitirá pasar cada valor como un nuevo argumento, en lugar de contenerlos todos dentro de una lista.</p>
+<pre><code class="python">def func(*values):
+    for x in values:
+        print(x, end=&quot; &quot;)
 
-def div(a, b):
-    'Retorna el resultado de a / b.'
-    return a / b
+func(1, 2, 3)
 </code></pre>
 
-<p>Esto funciona porque en Python es válido crear expresiones cuyo resultado no es utlilizado para nada (por ejemplo, para asignarlo a una variable o pasarlo como argumento a una función). El siguiente código no arroja ningún error:</p>
-<pre><code class="python">7 + 5
-&quot;Hola mundo&quot;
-&quot;&quot;&quot;Esto es una cadena.&quot;&quot;&quot;
-15 / 3
+<p>SALIDA:</p>
+<pre><code>1 2 3
 </code></pre>
 
-<p>Ahora bien, eso es exactamente lo que se está haciendo cuando se crea un «comentario» usando triples comillas: generar una cadena que luego es desechada por Python por no emplearse.</p>
-<p>Pero el problema se origina cuando esas cadenas, creyendo ser  comentarios, son ubicadas en lugares donde se espera una expresión. Por  ejemplo:</p>
-<pre><code class="python">languages = [
-    &quot;&quot;&quot;Lenguaje y año en que fue creado&quot;&quot;&quot;
-    (&quot;Python&quot;, 1991),
-    (&quot;Java&quot;, 1996),
-    (&quot;C++&quot;, 1983),
-    (&quot;Elixir&quot;, 2011)
-]
+<p>Ten en cuenta que no necesitamos escribir <code>*args</code>, sino que escribimos <code>*values</code>. El nombre de la variable que usemos es irrelevante. Se define como un <code>*args</code> gracias al asterisco único <code>*</code>.</p>
+<p><code>*args</code> simplemente cree un objeto generador a partir de los argumentos que le pasamos a la función.</p>
+<p><code>**kwargs</code>, por otro lado, crea un diccionario. De ahí el nombre, <strong>k</strong>ey<strong>w</strong> ord <strong>arg</strong>ument<strong>s</strong>. Se usa así:</p>
+<pre><code class="python">def func(**values):
+    for x in values:
+        print(f&quot;{x}: {values[x]}&quot;)
+
+func(x=1, y=2, z=3)
 </code></pre>
 
-<p>Esto arroja el siguiente error:</p>
-<pre><code>Traceback (most recent call last):
-  File &quot;test.py&quot;, line 3, in &lt;module&gt;
-     (&quot;Python&quot;, 1991),
-TypeError: 'str' object is not callable
+<p>SALIDA:</p>
+<pre><code>x: 1
+y: 2
+z: 3
 </code></pre>
 
-<p>El error indica que estamos intentando llamar a una cadena como si fuese una función. En efecto, no hay ninguna diferencia con esto:</p>
-<pre><code class="python">&quot;Lenguaje y año en que fue creado&quot;(&quot;Python&quot;, 1991)
-</code></pre>
-
-<p>Quienes se están iniciando en el lenguaje quedan atónitos por un error tan extraño. Y todo eso es por pensar que las cadenas funcionan como comentarios. La forma correcta, por tanto, es esta:</p>
-<pre><code class="python">languages = [
-# Lenguaje y año en que fue creado
-    (&quot;Python&quot;, 1991),
-    (&quot;Java&quot;, 1996),
-    (&quot;C++&quot;, 1983),
-    (&quot;Elixir&quot;, 2011)
-]
-</code></pre>
+<p>Nuevamente, podemos llamar a la variable como queramos, en este caso usamos <code>**values</code>. Se define como <code>**kwargs</code> mediante el uso de un doble asterisco <code>**</code>.</p>
+<p>Extraído de:</p>
+<p>https://towardsdatascience.com/lesser-known-python-features-f87af511887 </p>
+<p>2020-05-24 22:55:23</p>
               
             </div>
           </div>

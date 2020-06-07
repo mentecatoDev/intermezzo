@@ -64,7 +64,7 @@ def config_canvas(title, wn, wn_width, wn_height, days, max_confirmed,
     # Inicialize and scale the canvas
     turtle.setup(wn_width, wn_height, 0, 0)
     leonardo = turtle.Turtle()
-    wn.setworldcoordinates(-1, 0, days, (max_confirmed // sections) + 2)
+    wn.setworldcoordinates(-2, 0, days, (max_confirmed // sections) + 2)
     
     # Write the title
     leonardo.speed(0)
@@ -120,7 +120,7 @@ wn = turtle.Screen()
 
 # Draw graph "Confirmados totales"
 draw_graph("Confirmados totales", confirmed, wn, wn_width, wn_height, days,
-           5000, "blue")
+           10000, "blue")
 
 # Wait until press enter and reset the screen
 input("Pulsa «Enter» para continuar...")

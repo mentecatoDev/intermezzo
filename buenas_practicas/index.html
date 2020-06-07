@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Buenas practicas - Intermezzo</title>
+  <title>Buenas Prácticas - Intermezzo</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Buenas practicas";
+    var mkdocs_page_name = "Buenas Pr\u00e1cticas";
     var mkdocs_page_input_path = "buenas_practicas.md";
     var mkdocs_page_url = null;
   </script>
@@ -68,6 +68,50 @@
     <a class="" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../divmod/">La función `divmod()`</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Buenas Prácticas</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#crei-que-dominaba-python-hasta-que-descubri-estos-trucos">Creí que dominaba python hasta que descubrí estos trucos</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#evitar-condiciones-inutiles">Evitar condiciones inútiles</a></li>
+        
+            <li><a class="toctree-l3" href="#uso-adecuado-de-los-espacios-en-blanco">Uso adecuado de los espacios en blanco</a></li>
+        
+            <li><a class="toctree-l3" href="#docstings-y-comentarios">Docstings y comentarios</a></li>
+        
+            <li><a class="toctree-l3" href="#variables-y-la-asignacion">Variables y la asignación</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#concatenacion-de-listas-y-union-join">Concatenación de listas y unión (join)</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#testar-condiciones-verdaderas">Testar condiciones verdaderas</a></li>
+        
+            <li><a class="toctree-l3" href="#listas-por-comprension">Listas por comprensión</a></li>
+        
+            <li><a class="toctree-l3" href="#expresiones-generadoras">Expresiones generadoras</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#conclusion">Conclusión</a></li>
+    
+
+    </ul>
+	    </li>
+          
         </ul>
       </div>
       &nbsp;
@@ -90,7 +134,7 @@
     
       
     
-    <li>Buenas practicas</li>
+    <li>Buenas Prácticas</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -101,26 +145,317 @@
             <div class="section">
               
                 <ol>
-<li><strong>README.md</strong>: Una documentación a nivel de  proyecto ayuda a tener una estructura limpia, esto ayuda a todo el  equipo en el futuro. Escribir esto en el archivo README.md, es un buen  punto para empezar, esto luego se puede expandir en la carpeta <strong>docs/</strong> de ser necesario. Incluya el proposito del proyecto, que hay en cada  folder, de donde provienen los datos, que archivos son criticos y como  se ejecutan los test.</li>
-<li>Utilice <a href="https://www.docker.com/get-started"><strong>Docker</strong></a>:  utilizar Docker le permitirá simplificar el despliegue de la aplicación en otros máquinas o realizar el despliegue en algún entorno cloud.</li>
-<li><strong>Test</strong>: Agrega el archivo <strong>test/</strong> y agrega pruebas unitarias. Una de las librerías que se recomiendan utilizar es <a href="https://docs.pytest.org/en/latest/"><strong>pytest</strong></a>, un moderno entorno para ejecutar las pruebas. Empezar con un par de  test y luego ir continuar mejorando estos. Utilice el coverage para  determinar que porcentaje de su código esta cubierto por pruebas.</li>
-<li>Test de integración: Si tiene código heredado y carece de pruebas, una  actividad de alto valor es agregar algunas «pruebas de integración» que  verifiquen el flujo general del proyecto y verifiquen que con ciertos  datos de entrada se obtienen resultados de salida específicos.</li>
 <li>
-<p><a href="https://www.datacamp.com/community/tutorials/docstrings-python"><strong>Docstrings</strong></a>: Agregue documentación en el código para las funciones, clases y  módulos, esto es de gran ayuda. Agregue información de que se espera de  la función y un pequeño ejemplo de lo que se espera como salida. Puede  revisar el doc-strings de numpy como inspiración.</p>
+<p><strong>README.md</strong>: Una documentación a nivel de proyecto ayuda a tener una estructura limpia, esto ayuda a todo el equipo en el futuro. Escribir esto en el archivo README.md, es un buen  punto para empezar, luego se puede expandir en la carpeta <strong>docs/</strong> de ser necesario. Incluya el propósito del proyecto, que hay en cada carpeta, de donde provienen los datos, que archivos son críticos y cómo se ejecutan los test.</p>
 </li>
 <li>
-<p><strong>Refactoring</strong>: Si el código se convierte muy largo, como una función extensa que ocupe más de una pantalla, sientase comodo de hacer un refactoring del código y hacerlo más pequeño o reducirlo en funciones más pequeñas. Código más corto es más fácil para hacer pruebas y para darle mantenimiento.</p>
+<p>Utiliza <a href="https://www.docker.com/get-started"><strong>Docker</strong></a>:  utilizar Docker te permitirá simplificar el despliegue de la aplicación en otras máquinas o realizar el despliegue en algún entorno cloud.</p>
 </li>
-<li><a href="https://git-scm.com/book/es/v1/Empezando-Acerca-del-control-de-versiones"><strong>Git</strong></a>: Utiliza una herramienta para el control de versiones, esto le ayudara  en momentos que sobre escriba algo crítico. Acostúmbrese a realizar  commits frecuentemente y realice el push hacia el repositorio  diariamente.</li>
-<li><a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>: Mantenga el estandard de codificación PEP8. Aún mejor, adopte <a href="https://pypi.org/project/black/">Black</a> como un enlace de control del código previo, para que simplemente reescriba el código estándar por usted. Utilice <strong><a href="http://flake8.pycqa.org/en/latest/">flake8</a></strong> para limpiar su código y evitar otros errores.</li>
-<li><strong>PipEnv</strong>: Crear entornos aislados del sistema operativo les facilitará la vida.  Algunos recomendados son Anaconda, otro puede ser pipenv con Docker,  ambas son soluciones adecuadas.</li>
-<li><strong>Legibilidad</strong>:  Finalmente recuerde que la legibilidad es más importante que ser  inteligente. Los fragmentos cortos de código complejo y dificíl de leer  serán difíciles de mantener para usted y sus colegas, por lo que el  equipo tendrá miedo de tocar ese código. En su lugar, prefiera escibir  una función más larga y más fácil de leer y que este respaldada con  documentación útil que muestre lo que devolverá y complemente esto con  pruebas unitarias.</li>
+<li>
+<p><strong>Test</strong>: Agrega el archivo <strong>test/</strong> y agrega pruebas unitarias. Una de las librerías que se recomiendan utilizar es <a href="https://docs.pytest.org/en/latest/"><strong>pytest</strong></a>, un moderno entorno para ejecutar las pruebas. Empezar con un par de test y luego continuar mejorándolos. Utiliza el coverage para  determinar que porcentaje de tu código está cubierto por pruebas.</p>
+</li>
+<li>
+<p>Test de integración: Si tienes código heredado y careces de pruebas, una actividad de alto valor es agregar algunas «pruebas de integración» que verifiquen el flujo general del proyecto y verifiquen que con ciertos datos de entrada se obtienen resultados de salida específicos.</p>
+</li>
+<li>
+<p><a href="https://www.datacamp.com/community/tutorials/docstrings-python"><strong>Docstrings</strong></a>: Agrega documentación en el código para las funciones, clases y módulos, esto es de gran ayuda. Agrega información de qué se espera de la función y un pequeño ejemplo de lo que se espera como salida. Puedes revisar el docstrings de numpy como inspiración.</p>
+</li>
+<li>
+<p><strong>Refactoring</strong>: Si el código se convierte en muy largo, como una función extensa que ocupe más de una pantalla, siéntete cómodo de hacer un refactoring del código y hacerlo más pequeño o reducirlo en funciones más pequeñas. Código más corto es más fácil para hacer pruebas y para darle mantenimiento.</p>
+</li>
+<li>
+<p><a href="https://git-scm.com/book/es/v1/Empezando-Acerca-del-control-de-versiones"><strong>Git</strong></a>: Utiliza una herramienta para el control de versiones, esto te ayudará en momentos que sobreescribas algo crítico. Acostúmbrate a realizar  commits frecuentemente y realiza un push hacia el repositorio diariamente.</p>
+</li>
+<li>
+<p><a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>: Mantén el estandard de codificación PEP8. Aún mejor, adopta <a href="https://pypi.org/project/black/">Black</a> como un enlace de control del código previo, para que simplemente reescribas el código estándar por tí mismo. Utiliza <strong><a href="http://flake8.pycqa.org/en/latest/">flake8</a></strong> para limpiar tu código y evitar otros errores.</p>
+</li>
+<li>
+<p><strong>PipEnv</strong>: Crear entornos aislados del sistema operativo te facilitará la vida.  Algunos recomendados son Anaconda, otro puede ser pipenv con Docker, ambas son soluciones adecuadas.</p>
+</li>
+<li>
+<p><strong>Legibilidad</strong>:  Finalmente recuerda que la legibilidad es más importante que ser inteligente. Los fragmentos cortos de código complejo y dificíles de leer  serán difíciles de mantener para tí y tus colegas, por lo que el equipo tendrá miedo de tocar ese código. En su lugar, es preferible escibir una función más larga y más fácil de leer y que esté respaldada con documentación útil que muestre lo que devolverá y complementa esto con pruebas unitarias.</p>
+</li>
 </ol>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>"La depuración es el doble de difícil que escribir código en primera instanacia. Por lo tanto, si escribes código de la manera más inteligente posible, por definición, no serás lo suficientemente inteligente como para depurarlo."</p>
+<p>Brian Kernighan</p>
+</blockquote>
+</blockquote>
+</blockquote>
 <p>https://www.clubdetecnologia.net/blog/2019/buenas-practicas-en-python/</p>
+<h1 id="crei-que-dominaba-python-hasta-que-descubri-estos-trucos">Creí que dominaba python hasta que descubrí estos trucos</h1>
+<h2 id="evitar-condiciones-inutiles">Evitar condiciones inútiles</h2>
+<p>A menudo, una larga condición  "if" y "elif"... y "else" es el signo de un código que necesita ser refactorizado, estas condiciones hacen que tu código sea largo y muy difícil de interpretar. A veces pueden ser fácilmente reemplazadas, por ejemplo, mira este código:</p>
+<pre><code class="python">def f():
+    if condition:
+        return True
+    else:
+        return False
+</code></pre>
+
+<p>¡Esto es una tontería! La función está devolviendo un valor lógico, así que ¿por qué usar bloques <code>if</code>? Lo correcto sería hacer esto:</p>
+<pre><code class="python">def f():
+    return condition
+</code></pre>
+
+<p>En un desafío de <a href="https://www.hackerrank.com/dashboard">Hackerrank</a>, se te da el año y tienes que escribir una función para comprobar si el año es bisiesto o no. En el calendario gregoriano hay que tener en cuenta tres criterios para identificar los años bisiestos:</p>
+<ul>
+<li>
+<p>Si el año puede ser dividido entre 4, ES un año bisiesto, a menos que:</p>
+</li>
+<li>
+<p>el año pueda ser dividido entre 100, en cuyo caso NO ES un año bisiesto, a menos que:</p>
+</li>
+<li>
+<p>el año también se pueda dividir entre 400 en cuyo caso ES un año bisiesto.</p>
+</li>
+</ul>
+<p>En este desafío, olvídate de los <code>if</code> y <code>else</code> y haz lo siguiente:</p>
+<pre><code>def is_leap(year):
+    return year % 4 == 0 and (year % 400 == 0 or year % 100 != 0)
+</code></pre>
+
+<h2 id="uso-adecuado-de-los-espacios-en-blanco">Uso adecuado de los espacios en blanco</h2>
+<ul>
+<li>
+<p>Nunca mezcles tabuladores y espacios</p>
+</li>
+<li>
+<p>Una línea entre funciones</p>
+</li>
+<li>
+<p>Dos líneas entre clases</p>
+</li>
+<li>
+<p>Añade un espacio después de "," en los diccionarios, listas, tuplas, argumentos en una lista de argumentos y después de ":" en los diccionarios.</p>
+</li>
+<li>
+<p>Poner espacios alrededor de las asignaciones y comparaciones (excepto para los argumentos en una lista)</p>
+</li>
+<li>
+<p>No hay espacios para abrir/cerrar paréntesis o justo antes de una lista de argumentos.</p>
+</li>
+</ul>
+<pre><code>def function(key, value=0):
+    &quot;&quot;&quot;Return a dictionary and a list...&quot;&quot;&quot;
+    d = {key: value}
+    l = [key, value]
+    return d, l
+</code></pre>
+
+<h2 id="docstings-y-comentarios">Docstings y comentarios</h2>
+<ul>
+<li>
+<p>Docstrings = Cómo usar el código</p>
+</li>
+<li>
+<p>Comentarios = Por qué (racionalizar) y cómo funciona el código</p>
+</li>
+</ul>
+<p>Las docstrings explican cómo usar el código:</p>
+<ul>
+<li>
+<p>Explican el propósito de una función aunque te parezca obvio, porque no necesariamente le parecerá obvio a otra persona más adelante.</p>
+</li>
+<li>
+<p>Describen los parámetros esperados, los valores devueltos y las excepciones planteadas.</p>
+</li>
+<li>
+<p>Si el método está fuertemente acoplado a un solo llamador, menciona la función de llamada.</p>
+</li>
+</ul>
+<p>Los comentarios explican lo que son para los mantenedores del código. Ejemplos incluyendo notas para usted mismo, como:</p>
+<blockquote>
+<p># !!! BUG: …</p>
+<p># !!! FIX: This is a hack</p>
+<p># ??? Why is this here?</p>
+</blockquote>
+<p>Es tu responsabilidad escribir buenas docstrings y comentarios, así que mantenlos siempre actualizados. Cuando hagas cambios, asegúrate de que los comentarios y las cadenas de documentos sean consistentes con el código.</p>
+<p>Encontrarás un PEP detallado dedicado a las Doctsrings: <a href="https://www.python.org/dev/peps/pep-0257/"><strong>“Docstring Conventions”</strong></a></p>
+<h2 id="variables-y-la-asignacion">Variables y la asignación</h2>
+<p>En otros lenguajes de programación:</p>
+<pre><code class="python">c = a
+a = b
+b = c
+</code></pre>
+
+<p>En Python, es mejor usar la asignación en un código de una línea:</p>
+<p>b, a = a, b</p>
+<p>Puede que ya lo hayas visto pero, ¿sabes cómo funciona?</p>
+<p>La coma es la sintaxis para construir una tupla.</p>
+<p>Una tupla se crea a la derecha y otra es el objetivo de la izquierda. </p>
+<p>Otros ejemplos:</p>
+<pre><code class="python">&gt;&gt;&gt; user =['Jan', 'Gomez', '+1-888-222-1546']
+&gt;&gt;&gt; name, title, phone = user
+&gt;&gt;&gt; name
+'Jan'
+&gt;&gt;&gt; title
+'Gomez'
+&gt;&gt;&gt; phone
+'+1-888-222-1546'
+</code></pre>
+
+<p>Útil en bucles sobre datos estructurados (la variable <code>user</code> del código anterior se mantiene):</p>
+<pre><code class="python">&gt;&gt;&gt; people = [user, ['German', 'GBT', 'unlisted']]
+&gt;&gt;&gt; for (name, title, phone) in people:
+...      print (name, phone)
+...
+Jan +1-888-222-1546
+German unlisted
+</code></pre>
+
+<p>También es posible hacer lo opuesto, sólo asegúrate de tener la misma estructura a la derecha y a la izquierda:</p>
+<pre><code class="python">&gt;&gt;&gt; jan, (gname, gtitle, gphone) = people
+&gt;&gt;&gt; gname
+'German'
+&gt;&gt;&gt; gtitle
+'GBT'
+&gt;&gt;&gt; gphone
+'unlisted'
+&gt;&gt;&gt; jan
+['Jan', 'Gomez', '+1-888-222-1546']
+</code></pre>
+
+<h1 id="concatenacion-de-listas-y-union-join">Concatenación de listas y unión (join)</h1>
+<p>Empecemos con una lista de cadenas:</p>
+<pre><code class="python">colors = ['red', 'blue', 'green', 'yellow']
+</code></pre>
+
+<p>Queremos concatenar estas cadenas para crear una larga. Particularmente cuando el número de cadenas es grande, evita hacer esto:</p>
+<pre><code class="python">result = ''
+for s in colors:
+    result += s
+</code></pre>
+
+<p>Es muy lento. Utiliza muchos recursos. La concatenación se hará, almacenará y luego pasará al siguiente paso intermedio.</p>
+<p>En lugar de eso, haz esto:</p>
+<pre><code class="python">result = ''.join(colors)
+</code></pre>
+
+<p>El método <code>join()</code> hace toda la copia en una sola pasada. Cuando sólo procesas unas pocas cadenas, no hay diferencia. Pero acostúmbrate a construir tus cadenas de forma óptima, porque con cientos o miles de cadenas, realmente habrá diferencia.</p>
+<p>Aquí hay algunas técnicas para usar el método de unión (). Si quieres un espacio como separador:</p>
+<pre><code class="python">result = ' '.join(colors)
+</code></pre>
+
+<p>o una coma y un espacio:</p>
+<pre><code class="python">result = ', '.join(colors)
+</code></pre>
+
+<p>Para hacer una frase gramaticalmente correcta, queremos comas entre cada valor excepto el último, donde preferimos una "o". La sintaxis para dividir una lista hace el resto. El [: -1] devuelve todo excepto el último valor, que podemos concatenar con nuestras comas.</p>
+<pre><code class="python">colors = ['rojo', 'azul', 'verde', 'amarillo']
+print ('Elige', ', '.join(colors[:-1]), \
+      'o', colors[-1])
+
+SALIDA: Elige rojo, azul, verde o amarillo
+</code></pre>
+
+<h2 id="testar-condiciones-verdaderas">Testar condiciones verdaderas</h2>
+<p>Es elegante y rápido aprovechar Python con respecto a los valores lógicos:</p>
+<pre><code class="python"># Do this :     # And not this :
+if x:             if x == True:
+   pass                  pass
+
+# Do this :     # And not this :
+if items:         if len(items) != 0:
+    pass                pass
+
+# and especially not that :
+        if items != []:
+               pass
+</code></pre>
+
+<p>Usa <code>enumerate</code> cuando sea posible</p>
+<p>La función de <code>enumerate</code> toma una lista y devuelve pares (índice, item):</p>
+<pre><code>items = ['cero', 'uno', 'dos', 'tres']
+&gt;&gt;&gt; print list(enumerate(items))
+[(0, 'cero'), (1, 'uno'), (2, 'dos'), (3, 'tres')]
+</code></pre>
+
+<p>Es necesario utilizar una lista para mostrar los resultados porque <code>enumerate</code> es una función perezosa, que genera un elemento (un par) a la vez, sólo cuando se solicita. Una bucle <code>for</code> requiere tal mecanismo. La impresión no toma un resultado a la vez, sino que debe estar en posesión de todo el mensaje que se va a mostrar. Por lo tanto, convertimos automáticamente el generador en una lista antes de utilizar la impresión.</p>
+<p>Por lo tanto, usar el bucle de abajo es mucho mejor:</p>
+<pre><code class="python">for (index, item) in enumerate(items):
+    print (index, item)
+
+# compared to :              # And :
+index = 0                     for i in range(len(items)):
+for item in items:                    print (i, items[i])
+    print (index, item)
+    index += 1
+</code></pre>
+
+<p>La versión con <code>enumerate</code> es más corta y simple que las otras dos versiones. Un ejemplo que muestra que la función enumerar devuelve un iterador (un generador es una especie de iterador)</p>
+<h2 id="listas-por-comprension">Listas por comprensión</h2>
+<p>La forma tradicional con <code>for</code> e <code>if</code>:</p>
+<pre><code class="python">new_list = []
+for item in a_list:
+    if condition(item):
+        new_list.append(fn(item))
+</code></pre>
+
+<p>Usando una lista por comprensión:</p>
+<pre><code class="python">new_list = [fn(item) for item in a_list if condition(item)]
+</code></pre>
+
+<p>Las listas por comprensión son claras y directas. Puedes tener varios bucles <code>for</code> y condicionales <code>if</code> dentro de la misma lista por comprensión, pero para más de dos o tres, o si las condiciones son complejas, te sugiero que uses el habitual bucle <code>for</code>.</p>
+<p>Por ejemplo, la lista de cuadrados de 0 a 9:</p>
+<pre><code class="python">&gt;&gt;&gt; [n ** 2 for n in range(10)]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</code></pre>
+
+<p>La lista de números impares dentro de la lista anterior:</p>
+<pre><code class="python">&gt;&gt;&gt; [n ** 2 for n in range(10) if n % 2]
+[1, 9, 25, 49, 81]
+</code></pre>
+
+<p>Otro ejemplo:</p>
+<pre><code class="python">[(x, y) for x in (1, 2, 3, 4) if x % 2 == 0 for y in ['a', 'b'] if y == 'b']
+[(2, 'b'), (4, 'b')]
+</code></pre>
+
+<h2 id="expresiones-generadoras">Expresiones generadoras</h2>
+<p>Sumemos los cuadrados de los números menores de 100:</p>
+<pre><code class="python"># With a loop :
+total = 0
+for num in range(1, 101):
+    total += num * num
+</code></pre>
+
+<p>También podemos usar la función de suma que hace el trabajo más rápido para nosotros construyendo la secuencia correcta.</p>
+<pre><code class="python"># With a list comprehension :
+total = sum([num * num for num in range(1, 101)])# With a generator expression :
+total = sum(num * num for num in xrange(1, 101))
+</code></pre>
+
+<p>Las expresiones generadoras son como listas por comprensión, excepto que en su cálculo, son perezosas. Las listas por comprensión calculan todo el resultado en una sola pasada, para almacenarlo en una lista. Las expresiones generadoras calculan un valor cada vez, cuando es necesario. Esto es particularmente útil cuando la secuencia es muy larga y la lista generada es sólo un paso intermedio y no el resultado final.</p>
+<p>Por ejemplo, si tenemos que sumar los cuadrados de varios miles de millones de enteros, llegaremos a una saturación de la memoria con una lista por comprensión, pero las expresiones generadoras no tendrán ningún problema. Sin embargo, ¡tardará un tiempo!</p>
+<pre><code class="python">total = sum(num * num for num in range(1, 1000000000))
+</code></pre>
+
+<p>La diferencia en la sintaxis es que las lista por comprensión tienen corchetes, mientras que las expresiones generadoras no. Las expresiones generadoras a veces requieren paréntesis, por lo que siempre se deben usar.</p>
+<p>En resumen:</p>
+<ul>
+<li>Usar una <strong>lista por comprensión</strong> cuando el resultado esperado sea la lista.</li>
+<li>Usar una <strong>expresión generadora</strong> cuando la lista es sólo un resultado intermedio.</li>
+</ul>
+<h1 id="conclusion">Conclusión</h1>
+<p>Se han presentado algunos de los mejores consejos para aprender a programar en Python. Si realmente quieres convertirte en un programador o añadir una habilidad de codificación a tu preparación, aprender Python es un gran lugar para empezar. Busca una buena guía de enseñanza de Python en línea y empieza a averiguar cómo programar en Python. Te recomiendo que aprendas lo básico con un curso interactivo antes de pasar a conceptos más difíciles.</p>
+<p>No deberías acelerar demasiado el proceso de aprendizaje, o podrías perder información importante. Toma notas y asegúrate de revisarlas regularmente y trata de practicar la escritura del código tan a menudo como sea posible.</p>
+<p>Conéctate con colegas que estén aprendiendo como tú y no tengas miedo de hacer preguntas cuando las tengas. Ayudar a los demás cuando tienen problemas puede ser un gran repaso, y trabajar con el código de otra persona es una gran manera de aprender cosas nuevas.</p>
+<p>Si haces todo esto, ¡nada puede detenerte! Entonces, ¿qué estás esperando? ¡Empieza a programar en Python ahora!</p>
+<p>https://towardsdatascience.com/i-thought-i-was-mastering-python-until-i-discovered-these-tricks-e40d9c71f4e2</p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../divmod/" class="btn btn-neutral" title="La función `divmod()`"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -143,6 +478,8 @@
   <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+      
+        <span><a href="../divmod/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
