@@ -7,3 +7,5 @@
 #### [Bots de telegram en Python](bots_de_telegram_en_python.md)
 
 #### [¿Qué es PEP8 y por qué se debe implementar?](que_es_PEP8_y_por_que_se_debe_implementar.md)
+
+#### [La función `divmod()`](divmod.md)]
