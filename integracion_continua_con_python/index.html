@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Integración Continua con Python - Intermezzo</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -24,7 +25,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +36,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> Intermezzo</a>
         <div role="search">
@@ -45,42 +47,36 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../entornos_virtuales/">Entornos Virtuales</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../divmod/">La función `divmod()`</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../buenas_practicas/">Buenas Prácticas</a>
-	    </li>
-          
-        </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../entornos_virtuales/">Entornos Virtuales</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../parametros_por_referencia/">Parámetros por referencia</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../divmod/">La función `divmod()`</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -105,6 +101,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -199,16 +196,15 @@ La integración continua:
 <p>Iniciar sesión en la cuenta de GitHub, crear un nuevo repositorio <em>CalculatorLibrary</em> .  Agregar un archivo <code>README.md</code> y <code>.gitignore</code>, luego clonar el repositorio en la máquina local.  Si se necesita más ayuda con este proceso, echar un vistazo al <a href="https://help.github.com/articles/creating-a-new-repository">tutorial</a> de GitHub sobre <a href="https://help.github.com/articles/creating-a-new-repository">cómo</a> crear un nuevo repositorio.</p>
 <h3 id="establecer-un-ambiente-de-trabajo">Establecer un ambiente de trabajo</h3>
 <p>Para que otros (y el servidor de CI) puedan replicar las condiciones de trabajo, se debe configurar un entorno.  Crear un entorno virtual en algún lugar fuera del repositorio y activarlo: </p>
-<pre><code class="bash"># Crear entorno virtual
+<pre><code class="language-bash"># Crear entorno virtual
 $ mkdir CalculatorLibrary
 $ cd CalculatorLibrary
 $ pipenv shell
 </code></pre>
-
 <p>Esto creará un directorio que contiene una instalación de Python e indicará al intérprete que lo use.  Ahora podemos instalar paquetes sabiendo que no influirá en la instalación predeterminada de Python del sistema.</p>
 <h3 id="escribir-un-ejemplo-simple-de-python">Escribir un ejemplo simple de Python</h3>
 <p>Crear un nuevo archivo llamado <code>calculator.py</code> en el directorio de nivel superior del repositorio y copiar el siguiente código:</p>
-<pre><code class="python">&quot;&quot;&quot;
+<pre><code class="language-python">&quot;&quot;&quot;
 Calculator library containing basic math operations.
 &quot;&quot;&quot;
 
@@ -218,16 +214,14 @@ def add(first_term, second_term):
 def subtract(first_term, second_term):
     return first_term - second_term
 </code></pre>
-
 <p>Este es un ejemplo básico que contiene dos de las cuatro funciones que escribiremos.  Una vez que tengamos en funcionamiento nuestra canalización de CI, se agregarán las dos funciones restantes. </p>
 <p>Continuar y confirmar esos cambios: </p>
-<pre><code class="bash"> # Asegarse de estar en el directorio correcto
+<pre><code class="language-bash"> # Asegarse de estar en el directorio correcto
  $ git add calculator.py
  $ git commit -m &quot;Agrega funciones para sumar y restar&quot;
 </code></pre>
-
 <p>La carpeta <code>CalculatorLibrary</code> debería tener los siguientes archivos en este momento: </p>
-<pre><code class="text">CalculatorLibrary /
+<pre><code class="language-text">CalculatorLibrary /
 |
 ├── .git
 ├── .gitignore
@@ -235,7 +229,6 @@ def subtract(first_term, second_term):
 ├── calculator.py
 └── Pipfile
 </code></pre>
-
 <p>Genial, se ha completado una parte de la funcionalidad requerida.  El siguiente paso es agregar pruebas para asegurarse de que el código funcione de la manera en que se supone que debe hacerlo.</p>
 <h3 id="escribir-pruebas-unitarias">Escribir pruebas unitarias</h3>
 <p>Se probará el código en dos pasos.</p>
@@ -251,9 +244,8 @@ def subtract(first_term, second_term):
 </blockquote>
 <p><code>pytest</code> tiene una extensión, <code>pytest-cov</code> , que ayuda a comprender la cobertura de un código.</p>
 <p>Estas son dependencias externas y deben ser instaladas: </p>
-<pre><code class="bash">$ pipenv install flake8 pytest pytest-cov
+<pre><code class="language-bash">$ pipenv install flake8 pytest pytest-cov
 </code></pre>
-
 <p>El fichero <code>Pipfile</code> almacenará todas las dependencias para poder replicar el entorno.</p>
 <p>Para lanzar el <em>linter</em> ejecutar:</p>
 <pre><code>$ flake8 --statistics
@@ -263,10 +255,9 @@ def subtract(first_term, second_term):
 2     E302 expected 2 blank lines, found 1
 1     W292 no newline at end of file
 </code></pre>
-
 <p>La opción <code>--statistics</code> brinda una visión general de cuántas veces ocurrió un error en particular.  Aquí se ven dos violaciones de PEP 8, porque <code>flake8</code> espera dos líneas en blanco antes de una definición de función en lugar de una.  Por tanto, hay que agregar una línea vacía antes de cada definición de funciones.  Ejecutar <code>flake8</code> nuevamente para verificar que los mensajes de error ya no aparezcan. </p>
 <p>Ahora es el momento de escribir las pruebas.  Crear un archivo llamado <code>test_calculator.py</code> en el directorio de nivel superior del  repositorio y copiar el siguiente código:</p>
-<pre><code class="python">&quot;&quot;&quot;
+<pre><code class="language-python">&quot;&quot;&quot;
 Unit tests for the calculator library
 &quot;&quot;&quot;
 
@@ -281,10 +272,9 @@ class TestCalculator:
     def test_subtraction(self):
         assert 2 == calculator.subtract(4, 2)
 </code></pre>
-
 <p>Estas pruebas aseguran que nuestro código funcione como se esperaba.  Está lejos de ser extenso porque no prueba el posible mal uso del código, pero manténgase simple por ahora.</p>
 <p>El siguiente comando ejecuta la prueba:</p>
-<pre><code class="bash">$ pytest -v --cov
+<pre><code class="language-bash">$ pytest -v --cov
 =================== test session starts =======================
 platform linux -- Python 3.8.0, pytest-5.3.1, py-1.8.0, pluggy-0.13.1 -- /home/XXXXX/.local/share/virtualenvs/CalculatorLibrary-T3Wmr6pK/bin/python
 cachedir: .pytest_cache
@@ -296,15 +286,13 @@ test_calculator.py::TestCalculator::test_addition PASSED [ 50%]
 test_calculator.py::TestCalculator::test_subtraction PASSED [100%]
 
 </code></pre>
-
 <p><code>pytest</code> es excelente en el descubrimiento de pruebas.  Dado que se tiene un archivo con el prefijo <code>test</code>, <code>pytest</code> sabe que contendrá pruebas unitarias que se ejecutar.  Los mismos principios se aplican a los nombres de clases y métodos dentro del archivo.</p>
 <p>El indicador <code>-v</code> da una salida más agradable e indica qué pruebas pasaron y cuáles fallaron.  En este caso, se pasaron ambas pruebas.  El indicador <code>--cov</code> asegura de que <code>pytest-cov</code> se ejecuta y proporciona un <strong>informe de cobertura de código</strong> para <code>calculator.py</code> . </p>
 <p>Se han completado los preparativos.  Confirmar el archivo de prueba y enviar todos esos cambios a la rama maestra: </p>
-<pre><code class="bash">$ git add test_calculator.py
+<pre><code class="language-bash">$ git add test_calculator.py
 $ git commit -m &quot;Agrega pruebas unitarias para calculator.py&quot;
 $ git push
 </code></pre>
-
 <p>Al final de esta sección, la carpeta <em>CalculatorLibrary</em> debe tener los siguientes archivos: </p>
 <pre><code>  CalculatorLibrary/
 |
@@ -316,7 +304,6 @@ $ git push
 ├── Pipfile.lock
 └── test_calculator.py
 </code></pre>
-
 <p>Excelente, ambas funciones se prueban y funcionan correctamente. </p>
 <h3 id="conectar-a-circleci">Conectar a CircleCI</h3>
 <p>¡Por fin, se está listo para configurar el canal de integración continua! </p>
@@ -362,7 +349,6 @@ jobs:
             flake8 --exclude=venv* --statistics
             pytest -v --cov=calculator
 </code></pre>
-
 <p>Algunas de estas palabras y conceptos pueden no ser familiares.  Por ejemplo, ¿qué es Docker y qué son las imágenes?  Retrocedamos un poco en el tiempo. </p>
 <p>Retomemos el problema que enfrentan los programadores cuando algo  funciona en su computadora portátil pero en ningún otro lugar. Los desarrolladores solían crear un programa que aislaba una parte de los recursos físicos de la computadora (memoria, disco duro, etc.) y los convertía en una <strong>máquina virtual</strong> .</p>
 <p>Una máquina virtual pretende ser una computadora completa por sí sola.  Incluso tendría su propio sistema operativo.  En ese sistema operativo, despliega su aplicación o instala su biblioteca y la prueba. </p>
@@ -406,21 +392,18 @@ jobs:
  ├── requisitos.txt
  └── test_calculator.py
 </code></pre>
-
 <p>¡Felicidades!  Se ha creado el primer canal de integración continua.  Ahora, cada vez que se haga un <em>push</em> a la rama maestra, se activará un trabajo.  Puede ver una lista de sus trabajos actuales y pasados haciendo clic en <em>Jobs</em> en la barra lateral de CircleCI. </p>
 <h3 id="hacer-cambios">Hacer cambios</h3>
 <p>Es hora de agregar la multiplicación a la biblioteca de calculadora.</p>
 <p>Esta vez, primero se agregara una prueba unitaria sin escribir la función.  Sin el código, la prueba fallará, lo que también fallará el trabajo CircleCI.  Agregue el siguiente código al final de su <code>test_calculator.py</code> : </p>
-<pre><code class="python">def test_multiplication (self):
+<pre><code class="language-python">def test_multiplication (self):
     assert 100 == calculator.multiply(10, 10)
 </code></pre>
-
 <p>Subir el código (<em>push</em>) a la rama maestra y se verá que el trabajo falla en CircleCI.  Esto muestra que la integración continua funciona y nos cuida la espalda si se comete algún error.</p>
 <p>Ahora agregar el código a <code>calculator.py</code> que hará pasar la prueba: </p>
-<pre><code class="python">def multiply(first_term, second_term):
+<pre><code class="language-python">def multiply(first_term, second_term):
     return first_term * second_term
 </code></pre>
-
 <p>Asegurarse de que haya dos espacios vacíos entre la función de multiplicación y la anterior, de lo contrario, el código fallará en la verificación de la interfaz.</p>
 <p>El trabajo debería ser exitoso en esta ocasión.  Este flujo de trabajo de escribir primero una prueba fallida y luego agregar el código para pasar la prueba se llama <em>desarrollo guiado por pruebas</em> o <a href="https://en.wikipedia.org/wiki/Test-driven_development">Test Driven Development</a> (TDD).  Es una excelente manera de trabajar porque obliga a pensar de antemano en la estructura del código.</p>
 <blockquote>
@@ -500,7 +483,7 @@ jobs:
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -510,7 +493,7 @@ jobs:
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
@@ -520,6 +503,11 @@ jobs:
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

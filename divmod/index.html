@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>La función `divmod()` - Intermezzo</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -24,7 +25,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +36,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> Intermezzo</a>
         <div role="search">
@@ -45,48 +47,38 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../entornos_virtuales/">Entornos Virtuales</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href="./">La función `divmod()`</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#divmod">divmod</a></li>
-    
-
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../entornos_virtuales/">Entornos Virtuales</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../parametros_por_referencia/">Parámetros por referencia</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">La función `divmod()`</a>
+    <ul class="current">
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../buenas_practicas/">Buenas Prácticas</a>
-	    </li>
-          
-        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -111,6 +103,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -118,12 +111,11 @@
               
                 <h1 id="divmod">divmod</h1>
 <p>Una función muy útil. La función <code>divmod()</code> realiza una división entera <code>%</code> y devuelve el cociente como el resto simultáneamente en una tupla. Por ejemplo:</p>
-<pre><code class="py">&gt;&gt;&gt; divmod (5, 2)
+<pre><code class="language-py">&gt;&gt;&gt; divmod (5, 2)
 (2, 1)
 </code></pre>
-
 <p>En el siguiente ejemplo vemos su uso para evaluar el tiempo en que se ejecuta un proceso dado en horas, minutos y segundos.</p>
-<pre><code class="py">start = datetime.datetime.now()
+<pre><code class="language-py">start = datetime.datetime.now()
     ...  # process code goes here
 end = datetime.datetime.now()
 
@@ -137,11 +129,9 @@ hours, remainder = divmod(runtime, 3600)
 mins, secs = divmod(remainder, 60)
 print(&quot;{:02d}:{:02d}:{:02d}&quot;.format(hours, mins, secs))
 </code></pre>
-
 <p>SALIDA:</p>
-<pre><code class="txt">08:16:56
+<pre><code class="language-txt">08:16:56
 </code></pre>
-
 <p>Extraído de:</p>
 <p>https://towardsdatascience.com/lesser-known-python-features-f87af511887</p>
 <p>2020-05-24 22:55:23</p>
@@ -167,7 +157,7 @@ print(&quot;{:02d}:{:02d}:{:02d}&quot;.format(hours, mins, secs))
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -177,7 +167,7 @@ print(&quot;{:02d}:{:02d}:{:02d}&quot;.format(hours, mins, secs))
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
@@ -191,6 +181,11 @@ print(&quot;{:02d}:{:02d}:{:02d}&quot;.format(hours, mins, secs))
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>[Listas por comprensión en Python](https://stackabuse.com/list-comprehensions-in-python/) - Intermezzo</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -24,7 +25,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +36,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> Intermezzo</a>
         <div role="search">
@@ -45,42 +47,36 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../entornos_virtuales/">Entornos Virtuales</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../divmod/">La función `divmod()`</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../buenas_practicas/">Buenas Prácticas</a>
-	    </li>
-          
-        </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../entornos_virtuales/">Entornos Virtuales</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../parametros_por_referencia/">Parámetros por referencia</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../divmod/">La función `divmod()`</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -105,6 +101,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -113,43 +110,37 @@
                 <h1 id="listas-por-comprension-en-python"><a href="https://stackabuse.com/list-comprehensions-in-python/">Listas por comprensión en Python</a></h1>
 <p>Una lista es uno de los tipos de datos fundamentales de Python.  Cada vez que nos encontramos con un nombre de variable seguido de un corchete <code>[]</code>, o un constructor de <code>list</code>, tenemos una lista capaz de contener múltiples elementos, lo que la convierte en un tipo de datos compuesto.  Del mismo modo, también es muy fácil declarar una nueva lista y luego agregarle uno o más elementos. </p>
 <p>Creemos una nueva lista poblada, por ejemplo: </p>
-<pre><code class="python"> &gt;&gt;&gt; new_list = [1, 2, 3, 4, 5]
+<pre><code class="language-python"> &gt;&gt;&gt; new_list = [1, 2, 3, 4, 5]
  &gt;&gt;&gt; new_list
 [1, 2, 3, 4, 5] 
 </code></pre>
-
 <p>O simplemente usemos el método <code>append()</code> para agregar cualquier cosa a la lista: </p>
-<pre><code class="python">&gt;&gt;&gt; new_list.append(6)
+<pre><code class="language-python">&gt;&gt;&gt; new_list.append(6)
 &gt;&gt;&gt; new_list
 [1, 2, 3, 4, 5, 6] 
 </code></pre>
-
 <p>Si se necesita agregar varios elementos a la misma lista, el método <code>extend()</code> será útil.  Simplemente necesita pasar la lista de elementos para agregar al método <code>extend</code>, como se muestra a continuación: </p>
-<pre><code class="python">&gt;&gt;&gt; new_list.extend([7, 8, 9])
+<pre><code class="language-python">&gt;&gt;&gt; new_list.extend([7, 8, 9])
 &gt;&gt;&gt; new_list
 [1, 2, 3, 4, 5, 6, 7, 8, 9] 
 </code></pre>
-
 <p>Como se puede ver, crear una lista y agregarla con otros elementos es muy sencillo.  Se puede realizar esta tarea sin tener que hacer varias llamadas al método <code>.append()</code>.</p>
 <p>Del mismo modo, se puede usar un bucle <code>for</code> para agregar varios elementos a una lista.  Por ejemplo, tendremos que escribir el siguiente código para crear una lista de cuadrados para los enteros 1-20. </p>
-<pre><code class="python">list_a = []
+<pre><code class="language-python">list_a = []
 for i in range(1, 20):
     list_a.append(i**2) 
 </code></pre>
-
 <h2 id="que-es-una-lista-por-comprension-de-python">¿Qué es una lista por comprensión de Python?</h2>
 <p>En palabras más simples, la <strong>lista por comprensión</strong> es el proceso de crear una nueva lista a partir de otra existente.  O bien, se puede decir que es la forma única de Python de agregar un bucle <code>for</code> a una lista.  Pero, ya es bastante simple declarar una lista y agregar lo que desee.  ¿No es así?  Entonces, ¿por qué molestarse en "comprender" nuestras listas?</p>
 <p>Las listas por comprensión, de hecho, ofrece muchos beneficios sobre las listas tradicionales.  Para empezar, el código se extiende sobre una sola línea, lo que hace que sea aún más fácil declarar y leer.  También es menos engorroso comprender listas que usar bucles <code>for</code> para declarar una nueva.  Finalmente, también es una forma conveniente, más rápida e intuitiva de generar una nueva lista poblada.</p>
 <p>Volviendo a los cuadrados de los enteros 1-20, podemos obtener el mismo resultado utilizando el método las listas por comprensión.  Así es como se verá nuestro código ahora: </p>
-<pre><code class="python"> list_b = [i**2 for i in range(1, 20)] 
+<pre><code class="language-python"> list_b = [i**2 for i in range(1, 20)] 
 </code></pre>
-
 <p>Obsérvese cómo la lógica para generar los elementos de la lista están entre paréntesis.  Cubriremos más el asunto de la sintaxis en la siguiente sección. </p>
 <h2 id="sintaxis-para-las-listas-por-comprension">Sintaxis para las listas por comprensión</h2>
 <p>Antes de seguir, es imprescindible explicar la sintaxis de las listas por comprensión.  Aquí está la <strong>sintaxis básica</strong> de las listas por comprensión que contiene una condición:</p>
-<pre><code class="python">[&lt;expresión&gt; for &lt;item&gt; in &lt;lista&gt; if &lt;condición&gt;] 
+<pre><code class="language-python">[&lt;expresión&gt; for &lt;item&gt; in &lt;lista&gt; if &lt;condición&gt;] 
 </code></pre>
-
 <p>Puede parecer ir un poco hacia atrás con la expresión <em>antes</em> del bucle, pero así es como se hace.  El orden es así, presumiblemente, porque sería difícil poner la expresión <em>después</em> del condicional sin algún tipo de punto y coma, <em>que Python no tiene</em>.</p>
 <p>Como ya se habrá adivinado, <code>&lt;expresión&gt;</code> es en realidad el resultado que obtenemos cuando ejecutamos el resto del código en la lista por comprensión.  El código en sí es solo un ciclo iterativo sobre una colección de datos.  En nuestro ejemplo, estamos usando la expresión, o la salida, para generar la lista de cuadrados.</p>
 <blockquote>
@@ -157,7 +148,7 @@ for i in range(1, 20):
 </blockquote>
 <p>También vale la pena mencionar que tenemos una lista que debe ser recorrida  -el elemento o elementos que se iterarán- y, por supuesto, una declaración condicional tanto en la lista por comprensión como en los bucles tradicionales.  Por lo tanto, cada método tiene las mismas construcciones generales, pero la diferencia es cómo se formatean y organizan. </p>
 <p>Veamos otro ejemplo más complejo para comprender mejor el concepto detrás de las listas por comprensión</p>
-<pre><code class="python">list_a = [1, 3, 6, 9, 12, 15]
+<pre><code class="language-python">list_a = [1, 3, 6, 9, 12, 15]
 list_b = []
 for number in list_a:
     if number % 4 == 0:
@@ -165,25 +156,22 @@ for number in list_a:
 
 print(list_b) 
 </code></pre>
-
 <p>En realidad, estamos recorriendo <code>list_a</code>  en el ejemplo anterior.  Después, añadimos a <code>list_b</code> un elemento si su valor es divisible por 4, que se verifica utilizando el operador de módulo (<code>%</code>).  En este ejemplo, se vería lo siguiente impreso en la consola: </p>
 <pre><code> [12] 
 </code></pre>
-
 <p>Esto se debe a que 12 es el único número en esa matriz que es divisible por 4. </p>
 <p>Una vez más, podemos usar las listas por comprensióna para reducir el número total de líneas de código que tenemos que escribir para lograr el mismo objetivo.</p>
 <p>Como se mencionó anteriormente, el bucle <code>for</code> en la declaración anterior está iterando sobre la lista llamada <code>list_a</code> .  Luego ejecuta la declaración condicional que verifica si el valor actual es divisible por 4. Finalmente, ejecuta el método <code>.append()</code> cuando determina que el valor es realmente divisible por 4. </p>
 <p>Ahora, si desea escribir el código de arriba con la comprelista por comprensiónería así: </p>
-<pre><code class="python">list_a = [1, 3, 6, 9, 12, 15]
+<pre><code class="language-python">list_a = [1, 3, 6, 9, 12, 15]
 list_b = [number for number in list_a if not(number % 4)]
 print(list_b)
 </code></pre>
-
 <p>Como se puede ver, hemos reducido el bucle <code>for</code>, que abarca más de tres líneas, a solo una línea.  Esa es en realidad la verdadera belleza de las listas por comprensión</p>
 <h2 id="cuando-usar-las-comprensiones-de-listas">Cuándo usar las comprensiones de listas</h2>
 <p>Se puede utilizar las listas por comprensión en aquellos casos en los que se necesita generar una lista a partir de un iterable.  Sin embargo, el mejor momento para usar este método es cuando se necesita agregar o extraer elementos a una lista de manera consistente de acuerdo con un patrón establecido.  Los desarrolladores de Python los usan principalmente para extraer datos de una gran colección de elementos.</p>
 <p>Supongamos que se tiene una lista de miles de estudiantes actuales y anteriores con sus nombres, el nombre del padre y sus direcciones.  Los datos de cada uno de los estudiantes se almacenan en un diccionario respectivamente.  Pero, ¿qué pasa si solo se quiere imprimir sus nombres? </p>
-<pre><code class="python">students = [
+<pre><code class="language-python">students = [
     {
         &quot;name&quot; : &quot;Jacob Martin&quot;,
         &quot;father name&quot; : &quot;Ros Martin&quot;,
@@ -199,22 +187,19 @@ print(list_b)
     }
 ] 
 </code></pre>
-
 <p>Tenemos la opción de iterar sobre la lista usando el bucle <code>for</code> tradicional: </p>
-<pre><code class="python">names_list = []
+<pre><code class="language-python">names_list = []
 for student in students:
     names_list.append(student['name'])
 
 print(names_list) 
 </code></pre>
-
 <p>Aunque en este ejemplo son solo dos líneas de código para el bucle <code>for</code>, ni siquiera necesitamos escribir tantas líneas.  Podemos lograr la misma tarea escribiendo solo una línea de código a través del método las listas por comprensión:</p>
 <pre><code>names_list = [student['name'] for student in students]
 print(names_list) 
 
 ['Jacob Martin', 'Angela Stevens', 'Ricky Smart']
 </code></pre>
-
 <h2 id="conclusion">Conclusión</h2>
 <p>Es realmente sorprendente cómo las listas por comprensión reducen la carga de trabajo.  Sin embargo, puede parecer confuso al principio.  Es particularmente desconcertante para los principiantes que nunca  antes se han aventurado en este territorio, principalmente debido a la  sintaxis.  También puede resultar difícil comprender el concepto si se ha estado programando en otros lenguajes porque las lista por comprensión no existen en ninguno de ellos.  La única forma de entender las listas por comprensión es practicarlas mucho. </p>
               
@@ -230,7 +215,7 @@ print(names_list)
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -240,7 +225,7 @@ print(names_list)
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
@@ -250,6 +235,11 @@ print(names_list)
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

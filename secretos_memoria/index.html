@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Secretos oscuros sobre asignación de memoria en Python - Intermezzo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Secretos oscuros sobre asignaci\u00f3n de memoria en Python";
+    var mkdocs_page_input_path = "secretos_memoria.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Intermezzo</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../entornos_virtuales/">Entornos Virtuales</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../parametros_por_referencia/">Parámetros por referencia</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../divmod/">La función `divmod()`</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Intermezzo</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Secretos oscuros sobre asignación de memoria en Python</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="secretos-oscuros-sobre-asignacion-de-memoria-en-python">Secretos oscuros sobre asignación de memoria en Python</h1>
+<p>El módulo <code>sys</code> en Python es extremadamente básico e importante. Proporciona principalmente algunas variables utilizadas (o mantenidas) por el intérprete, así como algunas funciones que interactúan fuertemente con el intérprete.</p>
+<p>Se  usará frecuentemente el método <code>getsizeof()</code> de este módulo, así que presentémoslo brevemente:</p>
+<ul>
+<li>Este método se utiliza para obtener el tamaño de bytes de un objeto</li>
+<li>Sólo calcula la memoria directamente ocupada, y no calcula la memoria de los objetos referenciados en el objeto</li>
+</ul>
+<p>Aquí hay un ejemplo intuitivo:</p>
+<pre><code class="language-python">import sys
+
+a = [1, 2]
+b = [a, a] # [[1, 2], [1, 2]]
+
+# a, b tienen solamente dos elementos
+# así que el tamaño que ocupan es el mismo
+
+sys.getsizeof(a) # resultado: 72
+sys.getsizeof(b) # resultado: 72
+</code></pre>
+<p>El ejemplo anterior ilustra que en una lista creada estáticamente<strong>,</strong> <strong>si contiene sólo dos elementos, entonces la memoria que ocupa es de 72 bytes, independientemente del objeto al que apunten sus elementos.</strong></p>
+<p>Con esta herramienta de medición, vamos a explorar qué pequeños secretos se esconden en los objetos incorporados de Python.</p>
+<h1 id="1-los-objetos-vacios-no-estan-vacios">1. ¡Los objetos vacíos no están "vacíos"! 😯</h1>
+<p>¿Te has preguntado alguna vez sobre la memoria que ocupan algunos de los conocidos objetos vacíos, como cadenas vacías, listas vacías, diccionarios vacíos?</p>
+<p>Vayamos directamente al código, y echemos un vistazo al tamaño de los objetos vacíos de varias estructuras básicas de datos:</p>
+<pre><code class="language-python">import sys
+
+sys.getsizeof(&quot;&quot;)     # 49
+sys.getsizeof([])     # 56
+sys.getsizeof(())     # 40
+sys.getsizeof(set())  # 216
+sys.getsizeof(dict()) # 232
+
+sys.getsizeof(1)      # 28
+sys.getsizeof(True)   # 28
+</code></pre>
+<p>Puede verse que aunque todos son objetos vacíos, estos objetos no están "vacíos" en cuanto a la asignación de memoria, que, por otro lado, es bastante grande (<em>recuerda estos números, los probaré más adelante</em>).</p>
+<blockquote>
+<p><strong>Puestos en orden: Número básico &lt; Tupla vacía &lt; Cadena vacía &lt; Lista vacía &lt; Conjunto vacío &lt; Diccionario vacío.</strong></p>
+</blockquote>
+<p><strong>¿Cómo explicar este pequeño secreto?</strong></p>
+<p>Debido a que estos objetos vacíos son contenedores, podemos entenderlo de forma abstracta: Parte de su memoria se utiliza para crear el esqueleto del contenedor, registrar la información del contenedor (como el recuento de referencia, información de uso, etc.), y parte de la memoria ya está preasignada.</p>
+<h1 id="2-la-expansion-de-la-memoria-no-es-uniforme">2. ¡ La expansión de la memoria no es uniforme!</h1>
+<p><strong>Los objetos vacíos no están vacíos</strong>, en parte porque el intérprete de Python les asignó previamente un espacio inicial.</p>
+<p>Sin exceder la memoria inicial, cada vez que se añade un nuevo elemento se utiliza la memoria existente, evitando así solicitar más memoria.</p>
+<p>Así pues, si se asigna la memoria inicialmente, ¿cómo se asigna una nueva memoria?</p>
+<pre><code class="language-python">import sys
+letter = &quot;abcdefghijklmnopqrstuvwxyz&quot;
+
+a = []
+for i in letters:
+    a.append(i)
+    print(f'{len(a)}, sys.getsizeof(a) = {sys.getsizeof(a)}')
+
+b = set()
+for j in letters:
+    b.add(j)
+    print(f'{len(b)}, sys.getsizeof(b) = {sys.getsizeof(b)}')
+
+c = dict()
+for k in letters:
+    c[k] = k
+    print(f'{len(c)}, sys.getsizeof(c) = {sys.getsizeof(c)}')
+</code></pre>
+<p>Añade 26 elementos a los tres tipos de objetos variable, y este es el resultado:</p>
+<pre><code>1, sys.getsizeof(a) = 88 
+2, sys.getsizeof(a) = 88 
+3, sys.getsizeof(a) = 88 
+4, sys.getsizeof(a) = 88 
+5, sys.getsizeof(a) = 120 
+6, sys.getsizeof(a) = 120 
+7, sys.getsizeof(a) = 120 
+8, sys.getsizeof(a) = 120 
+9, sys.getsizeof(a) = 184 
+10, sys.getsizeof(a) = 184 
+11, sys.getsizeof(a) = 184 
+12, sys.getsizeof(a) = 184 
+13, sys.getsizeof(a) = 184 
+14, sys.getsizeof(a) = 184 
+15, sys.getsizeof(a) = 184 
+16, sys.getsizeof(a) = 184 
+17, sys.getsizeof(a) = 256 
+18, sys.getsizeof(a) = 256 
+19, sys.getsizeof(a) = 256 
+20, sys.getsizeof(a) = 256 
+21, sys.getsizeof(a) = 256 
+22, sys.getsizeof(a) = 256 
+23, sys.getsizeof(a) = 256 
+24, sys.getsizeof(a) = 256 
+25, sys.getsizeof(a) = 256 
+26, sys.getsizeof(a) = 336 
+1, sys.getsizeof(b) = 216 
+2, sys.getsizeof(b) = 216 
+3, sys.getsizeof(b) = 216 
+4, sys.getsizeof(b) = 216 
+5, sys.getsizeof(b) = 728 
+6, sys.getsizeof(b) = 728 
+7, sys.getsizeof(b) = 728 
+8, sys.getsizeof(b) = 728 
+9, sys.getsizeof(b) = 728 
+10, sys.getsizeof(b) = 728 
+11, sys.getsizeof(b) = 728 
+12, sys.getsizeof(b) = 728 
+13, sys.getsizeof(b) = 728 
+14, sys.getsizeof(b) = 728 
+15, sys.getsizeof(b) = 728 
+16, sys.getsizeof(b) = 728 
+17, sys.getsizeof(b) = 728 
+18, sys.getsizeof(b) = 728 
+19, sys.getsizeof(b) = 2264 
+20, sys.getsizeof(b) = 2264 
+21, sys.getsizeof(b) = 2264 
+22, sys.getsizeof(b) = 2264 
+23, sys.getsizeof(b) = 2264 
+24, sys.getsizeof(b) = 2264 
+25, sys.getsizeof(b) = 2264 
+26, sys.getsizeof(b) = 2264 
+1, sys.getsizeof(c) = 232 
+2, sys.getsizeof(c) = 232 
+3, sys.getsizeof(c) = 232 
+4, sys.getsizeof(c) = 232 
+5, sys.getsizeof(c) = 232 
+6, sys.getsizeof(c) = 360 
+7, sys.getsizeof(c) = 360 
+8, sys.getsizeof(c) = 360 
+9, sys.getsizeof(c) = 360 
+10, sys.getsizeof(c) = 360 
+11, sys.getsizeof(c) = 640 
+12, sys.getsizeof(c) = 640 
+13, sys.getsizeof(c) = 640 
+14, sys.getsizeof(c) = 640 
+15, sys.getsizeof(c) = 640 
+16, sys.getsizeof(c) = 640 
+17, sys.getsizeof(c) = 640 
+18, sys.getsizeof(c) = 640 
+19, sys.getsizeof(c) = 640 
+20, sys.getsizeof(c) = 640 
+21, sys.getsizeof(c) = 640 
+22, sys.getsizeof(c) = 1176 
+23, sys.getsizeof(c) = 1176 
+24, sys.getsizeof(c) = 1176 
+25, sys.getsizeof(c) = 1176 
+26, sys.getsizeof(c) = 1176
+</code></pre>
+<p>De aquí podemos ver el secreto de las variables cuando se expanden:</p>
+<h2 id="mecanismo-de-sobre-asignacion">Mecanismo de sobre-asignación</h2>
+<p>Cuando se solicita nueva memoria, <strong>no se asigna a petición sino que se asigna más</strong>, por lo que cuando se añade un pequeño número de elementos, no es necesario solicitar más memoria inmediatamente.</p>
+<blockquote>
+<p>Consejo: Elegir la estructura de datos correcta es importante en el contexto de Python. </p>
+</blockquote>
+<h2 id="mecanismo-de-asignacion-no-uniforme">Mecanismo de asignación no uniforme:</h2>
+<p>La frecuencia de solicitud de nueva memoria para los tres tipos de objetos es diferente, y la memoria sobreasignada del mismo tipo de objetos cada vez no es uniforme, sino que se expande gradualmente.</p>
+<h1 id="3-eliminar-elementos-no-libera-memoria">3. ! Eliminar elementos no libera memoria !</h1>
+<p>Como se mencionó anteriormente, al expandir objetos variables, se puede solicitar nueva memoria.</p>
+<p>Por lo tanto, si se reducen los objetos variables y se eliminan los elementos, ¿se recuperará automáticamente la memoria recién aplicada?</p>
+<pre><code class="language-python">import sys
+
+a = [1, 2, 3, 4]
+sys.getsizeof(a)  # Initial value: 88
+
+a.append(5)       # After expansion: [1, 2, 3, 4, 5]
+sys.getsizeof(a)  # After expansion : 120
+
+a.pop()           # After reduction: [1, 2, 3, 4]
+sys.getsizeof(a)  # After reduction : 120
+</code></pre>
+<p>Como se muestra en el código, después de que la lista se expande y se contrae, aunque vuelve a su estado original, el espacio de memoria ocupado por la lista no se libera automáticamente. Lo mismo ocurre con otros objetos variables.</p>
+<p>Este es el pequeño secreto de Python, "<em>El principio de que las personas con exceso de peso no pueden perderlo; es fácil que las personas delgadas ganen peso, y es fácil reducir su talla de nuevo también, pero en ningún caso perderán peso</em>".</p>
+<h1 id="4-el-comportamiento-excepcional-de-los-diccionarios">4. !! El comportamiento excepcional de los diccionarios !!</h1>
+<p>El método <code>pop()</code> sólo reduce los elementos del objeto mutable, pero no libera el espacio de memoria utilizado.</p>
+<p>También hay un método <code>clear()</code>, que borra todos los elementos del objeto mutable, probémoslo:</p>
+<pre><code class="language-python">import sys
+
+a = [1, 2, 3]
+b = {1, 2, 3}
+c = {'a':1, 'b':2, 'c':3}
+
+sys.getsizeof(a) # 80
+sys.getsizeof(b) # 216
+sys.getsizeof(c) # 232
+
+a.clear()        # After emptying: []
+b.clear()        # After emptying: set()
+c.clear()        # After emptying: {}
+
+</code></pre>
+<p>Llamando al método <code>clear()</code>, obtenemos varios objetos vacíos.</p>
+<p>En la primera sección, se ha comprobado su tamaño de memoria.</p>
+<p>Sin embargo, si se revisa de nuevo, sorprenderá el encontrar que el tamaño de estos objetos vacíos no es el mismo que el de la revisión anterior!</p>
+<pre><code class="language-python">sys.getsizeof(a) # 56
+sys.getsizeof(b) # 216
+sys.getsizeof(c) # 64
+</code></pre>
+<p>El tamaño de la lista vacía y la tupla vacía casi no cambian, pero ¡el diccionario vacío (64) es mucho más pequeño que el anterior diccionario vacío (232)!</p>
+<p>Es decir, después de limpiar los elementos, la lista y la tupla vuelven al punto de partida y permanecen sin cambios.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

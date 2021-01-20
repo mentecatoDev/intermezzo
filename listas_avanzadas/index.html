@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Listas: Técnicas avanzadas - Intermezzo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Listas: T\u00e9cnicas avanzadas";
+    var mkdocs_page_input_path = "listas_avanzadas.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Intermezzo</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../entornos_virtuales/">Entornos Virtuales</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../parametros_por_referencia/">Parámetros por referencia</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../divmod/">La función `divmod()`</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Intermezzo</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Listas: Técnicas avanzadas</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="listas-tecnicas-avanzadas">Listas: Técnicas avanzadas</h1>
+<p>Las listas en Python son una de las estructuras de datos más comunes que encontrarás, ¡también son una de las más poderosas! Las listas de Python son increíblemente versátiles y tienen muchos trucos ocultos.</p>
+<p>¡Exploremos algunos de estos!</p>
+<h2 id="filtrado-de-listas-con-python">Filtrado de listas con Python</h2>
+<h3 id="con-la-funcion-filter">Con la función <code>filter()</code></h3>
+<p>La función <code>filter()</code> toma dos parámetros: una función y un elemento iterable. En este caso, definiremos una función y filtraremos una lista.</p>
+<p>¡Probemos esto con un ejemplo! Comenzaremos con una lista y filtraremos cualquier elemento que sea inferior a 3:</p>
+<pre><code class="language-python">original_list = [1,2,3,4,5]
+
+def filter_three(number):
+  return number &gt; 3
+
+filtered = filter(filter_three, original_list)
+
+filtered_list = list(filtered)
+
+print(filtered_list)
+# Returns [4,5]
+</code></pre>
+<p>Veamos qué está pasando aquí:</p>
+<ol>
+<li>Definimos nuestra lista original.</li>
+<li>Luego definimos una función que acepta un parámetro (<code>number</code>). La función devolverá <code>True</code> si el número es mayor que tres.</li>
+<li>Definimos un elemento (<code>filtered</code>) que aplica la función de filtro. Nuestro artículo <code>filtered</code>, es un objeto de filtro.</li>
+<li>Finalmente, creamos <code>filtered_list</code> que aplica la función de lista al objeto filtrado.</li>
+</ol>
+<h3 id="con-listas-por-comprension">Con listas por comprensión</h3>
+<p>Del mismo modo, podemos filtrar una lista con listas por comprensión. Recuerda, las listas por comprensión son formas elegantes de definir y modificar listas.</p>
+<p>Veamos cómo podemos lograr nuestra tarea anterior con una lista por comprensión:</p>
+<pre><code class="language-python">original_list = [1,2,3,4,5]
+filtered_list = [number for number in original_list if number &gt; 3]
+print(filtered_list)
+# Return [4,5]
+</code></pre>
+<p>Podemos ver en estos dos ejemplos que las listas por comprensión son una forma mucho más fácil y elegante de filtrar listas.</p>
+<h2 id="modificacion-de-listas">Modificación de listas</h2>
+<h3 id="con-la-funcion-map">Con la función <code>map()</code></h3>
+<p>La función Python Map nos permite aplicar una función a cada elemento en un objeto iterable.</p>
+<p>Imagina que tenemos una lista y queremos devolver el cuadrado de cada número. Podemos hacer esto usando la función <code>map()</code>. Echemos un vistazo a esto:</p>
+<pre><code class="language-python">original_list = [1,2,3,4,5]
+
+def square(number):
+    return number ** 2
+
+squares = map(square, original_list)
+squares_list = list(squares)
+print(squares)
+# Returns [1, 4, 9, 16, 25]
+</code></pre>
+<p>Exploremos lo qué está pasando aquí:</p>
+<ul>
+<li>
+<p>Primero, definimos nuestra lista original y una función que devuelve el cuadrado de su parámetro (<code>number</code>).</p>
+</li>
+<li>
+<p>Luego, creamos una nueva variable llamada (<code>squares</code>)  que es el resultado de la función <code>map</code>, con la función <code>square</code> y <code>original_list</code> como parámetros.</p>
+</li>
+<li>
+<p>Finalmente, creamos otra nueva variable que aplica la función de lista a la variable <code>squares</code>.</p>
+</li>
+</ul>
+<p>¡Este método es un poco difícil de asumir! ¡Vamos a verlo ahora con listas por comprensión!</p>
+<h3 id="con-listas-por-comprension_1">Con listas por comprensión</h3>
+<p>Podemos hacer la misma tarea de modificar elementos de la lista usando listas por compresión. Es incluso un poco más fácil y una forma más elegante de escribir nuestro código.</p>
+<p>¡Probemos esto!</p>
+<pre><code class="language-python">original_list = [1,2,3,4,5]
+squares_list = [number ** 2 for number in original_list]
+print(squares_list)
+# Returns [1,4,9,16,25]
+</code></pre>
+<h1 id="3-combinando-listas-con-la-funcion-zip">3. Combinando listas con la función <code>zip()</code></h1>
+<p>Puede haber casos en los que se desee combinar dos o más listas. ¡Aquí es donde entra la función <code>zip()</code>. ! La función <code>zip()</code> crea un objeto que contiene los elementos correspondientes de las listas en cada índice.</p>
+<p>Probemos esto con un ejemplo:</p>
+<pre><code class="language-python">numbers = [1,2,3]
+letters = ['a', 'b', 'c']
+combined = zip(numbers, letters)
+combined_list = list(combined)
+# returns [(1, 'a'), (2, 'b'), (3, 'c')]
+</code></pre>
+<h2 id="invertir-una-lista">Invertir una lista</h2>
+<p>Las listas de Python son estructuras de datos ordenadas. Debido a esto, el orden de los artículos es importante. A veces puede que necesites invertir los elementos en una lista. Esto se puede hacer fácilmente usando los operadores de <em>slicing</em> de Python.</p>
+<p>Probemos con un ejemplo:</p>
+<pre><code class="language-python">original_list = [1,2,3,4,5]
+reversed_list = original_list[::-1]
+print(reversed_list)
+# Returns: [5,4,3,2,1]
+</code></pre>
+<h2 id="comprobacion-de-membresia-a-una-lista">Comprobación de membresía a una lista</h2>
+<p>Puede haber ocasiones en que desee ver si un elemento existe en una lista.</p>
+<p>Puede hacer esto simplemente usando el operador <em>in</em> .</p>
+<p>Imagine que tenemos una lista de equipos que han ganado un partido y queremos ver si un equipo en particular ha ganado hasta ahora:</p>
+<pre><code class="language-python">games = ['Yankees', 'Yankees', 'Cubs', 'Blue Jays', 'Giants']
+
+def isin(item, list_name):
+    if item in list_name:
+        print(f&quot;{item} is in the list!&quot;)
+    else:
+        print(f&quot;{item} is not in the list!&quot;)
+
+isin('Blue Jays', games)
+isin('Angels', games) 
+# Returns
+# Blue Jays is in the list!
+# Angels is not in the list!
+</code></pre>
+<h2 id="encontrar-el-elemento-mas-comun-en-una-lista">Encontrar el elemento más común en una lista</h2>
+<p>Es posible que desee encontrar el elemento más común en una lista. Por ejemplo, puede estar registrando a los ganadores de un juego de cara y cruz en una lista y desea saber qué sucedió en más ocasiones.</p>
+<p>Prueba con lo siguiente:</p>
+<pre><code class="language-python">games = ['heads', 'heads', 'tails', 'heads', 'tails']
+items = set(games)
+print(max(items, key=games.count))
+</code></pre>
+<p>Echemos un vistazo a lo que estamos haciendo aquí:</p>
+<ol>
+<li>Definimos una lista con los resultados de cinco jugadas de cara o cruz,</li>
+<li>Definimos un conjunto con todos los elementos de la lista. La función set () filtra cualquier elemento duplicado en la lista.</li>
+<li>Finalmente, aplicamos el max () en nuestro conjunto de elementos, utilizando el argumento  <code>key</code> como el recuento más alto de los elementos en nuestro conjunto.</li>
+</ol>
+<h2 id="acoplar-una-lista-de-listas">Acoplar una lista de listas</h2>
+<p>A veces terminarás con una lista que contiene otras listas. ¡Puedes usar listas de comprensión para hacer esto fácilmente!</p>
+<p>Probémoslo:</p>
+<pre><code class="language-python">nested_list = [[1,2,3],[4,5,6],[7,8,9]]
+flat_list = [i for j in nested_list for i in j]
+print(flat_list)
+# Returns [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<h2 id="comprobar-la-unicidad">Comprobar la unicidad</h2>
+<p>Si necesita verificar si todos los elementos en una lista son únicos, ¡puede usar el poder de los conjuntos para lograr esto!</p>
+<p>Un conjunto en Python es similar a una lista (ya que es modificable ("mutable") y no ordenado), pero solo puede contener elementos únicos.</p>
+<p>Para esto, usaremos una función para convertir nuestra lista en un conjunto y comparar las dos longitudes de elementos:</p>
+<pre><code class="language-python">list1 = [1,2,3,4,5]
+list2 = [1,1,2,3,4]
+
+def isunique(list):
+  if len(list) == len(set(list)):
+    print('Unique!')
+  else: print('Not Unique!')
+
+isunique(list1)
+isunique(list2)
+
+# Returns 
+# Unique!
+# Not Unique!
+</code></pre>
+<p>Fuente: https://towardsdatascience.com/advanced-python-list-techniques-c6195fa699a3</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

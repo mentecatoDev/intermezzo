@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Parámetros por referencia - Intermezzo</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -24,7 +25,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +36,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> Intermezzo</a>
         <div role="search">
@@ -45,42 +47,38 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../entornos_virtuales/">Entornos Virtuales</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../divmod/">La función `divmod()`</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../buenas_practicas/">Buenas Prácticas</a>
-	    </li>
-          
-        </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../entornos_virtuales/">Entornos Virtuales</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Parámetros por referencia</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../divmod/">La función `divmod()`</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -105,6 +103,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -113,7 +112,7 @@
                 <h1 id="parametros-por-referencia">Parámetros por referencia</h1>
 <p>Si solías (o sueles) utilizar otro lenguaje de programación, de seguro en algún momento te has preguntado por los parámetros por referencia.</p>
 <p>En otros lenguajes de programación existe el paso de parámetros por valor y por referencia. En los pasos por valor, una función no puede modificar el valor de las variables que recibe por fuera de su ejecución: un intento por hacerlo simplemente altera las copias locales de dichas variables. Por el contrario, al pasar por referencia, una función obtiene acceso directo a las variables originales, permitiendo así su edición. Ejemplos de este último comportamiento en Visual Basic y C, respectivamente:</p>
-<pre><code class="visualbasic">
+<pre><code class="language-visualbasic">
 Private Sub CambiarCantidad(ByRef cantidad As Integer)
     cantidad = 5
 End Sub
@@ -123,8 +122,7 @@ cantidad = 1
 Call CambiarCantidad(cantidad)
 print cantidad  ' Imprime 5
 </code></pre>
-
-<pre><code class="c">void CambiarCantidad(int *cantidad)
+<pre><code class="language-c">void CambiarCantidad(int *cantidad)
 {
     *cantidad = 5;
 }
@@ -133,11 +131,10 @@ int cantidad = 1;
 CambiarCantidad(&amp;cantidad);
 printf(&quot;%d&quot;, cantidad);  /* Imprime 5 */
 </code></pre>
-
 <p>En ambos casos (aunque en Visual Basic no pueda observarse, ya que la máquina virtual se encarga de esto) se trata de pasar un puntero en referencia a la variable que se desea editar.</p>
 <p>En Python, en cambio, no se concibe la dialéctica paso por valor/referencia, porque el lenguaje no trabaja con el concepto de variables sino objetos y referencias. Al realizar la asignación <code>a = 1</code> no se dice que «<code>a</code> contiene el valor 1″ sino que «<code>a</code> referencia a 1″. Así, en comparación con otros lenguajes, podría decirse que en Python los parámetros siempre se pasan por referencia.</p>
 <p>Ahora bien podríamos preguntar, ¿por qué el siguiente código no modifica los valores originales?</p>
-<pre><code class="python">def f(a, b, c):
+<pre><code class="language-python">def f(a, b, c):
 # No altera los objetos originales.
     a, b, c = 4, 5, 6
 
@@ -145,11 +142,10 @@ a, b, c = 1, 2, 3
 f(a, b, c)
 print(a, b, c)   # Imprime 1, 2, 3
 </code></pre>
-
 <p>La respuesta es que los números enteros (como también los de coma flotante, las cadenas y otros objetos) son inmutables. Es decir, una vez creados, su valor no puede ser modificado. ¿Cómo, no puedo acaso hacer <code>a = 1</code> y luego <code>a = 2</code>?. Claro, pero desde la perspectiva del lenguaje, no estás cambiando el valor de <code>a</code> de 1 a 2 sino quitando la referencia a 1 y poniéndosela a 2. En términos más simples, no «cambias» el valor de un objeto sino que le asignas una nueva referencia.</p>
 <p>En el código anterior, al ejecutar <code>a, b, c = 4, 5, 6</code> estás creando nuevas referencias para los números 4, 5 y 6 dentro de la función <code>f</code> con los nombres <code>a</code>, <code>b</code> y <code>c</code>.</p>
 <p>Sin embargo otros objetos, como las listas o diccionarios, son mutables. Veamos un ejemplo:</p>
-<pre><code class="python">def f(a):
+<pre><code class="language-python">def f(a):
     a[0] = &quot;CPython&quot;
     a[1] = &quot;PyPy&quot;
     a.append(&quot;Stackless&quot;)
@@ -158,9 +154,8 @@ items = [&quot;Perro&quot;, &quot;Gato&quot;]
 f(items)
 print(items) # Imprime ['CPython', 'PyPy', 'Stackless']
 </code></pre>
-
 <p>Entonces ahora nos entendemos: basta con saber si un objeto es mutable o inmutable para determinar si es posible editarlo dentro de una función y que tenga efecto fuera de ésta. Es correcto, pero aquí hay una mejor noticia: ¡no hay necesidad alguna para que lo hagas! Te diré por qué: el paso por referencia es la manera en que los lenguajes que trabajan con variables proveen al programador para retornar más de un valor en una misma función. En cambio, Python permite devolver varios objetos utilizando <a href="http://recursospython.com/guias-y-manuales/listas-y-tuplas/">tuplas o listas</a>. Por ejemplo:</p>
-<pre><code class="python">a = 1
+<pre><code class="language-python">a = 1
 b = 2
 c = 3
 
@@ -170,10 +165,9 @@ def f():
 a, b, c = f()
 # Ahora &quot;a&quot; es 4, &quot;b&quot; es 5 y &quot;c&quot; es 6.
 </code></pre>
-
 <p>En Python no es una buena práctica modificar los objetos pasados como parámetros desde una función y puede llevar a resultados inesperados. No hay razón para hacerlo, basta con retornar múltiples objetos.</p>
 <p>Otro método de obtener el mismo resultado (cambiar el valor de un objeto y mantener los cambios fuera de la función) es utilizando variables globales, poco recomendado (yo diría que no recomendado) e inseguro.</p>
-<pre><code class="python">a, b, c = 1, 2, 3
+<pre><code class="language-python">a, b, c = 1, 2, 3
 
 # Cambio el nombre de los argumentos para evitar errores de nombramiento.
 def f(d, e, f):
@@ -182,21 +176,28 @@ def f(d, e, f):
 
 f(a, b, c)
 </code></pre>
-
 <p>Para funciones de C que requieran pasar parámetros por referencia (un puntero), pueden utilizarse las funciones <code>ctypes.byref</code> y <code>ctypes.pointer</code> que, en estos casos, resultan similares, con la diferencia que la primera se ejecuta más rápidamente. Ambas toman como parámetro un objeto que represente un tipo de C (por ejemplo, <code>c_bool</code>, <code>c_char</code>, etc.).</p>
-<pre><code class="python">from ctypes import byref, c_int, pointer
+<pre><code class="language-python">from ctypes import byref, c_int, pointer
 
 a = c_int(50)
 a_ref = byref(a)
 a_ptr = pointer(b)
 </code></pre>
-
 <p>¡Espero que el artículo te haya resultado esclarecedor y ahora puedas hacer uso de las buenas prácticas del lenguaje!</p>
 <p>Fuente: https://recursospython.com/guias-y-manuales/parametros-por-referencia/</p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../la_tortuga_que_dibuja/" class="btn btn-neutral float-right" title="La tortuga que dibuja">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../entornos_virtuales/" class="btn btn-neutral" title="Entornos Virtuales"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -206,7 +207,7 @@ a_ptr = pointer(b)
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -216,16 +217,25 @@ a_ptr = pointer(b)
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../entornos_virtuales/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../la_tortuga_que_dibuja/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

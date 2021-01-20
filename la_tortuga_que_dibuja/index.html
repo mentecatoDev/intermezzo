@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>La tortuga que dibuja - Intermezzo</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -24,7 +25,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +36,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> Intermezzo</a>
         <div role="search">
@@ -45,73 +47,110 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../entornos_virtuales/">Entornos Virtuales</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href="./">La tortuga que dibuja</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#la-tortuga-que-dibuja">La tortuga que dibuja</a></li>
-    
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../entornos_virtuales/">Entornos Virtuales</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../parametros_por_referencia/">Parámetros por referencia</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">La tortuga que dibuja</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#la-ventana-de-dibujo-setup-y-title">La ventana de dibujo: setup() y title()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#el-primer-programa-con-tortugas">El primer programa con tortugas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#una-manada-de-tortugas">Una manada de tortugas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#algunos-trucos-y-metodos-de-tortugas">Algunos trucos y métodos de tortugas</a>
         <ul>
-        
-            <li><a class="toctree-l3" href="#la-ventana-de-dibujo-setup-y-title">La ventana de dibujo: setup() y title()</a></li>
-        
-            <li><a class="toctree-l3" href="#el-primer-programa-con-tortugas">El primer programa con tortugas</a></li>
-        
-            <li><a class="toctree-l3" href="#una-manada-de-tortugas">Una manada de tortugas</a></li>
-        
-            <li><a class="toctree-l3" href="#algunos-trucos-y-metodos-de-tortugas">Algunos trucos y métodos de tortugas</a></li>
-        
-            <li><a class="toctree-l3" href="#relleno-de-figuras">Relleno de figuras</a></li>
-        
-            <li><a class="toctree-l3" href="#escribir-texto-write">Escribir texto: write()</a></li>
-        
-            <li><a class="toctree-l3" href="#solicitar-valores-al-usuario-textinput-y-numinput">Solicitar valores al usuario: textinput() y numinput()</a></li>
-        
-            <li><a class="toctree-l3" href="#vista-general-de-los-metodos-para-turtle-y-screen">Vista general de los métodos para Turtle y Screen</a></li>
-        
-            <li><a class="toctree-l3" href="#metodos-de-turtlescreenscreen">Métodos de TurtleScreen/Screen</a></li>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#showturtle-hideturtle">showturtle(), hideturtle()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#penup-y-pendown">penup() y pendown()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#goto-setx-y-sety">goto(), setx() y sety()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pensize-pencolor-y-colormode">pensize(), pencolor() y colormode()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dot">dot()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#angulos-y-distancias-negativas">Ángulos y distancias negativas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#formas-de-tortuga-shape">Formas de tortuga: shape()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#velocidad-speed">Velocidad: speed()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sello-stamp">Sello: stamp()</a>
+    </li>
         </ul>
-    
-
-    <li class="toctree-l2"><a href="#ejercicios">Ejercicios</a></li>
-    
-
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#relleno-de-figuras">Relleno de figuras</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#cambio-de-coordenadas-setworldcoordinates">Cambio de coordenadas: setworldcoordinates()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#escribir-texto-write">Escribir texto: write()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#solicitar-valores-al-usuario-textinput-y-numinput">Solicitar valores al usuario: textinput() y numinput()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vista-general-de-los-metodos-para-turtle-y-screen">Vista general de los métodos para Turtle y Screen</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#turtle">Turtle</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#movimiento-de-turtle">Movimiento de Turtle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#control-del-lapiz">Control del lápiz</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#estado-de-turtle">Estado de Turtle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#uso-de-eventos">Uso de eventos</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#metodos-especiales-de-turtle">Métodos especiales de Turtle</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#metodos-de-turtlescreenscreen">Métodos de TurtleScreen/Screen</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#control-de-la-ventana">Control de la ventana</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#control-de-la-animacion">Control de la animación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uso-de-eventos-de-pantalla">Uso de eventos de pantalla</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuraciones-y-metodos-especiales">Configuraciones y métodos especiales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#metodos-de-entrada">Métodos de entrada</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#metodos-especificos-de-screen">Métodos específicos de Screen</a>
+    </li>
+        </ul>
+    </li>
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../divmod/">La función `divmod()`</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../buenas_practicas/">Buenas Prácticas</a>
-	    </li>
-          
-        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../divmod/">La función `divmod()`</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -136,6 +175,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -148,15 +188,13 @@
 <ul>
 <li>Si se va a escribir código no orientado a objetos:</li>
 </ul>
-<pre><code class="python">from turtle import *
+<pre><code class="language-python">from turtle import *
 </code></pre>
-
 <ul>
 <li>Si se va a escribir código orientado a objetos (que es la que se usará a partir de ahora):</li>
 </ul>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 </code></pre>
-
 <h2 id="la-ventana-de-dibujo-setup-y-title">La ventana de dibujo: setup() y title()</h2>
 <p>El módulo <code>turtle</code> dibuja en una ventana propia.</p>
 <p>El método/función <code>setup(ancho, alto, posicionX, posicionY)</code> permite definir el tamaño y la posición inicial de la ventana. Los cuatro argumentos de la función son (en píxeles):</p>
@@ -170,7 +208,7 @@
 <h2 id="el-primer-programa-con-tortugas">El primer programa con tortugas</h2>
 <p>Se van a trazar un par de líneas en la terminal de Python para crear una nueva tortuga y empezar a dibujar un rectángulo. (La variable que refiere a la primera tortuga se llamará <code>raphael</code>).</p>
 <p>FICHERO: <code>tortuga01.py</code></p>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 
 # Set the window size to 800x600 pixels at (0, 0)
 turtle.setup(800, 600, 0, 0)
@@ -187,7 +225,6 @@ leonardo.forward(200)
 wn.exitonclick()
 
 </code></pre>
-
 <p>Tras la segunda instrucción, se abrirá una nueva ventana. El tercer comando coloca un cursor –llamando cariñosamente a una <code>turtle</code> del módulo– a la que se le ha puesto el nombre de <code>raphael</code>. Las siguientes tres líneas mueven a <code>raphael</code> hacia adelante, gira hacia la izquierda, y lo mueve hacia adelante una vez más, completando dos lados de un rectángulo.</p>
 <p>Después de introducir estos comandos, se verá una ventana que se parecerá a esto:</p>
 <p><img alt="_images/raphael.png" src="../img_la_tortuga_que_dibuja/alex.png" /></p>
@@ -200,7 +237,7 @@ wn.exitonclick()
 </ul>
 <p>Un objeto puede tener varios métodos —las cosas que puede hacer— y también puede tener <strong>atributos</strong> (también llamados <em>propiedades</em>). Por ejemplo, cada tortuga (<code>Turtle</code>) tiene un atributo <code>color</code>. El modo de invocarlo es <code>leonardo.color("red")</code> que hará a <code>leonardo</code> rojo, y el dibujo será de color rojo también. El color de la tortuga, la anchura de la pluma, la posición de la tortuga dentro de la ventana, la apariencia, etc. son partes de su <strong>estado</strong> actual. Del mismo modo, el objeto <code>Screen</code> tiene un color de fondo y un texto en la barra de título, y un tamaño y posición en la pantalla. Todos ellos forman parte del estado del objeto <code>screen</code>. Hay un buen número de métodos que nos permiten modificar tortugas y screens. Vamos a mostrar un par:</p>
 <p>FICHERO: <code>tortuga02.py</code></p>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 
 # set the window size to 800 by 600 pixels at (0, 0)
 turtle.setup(800, 600, 0, 0)
@@ -223,7 +260,6 @@ raphael.forward(300)
 wn.exitonclick()
 
 </code></pre>
-
 <p>La ejecución de este programa creará una ventana gráfica que se verá así:</p>
 <p><img alt="_images/raphael.png" src="../img_la_tortuga_que_dibuja/tess.png" /></p>
 <p>Cuando se ejecuta este programa aparece esta nueva ventana y permanecerá en pantalla hasta que se haga clic en ella.</p>
@@ -234,7 +270,7 @@ wn.exitonclick()
 <h2 id="una-manada-de-tortugas">Una manada de tortugas</h2>
 <p>Al igual que podemos tener muchos enteros diferentes en un programa, podemos tener muchas tortugas. Cada una de ellas es una <strong>instancia</strong>. Cada instancia tiene sus propios atributos y métodos -por lo que <code>raphael</code> puede dibujar con un lápiz negro delgado y estar en alguna posición, mientras que <code>donatello</code> podría ir en su propia dirección con un bolígrafo de color rosa grueso (<code>fat pink</code>). Aquí está lo que sucede cuando <code>raphael</code> termina su rectángulo, y <code>donatello</code> completa su triángulo:</p>
 <p>FICHERO: <code>tortuga03.py</code></p>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 
 # setup the window and its attributes
 turtle.setup(800, 600, 0, 0)
@@ -274,7 +310,6 @@ raphael.forward(200)
 wn.exitonclick()
 
 </code></pre>
-
 <p>que genera esto cuando se ejecuta:</p>
 <p><img alt="_images/donatello_y_raphael.png" src="../img_la_tortuga_que_dibuja/tess_y_alex.png" /></p>
 <h2 id="algunos-trucos-y-metodos-de-tortugas">Algunos trucos y métodos de tortugas</h2>
@@ -296,19 +331,17 @@ El método <code>pencolor(rojo, azul, verde)</code> permite modificar el color d
 <p>Además, dado que hay 360 grados en un círculo, al girar 30 a la izquierda se estará en la misma situación que si se gira 330 a la derecha! (La animación en la pantalla será diferente).También hay un método <code>backward</code> (si se es muy nerd, uno puede disfrutar de mover a <code>raphael</code> hacia adelante mediante <code>raphael.backward(-100)</code>).</p>
 <h3 id="formas-de-tortuga-shape">Formas de tortuga: <code>shape()</code></h3>
 <p>Cada tortuga puede tener su propia forma. Las que están disponibles  son <code>arrow</code> (flecha), <code>blank</code> (espacio en blanco), <code>circle</code> (círculo), <code>classic</code> (clásico), <code>square</code> (cuadrado), <code>triangle</code> (triángulo), <code>turtle</code> (tortuga).</p>
-<pre><code class="python">raphael.shape(&quot;turtle&quot;)
+<pre><code class="language-python">raphael.shape(&quot;turtle&quot;)
 </code></pre>
-
 <h3 id="velocidad-speed">Velocidad: <code>speed()</code></h3>
 <p>Se puede acelerar o ralentizar la <strong>velocidad</strong> de la animación de la tortuga. El ajuste de velocidad varía entre 1 (lento) a 10 (más rápido). Sin embargo, si se establece la velocidad a 0 se <strong>desactivará la animación</strong> y se irá lo más rápido posible.</p>
-<pre><code class="python">raphael.speed(10)
+<pre><code class="language-python">raphael.speed(10)
 </code></pre>
-
 <h3 id="sello-stamp">Sello: <code>stamp()</code></h3>
 <p>Una tortuga puede crear un “sello” (<code>stamp</code>) de su huella en el lienzo que seguirá así después de que la tortuga se haya movido a otra parte. Se sella, aun cuando la pluma esté arriba.</p>
 <p>El siguiente ejemplo muestra algunas de estas nuevas características:</p>
 <p>FICHERO: <code>tortuga04.py</code></p>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 
 turtle.setup(800, 600, 0, 0)
 wn = turtle.Screen()
@@ -329,7 +362,6 @@ for i in range(30):
 turtle.done()
 
 </code></pre>
-
 <p>que genera esto cuando se ejecuta:</p>
 <p><img alt="_images/espiral.png" src="../img_la_tortuga_que_dibuja/espiral.png" /></p>
 <h2 id="relleno-de-figuras">Relleno de figuras</h2>
@@ -338,7 +370,7 @@ turtle.done()
 <p>Si no se establece un color de relleno distinto, el color de relleno predeterminado es el negro.</p>
 <p>Para rellenar una figura, se debe llamar a la función <code>begin_fill()</code>, dibujar la figura y llamar a la función <code>end_fill()</code>.</p>
 <p>FICHERO: <code>tortuga05.py</code></p>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 
 wn = turtle.Screen()
 wn.setup(800, 600, 0, 0)
@@ -359,13 +391,12 @@ leonardo.end_fill()
 
 wn.exitonclick()
 </code></pre>
-
 <p><img alt="Módulo turtle. Funciones begin_fill" src="../img_la_tortuga_que_dibuja/turtle-fill-1.png" /></p>
 <p>Si no se establece un color de relleno distinto, el color de relleno predeterminado es el negro.</p>
 <p>Aunque realmente no es necesario dibujar la figura completa ya que Python rellena la figura aunque no se cierre  (es como si Python uniera el último punto de la figura con el primero).</p>
 <p>Si las líneas de la figura se cruzan, Python rellena cada una de las partes cerradas.</p>
 <p>FICHERO: <code>turtle06.py</code></p>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 
 wn = turtle.Screen()
 wn.setup(800, 600, 0, 0)
@@ -386,7 +417,6 @@ leonardo.hideturtle()
 
 wn.exitonclick()
 </code></pre>
-
 <p><img alt="Módulo turtle. Funciones begin_fill(), end_fill() y fillcolor()" src="https://www.mclibre.org/consultar/python/img/turtle/turtle-fill-4.png" /></p>
 <h3 id="cambio-de-coordenadas-setworldcoordinates">Cambio de coordenadas: <code>setworldcoordinates()</code></h3>
 <p>La función <code>setworldcoordinates(x1, y1, x2, y2)</code> permite modificar las coordenadas de la ventana, definiendo las coordenadas de la esquina inferior izquierda (x1, y1) y de la esquina superior derecha (x2, y2).</p>
@@ -394,7 +424,7 @@ wn.exitonclick()
 <ul>
 <li>De forma predeterminada, el origen está en el centro de la ventana y cada píxel es una unidad:</li>
 </ul>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 
 wn = turtle.Screen()
 wn.setup(450, 200, 0, 0)
@@ -406,12 +436,11 @@ leonardo.goto(150, 150)
 
 wn.exitonclick()
 </code></pre>
-
 <p><img alt="Módulo turtle. Función setworldcoordinates" src="../img_la_tortuga_que_dibuja/turtle-setworldcoordinates-1.png" /></p>
 <ul>
 <li>Con <code>setworldcoordinates()</code> se puede cambiar las coordenadas de manera que el origen esté en cualquier sitio, por ejemplo en la esquina inferior izquierda.</li>
 </ul>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 
 wn = turtle.Screen()
 wn.setup(450, 200, 0, 0)
@@ -424,14 +453,13 @@ leonardo.goto(150, 150)
 
 wn.exitonclick()
 </code></pre>
-
 <p><img alt="Módulo turtle. Función setworldcoordinates()" src="https://www.mclibre.org/consultar/python/img/turtle/turtle-setworldcoordinates-2.png" /></p>
 <h2 id="escribir-texto-write">Escribir texto: <code>write()</code></h2>
 <p>La función <code>write(texto, desplazarTortuga, alineación, fuente)</code> permite escribir texto en el espacio de dibujo. Los cuatro argumentos de la función son:</p>
 <ul>
 <li><strong>texto</strong>: cadena de texto a escribir. La esquina inferior izquierda del texto se sitúa donde esté el cursor, salvo que se indique otra cosa con el tercer argumento (alineación).</li>
 </ul>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 
 wn = turtle.Screen()
 wn.setup(800, 600, 0, 0)
@@ -442,12 +470,11 @@ leonardo.write(&quot;Esto es una prueba&quot;)
 
 wn.exitonclick()
 </code></pre>
-
 <p><img alt="Módulo turtle. Función write" src="../img_la_tortuga_que_dibuja/turtle-write-1.png" /></p>
 <ul>
 <li><strong>desplazarTortuga</strong>: valor booleano que indica si el cursor se desplaza automáticamente a la esquina inferior derecha del texto. El valor predeterminado es <code>False</code></li>
 </ul>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 
 wn = turtle.Screen()
 wn.setup(800, 600, 0, 0)
@@ -458,12 +485,11 @@ leonardo.write(&quot;Esto es una prueba&quot;, True)
 
 wn.exitonclick()
 </code></pre>
-
 <p><img alt="Módulo turtle. Función write" src="../img_la_tortuga_que_dibuja/turtle-write-3.png" />]</p>
 <ul>
 <li><strong>alineación</strong>: cadena (<code>left</code>, <code>center</code>, <code>right</code>) que indica si el texto se escribe a la izquierda, al centro o a la derecha a partir de la posición del cursor. El valor predeterminado es <code>left</code>.</li>
 </ul>
-<pre><code class="python">from turtle import *
+<pre><code class="language-python">from turtle import *
 
 setup(450, 150, 0, 0)
 screensize(300, 150)
@@ -472,14 +498,13 @@ title(&quot;www.mclibre.org&quot;)
 goto(50,10)
 write(&quot;Esto es una prueba&quot;, False, &quot;left&quot;)
 </code></pre>
-
 <p><img alt="Módulo turtle. Función write" src="../img_la_tortuga_que_dibuja/turtle-write-4.png" /></p>
 <p><img alt="Módulo turtle. Función write" src="./eje_la_tortuga_que_dibuja/turtle-write-5.png" /></p>
 <p><img alt="Módulo turtle. Función write" src="./eje_la_tortuga_que_dibuja/turtle-write-6.png" /></p>
 <ul>
 <li><strong>fuente</strong>: tupla de hasta tres elementos que indican el tipo de letra (cualquiera de los instalados en el ordenador: "arial", "courier", etc.), su tamaño y variante ("bold", "italic", "underline", "overstrike" -se pueden utilizar varios a la vez-).</li>
 </ul>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 
 wn = turtle.Screen()
 wn.setup(800, 600, 0, 0)
@@ -490,7 +515,6 @@ leonardo.write(&quot;Esto es una prueba&quot;, False, &quot;right&quot;, (&quot;
 
 wn.exitonclick()
 </code></pre>
-
 <p><img alt="Módulo turtle. Función write" src="../img_la_tortuga_que_dibuja/turtle-write-7.png" />]</p>
 <blockquote>
 <p>Se pueden omitir los últimos argumentos, pero no los anteriores. Por ejemplo, podemos omitir el tipo de letra (el cuarto argumento), pero si queremos especificar el tipo de letra, debemos indicar los tres argumentos anteriores.</p>
@@ -503,7 +527,7 @@ wn.exitonclick()
 <li><strong>título</strong>: el título de la ventana emergente.</li>
 <li><strong>mensaje</strong>: el texto que se muestra en la ventana.</li>
 </ul>
-<pre><code class="python">import turtle
+<pre><code class="language-python">import turtle
 
 wn = turtle.Screen()
 wn.setup(800, 600, 0, 0)
@@ -514,7 +538,6 @@ leonardo.write(name)
 
 wn.exitonclick()
 </code></pre>
-
 <p><img alt="Módulo turtle. Función textinput" src="../img_la_tortuga_que_dibuja/turtle-textinput-1.png" /></p>
 <p>El método <code>numinput(&lt;título&gt;, &lt;mensaje&gt;, &lt;valorPredeterminado&gt;, &lt;valorMínimo&gt;, &lt;valorMáximo&gt;)</code> solicita un número al usuario en una ventana emergente. Los dos argumentos de la función son:</p>
 <ul>
@@ -524,7 +547,7 @@ wn.exitonclick()
 <li><strong>valorMínimo</strong>: el valor mínimo que puede escribir el usuario.</li>
 <li><strong>valorMáximo</strong>: el valor máximo que puede escribir el usuario.</li>
 </ul>
-<pre><code class="python">from turtle import *
+<pre><code class="language-python">from turtle import *
 
 setup(450, 150, 0, 0)
 screensize(300, 150)
@@ -532,7 +555,6 @@ title(&quot;www.mclibre.org&quot;)
 
 edad = numinput(&quot;Edad&quot;, &quot;¿Cuál es su edad?&quot;, 20, 0, 120)
 </code></pre>
-
 <p><img alt="Módulo turtle. Función numinput(/home/pater/Dropbox/Apuntes/python/intermezzo/docs/img_la_tortuga_que_dibuja/index.md)" src="https://www.mclibre.org/consultar/python/img/turtle/turtle-numinput-1.png" /></p>
 <p>Si se escribe un valor numérico menor que valorMínimo o mayor que valorMáximo, se mostrará un aviso.</p>
 <h2 id="vista-general-de-los-metodos-para-turtle-y-screen">Vista general de los métodos para Turtle y Screen</h2>
@@ -689,7 +711,6 @@ edad = numinput(&quot;Edad&quot;, &quot;¿Cuál es su edad?&quot;, 20, 0, 120)
 <p>3.- Contamos con un fichero <a href="https://raw.githubusercontent.com/mentecatoDev/intermezzo/master/docs/eje_la_tortuga_que_dibuja/covid-19.txt">covid-19.txt</a> que mantiene un histórico de contagios del virus que nos está confinando con el siguiente formato por línea:</p>
 <pre><code>&lt;fecha &quot;aaaammdd&quot;&gt;, &lt;casos&gt;, &lt;fallecidos&gt;, &lt;recuperados&gt;
 </code></pre>
-
 <p>Se trata de construir un gráfico por cada uno de los parámetros ofrecidos por este fichero además de un parámetro calculado, <code>&lt;casos/día&gt;</code>, que nos permitirá describir el proceso de evolución de la curva de contagios. Los gráficos han de ser semejantes a los siguientes:</p>
 <p><img alt="" src="../img_la_tortuga_que_dibuja/confirmados.png" /></p>
 <p><img alt="" src="../img_la_tortuga_que_dibuja/mortales.png" /></p>
@@ -711,7 +732,7 @@ edad = numinput(&quot;Edad&quot;, &quot;¿Cuál es su edad?&quot;, 20, 0, 120)
         <a href="../bots_de_telegram_en_python/" class="btn btn-neutral float-right" title="Bots de Telegram en Python">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../entornos_virtuales/" class="btn btn-neutral" title="Entornos Virtuales"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../parametros_por_referencia/" class="btn btn-neutral" title="Parámetros por referencia"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -723,7 +744,7 @@ edad = numinput(&quot;Edad&quot;, &quot;¿Cuál es su edad?&quot;, 20, 0, 120)
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -733,11 +754,11 @@ edad = numinput(&quot;Edad&quot;, &quot;¿Cuál es su edad?&quot;, 20, 0, 120)
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../entornos_virtuales/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../parametros_por_referencia/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../bots_de_telegram_en_python/" style="color: #fcfcfc">Next &raquo;</a></span>
@@ -747,6 +768,11 @@ edad = numinput(&quot;Edad&quot;, &quot;¿Cuál es su edad?&quot;, 20, 0, 120)
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

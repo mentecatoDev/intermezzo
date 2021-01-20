@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>¿Que es PEP8 y por qué se debe implementar? - Intermezzo</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -24,7 +25,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +36,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> Intermezzo</a>
         <div role="search">
@@ -45,54 +47,48 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../entornos_virtuales/">Entornos Virtuales</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href="./">¿Que es PEP8 y por qué se debe implementar?</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#que-es-pep8-y-por-que-se-debe-implementar">¿Qué es PEP8 y por qué se debe implementar?</a></li>
-    
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../entornos_virtuales/">Entornos Virtuales</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../parametros_por_referencia/">Parámetros por referencia</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">¿Que es PEP8 y por qué se debe implementar?</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#puntos-destacados-de-pep8">Puntos destacados de PEP8</a>
         <ul>
-        
-            <li><a class="toctree-l3" href="#puntos-mas-importantes-de-pep8">Puntos mas importantes de PEP8</a></li>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#basicos">Básicos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nombres">Nombres</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#expresiones">Expresiones</a>
+    </li>
         </ul>
-    
-
+    </li>
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../divmod/">La función `divmod()`</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../buenas_practicas/">Buenas Prácticas</a>
-	    </li>
-          
-        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../divmod/">La función `divmod()`</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -117,21 +113,22 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
             <div class="section">
               
-                <h1 id="que-es-pep8-y-por-que-se-debe-implementar"><a href="https://dev.to/viktorvillalobos/que-es-el-pep-8-y-porque-deberia-implementarlo-54bh">¿Qué es PEP8 y por qué se debe implementar?</a></h1>
-<p>En el mundo del desarrollo es muy común hacer las cosas de distintas formas. Se puede organizar el código como se quiera, incluso escribirlo de forma abstracta. En muchos casos, se logra que nuestra profesión se considere muchas veces como un arte y no como una ingeniería. La ausencia de una base sólida de cómo y por qué se hacen las cosas de una manera especifica conduce a un software mal redactado y mal organizado que nadie quiere leer. </p>
+                <h1 id="que-es-pep8-y-por-que-se-debe-implementar">¿Qué es PEP8 y por qué se debe implementar?</h1>
+<p>En el mundo del desarrollo es muy común hacer las cosas de distintas formas. Se puede organizar el código como se quiera, incluso escribirlo de forma abstracta. En muchos casos, se logra que nuestra profesión se considere muchas veces como un arte y no como una ingeniería por esta razón. La ausencia de una base sólida de cómo y por qué se hacen las cosas de una manera específica conduce a un software mal redactado y mal organizado que nadie quiere leer. </p>
 <p>La diferencia mas palpable de python con respecto a otros lenguajes es que la comunidad tiene como lema la legibilidad del código. El ZEN de python establece que <strong>"Debe haber una y preferiblemente solo una forma obvia de hacer las cosas"</strong>. Siguiendo este principio, se definió una guía de estilo única descrita íntegramente en el <em>Python Enhancement Proposal</em> número 8, abreviado como <em>PEP</em> 8, donde se indica como debería ser escrito nuestro código python.</p>
-<p>Muchos sabemos que a los desarrolladores de software no les suele gustar la imposición obligatoria de cierta forma de hacer su trabajo. Con el devenir del tiempo hemos apreciamos que toda la comunidad use una guía de estilo única que finalmente nos facilita el trabajo y mejora mucho nuestra productividad.</p>
-<h2 id="puntos-mas-importantes-de-pep8">Puntos mas importantes de PEP8</h2>
+<p>Muchos sabemos que a los desarrolladores de software no les suele gustar la imposición obligatoria de hacer su trabajo de cierta forma. Con el devenir del tiempo hemos apreciado que: el que toda la comunidad use una guía de estilo única finalmente facilita el trabajo y mejora mucho la productividad.</p>
+<h2 id="puntos-destacados-de-pep8">Puntos destacados de PEP8</h2>
 <h3 id="basicos">Básicos</h3>
 <ul>
-<li>Siempre preferir espacios en lugar de tabuladores.</li>
-<li>Usar 4 espacios en la indentación.</li>
-<li>Las líneas deben tener menos de 80 caracteres.</li>
+<li>Siempre preferir <strong>espacios</strong> a <em>tabuladores</em>.</li>
+<li>Usar <strong>4 espacios</strong> como indentación.</li>
+<li>Las líneas deben ser menores de 80 caracteres de longitud.</li>
 <li>Las líneas que pasen de esta longitud deben dividirse en dos, y la linea resultante de la división debe estar indentada.</li>
 <li>Las funciones y las clases deben estar separadas por dos lineas en blanco.</li>
 <li>No colocar espacios alrededor de los índices de las listas, llamadas a funciones o argumentos.</li>
@@ -160,6 +157,8 @@
 </ul>
 <p>Y cada sección debe estar en orden alfabético.</p>
 <p>Siguiendo estos sencillos puntos, tu equipo de desarrollo y toda la comunidad python estará muy contenta de tenerte. </p>
+<p>Fuentes:</p>
+<p><a href="https://dev.to/viktorvillalobos/que-es-el-pep-8-y-porque-deberia-implementarlo-54bh">¿Qué es PEP8 y por qué se debe implementar?</a></p>
               
             </div>
           </div>
@@ -182,7 +181,7 @@
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -192,7 +191,7 @@
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
@@ -206,6 +205,11 @@
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

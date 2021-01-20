@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Bots de Telegram en Python - Intermezzo</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -24,7 +25,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +36,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> Intermezzo</a>
         <div role="search">
@@ -45,63 +47,44 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../entornos_virtuales/">Entornos Virtuales</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href="./">Bots de Telegram en Python</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#bots-de-telegram-en-python">Bots de Telegram en python</a></li>
-    
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../entornos_virtuales/">Entornos Virtuales</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../parametros_por_referencia/">Parámetros por referencia</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Bots de Telegram en Python</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#que-es-eso-de-un-bot">¿Qué es eso de un bot?</a>
         <ul>
-        
-            <li><a class="toctree-l3" href="#que-es-eso-de-un-bot">¿Qué es eso de un bot?</a></li>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#bots-inline">Bots inline</a>
+    </li>
         </ul>
-    
-
-    <li class="toctree-l2"><a href="#generando-un-bot">Generando un bot</a></li>
-    
-
-    <li class="toctree-l2"><a href="#dando-vida-al-bot">Dando vida al bot</a></li>
-    
-
-    <li class="toctree-l2"><a href="#un-poco-de-feedback">Un poco de feedback</a></li>
-    
-
+    </li>
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../divmod/">La función `divmod()`</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../buenas_practicas/">Buenas Prácticas</a>
-	    </li>
-          
-        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../divmod/">La función `divmod()`</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -126,6 +109,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -153,7 +137,6 @@
 <pre><code>Use this token to access the HTTP API:
 110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw
 </code></pre>
-
 <p>Esta ristra de números y letras es el identificador del bot, al que todo el mundo se refiere como token y <strong>debería cuidarse</strong>. Cualquiera que utilice ese token será, a efectos de la API de Telegram, nuestro bot. Esto tendrá sentido en un momento -por cierto, ese token no es válido, ;-).</p>
 <p>Lo siguiente que se debe hacer es lanzar, en la conversación con <code>@BotFather</code>, el comando <code>/setdescription</code>; con él se podrá introducir un texto breve que sirva para presentar en sociedad al bot. Cada vez que alguien abra una conversación con él, verá esta descripción.</p>
 <p><img alt="img" src="../img_bots_de_telegram_en_python/4.jpg" /></p>
@@ -164,9 +147,8 @@
 <p>Para Python existen varias librerías con las que desarrollar bots de Telegram, unas más eficientes que otras, para este ejemplo nos vamos a centrar en <code>python-telegram-bot</code>. Se puede acceder a su repositorio en la siguiente dirección: </p>
 <p>https://github.com/python-telegram-bot/python-telegram-bot</p>
 <p>Para instalarla no hay más que ejecutar:</p>
-<pre><code class="bash">pipenv install python-telegram-bot
+<pre><code class="language-bash">pipenv install python-telegram-bot
 </code></pre>
-
 <p>Del mismo modo, también tenemos creado un repositorio en github para este proyecto. Si te sientes perdido o no entiendes algo, <a href="https://github.com/mentecatoDev/bots_de_telegram_en_python.git">aquí</a> está disponible el código que lo implementa.</p>
 <p>Cada paso formará parte de una nueva rama del repositorio así se puede hacer un seguimiento secuencial del mismo y volver atrás cuando sea necesario.</p>
 <p>La estructura del proyecto es muy simple:</p>
@@ -177,13 +159,12 @@
 <p>Como última precaución, se editará el fichero <code>.gitignore</code> para que no se pueda almacenar por error los datos de autenticación en el repositorio.</p>
 <p><img alt="img" src="../img_bots_de_telegram_en_python/02.png" /></p>
 <p>Vamos a empezar con un código mínimo que nos permita interactuar con el bot. Dentro del fichero <code>bot.py</code> se encontrará lo siguiente:</p>
-<pre><code class="python">from telegram.ext import Updater
+<pre><code class="language-python">from telegram.ext import Updater
 from config.auth import token
 if __name__ == '__main__':
     updater = Updater(token=token, use_context=True)
     dispatcher = updater.dispatcher
 </code></pre>
-
 <p>Si ahora se ejecuta este código utilizando el intérprete de Python se verá que el resultado es bastante pobre, básicamente, tras poco más de un segundo el programa terminará sin errores.</p>
 <p>El objeto <code>Updater</code> es el responsable de enviar las <em>“reacciones”</em> del bot de vuelta a las ventanas de chat. Por ejemplo, si un usuario enviase el comando <code>/start</code> al bot, <code>Updater</code> sería el que sabría cómo debe responder a ese comando.</p>
 <p>Para inicializar el bot, habrá que pasarle el token que nos identifica unívocamente en los <em>servidores de Telegram</em>.</p>
@@ -192,34 +173,30 @@ if __name__ == '__main__':
 <p>Lo siguiente que se ha de hacer es que el bot devuelva algo de información. Para lograrlo importaremos una nueva librería, <code>logging</code>.</p>
 <p>La función de esta librería es registrar eventos, devolver información sobre el estado del bot. Es un software bastante versátil, se puede conectar directamente a los registros del sistema operativo. Solamente se utilizará para que muestre por pantalla la información que se considere oportuna.</p>
 <p>La manera de utilizar <code>logging</code> puede parecer un poco extraña, pero se verá que no es tan compleja como parece.</p>
-<pre><code class="python">import logging
+<pre><code class="language-python">import logging
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger('AchicaynaBot')
 </code></pre>
-
 <p>La primera línea importa la librería. La segunda línea, sin embargo sí empieza a ser interesante. Lo que hacemos es <strong>configurar qué información se va a almacenar</strong> cada vez que se registre un evento.</p>
 <p>El primer argumento es <code>format</code> y, en este caso, se ha decidido configurar las salidas de esta manera:</p>
-<pre><code class="python">format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+<pre><code class="language-python">format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 </code></pre>
-
 <p>Esto no significa otra cosa más que se quiere que cada línea comience con la fecha y hora en un formato como el siguiente: <code>2019–01–13 22:19:36,146</code></p>
 <p>A continuación, separado por un guión, aparecerá el nombre del bot, un nuevo guión y el nivel del registro que se está mostrando y, por último, el mensaje que el bot quiere mostrar.</p>
 <p>El segundo argumento es <code>level</code> que establece la <strong>gravedad mínima</strong> que tiene que tener un evento para que el bot decida molestar.</p>
 <p>Los mensajes de registro suelen tener una jerarquía donde los mensajes menos prioritarios son aquellos que los programadores utilizan para buscar errores en el código y los más importantes son aquellos que, de producirse, podrían hacer que la aplicación no pudiera continuar funcionando. Por orden de menor a mayor prioridad, se diría que los <strong>niveles de registro</strong> son: <em>debug</em>, <em>info</em>, <em>warning</em>, <em>error</em> y <em>critical</em>. Si no se indica otra cosa, la librería <code>logging</code> está configurada para mostrar mensajes con categoría mínima de <em>warning</em>. Esta categoría de eventos representa un aviso de que ha ocurrido algo inesperado.</p>
 <p>Si se deja esta configuración tal cual, la información que se espera recibir no se mostraría, porque no es algo inesperado, así que se establece el nivel mínimo de prioridad en info. Esto se hace pasando el siguiente valor como segundo argumento:</p>
-<pre><code class="python">level=logging.INFO
+<pre><code class="language-python">level=logging.INFO
 </code></pre>
-
 <p>Por último, se almacena en la variable <code>logger</code> una instancia del objeto <code>logger</code> que permita enviar un mensaje.</p>
 <p>De manera que, si se quisiere enviar un mensaje al usuario para informarle de que está ocurriendo algo se haría uso de alguno de los siguientes métodos.</p>
-<pre><code class="python">logger.debug('Este mensaje es sólo para frikis programadores como nosotros')
+<pre><code class="language-python">logger.debug('Este mensaje es sólo para frikis programadores como nosotros')
 logger.info('Este mensaje representa algo normal')
 logger.warning('Esto ya no es tan normal')
 logger.error('Deberías empezar a preocuparte')
 logger.critical('El bot está así X(')
 </code></pre>
-
 <p>En primer lugar, vamos a hacer que pueda responder a su primer comando. Este comando será <code>/start</code> y como respuesta enviará un mensaje al chat en el que diga: <em>“Soy de Jerez de la Frontera, cuna del fino, de los caballos cartujanos y Capital Mundial del Motociclismo”</em>.</p>
 <p>Habrá que hablar de nuevo con <code>@BotFather</code> e indicarle que se quiere configurar el bot. Para ello se le envía el comando <code>/mybots</code>, que listará todos los bots que se han creado hasta la fecha.</p>
 <p><img alt="img" src="../img_bots_de_telegram_en_python/6.jpg" /></p>
@@ -230,42 +207,37 @@ logger.critical('El bot está así X(')
 <p><img alt="img" src="../img_bots_de_telegram_en_python/8.jpg" /></p>
 <p>En este menú se puede definir la lista de comandos del bot.</p>
 <p>Para informar a Telegram de los comandos que entenderá el bot bastará con pulsar sobre el botón “Edit Commands”. Una vez más, la manera de establecer esa lista de comandos es muy original. Habrá que enviarle un mensaje a “@BotFather” con el siguiente formato:</p>
-<pre><code class="text">comando1 - Texto explicativo sobre el comando1.
+<pre><code class="language-text">comando1 - Texto explicativo sobre el comando1.
 comando2 - Texto explicativo sobre el comando2.
 </code></pre>
-
 <p><img alt="img" src="../img_bots_de_telegram_en_python/9.jpg" /></p>
 <p>Se añade el comando <code>start</code>.</p>
 <p>Una vez hecho esto, se está listo para indicar al bot cómo debe reaccionar cuando reciba el único comando que entenderá de momento.</p>
 <p>En primer lugar se programa la función que se hará cargo de esta respuesta. A estas funciones se les llama “<strong>handlers</strong>” y siempre tienen la misma estructura.</p>
-<pre><code class="python">def start(update: Updater, context: CallbackContext):
+<pre><code class="language-python">def start(update: Updater, context: CallbackContext):
     logger.info('He recibido un comando start')
     context.bot.send_message(
         chat_id=update.message.chat_id,
         text=&quot;Soy de Jerez de la Frontera, cuna del fino, de los caballos cartujanos y Capital Mundial del Motociclismo&quot;)
 </code></pre>
-
 <p>Reciben como argumento dos parámetros: <code>update</code> que representa el mensaje que ha desencadenado que se llame a esta función, en este caso, el comando <code>/start</code> y <code>context</code>, que representa al propio bot y provee de métodos para enviar mensajes.</p>
 <p>La primera línea añadirá una salida a nuestro registro para que nos avise de que se ha recibido el comando.</p>
 <p>La segunda línea inyectará en el chat, desde el que se ha lanzado el comando, un mensaje de parte de <code>iesromerovargas</code>.</p>
 <p>Ahora hay que indicarle al <em>dispatcher</em> qué queremos hacer cuando recibamos cada comando. En esta caso aún sólo se ha definido uno, así que la cosa será fácil.</p>
 <p>Habrá que importar <code>CommandHandler</code> desde <code>telegram.ext</code></p>
-<pre><code class="python">from telegram.ext import CommandHandler
+<pre><code class="language-python">from telegram.ext import CommandHandler
 </code></pre>
-
 <p>Este objeto recibe como parámetros tanto la cadena de texto del comando (sin la barra inicial), como el nombre de la función que deberá ejecutarse cuando se reciba, el famoso “handler”.</p>
 <p>Y todo esto se dará de alta en el dispatcher usando el siguiente código:</p>
-<pre><code class="python">dispatcher.add_handler(CommandHandler('start', start))
+<pre><code class="language-python">dispatcher.add_handler(CommandHandler('start', start))
 </code></pre>
-
 <p>Esto viene a significar: “Dispatcher, cuando recibas un comando <code>‘start’</code> ejecuta la función <code>start</code>”</p>
 <p>Finalmente hay que decirle al objeto <code>updater</code> que esté atento a cualquier mensaje que pueda llegarle al bot y que mientras no reciba ninguno que se mantenga a la espera. Esto se hace con estas dos nuevas líneas de código:</p>
-<pre><code class="python">updater.start_polling()
+<pre><code class="language-python">updater.start_polling()
 updater.idle()
 </code></pre>
-
 <p>El código final del bot quedaría de este modo:</p>
-<pre><code class="python">from telegram.ext import Updater, CommandHandler, CallbackContext
+<pre><code class="language-python">from telegram.ext import Updater, CommandHandler, CallbackContext
 from config.auth import token
 
 import logging
@@ -293,7 +265,6 @@ if __name__ == '__main__':
     updater.idle()
 
 </code></pre>
-
 <p>Si ejecutásemos el bot haciendo uso del comando <code>python src/bot.py</code> se podrá comenzar a conversar con <code>iesromerovargas</code>, aunque, por ahora, es un bot un poco soso.</p>
 <p><img alt="img" src="../img_bots_de_telegram_en_python/10.jpg" /></p>
 <p>Nuestra primera breve conversación con <code>iesromerovargas</code>.</p>
@@ -321,7 +292,7 @@ if __name__ == '__main__':
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -331,7 +302,7 @@ if __name__ == '__main__':
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
@@ -345,6 +316,11 @@ if __name__ == '__main__':
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>
