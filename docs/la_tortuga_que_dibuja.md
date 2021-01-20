@@ -407,9 +407,9 @@ write("Esto es una prueba", False, "left")
 
 ![Módulo turtle. Función write](./img_la_tortuga_que_dibuja/turtle-write-4.png)
 
-![Módulo turtle. Función write](./eje_la_tortuga_que_dibuja/turtle-write-5.png)
+![Módulo turtle. Función write](./img_la_tortuga_que_dibuja/turtle-write-5.png)
 
-![Módulo turtle. Función write](./eje_la_tortuga_que_dibuja/turtle-write-6.png)
+![Módulo turtle. Función write](./img_la_tortuga_que_dibuja/turtle-write-6.png)
 
 - **fuente**: tupla de hasta tres elementos que indican el tipo de letra (cualquiera de los instalados en el ordenador: "arial", "courier", etc.), su tamaño y variante ("bold", "italic", "underline", "overstrike" -se pueden utilizar varios a la vez-).
 
