@@ -1,18 +1,18 @@
-# [¿Qué es PEP8 y por qué se debe implementar?](https://dev.to/viktorvillalobos/que-es-el-pep-8-y-porque-deberia-implementarlo-54bh)
+# ¿Qué es PEP8 y por qué se debe implementar?
 
-En el mundo del desarrollo es muy común hacer las cosas de distintas formas. Se puede organizar el código como se quiera, incluso escribirlo de forma abstracta. En muchos casos, se logra que nuestra profesión se considere muchas veces como un arte y no como una ingeniería. La ausencia de una base sólida de cómo y por qué se hacen las cosas de una manera especifica conduce a un software mal redactado y mal organizado que nadie quiere leer. 
+En el mundo del desarrollo es muy común hacer las cosas de distintas formas. Se puede organizar el código como se quiera, incluso escribirlo de forma abstracta. En muchos casos, se logra que nuestra profesión se considere muchas veces como un arte y no como una ingeniería por esta razón. La ausencia de una base sólida de cómo y por qué se hacen las cosas de una manera específica conduce a un software mal redactado y mal organizado que nadie quiere leer. 
 
 La diferencia mas palpable de python con respecto a otros lenguajes es que la comunidad tiene como lema la legibilidad del código. El ZEN de python establece que **"Debe haber una y preferiblemente solo una forma obvia de hacer las cosas"**. Siguiendo este principio, se definió una guía de estilo única descrita íntegramente en el *Python Enhancement Proposal* número 8, abreviado como *PEP* 8, donde se indica como debería ser escrito nuestro código python.
 
-Muchos sabemos que a los desarrolladores de software no les suele gustar la imposición obligatoria de cierta forma de hacer su trabajo. Con el devenir del tiempo hemos apreciamos que toda la comunidad use una guía de estilo única que finalmente nos facilita el trabajo y mejora mucho nuestra productividad.
+Muchos sabemos que a los desarrolladores de software no les suele gustar la imposición obligatoria de hacer su trabajo de cierta forma. Con el devenir del tiempo hemos apreciado que: el que toda la comunidad use una guía de estilo única finalmente facilita el trabajo y mejora mucho la productividad.
 
-## Puntos mas importantes de PEP8
+## Puntos destacados de PEP8
 
 ### Básicos
 
-- Siempre preferir espacios en lugar de tabuladores.
-- Usar 4 espacios en la indentación.
-- Las líneas deben tener menos de 80 caracteres.
+- Siempre preferir **espacios** a *tabuladores*.
+- Usar **4 espacios** como indentación.
+- Las líneas deben ser menores de 80 caracteres de longitud.
 - Las líneas que pasen de esta longitud deben dividirse en dos, y la linea resultante de la división debe estar indentada.
 - Las funciones y las clases deben estar separadas por dos lineas en blanco.
 - No colocar espacios alrededor de los índices de las listas, llamadas a funciones o argumentos.
@@ -42,3 +42,7 @@ Muchos sabemos que a los desarrolladores de software no les suele gustar la impo
 Y cada sección debe estar en orden alfabético.
 
 Siguiendo estos sencillos puntos, tu equipo de desarrollo y toda la comunidad python estará muy contenta de tenerte. 
+
+Fuentes:
+
+[¿Qué es PEP8 y por qué se debe implementar?](https://dev.to/viktorvillalobos/que-es-el-pep-8-y-porque-deberia-implementarlo-54bh)

@@ -6,6 +6,7 @@ nav:
   - ¿Que es PEP8 y por qué se debe implementar? :
       que_es_PEP8_y_por_que_se_debe_implementar.md
   - La función `divmod()` : divmod.md
+  - Buenas Prácticas: buenas_practicas.md
 theme: readthedocs
 
 plugins:

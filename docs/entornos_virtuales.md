@@ -1,10 +1,8 @@
 # 1. Introducción
 
-https://www.youtube.com/watch?v=zDYL22QNiWk
+Un entorno virtual de Python es un **ambiente** creado con el objetivo de **aislar recursos**, como librerías y el entorno de ejecución, del sistema principal o de otros entornos virtuales. Lo anterior significa que en el mismo sistema, máquina o computadora, es posible **tener instaladas múltiples versiones** de una misma librería sin crear ningún tipo de conflicto.
 
-Un entorno virtual de Python es un **ambiente** creado con el objetivo de **aislar recursos**, como las librerías y el entorno de ejecución, del sistema principal o de otros entornos virtuales. Lo anterior significa que en el mismo sistema, máquina o computadora, es posible **tener instaladas múltiples versiones** de una misma librería sin crear ningún tipo de conflicto.
-
-Cuando se está desarrollando software con Python, es **común utilizar diferentes versiones de un mismo paquete**. Por ejemplo, imaginemos que se está desarrollando un videojuego con la versión 1.2 de `pygame` y mientras eso pasa, se comienza el desarrollo de otro videojuego que necesita las nuevas características presentes en la versión 1.3.
+Cuando se está desarrollando software con Python, es **común utilizar diferentes versiones de un mismo paquete**. Por ejemplo, imagina que estás desarrollando un videojuego con la versión 1.2 de `pygame` y mientras eso pasa, se comienza el desarrollo de otro videojuego que necesita las nuevas características presentes en la versión 1.3.
 
 En este escenario, no es posible para los desarrolladores eliminar la version 1.2 e instalar la 1.3 en sus computadoras. Así que el problema a solucionar radica en cómo instalar las dos versiones de la misma librería con el fin de poder desarrollar ambos proyectos de forma simultánea.
 
@@ -14,7 +12,103 @@ Para poder utilizar este simple pero poderoso concepto es necesario **instalar**
 
 > Hay muchas áreas de desarrollo de software sobre las que se debaten acaloradamente, pero el uso de entornos virtuales para el desarrollo de Python no es uno de ellos.
 
-Históricamente, los desarrolladores de Python han usado `virtualenv` o `pyenv` para configurar entornos virtuales. Pero en 2017 el destacado desarrollador de Python Kenneth Reitz lanzó `pipenv`, que ahora es la herramienta de empaquetado Python recomendada oficialmente por **PyPa** (*Python Packaging Authority*).
+Históricamente, los desarrolladores de Python han usado `virtualenv` o `pyenv` para configurar entornos virtuales. Durante años, la comunidad se unió al `requirements.txt`, el archivo para administrar dependencias, pero hay algunas fallas sutiles que hacen que el manejo de las dependencias sea más confuso de lo necesario. Para solucionar estos problemas, la Python Packaging Authority, grupo responsable de muchas cosas, incluyendo `pip` y `PyPI`, propuso un sustituto al `requirements.txt` llamado `Pipfile`. Vamos a ver los dos formatos de archivo para ver por qué `Pipfile` se adapta mejor a la comunidad del futuro y cómo puede comenzar a usar uno. 
+
+## 1.1. `requirements.txt`
+
+Un archivo `requirements.txt` tiene una estructura muy primitiva. Veamos una muestra:
+
+```
+Jinja2==2.8
+Markdown==2.4
+MarkupSafe==0.23
+PyYAML==3.11
+Pygments==2.1.3
+Werkzeug==0.11.4
+argh==0.26.1
+argparse==1.2.1
+blinker==1.4
+docutils==0.12
+mock==1.0.1
+pathtools==0.1.2
+textile==2.2.2
+watchdog==0.8.3
+```
+
+El requisito principal es que cada línea del archivo especifique una dependencia.
+
+El ejemplo agrega un especificador de versión para cada paquete, aunque no es necesario. El archivo podría haber dicho `Jinja2` en lugar de `Jinja2==2.8`. En ese pequeño detalle, podemos empezar a ver debilidades en la estructura. ¿Qué es más correcto, especificar versiones o no? Pues... depende.
+
+Especificar la versión de un paquete se llama anclar. Los archivos que anclan versiones para cada dependencia hacen posible la reproducción del entorno. Esta cualidad es muy valiosa para operar en un escenario de producción.
+
+¿Cual es la desventaja? Es muy difícil determinar qué paquetes son dependencias directas. Por ejemplo, `handroll` utiliza directamente `Jinja2`, pero `MarkupSafe` solo se incluye porque es una dependencia de una dependencia. `Jinja2` depende de `MarkupSafe`. Por lo tanto, `MarkupSafe` es una dependencia transitiva de `handroll`.
+
+La razón para incluir la dependencia transitiva vuelve a reproducir el entorno. Si solo enumeramos `Jinja2`, es posible `MarkupSafeque` se instale como versión actualizada que podría romper a `handroll`. Eso conduce a una mala experiencia de usuario.
+
+Hemos llegado al problema central del formato anterior: `requirements.txt` está intentando tener dos vistas de dependencias.
+
+- Un `requirements.txt` clavado actúa como un manifiesto para reproducir el entorno operativo.
+- Un `requirements.txt` no clavado actúa como la lista lógica de dependencias de las que depende un paquete.
+
+También hay un problema secundario relacionado con la audiencia. Si soy usuario de `handroll`, solo me preocupan las dependencias que hacen que la herramienta funcione. Si soy un desarrollador de `handroll`, también me gustaría tener las herramientas necesarias para el desarrollo (por ejemplo, un linter, herramientas de traducción, herramientas de carga para PyPI).
+
+En esta etapa, las convenciones comienzan a desmoronarse en la comunidad. Algunos proyectos usan un archivo `requirements-dev.txt` de dependencias solo para desarrolladores. Otros optan por un directorio `requirements` que contiene muchos archivos de dependencias diferentes. Ambas son soluciones imperfectas.
+
+Ahora estamos en condiciones de considerar lo que `Pipfile` trae al problema.
+
+## `Pipfile`
+
+`Pipfile` maneja los problemas con los que `requirements.txt` no puede. Es importante señalar que a `Pipfile` no es una creación novedosa sino que es una implementación para Python de un sistema que aparece en Ruby, Rust, PHP y JavaScript. Bundler, Cargo, Composer y Yarn son herramientas de cada uno de esos lenguajes que siguen un patrón similar. ¿Qué rasgos tienen estos sistemas en común?
+
+- Divide las dependencias lógicas y hace un manifiesto de dependencia en archivos separados.
+- Separa las secciones para las dependencias de usuarios y desarrolladores.
+
+### `Pipfile` y `Pipfile.lock`
+
+El archivo `Pipfile` gestiona las dependencias lógicas de un proyecto. Cuando escribo "lógico", me refiero a las dependencias de las que un proyecto depende directamente en su código. Una forma de pensar en las dependencias lógicas es como el conjunto de dependencias que excluyen las dependencias transitivas.
+
+A la inversa, a `Pipfile.lock` es el conjunto de dependencias que incluyen las dependencias transitivas. Este archivo actúa como el manifiesto de dependencia que se utiliza al crear un entorno para producción.
+
+> `Pipfile` es para la gente. `Pipfile.lock` es para computadoras.
+
+Tener una clara distinción entre archivos ofrece un par de beneficios.
+
+- Se puede leer y razonar sobre el `Pipfile`. No es necesario adivinar si una dependencia es una dependencia directa de un proyecto.
+- Se pueden almacenar metadatos adicionales en `Pipfile.lock`. Los metadatos pueden incluir cosas como checksums sha256 que ayudan a verificar la integridad del contenido de un paquete.
+
+### Usuarios y desarrolladores
+
+El otro rasgo de `Pipfile` es la división entre las dependencias del usuario y del desarrollador. Veamos el `Pipfile` de `pytest-tap`, un proyecto convertido al formato `Pipfile`.
+
+```
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+[dev-packages]
+babel = "*"
+flake8 = "*"
+mock = "*"
+requests = "*"
+tox = "*"
+twine = "*"
+
+[packages]
+pytest = "*"
+"tap.py" = "*"
+```
+
+Debido a que `Pipfile` usa TOML, puede incluir secciones mientras que `requirements.txt` no puede. Las secciones proporcionan una delimitación clara entre los paquetes de usuario y los paquetes de desarrollador.
+
+`pytest-tap` es un plugig de `pytest` que produce la salida *Test Anything Protocol (TAP)*. Es un ajuste natural depender de `pytest` y `tap.py`, una biblioteca TAP.
+
+Las otras dependencias hacen cosas específicas del desarrollador. `tox` y `mock` ayudan con la ejecución de la prueba, `twine` es para cargar el paquete en PyPI, y así sucesivamente.
+
+Dividir las cosas permite a los usuarios habituales omitir la instalación de paquetes adicionales. Ese es el poder de un `Pipfile`.
+
+### `pipenv`
+
+En 2017 el destacado desarrollador de Python Kenneth Reitz, famoso por su librería `request`, lanzó `pipenv`, que ayuda a sus usuarios a añadir y retirar paquetes de sus `Pipfile` (y `Pipfile.lock`) y que ahora es la herramienta de empaquetado Python recomendada oficialmente por **PyPa** (*Python Packaging Authority*).
 
 <iframe width="945" height="480" src="https://www.youtube.com/embed/GBQAKldqgZs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -25,7 +119,7 @@ Históricamente, los desarrolladores de Python han usado `virtualenv` o `pyenv` 
 
 Éstos son archivos que buscan reemplazar el antiguo `requirements.txt` de `virtualenv` y `pyenv` con la sintaxis [TOML](https://github.com/toml-lang/toml) (*Tom's Obvious, Minimal Language*) para declarar todo tipo de dependencias. Un solo archivo `Pipfile` para reemplazar la variedad de `requirements.txt`. Ejemplo `dev-requirements`, `test-requirements`, etc.
 
-El *determinismo* se refiere a que cada vez que se descargue el software en un nuevo entorno virtual, tendrá exactamente la **misma configuración**. *Sebastian McKenzie*, el creador de `yarn` que introdujo por primera vez este concepto al empaquetado de JavaScript, tiene una [publicación en su blog](https://yarnpkg.com/blog/2017/05/31/determinism/) concisa que explica qué es el *determinismo* y por qué es importante. 
+El *determinismo* se refiere a que cada vez que se descargue el software en un nuevo entorno virtual, tendrá exactamente la **misma configuración**. *Sebastian McKenzie*, el creador de `yarn` que introdujo por primera vez este concepto al empaquetado de JavaScript, tiene una [publicación en su blog](https://yarnpkg.com/blog/2017/05/31/determinism/) concisa que explica qué es el *determinismo* y por qué es importante.
 
 Los problemas que `pipenv` busca resolver son multifacéticos:
 
@@ -38,11 +132,21 @@ Los problemas que `pipenv` busca resolver son multifacéticos:
 
 La conclusión es que **se debe crear un nuevo entorno virtual para cada nuevo proyecto en python**.
 
-# 2. Instalar `pipenv`
+> **Nota sobre Pipenv y Anaconda**: No se recomienda utilizar  Pipenv con Anaconda, ya que Anaconda hace más o menos lo mismo que  “Pipenv” salvo por alguna excepcionalidad (se puede usar Pipenv con Anaconda,  pero es tener un “gestor de entornos virtuales” dentro de un “gestor de  entornos virtuales” cada uno gestionando entornos virtuales por su lado y a su modo). Se recomienda Pipenv si se trabaja sobre “Python común”.  Pipenv se instala con PIP en la carpeta “Lib” del “Python global” (si no se  tiene instalado Virtualenv lo instalará automáticamente como dependencia, pues lo necesita). Cuando se instala Pipenv se tendrá unas cuantas variables de entorno de Python en el sistema operativo (que se podrán usar en la consola) y que son: python, pip, virtualenv, pipenv. Se usará la nueva `pipenv` para gestionar los entornos virtuales (así que hay que olvidar utilizar `virtualenv` y sus comandos; aunque `pipenv` utiliza comandos semejantes). Pipenv creará los entornos virtuales (usa por debajo Virtualenv) en una carpeta que gestiona llamada `virtualenvs` y si se le pasan paquetes en la creación se podrán instalar (usa por debajo PIP).
+
+# 2. ¿Cómo funciona Pipenv?
+
+Por lo general, cuando se crea un proyecto de Python y se utiliza un entorno virtual para los paquetes, se tiene la tarea de crear el entorno virtual (usando el comando `py -m venv`), instalar dependencias en él y rastrear las  dependencias manualmente.
+
+Pipenv proporciona una forma de hacer todo esto de forma semiautomática. El entorno virtual para el proyecto se crea y administra cuando se instalan paquetes a través de la interfaz de línea de comandos de `pipenv`. Las dependencias se rastrean y bloquean, y se pueden administrar las dependencias de desarrollo y tiempo de ejecución por separado. También se puede migrar desde archivos `requirements.txt` de la vieja escuela, por lo que no se necesita desarmar el proyecto e iniciarlo desde cero para usar bien `pipenv`.
+
+Tenga en cuenta que, a diferencia de otras herramientas de administración de proyectos de Python (como [Poetry](https://www.infoworld.com/article/3527850/how-to-manage-python-projects-with-poetry.html)), `pipenv` no administra el "andamiaje" del proyecto. Es decir, `pipenv` no crea la estructura interna del directorio del proyecto con pruebas simuladas, comprobantes de documentación, etc., sino que se centra principalmente en la gestión de paquetes y entornos. Esto hace de `pipenv` una buena opción si solo se desea una herramienta para enfocarse en entornos  virtuales y paquetes, y no una solución todo en uno.
+
+# 3. Instalar `pipenv`
 
 Si bien [`pip`](https://pip.pypa.io/en/stable/installing/) puede instalar paquetes de Python, se recomienda `pipenv` ya que es una herramienta de nivel superior que simplifica la administración de dependencias para casos de uso comunes.
 
-## 2.1. Instalación en Arch y derivadas (ArcoLinux, Manjaro, Anarchy, etc.)
+## 3.1. Instalación en Arch y derivadas (ArcoLinux, Manjaro, Anarchy, etc.)
 
 Afortunadamente, dentro de los repositorios oficiales de Arch, se encuentra el paquete [python-pipenv](https://www.archlinux.org/packages/community/any/python-pipenv/) con lo que la instalación se convierte en algo tan sencillo como introducir el comando:
 
@@ -50,7 +154,7 @@ Afortunadamente, dentro de los repositorios oficiales de Arch, se encuentra el p
     $ pacman -S python-pipenv
 ```
 
-## 2.2. Instalación en Debian y derivadas
+## 3.2. Instalación en Debian y derivadas
 
 Se usará `pip3` para instalar `pipenv` por tanto, debe estar instalado previamente. Para ello se usará:
 
@@ -72,7 +176,7 @@ Debería bastar con recargar `~/.profile` usando:
 
     source ~/.profile
 
-## 2.3. Para usuarios de zsh
+## 3.3. Para usuarios de zsh
 
 El comportamiento de `zsh` es algo distinto ya que se basa en usar un fichero de configurarión diferente a los habituales de Bash, por tanto, la instalación del nuevo `$PATH` dependerá ahora de configurar convenientemente el fichero `.zshrc` añadiéndole lo siguiente como primeras líneas de código:
 
@@ -86,9 +190,17 @@ El comportamiento de `zsh` es algo distinto ya que se basa en usar un fichero de
     fi
 ```
 
-# 3. Instalando paquetes del proyecto
+# 4. Instalando paquetes del proyecto
 
-`pipenv` gestiona las dependencias por proyecto. Para instalar paquetes, cambiar al directorio del proyecto (o simplemente usar un directorio vacío) y ejecutar:
+Instalar paquetes para un proyecto no es apreciablemente diferente con `pipenv` que con `pip`; de hecho, la sintaxis es muy parecida. Abrir una consola en el directorio del proyecto y escribir `pipenv install <package_name>` para instalar un paquete para el proyecto. Para especificar que el paquete es una versión en desarrollo, usar la bandera `-d`. Se puede usar la sintaxis de `pip` para denotar una versión específica de un paquete (por ejemplo, `black==13.0b1`).
+
+Cuando se instala un paquete con `pipenv`, suceden dos cosas. Primero, Pipenv verificará si ya se ha creado un entorno virtual para este directorio de proyecto. En caso afirmativo, Pipenv instalará el paquete en el entorno virtual existente. Si no, Pipenv creará un entorno virtual que usa la misma edición de Python utilizada para ejecutar Pipenv. Tenga en cuenta que el entorno virtual no se crea en el directorio del proyecto en sí; se crea en un directorio administrado por Pipenv en su perfil de usuario (más tarde se indicará como cambiar el directorio por defecto por uno del directorio del proyecto).
+
+En segundo lugar, Pipenv instalará los paquetes solicitados en el entorno virtual. Cuando finalice la instalación, Pipenv informará sobre todo lo que hizo, incluida una ruta al entorno virtual si tuviera que crear uno.
+
+Por lo general, no se necesita conocer la ruta al entorno virtual que crea Pipenv. Para activar el entorno, simplemente navegue hasta el directorio de su proyecto y úselo con pipenv shell para iniciar una nueva sesión de shell o úselo con `pipenv run <commando>` para ejecutar un comando directamente. Por ejemplo, use  `pipenv run mypy` para ejecutar la versión de la herramienta de línea de comandos de mypy (suponiendo que la herramienta mypy se instaló en el entorno virtual), o `pipenv run python -m <module>` para ejecutar un módulo Python disponible en el entorno virtual.
+
+Pongámonos manos a la obra y ejecutemos el siguiente grupo de comandos:
 
 ```bash
     $ cd myproject
@@ -97,7 +209,17 @@ El comportamiento de `zsh` es algo distinto ya que se basa en usar un fichero de
 
 Pipenv instalará la excelente biblioteca [`request`](http://docs.python-requests.org/en/master/) y creará un archivo `pipfile` en el directorio del proyecto. `pipfile` se usa para **rastrear qué dependencias necesita el proyecto** en caso de que se necesite volver a instalarlas, como cuando se comparte el proyecto con otros.
 
-## 3.1. Usar los paquetes instalados
+## 4.1. `pienv` y archivos de bloqueo
+
+Mira dentro del directorio después de haber instalado los paquetes con Pipenv, y verás dos archivos Pipfile y Pipfile.lock. Ambos son generados automáticamente por Pipenv, y no deben editarse directamente, ya que describen el estado de los paquetes en el proyecto.
+
+`Pipfile` es el más simple de los dos. Simplemente enumera los paquetes necesarios para el proyecto, desde dónde están instalados (el valor predeterminado es PyPI) y qué versión de Python se necesita para ejecutar todo.
+
+`Pipfile.lock` es más complejo. Enumera cada paquete junto con los detalles de la versión y los hash SHA-256 generados a partir del paquete. Los hashes se utilizan para garantizar que los paquetes instalados coincidan exactamente con lo especificado, no solo el número de versión, sino también el contenido obtenido.
+
+Cuando trabaje en un proyecto que use Pipenv para la administración de paquetes, querrá agregar los archivos Pipfile y Pipfile.lock al repositorio de control de versiones para el proyecto. Cualquier cambio realizado en los paquetes para su proyecto alterará a su vez esos archivos, por lo que esos cambios deben ser rastreados y versionados.
+
+## 4.1. Usar los paquetes instalados
 
 Ahora que las solicitudes están instaladas, se puede crear un archivo `main.py` simple para usarlo:
 
@@ -162,28 +284,52 @@ Se puede comprobar que todo funciona arrancando el servidor web local con:
 Si se visita `http://127.0.0.1:8000/` se debería ver la página inicial de Django.
 El servidor se parará con `C-c` y se saldrá del entorno virtual con el comando `exit`.
 
-## 3.2. Desinstalar un projecto
+## 4.2. Desinstalar un projecto
 
 ```
     pipenv --rm
 ```
 
-## 3.3. Advertencia: mapeo de Virtualenv
+## 4.3. Usar un proyecto Pipenv
+
+Si descargas un repositorio de origen para un proyecto que usa Pipenv para la administración de paquetes, todo lo que necesitas hacer es desempaquetar el contenido del repositorio en un directorio y ejecutarlo con `pipenv install` (no se necesitan nombres de paquetes). Pipenv leerá los archivos Pipfile y Pipfile.lock para el proyecto, creará el entorno virtual e instalará todas las dependencias según sea necesario.
+
+Finalmente, si deseas usar Pipenv para administrar un proyecto que actualmente usa un fichero requirements.txt, simplemente navega al directorio del proyecto y ejecúta `pipenv install`. Pipenv detectará el  `requirements.txt` (o puede usar el indicador -r para señalarlo) y migrarás todos los requisitos a un `Pipfile`.
+
+## 4.4. Advertencia: mapeo de Virtualenv
 
 *Pipenv* asigna automáticamente proyectos a sus ***virtualenvs*** específicos.
 El *virtualenv* se almacena globalmente con el nombre del directorio raíz del proyecto más el hash de la ruta completa a la raíz del proyecto (por ejemplo, `my_project-a3de50`).
 Si cambia la ruta de su proyecto, interrumpe dicha asignación predeterminada y pipenv ya no podrá encontrar y usar el *virtualenv* del proyecto.
-Es posible que desee establecer la exportación
+Es posible que desees establecer la exportación
 
 ```bash
-export PIPENV_VENV_IN_PROJECT = 1
+export PIPENV_VENV_IN_PROJECT= 1
 ```
 
-en `.bashrc/.zshrc` (o cualquier archivo de configuración de shell) para crear el *virtualenv* dentro del directorio de su proyecto, evitando problemas con los cambios de ruta posteriores.
+en `.bashrc/` ó `.zshrc/` (o cualquier archivo de configuración de shell) para crear el *virtualenv* dentro del directorio del proyecto, evitando problemas con los cambios de ruta posteriores.
 
-## 3.4. Borrar un entorno virtual
+`PIPENV_VENV_IN_PROJECT` es una variable de entorno, simplemente configúrala (**el valor no importa**, pero **no debe estar vacío**). Asegúrate de exportarla para que los procesos secundarios del shell puedan verla:
 
-Si por algún motivo movemos el directorio del proyecto, las referencias al entorno virtual ya no serán válidas y habremos de generar uno nuevo.
+```bash
+export PIPENV_VENV_IN_PROJECT= "enabled"
+```
+
+Esto hace que virtualenv se cree en el directorio `.venv ` junto al archivo `Pipfile` . Utiliza
+
+```bash
+unset PIPENV_VENV_IN_PROJECT
+```
+
+para eliminar la opción nuevamente.
+
+>Es posible que quieras ver si el proyecto [`direnv`](http://direnv.net) puede ser útil aquí. Establece variables de entorno, automáticamente, cuando ingresas al directorio del proyecto, siempre que haya creado un archivo `.envrc` en el directorio del proyecto y habilitado el directorio con `direnv`. Luego se pueden agregar dichos comandos de exportación a ese archivo.
+
+
+
+## 4.5. Borrar un entorno virtual
+
+Si por algún motivo movemos el directorio del proyecto, las referencias al entorno virtual ya no serán válidas y habrá que generar uno nuevo.
 
 Primero borraremos el entorno virtual inválido usando el comando:
 
@@ -201,11 +347,15 @@ Una vez que nos hemos deshecho del entorno antiguo crearemos uno nuevo a partir 
 pipenv install
 ```
 
-# 4. Otros entornos de virtualización de python
+## 4.6. Enlaces
 
-## 4.1. [`virtualenv`](https://rukbottoland.com/blog/tutorial-de-python-virtualenv/)
+[Pipenv: Flujo de trabajo en Python para humanos.](https://pipenv-es.readthedocs.io/es/latest/)
 
-### 4.1.1. Cómo instalar `virtualenv`
+# 5. Otros entornos de virtualización de python
+
+## 5.1. [`virtualenv`](https://rukbottoland.com/blog/tutorial-de-python-virtualenv/)
+
+### 5.1.1. Cómo instalar `virtualenv`
 
 Se puede instalar la utilidad `virtualenv` utilizando el gestor de paquetes de las diferentes distribuciones Linux:
 
@@ -221,7 +371,7 @@ También es posible instalar `virtualenv` utilizando el instalador de paquetes d
 $ sudo pip install virtualenv
 ```
 
-### 4.1.2. Cómo crear un entorno virtual de Python con `virtualenv`
+### 5.1.2. Cómo crear un entorno virtual de Python con `virtualenv`
 
 1. `virtualenv` con Python 3
 
@@ -243,7 +393,7 @@ Para crear un entorno virtual con Python 2, simplemente ejecutamos el comando `v
 
 Lamentablemente, no es posible crear un entorno virtual que contenga las dos versiones de Python al mismo tiempo.
 
-### 4.1.3. Estructura de un entorno virtual de Python
+### 5.1.3. Estructura de un entorno virtual de Python
 
 La ejecución de comandos anteriormente explicados crean el directorio `<entorno>/` con la siguiente estructura:
 
@@ -259,7 +409,7 @@ En el directorio `bin/` se encuentran los ejecutables necesarios para interactua
 
 Finalmente, en el directorio `lib/` se encuentra una copia de la instalación de Python así como un directorio llamado `site-packages/` en donde se almacenan los paquetes Python instalados en el entorno virtual.
 
-### 4.1.4. Cómo activar un entorno virtual de Python con virtualenv
+### 5.1.4. Cómo activar un entorno virtual de Python con virtualenv
 
 Para activar un entorno virtual de Python, se ejecuta el script `activate` de `virtualenv` instalado en el directorio `bin/`:
 
@@ -271,7 +421,7 @@ $ source bin/activate ó $ . bin/activate
 
 El prompt de la terminal indica que el entorno virtual `mi_proyecto` está activado. Ya es posible utilizar los paquetes Python instalados en el entorno virtual así como instalar paquetes adicionales.
 
-### 4.1.5. Cómo desactivar un entorno virtual de Python con `virtualenv`
+### 5.1.5. Cómo desactivar un entorno virtual de Python con `virtualenv`
 
 Para desactivar un entorno virtual, porque se necesita trabajar en otro diferente, se ejecuta el comando `deactivate` de `virtualenv`. No es necesario ir al directorio del entorno virtual para realizar esta operación:
 
@@ -281,7 +431,7 @@ Para desactivar un entorno virtual, porque se necesita trabajar en otro diferent
 
 El prompt de la terminal indica que el entorno virtual ha sido desactivado con éxito.
 
-### 4.1.6. Cómo instalar paquetes en un entorno virtual de Python
+### 5.1.6. Cómo instalar paquetes en un entorno virtual de Python
 
 Después de activarlo, lo único que resta es instalar los paquetes que sean necesarios usando el instalador de paquetes `pip`.
 Al momento de crear un entorno virtual, la utilidad `virtualenv` instala de manera automática el ejecutable `pip`.
@@ -293,11 +443,11 @@ Por ejemplo, para instalar `Django` se ejecuta el siguiente comando:
 
 Nótese que el prompt de la terminal indica que el entorno virtual `env` está activado de antemano.
 
-### 4.1.7. ¿En qué directorio ubico el código fuente de mi proyecto?
+### 5.1.7. ¿En qué directorio ubico el código fuente de mi proyecto?
 
 La ubicación del código fuente del proyecto en el que se está trabajando no es importante. Puede ser colocado inclusive dentro del directorio del entorno virtual. Una vez que el entorno virtual está activado, todas las librerías de Python que se instalen solo podrán ser usadas al activar ese entorno virtual específico.
 
-### 4.1.8. Instrucciones de instalación de `virtualenv` de EDX
+### 5.1.8. Instrucciones de instalación de `virtualenv` de EDX
 
 Para comprobar si tenemos VirtualEnv instalado: virtualenv
 Para instalar VirtualEnv: sudo apt install virtualenv
@@ -312,7 +462,7 @@ Desactivar el entorno virtual: deactivate
 Para conocer qué Python se está ejecutando: which python3
 Instalar módulo Flask (necesario tener el entorno virtual web activado): pip3 install flask
 
-## 4.2. VirtualEnvWrapper
+## 5.2. VirtualEnvWrapper
 
 VirtualEnvWrapper es una utilidad de Python con la que podemos trabajar con entornos virtuales (creando, activando y desactivando) de forma equivalente a lo que has visto en el vídeo. Si quieres utilizarla (no es necesario), tendrás que instalarla a través de pip:
 
@@ -378,11 +528,11 @@ Para borrar un entorno virtual, utilizo:
 $ rmvirtualenv web2
 ```
 
-# 5 Entornos virtuales en Visual Studio Codium/Code
+# 6 Entornos virtuales en Visual Studio Codium/Code
 
 Un entorno consta de un intérprete y cualquier número de paquetes instalados. La extensión de Python para VS Codium/Code proporciona funciones de integración útiles para trabajar con diferentes entornos.
 
-## 5.1. Seleccionar y activar un entorno
+## 6.1. Seleccionar y activar un entorno
 
 De forma predeterminada, la extensión de Python busca y usa el primer intérprete de Python que encuentra en la ruta del sistema. Si no encuentra un intérprete, emite una advertencia (en cualquier caso, se puede deshabilitar estas advertencias configurando `python.disableInstallationCheck` en `true` en la configuración de usuario).
 
@@ -577,7 +727,7 @@ Se recomienda que establezca la variable `PYTHONPATH` en un archivo de definicio
 
 Nota: `PYTHONPATH` no, repetimos **no**, especifica una ruta al intérprete de Python y, por lo tanto, nunca se usa con la configuración `python.pythonPath`. Claramente, la variable de entorno está mal llamada, pero&#x2026; *c&rsquo;est la vie*. Así que asegurarse de leer la documentación de `PYTHONPATH` varias veces y téngase en cuenta que `PYTHONPATH` **no es un camino a un intérprete**.
 
-## Bootstrap
+## 6.2. Bootstrap
 
 - Instalar con:
   
@@ -585,6 +735,13 @@ Nota: `PYTHONPATH` no, repetimos **no**, especifica una ruta al intérprete de P
   $ pipenv install bootstrap4
   ```
 
-## Referencias
+## 7. Referencias
 
 [Pipenv & Virtual Environments; The Hitchhiker's Guide to Python](https://docs.python-guide.org/dev/virtualenvs/)
+
+[Python Tutorial: Pipenv - Easily Manage Packages and Virtual Environments](https://www.youtube.com/watch?v=zDYL22QNiWk)
+
+[Using Pipenv to manage Python virtual environments and packages](
+https://www.youtube.com/watch?v=0CKuaf11H5Q)
+
+[How to manage Python projects with Pipenv](https://www.infoworld.com/article/3561758/how-to-manage-python-projects-with-pipenv.html)
