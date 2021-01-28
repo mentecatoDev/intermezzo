@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Doctest - Intermezzo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Doctest";
+    var mkdocs_page_input_path = "doctest.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Intermezzo</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../entornos_virtuales/">Entornos Virtuales</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Doctest</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#definiendo-pruebas">Definiendo pruebas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pruebas-en-un-modulo">Pruebas en un módulo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creando-varias-pruebas">Creando varias pruebas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pruebas-que-nos-guian">Pruebas que nos guían</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tests-avanzados">Tests avanzados</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../parametros_por_referencia/">Parámetros por referencia</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../divmod/">La función `divmod()`</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Intermezzo</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Doctest</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="doctest">Doctest</h1>
+<p>Si por un lado las <strong>docstrings</strong> permiten describir documentación, los <strong>doctest</strong> permiten combinar las pruebas con la propia documentación.</p>
+<p>Este concepto ayuda a mantener las pruebas actualizadas, y además sirve como ejemplo de uso del código, ayudando a explicar su propósito.</p>
+<p>Para utilizar <strong>doctests</strong> hay que escribir una línea dentro de la documentación como la siguiente:</p>
+<pre><code>&gt;&gt;&gt;
+</code></pre>
+<p>Python entenderá que debe ejecutar el contenido dentro del comentario como si fuera código normal, y lo hará <strong>hasta que encuentre  una línea en blanco</strong> (o llegue al final de la documentación).</p>
+<p>Lo mejor es ver  a <strong>doctest</strong> en acción.</p>
+<h2 id="definiendo-pruebas">Definiendo pruebas</h2>
+<p>Por regla general cada prueba va ligada a una funcionalidad, pueden  ser funciones, clases o sus métodos. Por ejemplo, dada una función <strong>suma</strong>...</p>
+<pre><code class="language-python">def suma(a, b):
+    &quot;&quot;&quot;Esta función recibe dos parámetros y devuelve la suma de ambos&quot;&quot;&quot;
+    return a+b
+</code></pre>
+<p>Para realizar una prueba dentro de la función, vamos a ejecutar un código que la invoque:</p>
+<pre><code class="language-python">def suma(a, b):
+    &quot;&quot;&quot;Esta función recibe dos parámetros y devuelve la suma de ambos
+
+    &gt;&gt;&gt; suma(5,10)
+    &quot;&quot;&quot;
+    return a+b
+</code></pre>
+<p>Bien, ya tenemos la prueba, pero ahora nos falta indicar a <strong>doctest</strong> cuál es el resultado correcto, y eso lo indicaremos en la siguiente línea:</p>
+<pre><code class="language-python">def suma(a, b):
+    &quot;&quot;&quot;Esta función recibe dos parámetros y devuelve la suma de ambos
+
+    &gt;&gt;&gt; suma(5,10)
+    15
+    &quot;&quot;&quot;
+    return a+b
+</code></pre>
+<p>Ahora se ha de ejecutar la prueba para ver si funciona o no, pero antes hay que adaptar el código.</p>
+<h2 id="pruebas-en-un-modulo">Pruebas en un módulo</h2>
+<p>Para ejecutar pruebas se usará la terminal, así que se guarda la función en un script <strong>test.py</strong> como si fuera un <em>módulo con funciones</em>.</p>
+<p>Ahora, justo al final, se indicará que se ejecuten las pruebas doctest de las funciones del módulo escribiendo el siguiente código:</p>
+<pre><code class="language-python">import doctest
+doctest.testmod()  # Notar que mod significa módulo
+</code></pre>
+<p>Esto sería suficiente, pero con el objetivo de evitar que este código se ejecute al ser importado desde otro lugar, se suele hacer de la siguiente otra forma:</p>
+<pre><code class="language-python">if __name__ == &quot;__main__&quot;:
+    import doctest
+    doctest.testmod()
+</code></pre>
+<p>Con esto se lanzarán las pruebas <strong>únicamente al ejecutar directamente el módulo</strong>, y ya podremos ejecutar el módulo desde la terminal:</p>
+<pre><code class="language-bash">$ python test.py
+</code></pre>
+<p>Como resultado no se muestra nada, lo cual no significa que no se haya ejecutado la prueba, sino que ésta ha funcionado correctamente y no hay fallos.</p>
+<p>Se puede mostrar todo el registro de ejecución pasando un argumento <code>-v</code> a python justo al final:</p>
+<pre><code class="language-bash">$ python test.py -v
+</code></pre>
+<p>Y entonces se verá el siguiente resultado:</p>
+<pre><code>Trying:
+    suma(5,10)
+Expecting:
+    15
+ok
+1 items had no tests:
+    __main__
+1 items passed all tests:
+1 tests in __main__.suma
+1 tests in 2 items.
+1 passed and 0 failed.
+Test passed.
+</code></pre>
+<p>...en el que se prueba el código <code>suma(5,10)</code>, se espera <code>15</code> y el resultado es ok; un resumen y finalmente <code>Test passed</code>.</p>
+<h2 id="creando-varias-pruebas">Creando varias pruebas</h2>
+<p>Evidentemente se puede definir múltiples pruebas e incluso alguna que se sepa que no es correcta:</p>
+<pre><code class="language-python">def suma(a, b):
+    &quot;&quot;&quot;Esta función recibe dos parámetros y devuelve la suma de ambos
+
+    &gt;&gt;&gt; suma(5,10)
+    15
+
+    &gt;&gt;&gt; suma(0,0)
+    1
+
+    &gt;&gt;&gt; suma(-5,7)
+    2
+    &quot;&quot;&quot;
+    return a+b
+</code></pre>
+<p>Ahora, si se ejecuta el script de forma normal...</p>
+<pre><code class="language-bash">python test.py
+</code></pre>
+<p>A diferencia de antes sí que muestra algo; indicando que uno de los tests ha fallado:</p>
+<pre><code class="language-bash">**********************************************************************
+File &quot;test.py&quot;, line 7, in __main__.suma
+Failed example:
+    suma(0,0)
+Expected:
+    1
+Got:
+    0
+**********************************************************************
+1 items had failures:
+1 of   3 in __main__.suma
+***Test Failed*** 1 failures.
+</code></pre>
+<p>La cuestión ahora es revisar si el test es incorrecto, o adaptar  la función para que devuelva el resultado esperado en el test.  Evidentemente en este caso el test era incorrecto a propósito  así que simplemente habrá que borrarlo.</p>
+<h2 id="pruebas-que-nos-guian">Pruebas que nos guían</h2>
+<p>Una de las ventajas de usar tests es que pueden utilizarse para detectar posibles fallas. En el siguiente ejemplo se usa como guía los tests para implementar correctamente una función.</p>
+<pre><code class="language-python">def palindromo(palabra):
+    &quot;&quot;&quot;
+    Comprueba si una palabra es un palíndromo. Los palíndromos son 
+    palabras o frases que se leen igual en ambos sentidos.
+    Si es un palíndromo devuelve True y si no False
+
+    &gt;&gt;&gt; palindromo(&quot;radar&quot;)
+    True
+
+    &gt;&gt;&gt; palindromo(&quot;somos&quot;)
+    True
+
+    &gt;&gt;&gt; palindromo(&quot;holah&quot;)
+    False
+    &quot;&quot;&quot;
+    if palabra == palabra[::-1]: 
+        return True
+    else:
+        return False
+</code></pre>
+<p>Bien, ¿pero qué ocurre si se hace el siguiente test?</p>
+<pre><code class="language-python">&gt;&gt;&gt; palindromo(&quot;Ana&quot;)
+True
+</code></pre>
+<p>Evidentemente, fallará:</p>
+<pre><code>**********************************************************************
+File &quot;test.py&quot;, line 11, in __main__.palindromo
+Failed example:
+    palindromo(&quot;Ana&quot;)
+Expected:
+    True
+Got:
+    False
+**********************************************************************
+1 items had failures:
+1 of   3 in __main__.palindromo
+***Test Failed*** 1 failures.
+</code></pre>
+<p>Claro, es que <code>Ana</code> empieza por mayúscula, pero hay que recordar que un palíndromo lo es si se pronuncia igual, por tanto las mayúsculas no deberían afectar. Por tanto, en este caso habría que readaptar el código para prevenir el error:</p>
+<pre><code class="language-python">def palindromo(palabra):
+    &quot;&quot;&quot;
+    Comprueba si una palabra es un palíndrimo. Los palíndromos son 
+    palabras o frases que se leen igual en ambos sentidos.
+    Si es un palíndromo devuelve True y si no False
+
+    &gt;&gt;&gt; palindromo(&quot;radar&quot;)
+    True
+
+    &gt;&gt;&gt; palindromo(&quot;somos&quot;)
+    True
+
+    &gt;&gt;&gt; palindromo(&quot;holah&quot;)
+    False
+
+    &gt;&gt;&gt; palindromo(&quot;Ana&quot;)
+    True
+    &quot;&quot;&quot;
+    if palabra.lower() == palabra[::-1].lower(): 
+        return True
+    else:
+        return False
+</code></pre>
+<p>Y en el test de la frase... ¿"Atar a la rata"? Esto también es un palíndromo:</p>
+<pre><code>&gt;&gt;&gt; palindromo(&quot;Atar a la rata&quot;)
+True
+**********************************************************************
+Failed example:
+    palindromo(&quot;Atar a la rata&quot;)
+Expected:
+    True
+Got:
+    False
+**********************************************************************
+1 items had failures:
+1 of   4 in __main__.palindromo
+***Test Failed*** 1 failures.
+</code></pre>
+<p>¡Falla de nuevo! Ahora el problema son los espacios, ya que estos no se leen pero, si existen en la cadena, la frase no concuerda.</p>
+<pre><code class="language-python">def palindromo(palabra):
+    &quot;&quot;&quot;
+    Comprueba si una palabra es un palíndromo. Los palíndromos son 
+    palabras o frases que se leen igual en ambos sentidos.
+    Si es un palíndromo devuelve True y si no False
+
+    &gt;&gt;&gt; palindromo(&quot;radar&quot;)
+    True
+
+    &gt;&gt;&gt; palindromo(&quot;somos&quot;)
+    True
+
+    &gt;&gt;&gt; palindromo(&quot;holah&quot;)
+    False
+
+    &gt;&gt;&gt; palindromo(&quot;Atar a la rata&quot;)
+    True
+    &quot;&quot;&quot;
+    if palabra.lower().replace(&quot; &quot;, &quot;&quot;) == 
+                                palabra[::-1].lower().replace(&quot; &quot;, &quot;&quot;): 
+        return True
+    else:
+        return False
+</code></pre>
+<p>Todavía habría algunos casos como los acentos que darían fallos,  pero ya se ve por donde va la lógica. Se trata de que, gracias a los test, se cree la función correctamente.</p>
+<p>De hecho en el mundo de la programación hay una práctica conocida como TDD, <strong>Test Driven Development</strong> o <strong>Desarrollo guiado por pruebas</strong> que trata de escribir las pruebas primero y luego refactorizar para ir puliendo la funcionalidad.</p>
+<h2 id="tests-avanzados">Tests avanzados</h2>
+<p>Hasta ahora se han hecho unos tests muy simples, pero los <strong>doctests</strong> son muy flexibles. Algunas de sus funcionalidades interesantes son la posibilidad de <strong>ejecutar bloques de código</strong> o la <strong>captura de excepciones</strong>.</p>
+<p>Para crear un test que incluya un bloque de código, se debe utilizar las sentencias anidadas para simular tabulaciones:</p>
+<pre><code class="language-python">...
+def doblar(lista):
+    &quot;&quot;&quot;Dobla el valor de los elementos de una lista
+    &gt;&gt;&gt; l = [1, 2, 3, 4, 5] 
+    &gt;&gt;&gt; doblar(l)
+    [2, 4, 6, 8, 10]
+    &quot;&quot;&quot;
+    return [n*2 for n in lista]
+</code></pre>
+<p>En este caso se ha creado la lista del test manualmente, pero se podría haber generado con un bucle utilizando sentencias anidadas:</p>
+<pre><code class="language-python">def doblar(lista):
+    &quot;&quot;&quot;Dobla el valor de los elementos de una lista
+    &gt;&gt;&gt; l = [1, 2, 3, 4, 5] 
+    &gt;&gt;&gt; doblar(l)
+    [2, 4, 6, 8, 10]
+
+    &gt;&gt;&gt; l = [] 
+    &gt;&gt;&gt; for i in range(10):
+    ...     l.append(i)
+    &gt;&gt;&gt; doblar(l)
+    [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+    &quot;&quot;&quot;
+    return [n*2 for n in lista]
+</code></pre>
+<p>Si se ejecuta el script monitorizando todo:</p>
+<pre><code class="language-bash">$ python test.py -v
+</code></pre>
+<p>...se puede observar la ejecución del test avanzado:</p>
+<pre><code class="language-text">Trying:
+    l = [1, 2, 3, 4, 5]
+Expecting nothing
+ok
+Trying:
+    doblar(l)
+Expecting:
+    [2, 4, 6, 8, 10]
+ok
+Trying:
+    l = []
+Expecting nothing
+ok
+Trying:
+    for i in range(10):
+        l.append(i)
+Expecting nothing
+ok
+Trying:
+    doblar(l)
+Expecting:
+    [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+ok
+1 items had no tests:
+    __main__
+1 items passed all tests:
+5 tests in __main__.doblar
+5 tests in 2 items.
+5 passed and 0 failed.
+Test passed.
+</code></pre>
+<p>Por último vamos a volver a nuestra función suma para tratar excepciones dentro de los tests.</p>
+<pre><code class="language-python">def suma(a, b):
+    &quot;&quot;&quot;Esta función recibe dos parámetros y devuelve la suma de ambos
+
+    Pueden ser números:
+
+    &gt;&gt;&gt; suma(5,10)
+    15
+
+    &gt;&gt;&gt; suma(-5,7)
+    2
+
+    Cadenas de texto:
+
+    &gt;&gt;&gt; suma('aa','bb')
+    'aabb'
+
+    O listas:
+
+    &gt;&gt;&gt; a = [1, 2, 3]
+    &gt;&gt;&gt; b = [4, 5, 6]
+    &gt;&gt;&gt; suma(a,b)
+    [1, 2, 3, 4, 5, 6]
+    &quot;&quot;&quot;
+    return a+b
+</code></pre>
+<p>Se sabe que no se pueden sumar valores de tipos distintos, ¿cómo puede tenerse esto en cuenta en un test?</p>
+<p>Pues por ahora se supondrá un resultado y se comprobará que este falla:</p>
+<pre><code class="language-python">def suma(a, b):
+    &quot;&quot;&quot;Esta función recibe dos parámetros y devuelve la suma de ambos
+
+    Pueden ser números:
+
+    &gt;&gt;&gt; suma(5,10)
+    15
+
+    &gt;&gt;&gt; suma(-5,7)
+    2
+
+    Cadenas de texto:
+
+    &gt;&gt;&gt; suma('aa','bb')
+    'aabb'
+
+    O listas:
+
+    &gt;&gt;&gt; a = [1, 2, 3]
+    &gt;&gt;&gt; b = [4, 5, 6]
+    &gt;&gt;&gt; suma(a,b)
+    [1, 2, 3, 4, 5, 6]
+
+    Sin embargo no podemos sumar elementos de tipos diferentes:
+
+    &gt;&gt;&gt; suma(10,&quot;hola&quot;)
+    &quot;10hola&quot;
+    &quot;&quot;&quot;
+    return a+b
+</code></pre>
+<p>Si se ejecuta el script monitorizando todo:</p>
+<pre><code class="language-bash">$ python test.py -v
+</code></pre>
+<p>Se puede observar el fallo:</p>
+<pre><code class="language-text">Trying:
+    suma(5,10)
+Expecting:
+    15
+ok
+Trying:
+    suma(-5,7)
+Expecting:
+    2
+ok
+Trying:
+    suma('aa','bb')
+Expecting:
+    'aabb'
+ok
+Trying:
+    a = [1, 2, 3]
+Expecting nothing
+ok
+Trying:
+    b = [4, 5, 6]
+Expecting nothing
+ok
+Trying:
+    suma(a,b)
+Expecting:
+    [1, 2, 3, 4, 5, 6]
+ok
+Trying:
+    suma(10,&quot;hola&quot;)
+Expecting:
+    &quot;10hola&quot;
+**********************************************************************
+File &quot;test.py&quot;, line 26, in __main__.suma
+Failed example:
+    suma(10,&quot;hola&quot;)
+Exception raised:
+    Traceback (most recent call last):
+    File &quot;C:\Program Files\Anaconda3\lib\doctest.py&quot;, line 1321, in __run
+        compileflags, 1), test.globs)
+    File &quot;&lt;doctest __main__.suma[6]&gt;&quot;, line 1, in &lt;module&gt;
+        suma(10,&quot;hola&quot;)
+    File &quot;test.py&quot;, line 29, in suma
+        return a+b
+    TypeError: unsupported operand type(s) for +: 'int' and 'str'
+1 items had no tests:
+    __main__
+**********************************************************************
+1 items had failures:
+1 of   7 in __main__.suma
+7 tests in 2 items.
+6 passed and 1 failed.
+***Test Failed*** 1 failures.
+</code></pre>
+<p>Concretamente habrá que fijarse en la primera línea y la última de la excepción:</p>
+<pre><code class="language-text">Traceback (most recent call last):
+    ...
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+</code></pre>
+<p>Y precisamente esto es lo que se indicará en el test:</p>
+<pre><code class="language-python">def suma(a, b):
+    &quot;&quot;&quot;Esta función recibe dos parámetros y devuelve la suma de ambos
+
+    Pueden ser números:
+
+    &gt;&gt;&gt; suma(5,10)
+    15
+
+    &gt;&gt;&gt; suma(-5,7)
+    2
+
+    Cadenas de texto:
+
+    &gt;&gt;&gt; suma('aa','bb')
+    'aabb'
+
+    O listas:
+
+    &gt;&gt;&gt; a = [1, 2, 3]
+    &gt;&gt;&gt; b = [4, 5, 6]
+    &gt;&gt;&gt; suma(a,b)
+    [1, 2, 3, 4, 5, 6]
+
+    Sin embargo no se pueden sumar elementos de tipos diferentes:
+
+    &gt;&gt;&gt; suma(10,&quot;hola&quot;)
+    Traceback (most recent call last):
+        ...
+    TypeError: unsupported operand type(s) for +: 'int' and 'str'
+    &quot;&quot;&quot;
+    return a+b
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../parametros_por_referencia/" class="btn btn-neutral float-right" title="Parámetros por referencia">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../entornos_virtuales/" class="btn btn-neutral" title="Entornos Virtuales"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../entornos_virtuales/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../parametros_por_referencia/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
