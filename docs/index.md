@@ -2,6 +2,8 @@
 
 #### [Entornos Virtuales](entornos_virtuales.md)
 
+#### [Doctest](doctest.md)
+
 #### [Parámetros por referencia](parametros_por_referencia.md)
 
 #### [La tortuga que dibuja](la_tortuga_que_dibuja.md)

@@ -13,8 +13,8 @@ Muchos sabemos que a los desarrolladores de software no les suele gustar la impo
 - Siempre preferir **espacios** a *tabuladores*.
 - Usar **4 espacios** como indentación.
 - Las líneas deben ser menores de 80 caracteres de longitud.
-- Las líneas que pasen de esta longitud deben dividirse en dos, y la linea resultante de la división debe estar indentada.
-- Las funciones y las clases deben estar separadas por dos lineas en blanco.
+- Las líneas que pasen de esta longitud deben dividirse en dos, y la línea resultante de la división debe estar indentada.
+- Las funciones y las clases deben estar separadas por dos líneas en blanco.
 - No colocar espacios alrededor de los índices de las listas, llamadas a funciones o argumentos.
 
 ### Nombres
@@ -35,7 +35,7 @@ Muchos sabemos que a los desarrolladores de software no les suele gustar la impo
 - Siempre importar funciones y clases usando `from my_module import MyClass` en lugar de importar el módulo completo `import my_module` 
 - Si aun se debe usar imports relativos, usar la sintaxis `from . import my_module` 
 - Las importaciones siempre deben estar en el orden:
-1. Módulos de la librería standar.
+1. Módulos de la librería standard.
 2. Módulos externos.
 3. Módulos del proyecto.
 
