@@ -13,3 +13,5 @@
 #### [¿Qué es PEP8 y por qué se debe implementar?](que_es_PEP8_y_por_que_se_debe_implementar.md)
 
 #### [La función `divmod()`](divmod.md)
+
+#### [Compilando en python](compilando_en_python.md)

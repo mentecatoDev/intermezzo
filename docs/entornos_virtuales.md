@@ -207,7 +207,7 @@ Pongámonos manos a la obra y ejecutemos el siguiente grupo de comandos:
     $ pipenv install requests
 ```
 
-Pipenv instalará la excelente biblioteca [`request`](http://docs.python-requests.org/en/master/) y creará un archivo `pipfile` en el directorio del proyecto. `pipfile` se usa para **rastrear qué dependencias necesita el proyecto** en caso de que se necesite volver a instalarlas, como cuando se comparte el proyecto con otros.
+Pipenv instalará la excelente biblioteca [`requests`](http://docs.python-requests.org/en/master/) y creará un archivo `pipfile` en el directorio del proyecto. `pipfile` se usa para **rastrear qué dependencias necesita el proyecto** en caso de que se necesite volver a instalarlas, como cuando se comparte el proyecto con otros.
 
 ## 4.1. `pienv` y archivos de bloqueo
 
@@ -257,13 +257,17 @@ Ahora se usa `pipenv` para instalar `django`
 ```
     $ pipenv install django
 ```
+o si queremos la versión 3.2 específicamente utilizaremos
 
+```
+    $ pipenv install django==3.2
+```
 - Si se mira en el directorio, ahora hay dos nuevos archivos: `Pipfile` y `Pipfile.lock`. Se tiene la información que se necesita para el nuevo entorno virtual pero aún no ha sido activado. Se hace con:
-  
-  ```
+
+```
   $ pipenv shell
-  ```
-  
+```
+
   Debería verse ahora el nombre del entorno envuelto entre paréntesis precediendo al *prompt*.
   Si ahora se puede ejecutar `django-admin startproject` a continuación es que Django se ha instalado correctamente.
 
@@ -284,7 +288,7 @@ Se puede comprobar que todo funciona arrancando el servidor web local con:
 Si se visita `http://127.0.0.1:8000/` se debería ver la página inicial de Django.
 El servidor se parará con `C-c` y se saldrá del entorno virtual con el comando `exit`.
 
-## 4.2. Desinstalar un projecto
+## 4.2. Desinstalar un entorno virtual
 
 ```
     pipenv --rm

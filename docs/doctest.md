@@ -262,8 +262,8 @@ def palindromo(palabra):
     >>> palindromo("Atar a la rata")
     True
     """
-    if palabra.lower().replace(" ", "") == 
-                                palabra[::-1].lower().replace(" ", ""): 
+    palabra = palabra.lower().replace(" ", "")
+    if palabra == palabra[::-1]: 
         return True
     else:
         return False
@@ -375,7 +375,7 @@ def suma(a, b):
     >>> suma(a,b)
     [1, 2, 3, 4, 5, 6]
     """
-    return a+b
+    return a + b
 ```
 
 Se sabe que no se pueden sumar valores de tipos distintos, ¿cómo puede tenerse esto en cuenta en un test?
@@ -491,7 +491,9 @@ Y precisamente esto es lo que se indicará en el test:
 ```python
 def suma(a, b):
     """Esta función recibe dos parámetros y devuelve la suma de ambos
-
+Traceback (most recent call last):
+        ...
+    TypeError: unsupported operand type(s) for +: 'int' and 'str'
     Pueden ser números:
 
     >>> suma(5,10)

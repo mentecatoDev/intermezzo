@@ -2,7 +2,7 @@
 
 En el mundo del desarrollo es muy común hacer las cosas de distintas formas. Se puede organizar el código como se quiera, incluso escribirlo de forma abstracta. En muchos casos, se logra que nuestra profesión se considere muchas veces como un arte y no como una ingeniería por esta razón. La ausencia de una base sólida de cómo y por qué se hacen las cosas de una manera específica conduce a un software mal redactado y mal organizado que nadie quiere leer. 
 
-La diferencia mas palpable de python con respecto a otros lenguajes es que la comunidad tiene como lema la legibilidad del código. El ZEN de python establece que **"Debe haber una y preferiblemente solo una forma obvia de hacer las cosas"**. Siguiendo este principio, se definió una guía de estilo única descrita íntegramente en el *Python Enhancement Proposal* número 8, abreviado como *PEP* 8, donde se indica como debería ser escrito nuestro código python.
+La diferencia mas palpable de python con respecto a otros lenguajes es que la comunidad tiene como lema la legibilidad del código. El ZEN de python establece que **"Debe haber una y preferiblemente solo una forma obvia de hacer las cosas"**. Siguiendo este principio, se definió una guía de estilo única descrita íntegramente en el *Python Enhancement Proposal* número 8, abreviado como *[PEP 8](https://www.python.org/dev/peps/pep-0008/)*, donde se indica como debería ser escrito nuestro código python.
 
 Muchos sabemos que a los desarrolladores de software no les suele gustar la imposición obligatoria de hacer su trabajo de cierta forma. Con el devenir del tiempo hemos apreciado que: el que toda la comunidad use una guía de estilo única finalmente facilita el trabajo y mejora mucho la productividad.
 

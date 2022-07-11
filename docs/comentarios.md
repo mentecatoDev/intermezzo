@@ -51,7 +51,7 @@ Esto funciona porque en Python es válido crear expresiones cuyo resultado no es
 
 Ahora bien, eso es exactamente lo que se está haciendo cuando se crea un «comentario» usando triples comillas: generar una cadena que luego es desechada por Python por no emplearse.
 
-Pero el problema se origina cuando esas cadenas, creyendo ser  comentarios, son ubicadas en lugares donde se espera una expresión. Por  ejemplo:
+Pero el problema se origina cuando esas cadenas, creyendo ser comentarios, son ubicadas en lugares donde se espera una expresión. Por  ejemplo:
 
 ```python
 languages = [
