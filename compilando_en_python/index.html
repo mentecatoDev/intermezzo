@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Compilando Python - Intermezzo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Compilando Python";
+    var mkdocs_page_input_path = "compilando_en_python.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Intermezzo</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../entornos_virtuales/">Entornos Virtuales</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../doctest/">Doctest</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../parametros_por_referencia/">Parámetros por referencia</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../divmod/">La función `divmod()`</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Compilando Python</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#componentes-internos-de-python">Componentes internos de Python</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#salida">SALIDA:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#maquina-virtual-pvm">Máquina virtual (PVM).</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#compilacion-de-un-script-python">Compilación de un script Python</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#scripts-ejecutables-bajo-linux">Scripts ejecutables bajo Linux</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Intermezzo</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Compilando Python</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="compilando-en-python">Compilando en Python</h1>
+<h3 id="componentes-internos-de-python">Componentes internos de Python</h3>
+<p>Lo más probable es que haya leído en alguna parte que el lenguaje Python es un lenguaje de programación interpretado o script. La verdad es que Python es tanto un lenguaje interpretado como compilado. Pero llamar a Python un lenguaje compilado sería engañoso. La gente asumiría que el compilador traduce el código de Python a  lenguaje de máquina. El código de Python se traduce en código intermedio, que debe ser ejecutado por una máquina virtual,  conocida como PVM (python Virtual Machine), la Máquina Virtual de Python. Este es un enfoque similar al adoptado por Java. Incluso hay una forma de traducir los programas de Python en código de bytes de Java para la máquina virtual de Java (JVM). Esto se puede lograr con <em>Jython</em>.</p>
+<p>La pregunta es, ¿tengo que compilar mis scripts de Python para hacerlos más rápidos o cómo puedo compilarlos? La respuesta es fácil: normalmente, no necesitas hacer nada y no debes molestarte, porque "Python" ya está pensando por tí, es decir, toma  los pasos necesarios automáticamente.</p>
+<p>¿Deseas compilar un programa de python manualmente por alguna razón? No hay problema. Se puede hacer con el módulo <code>py_compile</code>, ya sea usando el shell del intérprete</p>
+<pre><code class="language-python">import py_compile 
+py_compile.compile('mi_primer_programa_simple.py')
+</code></pre>
+<h4 id="salida">SALIDA:</h4>
+<pre><code class="language-text">'__pycache__/mi_primer_programa_simple.cpython-37.pyc'
+</code></pre>
+<p>o usando el siguiente comando en el indicador de shell</p>
+<pre><code class="language-bash">python -m py_compile mi_primer_programa_simple.py
+</code></pre>
+<p>De cualquier manera, puedes notar dos cosas: primero, habrá un nuevo subdirectorio " <code>__pycache__</code>", si aún no existe. Encontrará un archivo "mi_primer_programa_simple.cpython-37.pyc" en este subdirectorio. Esta es la versión compilada de nuestro archivo en código de bytes.</p>
+<p>También puede compilar automáticamente todos los archivos de Python usando el módulo <code>compileall</code>. Puede hacerlo desde el indicador de shell ejecutando <code>compileall.py</code> y  proporcionando la ruta del directorio que contiene los archivos de Python para compilar:</p>
+<pre><code>monty@python:~/python$ python -m compileall .
+Listing . ...
+</code></pre>
+<p>Pero como hemos dicho, no tienes que preocuparte ni debes preocuparte por compilar el código de Python. La compilación está oculta para el usuario por una buena razón. Algunos novatos se preguntan a veces de dónde podrían provenir estos siniestros archivos con el sufijo .pyc. Si Python tiene acceso de escritura para el directorio donde reside el  programa de Python, almacenará el código de bytes compilado en un archivo que termina con el sufijo <code>.pyc</code>. Si Python no tiene acceso de escritura, el programa funcionará de todos modos. El código de bytes se generará pero se descartará cuando finalice el programa. Cada vez que se llama a un programa de Python, Python verificará si existe una versión compilada con el sufijo .pyc. Este archivo debe ser más reciente que el archivo con el sufijo .py. Si existe dicho archivo, Python cargará el código de bytes, lo que acelerará el tiempo de inicio del script. Si no hay una versión de código de bytes, Python creará el código de bytes antes de que comience la ejecución del programa. La ejecución de un programa de Python significa la ejecución del código de bytes en Python.</p>
+<p><img alt="Código fuente a código de bytes" src="https://python-course.eu/images/python-tutorial/py_pyc_overview_500w.webp" /></p>
+<h2 id="maquina-virtual-pvm">Máquina virtual (PVM).</h2>
+<h3 id="compilacion-de-un-script-python">Compilación de un script Python</h3>
+<p>Cada vez que se ejecuta un script de Python, se crea un código de bytes. Si se importa un script de Python como módulo, el código de bytes se almacenará en el archivo <code>.pyc</code> correspondiente. Por lo tanto, lo siguiente no creará un archivo de código de bytes:</p>
+<pre><code class="language-bash">monty@python:~/python$ python mi_primer_programa_simple.py
+¡Mi primer script simple en Python!
+monty@python:~/python$
+</code></pre>
+<p>La importación en la siguiente sesión de Python2  creará un archivo de código de bytes con el nombre  "my_first_simple_program.pyc":</p>
+<pre><code class="language-bash">monty@python:~/tmp$ ls 
+mi_primer_programa_simple.py
+monty@python:~/tmp$ python
+Python 2.6.5 (r265:79063, Apr 16 2010, 13:57:41) 
+[GCC 4.4.3] on linux2
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import mi_primer_programa_simple
+¡Mi primer script simple en Python!
+&gt;&gt;&gt; exit()
+monty@python:~/tmp$ ls
+mi_primer_programa_simple.py  mi_primer_programa_simple.pyc
+monty@python:~/tmp$
+</code></pre>
+<h2 id="scripts-ejecutables-bajo-linux">Scripts ejecutables bajo Linux</h2>
+<p>Hasta ahora, hemos comenzado nuestros scripts de Python con</p>
+<pre><code>python3 mi_fichero.py
+</code></pre>
+<p>en la línea de comandos de bash. Una  secuencia de comandos de Python también se puede iniciar como cualquier  otra secuencia de comandos en Linux, por ejemplo, las secuencias de  comandos de Bash. Se necesitan dos pasos para este  propósito: la línea <em>shebang</em> <code>#!/usr/bin/env python</code> debe agregarse como  la primera línea de su archivo de código Python. Alternativamente, esta línea puede ser <code>#!/usr/bin/python</code>, si esta es la ubicación de su intérprete de Python. En lugar de usar <code>env</code> como en la primera línea shebang, el intérprete se busca y se ubica en el momento en que se ejecuta el script. Esto hace que el script sea más portable. Sin embargo, también sufre el mismo problema: la ruta a <code>env</code> también puede ser diferente según la máquina.</p>
+<p>El archivo debe hacerse ejecutable: el comando <code>chmod +x scriptname</code> debe ejecutarse en un shell de Linux, por ejemplo, bash. <code>chmod 755 scriptname</code> también se puede usar para hacer que su archivo sea ejecutable. En nuestro ejemplo:</p>
+<pre><code>    $ chmod +x mi_primer_programa_simple.py
+</code></pre>
+<p>Ilustramos esto en una sesión bash:</p>
+<pre><code class="language-bash">bernd@marvin:~$ more mi_primer_programa_simple.py 
+#!/usr/bin/env python
+print(&quot;¡Mi primer script simple en Python!&quot;)
+bernd@marvin:~$ ls -ltr mi_primer_programa_simple.py 
+-rw-r--r-- 1 mentecato mentecato 63 Nov  4 21:17 mi_primer_programa_simple.py
+bernd@marvin:~$ chmod +x mi_primer_programa_simple.py 
+bernd@marvin:~$ ls -ltr mi_primer_programa_simple.py 
+-rwxr-xr-x 1 mentecato mentecato 63 Nov  4 21:17 my_first_simple_script.py
+bernd@marvin:~$ ./mi_primer_programa_simple.py 
+¡Mi primer script simple en Python!
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../buenas_practicas/" class="btn btn-neutral" title="Buenas Prácticas"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../buenas_practicas/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

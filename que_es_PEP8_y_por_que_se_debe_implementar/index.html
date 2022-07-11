@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -25,9 +25,8 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -41,7 +40,7 @@
         <a href=".." class="icon icon-home"> Intermezzo</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -91,6 +90,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
                     </li>
                 </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../compilando_en_python/">Compilando Python</a>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -120,12 +123,13 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
                 <h1 id="que-es-pep8-y-por-que-se-debe-implementar">¿Qué es PEP8 y por qué se debe implementar?</h1>
 <p>En el mundo del desarrollo es muy común hacer las cosas de distintas formas. Se puede organizar el código como se quiera, incluso escribirlo de forma abstracta. En muchos casos, se logra que nuestra profesión se considere muchas veces como un arte y no como una ingeniería por esta razón. La ausencia de una base sólida de cómo y por qué se hacen las cosas de una manera específica conduce a un software mal redactado y mal organizado que nadie quiere leer. </p>
-<p>La diferencia mas palpable de python con respecto a otros lenguajes es que la comunidad tiene como lema la legibilidad del código. El ZEN de python establece que <strong>"Debe haber una y preferiblemente solo una forma obvia de hacer las cosas"</strong>. Siguiendo este principio, se definió una guía de estilo única descrita íntegramente en el <em>Python Enhancement Proposal</em> número 8, abreviado como <em>PEP</em> 8, donde se indica como debería ser escrito nuestro código python.</p>
+<p>La diferencia mas palpable de python con respecto a otros lenguajes es que la comunidad tiene como lema la legibilidad del código. El ZEN de python establece que <strong>"Debe haber una y preferiblemente solo una forma obvia de hacer las cosas"</strong>. Siguiendo este principio, se definió una guía de estilo única descrita íntegramente en el <em>Python Enhancement Proposal</em> número 8, abreviado como <em><a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a></em>, donde se indica como debería ser escrito nuestro código python.</p>
 <p>Muchos sabemos que a los desarrolladores de software no les suele gustar la imposición obligatoria de hacer su trabajo de cierta forma. Con el devenir del tiempo hemos apreciado que: el que toda la comunidad use una guía de estilo única finalmente facilita el trabajo y mejora mucho la productividad.</p>
 <h2 id="puntos-destacados-de-pep8">Puntos destacados de PEP8</h2>
 <h3 id="basicos">Básicos</h3>
@@ -196,17 +200,18 @@
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../bots_de_telegram_en_python/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../divmod/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../bots_de_telegram_en_python/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../divmod/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
     <script defer>

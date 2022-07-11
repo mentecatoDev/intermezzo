@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -25,9 +25,8 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -41,7 +40,7 @@
         <a href=".." class="icon icon-home"> Intermezzo</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -93,6 +92,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
                     </li>
                 </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../compilando_en_python/">Compilando Python</a>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -122,6 +125,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -269,7 +273,7 @@ pytest = &quot;*&quot;
 <pre><code class="language-bash">    $ cd myproject
     $ pipenv install requests
 </code></pre>
-<p>Pipenv instalará la excelente biblioteca <a href="http://docs.python-requests.org/en/master/"><code>request</code></a> y creará un archivo <code>pipfile</code> en el directorio del proyecto. <code>pipfile</code> se usa para <strong>rastrear qué dependencias necesita el proyecto</strong> en caso de que se necesite volver a instalarlas, como cuando se comparte el proyecto con otros.</p>
+<p>Pipenv instalará la excelente biblioteca <a href="http://docs.python-requests.org/en/master/"><code>requests</code></a> y creará un archivo <code>pipfile</code> en el directorio del proyecto. <code>pipfile</code> se usa para <strong>rastrear qué dependencias necesita el proyecto</strong> en caso de que se necesite volver a instalarlas, como cuando se comparte el proyecto con otros.</p>
 <h2 id="41-pienv-y-archivos-de-bloqueo">4.1. <code>pienv</code> y archivos de bloqueo</h2>
 <p>Mira dentro del directorio después de haber instalado los paquetes con Pipenv, y verás dos archivos Pipfile y Pipfile.lock. Ambos son generados automáticamente por Pipenv, y no deben editarse directamente, ya que describen el estado de los paquetes en el proyecto.</p>
 <p><code>Pipfile</code> es el más simple de los dos. Simplemente enumera los paquetes necesarios para el proyecto, desde dónde están instalados (el valor predeterminado es PyPI) y qué versión de Python se necesita para ejecutar todo.</p>
@@ -297,10 +301,14 @@ print('Su IP en Internet es {0}'.format(response.json()['origin'].split(',')[0])
 <p>Ahora se usa <code>pipenv</code> para instalar <code>django</code></p>
 <pre><code>    $ pipenv install django
 </code></pre>
+<p>o si queremos la versión 3.2 específicamente utilizaremos</p>
+<pre><code>    $ pipenv install django==3.2
+</code></pre>
 <ul>
 <li>Si se mira en el directorio, ahora hay dos nuevos archivos: <code>Pipfile</code> y <code>Pipfile.lock</code>. Se tiene la información que se necesita para el nuevo entorno virtual pero aún no ha sido activado. Se hace con:</li>
 </ul>
-<p><code>$ pipenv shell</code></p>
+<pre><code>  $ pipenv shell
+</code></pre>
 <p>Debería verse ahora el nombre del entorno envuelto entre paréntesis precediendo al <em>prompt</em>.
   Si ahora se puede ejecutar <code>django-admin startproject</code> a continuación es que Django se ha instalado correctamente.</p>
 <p>Lanzar entonces lo siguiente:</p>
@@ -312,7 +320,7 @@ print('Su IP en Internet es {0}'.format(response.json()['origin'].split(',')[0])
 </code></pre>
 <p>Si se visita <code>http://127.0.0.1:8000/</code> se debería ver la página inicial de Django.
 El servidor se parará con <code>C-c</code> y se saldrá del entorno virtual con el comando <code>exit</code>.</p>
-<h2 id="42-desinstalar-un-projecto">4.2. Desinstalar un projecto</h2>
+<h2 id="42-desinstalar-un-entorno-virtual">4.2. Desinstalar un entorno virtual</h2>
 <pre><code>    pipenv --rm
 </code></pre>
 <h2 id="43-usar-un-proyecto-pipenv">4.3. Usar un proyecto Pipenv</h2>
@@ -652,15 +660,16 @@ Instalar módulo Flask (necesario tener el entorno virtual web activado): pip3 i
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-      
-        <span style="margin-left: 15px"><a href="../doctest/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="../doctest/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
     <script defer>
