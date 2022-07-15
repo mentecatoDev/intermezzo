@@ -10,6 +10,7 @@ nav:
   - La función `divmod()` : divmod.md
   - Buenas Prácticas: buenas_practicas.md
   - Compilando Python: compilando_en_python.md
+  - El operador Morsa: el_operador_morsa.md
 theme: readthedocs
 
 plugins:

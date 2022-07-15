@@ -14,4 +14,8 @@
 
 #### [La función `divmod()`](divmod.md)
 
+#### [Buenas Prácticas](buenas_practicas.md)
+
 #### [Compilando en python](compilando_en_python.md)
+
+#### [El operador Morsa](el_operador_morsa.md)
