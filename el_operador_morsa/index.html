@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>El operador Morsa - Intermezzo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "El operador Morsa";
+    var mkdocs_page_input_path = "el_operador_morsa.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Intermezzo</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../entornos_virtuales/">Entornos Virtuales</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../doctest/">Doctest</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../parametros_por_referencia/">Parámetros por referencia</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../la_tortuga_que_dibuja/">La tortuga que dibuja</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../bots_de_telegram_en_python/">Bots de Telegram en Python</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../que_es_PEP8_y_por_que_se_debe_implementar/">¿Que es PEP8 y por qué se debe implementar?</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../divmod/">La función `divmod()`</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../buenas_practicas/">Buenas Prácticas</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../compilando_en_python/">Compilando Python</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">El operador Morsa</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduccion">Introducción</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#salida">SALIDA:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#salida_1">SALIDA:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#salida_2">SALIDA:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#aplicaciones-beneficiosas-de-las-expresiones-de-asignacion">Aplicaciones beneficiosas de las expresiones de asignación</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listas-por-comprension">Listas por comprensión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#salida_3">SALIDA:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#salida_4">SALIDA:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#expresiones-regulares">Expresiones regulares</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lectura-de-archivos-de-longitud-fija">Lectura de archivos de longitud fija</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uso-en-bucles-while">Uso en bucles while</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#salida_5">SALIDA:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#llevado-al-extremo">Llevado al extremo:</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#fuentes">Fuentes</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Intermezzo</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>El operador Morsa</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="expresiones-de-asignacion">Expresiones de asignación</h1>
+<h2 id="introduccion">Introducción</h2>
+<p><img alt="morsa" src="https://python-course.eu/images/python-tutorial/walrus.webp" /></p>
+<p>La versión 3.8 de Python vino con una nueva característica, que algunos programadores de Python anhelaban desde hace bastante tiempo. Se ha introducido una nueva forma de asignar objetos a variables, es decir, el operador <code>:=</code>. Brinda a los programadores una forma conveniente de asignar variables en medio de expresiones. Si miras a los caracteres con un poco de imaginación puedes ver una similitud con los ojos y colmillos de una morsa, por eso cariñosamente se le conoce como <strong>el operador morsa</strong> (<strong>the walrus operator</strong>) .</p>
+<p>Las expresiones de asignación han sido discutidas en <a href="https://translate.google.com/website?sl=auto&amp;tl=es&amp;hl=es&amp;u=https://peps.python.org/pep-0572/">PEP 572</a> y esto es lo que se escribió sobre el <em>naming</em>:</p>
+<pre><code class="language-tex">During discussion of this PEP, the operator became informally known as &quot;the walrus operator&quot;. The construct's formal name is &quot;Assignment Expressions&quot; (as per the PEP title), but they may also be referred to as &quot;Named Expressions&quot; (e.g. the CPython reference implementation uses that name internally).
+
+Durante la discusión de este PEP, el operador se conoció informalmente como &quot;el operador morsa&quot;. El nombre formal de la construcción es &quot;Expresiones de Asignación&quot; (según el título del PEP), pero también pueden ser referidas como &quot;Expresiones con Nombre&quot; (por ejemplo, la implementación de referencia de CPython utiliza ese nombre internamente).
+</code></pre>
+<p>Una asignación simple también se puede reemplazar por una expresión de asignación, aunque parece torpe y, definitivamente, no es el caso de uso más adecuado:</p>
+<pre><code class="language-python">x = 5 
+# se puede escribir como: 
+( x := 5 )  # ¡válido, pero no recomendado! 
+# los paréntesis son cruciales
+</code></pre>
+<h3 id="salida">SALIDA:</h3>
+<pre><code class="language-tex">5
+</code></pre>
+<p>Veamos un pequeño ejemplo de código que solo usa asignaciones <em>tradicionales :</em></p>
+<pre><code class="language-python">txt = '¡Python necesita entrenamiento!' 
+ideal_length = 22
+
+n = len(txt) 
+if n == ideal_length: 
+    print(f'¡La longitud {n} es ideal!') 
+else:
+    print(f'¡La longitud {n} no es ideal!')
+</code></pre>
+<h3 id="salida_1">SALIDA:</h3>
+<pre><code class="language-tex">¡La longitud 25 no es ideal!
+</code></pre>
+<p>Usaremos el nuevo <em>operador morsa</em> en el siguiente fragmento de código de Python:</p>
+<pre><code class="language-python">txt = '¡Python necesita entrenamiento!' 
+ideal_length = 22
+
+if (n := len(txt)) == ideal_length:
+  print(f'¡La longitud {n} es ideal!') 
+else:
+  print(f'¡La longitud {n} no es ideal!')
+</code></pre>
+<h3 id="salida_2">SALIDA:</h3>
+<pre><code class="language-tex">¡La longitud 25 no es ideal!
+</code></pre>
+<p>De acuerdo, puede decir que esto no es muy impresionante y que la primera versión podría considerarse aún más legible. Entonces, echemos un vistazo a un caso de uso más útil.</p>
+<h2 id="aplicaciones-beneficiosas-de-las-expresiones-de-asignacion">Aplicaciones beneficiosas de las expresiones de asignación</h2>
+<h3 id="listas-por-comprension">Listas por comprensión</h3>
+<p>A continuación, verás una lista por comprensión con un <em>operador morsa</em>:</p>
+<pre><code class="language-python">def f(x):
+    return x + 4
+
+numbers = [3, 7, 2, 9, 12]
+odd_numbers = [result for x in numbers if (result := f(x)) % 2]
+print(odd_numbers)
+</code></pre>
+<h3 id="salida_3">SALIDA:</h3>
+<pre><code class="language-tex">[7, 11, 13]
+</code></pre>
+<p>La implementación anterior es más eficiente que una lista por comprensión sin la expresión de asignación, porque tendremos que llamar a la función dos veces:</p>
+<pre><code class="language-python">def f(x):
+    return x + 4
+
+numbers = [3, 7, 2, 9, 12]
+odd_numbers = [f(x) for x in numbers if  f(x) % 2]
+print(odd_numbers)
+</code></pre>
+<h3 id="salida_4">SALIDA:</h3>
+<pre><code class="language-tex">[7, 11, 13]
+</code></pre>
+<h3 id="expresiones-regulares">Expresiones regulares</h3>
+<p>También hay una gran ventaja cuando usamos expresiones regulares:</p>
+<pre><code class="language-python">import re
+
+txt = &quot;&quot;&quot;The Python training course started at 2022-02-4 
+the other one at 2022-01-24
+only one date per line, if at all
+the dates may also be in this format 2020/10/15
+or 20-10-04&quot;&quot;&quot;
+for line in txt.split('\n'):
+    if (date := re.search(r'(\d{2,4})[-/](\d{2})[-/](\d{2})', line)):
+        year, month, day = date.groups()
+        print(year, month, day)
+</code></pre>
+<p>SALIDA:</p>
+<pre><code class="language-tex">2022 01 24
+2020 10 15
+20 10 04
+</code></pre>
+<h3 id="lectura-de-archivos-de-longitud-fija">Lectura de archivos de longitud fija</h3>
+<pre><code class="language-python">with open('training_course_info.txt') as fh:
+    while ((data := fh.read(52)) != ''):
+        print(data.rstrip())
+</code></pre>
+<p>SALIDA:</p>
+<pre><code class="language-tex">Curso de formación de Python para principiantes Berlín    08
+Curso intermedio de Python                      Hamburgo  06
+Curso de formación avanzada de Python           Frankfurt 08
+</code></pre>
+<h3 id="uso-en-bucles-while">Uso en bucles while</h3>
+<p>En el capítulo sobre <a href="https://python--course-eu.translate.goog/python-tutorial/loops.php?_x_tr_sl=auto&amp;_x_tr_tl=es&amp;_x_tr_hl=es">bucles while</a> de nuestro Tutorial de Python, tuvimos un pequeño juego de adivinanzas:</p>
+<pre><code class="language-python">import random
+
+lower_bound, upper_bound = 1, 20
+to_be_guessed = random.randint(lower_bound, upper_bound)
+guess = 0
+while guess != to_be_guessed:
+    guess = int(input(&quot;Nuevo número: &quot;))
+    if guess &gt; to_be_guessed:
+        print(&quot;El número es muy grande&quot;)
+    elif guess &lt; to_be_guessed:
+        print(&quot;El número es muy pequeño&quot;)
+else:
+    print(&quot;Felicidades. ¡Lo adivinaste!&quot;)
+</code></pre>
+<p>Como puedes ver, tuvimos que inicializar <code>guess</code> a cero para poder ingresar al bucle. Podemos hacer la inicialización directamente en la condición de bucle con una expresión de asignación y simplificar todo el código con esto:</p>
+<pre><code class="language-python">import random
+
+lower_bound, upper_bound = 1, 20
+to_be_guessed = random.randint(lower_bound, upper_bound)
+while (guess := int(input(&quot;Nuevo número: &quot;))) != to_be_guessed:
+    if guess &gt; to_be_guessed:
+        print(&quot;El número es muy grande&quot;)
+    elif guess &lt; to_be_guessed:
+        print(&quot;El número es muy pequeño&quot;)
+else:
+    print(&quot;Felicidades. ¡Lo adivinaste!&quot;)
+</code></pre>
+<h3 id="salida_5">SALIDA:</h3>
+<pre><code class="language-tex">El número es muy pequeño
+El número es muy grande
+El número es muy pequeño
+Felicidades. ¡Lo adivinaste!
+</code></pre>
+<h2 id="llevado-al-extremo">Llevado al extremo:</h2>
+<p>Dijimos al comienzo de esta página que algunos programadores de Python anhelaron esta construcción durante bastante tiempo. Una de las razones por las que no se introdujo antes fue el hecho de que también se puede usar para escribir código que es menos legible si se usa mucho. El siguiente fragmento de código muestra un ejemplo extremo que <strong>no se recomienda usar</strong>:</p>
+<pre><code class="language-python">a , b , c = 1 , 2 , 3 
+x = 4 
+y = ( c := ( a := x * 2.3 ) + ( b := x * 4.5 - 3 )) 
+</code></pre>
+<pre><code class="language-python">print(y)
+</code></pre>
+<p>24.2</p>
+<pre><code class="language-python">print(c)
+</code></pre>
+<p>24.2</p>
+<pre><code class="language-python">print(a)
+</code></pre>
+<p>9.2</p>
+<pre><code class="language-python">print(b)
+</code></pre>
+<p>15.0</p>
+<h4 id="fuentes">Fuentes</h4>
+<p>https://python-course.eu/python-tutorial/assignment-expressions.php</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../compilando_en_python/" class="btn btn-neutral" title="Compilando Python"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../compilando_en_python/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
